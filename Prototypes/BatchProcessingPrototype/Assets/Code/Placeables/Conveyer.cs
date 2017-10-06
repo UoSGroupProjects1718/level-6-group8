@@ -6,50 +6,46 @@ using UnityEngine;
 public class Conveyer : Placeable
 {
     Ingredient newChild;
+
+    [SerializeField]
     Ingredient child;
 
     void Start()
-    { }
+    {
+        child = null;
+        allPlaceables.Add(this);
+    }
 
-    void Update()
-    { }
-
+    // Passes its child onto the next neighbour
     public override void Tick()
     {
+        // Return if we don't have a child go pass
+        if (child == null) { return; }
+
+        // Find our neighbours [y,x] index based on our facing direction
+        int neighbourX, neighbourY;
+        CalculateNeighbour(dir, out neighbourX, out neighbourY);
+
+        Debug.Log("Attempting to give ingredient to: y/x: " + neighbourX + "/" + neighbourY);
+
         LevelController lc = GameObject.Find("LevelController").GetComponent<LevelController>();
-
-        int neighbourY = y;
-        int neighbourX = x;
-
-        switch (dir)
-        {
-            case Direction.up:
-                neighbourY++;
-                break;
-            case Direction.right:
-                neighbourX++;
-                break;
-            case Direction.down:
-                neighbourY--;
-                break;
-            case Direction.left:
-                neighbourX--;
-                break;
-        }
-
-        if (lc.currentLevel[neighbourY, neighbourX] == null)
+        if (lc.currentLevel[neighbourY, neighbourX].GetComponent<Tile>().GetChild() == null)
         {
             lc.StopRunning("Conveyer belt passing ingredients up onto nothing.", true);
         }
         else
         {
-            lc.currentLevel[neighbourY, neighbourX].GetComponent<Placeable>().GiveIngredient(child);
+            lc.currentLevel[neighbourY, neighbourX].GetComponent<Tile>().GetChild().GiveIngredient(child);
             child = null;
         }
     }
 
+    // Sets given ingredient as its newchild
     public override void GiveIngredient(Ingredient newIngredient)
     {
+
+        Debug.Log("Receiving ingredient.");
+
         if (newChild != null)
         {
             GameObject.Find("LevelController").GetComponent<LevelController>()
@@ -60,8 +56,11 @@ public class Conveyer : Placeable
         newChild = newIngredient;
     }
 
+    // Sets its newchild as its current ingredient
     public override void Flush()
     {
+        if (newChild == null) { return; }
+
         child = newChild;
         newChild = null;
 

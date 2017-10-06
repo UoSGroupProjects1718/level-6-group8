@@ -24,18 +24,24 @@ public class LevelController : MonoBehaviour
         {
             { 0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            { 5, 1, 1, 1, 1, 1, 1, 1, 1, 3},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 6},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0},
         },
     };
 
-    int level1X = 6;
-    int level1Y = 5;
+    int level1X = 10;
+    int level1Y = 8;
 
     Mode gameStatus;
     private Placeable toPlace;
     private bool callTick;
+    bool continueCalling;
+
+    [SerializeField]
     private float tickTimer;
 
     public GameObject[] placeables;
@@ -48,7 +54,6 @@ public class LevelController : MonoBehaviour
     {
         gameStatus = Mode.build;
         callTick = true;
-        tickTimer = 1.0f;
         SpawnLevel(0);
     }
 
@@ -71,15 +76,25 @@ public class LevelController : MonoBehaviour
     {
         if (callTick)
         {
+            StartCoroutine(TickWait());
+
+            continueCalling = true;
+
             // Call Tick(); on all placeables
+            Debug.Log("Calling Tick()");
             foreach (Placeable placeable in Placeable.allPlaceables)
             {
+                if (!continueCalling) { return; }
+
                 placeable.Tick();
             }
 
             // Call Flush(); on all placeables
+            Debug.Log("Calling Flush()");
             foreach (Placeable placeable in Placeable.allPlaceables)
             {
+                if (!continueCalling) { return; }
+
                 placeable.Flush();
             }
         }
@@ -104,9 +119,7 @@ public class LevelController : MonoBehaviour
             if (toPlace != null)
             {
                 toPlace.GetComponent<BoxCollider2D>().enabled = false;
-
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
-                Debug.Log(hit.collider.gameObject.tag);
                 if (hit.collider != null)
                 {
                     if (hit.collider.gameObject.CompareTag("Tile"))
@@ -149,6 +162,7 @@ public class LevelController : MonoBehaviour
     public void StopRunning(string reason, bool displayMessageToUser)
     {
         gameStatus = Mode.build;
+        continueCalling = false;
 
         // Cleanup all ingredients
         while (Ingredient.allIngredients.Count != 0)
@@ -161,7 +175,6 @@ public class LevelController : MonoBehaviour
         if (displayMessageToUser)
         {
             Debug.Log("Process stopped: " + reason);
-
             //Canvas call
         }
     }
@@ -211,25 +224,41 @@ public class LevelController : MonoBehaviour
                     case 1:
                         temp = Instantiate(levelObjects[0], new Vector2(x, -y), Quaternion.identity);
                         temp.GetComponent<Tile>().SetXY(x, y);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                     case 2:
                         temp = Instantiate(levelObjects[1], new Vector2(x, -y), Quaternion.identity);
+                        temp.GetComponent<Placeable>().SetXY(x, y);
                         temp.GetComponent<Placeable>().SetRotation(Direction.down);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                     case 3:
                         temp = Instantiate(levelObjects[1], new Vector2(x, -y), Quaternion.identity);
+                        temp.GetComponent<Placeable>().SetXY(x, y);
                         temp.GetComponent<Placeable>().SetRotation(Direction.left);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                     case 4:
                         temp = Instantiate(levelObjects[1], new Vector2(x, -y), Quaternion.identity);
+                        temp.GetComponent<Placeable>().SetXY(x, y);
                         temp.GetComponent<Placeable>().SetRotation(Direction.up);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                     case 5:
                         temp = Instantiate(levelObjects[1], new Vector2(x, -y), Quaternion.identity);
+                        temp.GetComponent<Placeable>().SetXY(x, y);
                         temp.GetComponent<Placeable>().SetRotation(Direction.right);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                     case 6:
                         temp = Instantiate(levelObjects[2], new Vector2(x, -y), Quaternion.identity);
+
+                        currentLevel[y, x] = temp.GetComponent<Square>();
                         break;
                 }
             }

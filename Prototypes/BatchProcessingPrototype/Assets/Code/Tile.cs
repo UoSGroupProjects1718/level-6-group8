@@ -5,19 +5,15 @@ using UnityEngine;
 public class Tile : Square
 {
     Placeable child;
-    int x, y;
-
-    public void SetXY(int newX, int newY)
-    {
-        x = newX;
-        y = newY;
-    }
 
     void Start()
     { }
 
     void Update()
     { }
+
+
+    public Placeable GetChild() { return child; }
 
     public void SetChild(Placeable newChild)
     {
@@ -27,6 +23,7 @@ public class Tile : Square
         }
 
         child = newChild;
-        child.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
+        child.SetXY(xPos, yPos);
+        child.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f); 
     }
 }

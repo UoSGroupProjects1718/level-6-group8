@@ -17,22 +17,7 @@ public abstract class Placeable : Square
     [SerializeField]
     protected Direction dir;
 
-    public int x;
-    public int y;
-
     public Direction getDir() { return dir; }
-
-    void Start()
-    { }
-
-    void Update()
-    { }
-
-    public void SetPos(int newX, int newY)
-    {
-        x = newX;
-        y = newY;
-    }
 
     public abstract void Tick();
     public abstract void Flush();
@@ -67,19 +52,37 @@ public abstract class Placeable : Square
         {
             case Direction.up:
                 transform.eulerAngles = new Vector3(0, 0, 180);
-                Debug.Log("Setting direction up");
                 break;
             case Direction.right:
                 transform.eulerAngles = new Vector3(0, 0, 90);
-                Debug.Log("Setting direction right");
                 break;
             case Direction.down:
                 transform.eulerAngles = new Vector3(0, 0, 0);
-                Debug.Log("Setting direction down");
                 break;
             case Direction.left:
                 transform.eulerAngles = new Vector3(0, 0, -90);
-                Debug.Log("Setting direction left");
+                break;
+        }
+    }
+
+    protected void CalculateNeighbour(Direction dir, out int neighbourX, out int neighbourY)
+    {
+        neighbourX = xPos;
+        neighbourY = yPos;
+
+        switch (dir)
+        {
+            case Direction.up:
+                neighbourY--;
+                break;
+            case Direction.right:
+                neighbourX++;
+                break;
+            case Direction.down:
+                neighbourY++;
+                break;
+            case Direction.left:
+                neighbourX--;
                 break;
         }
     }
