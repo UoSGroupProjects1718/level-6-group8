@@ -29,7 +29,7 @@ public class Conveyer : Placeable
         Debug.Log("Attempting to give ingredient to: y/x: " + neighbourX + "/" + neighbourY);
 
         LevelController lc = GameObject.Find("LevelController").GetComponent<LevelController>();
-        if (lc.currentLevel[neighbourY, neighbourX].GetComponent<Tile>().GetChild() == null)
+        if (lc.currentLevel[neighbourY, neighbourX].GetComponent<Tile>().GetChild() == null)    
         {
             lc.StopRunning("Conveyer belt passing ingredients up onto nothing.", true);
         }

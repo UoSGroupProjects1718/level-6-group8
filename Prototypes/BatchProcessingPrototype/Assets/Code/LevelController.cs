@@ -29,7 +29,7 @@ public class LevelController : MonoBehaviour
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 6},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         },
     };
 
@@ -125,8 +125,11 @@ public class LevelController : MonoBehaviour
                     if (hit.collider.gameObject.CompareTag("Tile"))
                     {
                         toPlace.GetComponent<BoxCollider2D>().enabled = true;
-                        hit.collider.GetComponent<Tile>().SetChild(toPlace);
-                        toPlace = null;
+
+                        GameObject copy = Instantiate(toPlace.gameObject, toPlace.transform.position, Quaternion.identity);
+                        copy.GetComponent<Placeable>().SetRotation(Direction.down);
+
+                        hit.collider.GetComponent<Tile>().SetChild(copy.GetComponent<Placeable>());
                         return;
                     }
                 }
