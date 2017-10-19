@@ -4,31 +4,47 @@ using UnityEngine;
 
 public class Conveyer : Machine
 {
-    Item newChild;
-    Item child;
+    Item bufferChild;
+    Item activeChild;
+
+    LevelController lc;
 
     void Start()
     {
+        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         ResetTickCounter();
     }
 
     public override void Tick()
     {
+        // Tick +
         tickCounter++;
-        if (tickCounter < maxTicks) { return; }
+        if (tickCounter < ticksToExecute) { return; }
 
         ResetTickCounter();
-        // Get neighbour
+
+        // Get machine im facing
+        Machine neighbour = lc.GetNeighbour(parent.X, parent.Y, dir);
+
+        // Null check
+        if (neighbour == null) { return; }
+
         // Give neighbour to child
+        neighbour.Receive(activeChild);
     }
 
     public override void Flush()
     {
-        // We have no child to flush
-        if (newChild == null) { return; }
+        // Check if we have a buffer to flush
+        if (bufferChild == null) { return; }
 
-        child = newChild;
-        newChild = null;
+        // Shove our buffer child into our active child
+        activeChild = bufferChild;
+        // Set our buffer to null
+        bufferChild = null;
+
+        // Move our active childs potition to this conveyer
+        activeChild.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     public override void Execute()
@@ -38,12 +54,12 @@ public class Conveyer : Machine
 
     public override void Receive(Item newItem)
     {
-        if (newChild != null)
+        if (bufferChild != null)
         {
             // Error: conveyer has already been given a child
             return;
         }
 
-        newChild = newItem;
+        bufferChild = newItem;
     }
 }
