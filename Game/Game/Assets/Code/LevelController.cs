@@ -9,9 +9,25 @@ public class LevelController : MonoBehaviour
     int levelWidth, levelHeight;
     int currentlySelected;
     float tickWaitTime;
-    public Tile[,] level;
-    public GameObject[] Spawnables;
-    public List<Machine> Machines = new List<Machine>();
+    Tile[,] level;
+    List<Machine> machines = new List<Machine>();
+    List<Item> items = new List<Item>();
+
+    [Header("Spawnable machines")]
+    [SerializeField]
+    GameObject[] Spawnables;
+
+    [Header("Ingredients")]
+    [SerializeField]
+    Ingredient[] ingredients;
+
+    [Header("Craftable items")]
+    [SerializeField]
+    CraftableItem[] craftableItems;
+
+    public Item[] Ingredients { get { return ingredients; } }
+    public CraftableItem[] CraftableItems { get { return craftableItems; } }
+    public List<Item> Items { get { return items; } }
 
     void Start ()
     {
@@ -40,19 +56,19 @@ public class LevelController : MonoBehaviour
         Debug.Log("Runing...");
 
         // Tick
-        foreach (Machine machine in Machines)
+        foreach (Machine machine in machines)
         {
             machine.Tick();
         }
 
         // Flush
-        foreach (Machine machine in Machines)
+        foreach (Machine machine in machines)
         {
             machine.Flush();
         }
 
         // Execute
-        foreach (Machine machine in Machines)
+        foreach (Machine machine in machines)
         {
             machine.Execute();
         }
@@ -81,7 +97,12 @@ public class LevelController : MonoBehaviour
     {
         running = false;
 
-        // Clear up all items here
+        RemoveAndDestroyListOfItems(ref items);
+
+        foreach (Machine machine in machines)
+        {
+            machine.Reset();
+        }
     }
 
     public void SetCurrentlySelected(int i)
@@ -116,7 +137,7 @@ public class LevelController : MonoBehaviour
         machine.Parent = level[y, x];
 
         // Add this machine to the level and to our list of machines
-        Machines.Add(machine);
+        machines.Add(machine);
 
         // Add this machine as the child of the tile
         level[y, x].SetChild(machine);
@@ -148,6 +169,32 @@ public class LevelController : MonoBehaviour
         return null;
     }
 
+    public void AddItem(ref Item item)
+    {
+        if (item == null) { return; }
+        items.Add(item);
+    }
+
+    public void RemoveAndDestroyItem(ref Item item)
+    {
+        if (item == null) { return; }
+
+        items.Remove(item);
+        Destroy(item.gameObject);
+    }
+
+    public void RemoveAndDestroyListOfItems(ref List<Item> itemsToDestroy)
+    {
+        if (itemsToDestroy.Count == 0) { return; }
+
+        while (itemsToDestroy.Count > 0)
+        {
+            var item = itemsToDestroy[0];
+            itemsToDestroy.Remove(item);
+            RemoveAndDestroyItem(ref item);       
+        }
+    }
+
     //! Instantiates test level for debugging purposes
     private void DebugLoadLevel()
     {
@@ -169,10 +216,16 @@ public class LevelController : MonoBehaviour
                 {
                     Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
                     tile.SetChild(inputter);
-                    Machines.Add(inputter);
+                    machines.Add(inputter);
                     inputter.SetDir(Direction.down);
                 }
-                // Spawn an inputter on (0, 0);
+                // Spawn an outputt on (0, 0);
+                if (y == 0 && x == 0)
+                {
+                    Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
+                    tile.SetChild(output);
+                    machines.Add(output);
+                }
 
                 level[y, x] = tile;
             }
