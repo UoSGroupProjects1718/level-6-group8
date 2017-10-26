@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is responsible for controlling the Canvas 
+/// in the Overworld scene.
+/// </summary>
 public class OverworldCanvas : MonoBehaviour
 {
+
+    [Header("Options panel")]
+    [SerializeField]
+    GameObject optionsPanel;
 
     [Header("Factory stats display")]
 
@@ -28,19 +36,20 @@ public class OverworldCanvas : MonoBehaviour
 
     void Start()
     {
-        factoryStatsPanel.SetActive(false);
+        CloseAllMenus();
     }
 
-    void Update()
-    {
-
-    }
 
     public void UpdatePlayerStats(/*Player player*/)
     {
         //playerMoney.text = player.Money;
 
         // Etc...
+    }
+
+    public void DisplayOptions()
+    {
+        optionsPanel.SetActive(true);
     }
 
     public void DisplayFactory(Factory factory)
@@ -71,9 +80,9 @@ public class OverworldCanvas : MonoBehaviour
         factoryPurchasePanel.SetActive(false);
     }
 
-    private void CloseAllMenus()
+    public void CloseAllMenus()
     {
-        factoryStatsPanel.SetActive(false);
-        factoryPurchasePanel.SetActive(false);
+        CloseFactoryDisplays();
+        optionsPanel.SetActive(false);
     }
 }

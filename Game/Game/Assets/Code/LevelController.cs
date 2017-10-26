@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     int levelWidth, levelHeight;
     int currentlySelected;
     float tickWaitTime;
+    Factory levelFactory;
     Tile[,] level;
     List<Machine> machines = new List<Machine>();
     List<Item> items = new List<Item>();
@@ -35,7 +36,8 @@ public class LevelController : MonoBehaviour
         canTick = true;
         tickWaitTime = 1.0f;
         currentlySelected = -1;
-        DebugLoadLevel();
+
+        // DebugLoadLevel();
 	}
 	
 	void Update ()
@@ -51,6 +53,9 @@ public class LevelController : MonoBehaviour
         }
 	}
 
+    /// <summary>
+    /// One call of this function represents one cycle within our production line
+    /// </summary>
     private void Run()
     {
         Debug.Log("Runing...");
@@ -93,6 +98,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the process from running, destroys and removes all items, resets all machines.
+    /// </summary>
     private void StopRunning()
     {
         running = false;
@@ -105,6 +113,10 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates which machine we have currently selected to build
+    /// </summary>
+    /// <param name="i">array of machines indexer</param>
     public void SetCurrentlySelected(int i)
     {
         // If the same button is pressed again,
@@ -121,6 +133,11 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns the selected machine on a given (x, y) coordinate
+    /// </summary>
+    /// <param name="x">x position</param>
+    /// <param name="y">y position</param>
     public void SpawnOn(int x, int y)
     {
         // Return checks
@@ -143,6 +160,13 @@ public class LevelController : MonoBehaviour
         level[y, x].SetChild(machine);
     }
 
+    /// <summary>
+    /// Returns the machine neighbouring a given (x,y) coordinate and direction
+    /// </summary>
+    /// <param name="x">the x pos</param>
+    /// <param name="y">the y pos</param>
+    /// <param name="facing">the given direction</param>
+    /// <returns></returns>
     public Machine GetNeighbour(int x, int y, Direction facing)
     {
         // Up
@@ -169,12 +193,20 @@ public class LevelController : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Adds an item to our list of items
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(ref Item item)
     {
         if (item == null) { return; }
         items.Add(item);
     }
 
+    /// <summary>
+    /// Removes an item from the list of items and then destroys it
+    /// </summary>
+    /// <param name="item"></param>
     public void RemoveAndDestroyItem(ref Item item)
     {
         if (item == null) { return; }
@@ -183,6 +215,10 @@ public class LevelController : MonoBehaviour
         Destroy(item.gameObject);
     }
 
+    /// <summary>
+    /// Destroys all gameobjects inside a list of items and then empties the list
+    /// </summary>
+    /// <param name="itemsToDestroy"></param>
     public void RemoveAndDestroyListOfItems(ref List<Item> itemsToDestroy)
     {
         if (itemsToDestroy.Count == 0) { return; }
@@ -195,7 +231,63 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    //! Instantiates test level for debugging purposes
+    /// <summary>
+    /// This method loads the level using data from the factory, this includes placing objects in the 
+    /// correct positions, etc.
+    /// </summary>
+    /// <param name="factory"></param>
+    public void LoadLevelFromFactory(Factory factory)
+    {
+        // Remember the current factory we are in
+        levelFactory = factory;
+
+        levelWidth = factory.Width;
+        levelHeight = factory.Height;
+
+        level = new Tile[levelWidth, levelHeight];
+
+        for (int y = 0; y < levelHeight; y++)
+        {
+            for (int x = 0; x < levelWidth; x++)
+            {
+                Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
+                tile.X = x;
+                tile.Y = y;
+
+                // Spawn an inputter on top left corner
+                if (y == levelHeight - 1 && x == levelWidth - 1)
+                {
+                    Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
+                    tile.SetChild(inputter);
+                    machines.Add(inputter);
+                    inputter.SetDir(Direction.down);
+                }
+                // Spawn an outputt on (0, 0);
+                if (y == 0 && x == 0)
+                {
+                    Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
+                    tile.SetChild(output);
+                    machines.Add(output);
+                }
+
+                level[y, x] = tile;
+            }
+        }
+    }
+
+    public void SaveLevel()
+    {
+
+    }
+
+    public void LoadOverworld()
+    {
+        GameManager.instance.ReturnToOverworld();
+    }
+
+    /// <summary>
+    /// Instantiates test level for debugging purposes
+    /// </summary>
     private void DebugLoadLevel()
     {
         levelWidth = 10;
@@ -212,7 +304,7 @@ public class LevelController : MonoBehaviour
                 tile.Y = y;
 
                 // Spawn an inputter on top left corner
-                if (y == levelHeight-1 && x == levelWidth-1)
+                if (y == levelHeight - 1 && x == levelWidth - 1)
                 {
                     Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
                     tile.SetChild(inputter);
