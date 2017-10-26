@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MachineType
+{
+    input,
+    conveyer,
+    mixer,
+    output
+}
+
 [System.Serializable]
 public enum Direction
 {
@@ -13,16 +21,18 @@ public enum Direction
 
 public abstract class Machine : MonoBehaviour
 {
-    protected Direction dir;
-    protected Tile parent;
-    protected int tickCounter;
-
-    protected LevelController lc;
-
     [SerializeField]
     [Header("Ticks to execute")]
     protected int ticksToExecute;
+    protected int tickCounter;
+    [SerializeField]
+    [Header("Type of Machine")]
+    protected MachineType type;
+    protected Direction dir;
+    protected Tile parent;
+    protected LevelController lc;
 
+    public MachineType Type { get { return type; } }
     public Direction GetDirection { get { return dir; } }
     public Tile Parent {
         get { return parent; }

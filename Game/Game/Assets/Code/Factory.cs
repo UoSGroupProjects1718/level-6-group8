@@ -1,15 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 // Json
+using System;
+using System.IO;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+/// <summary>
+/// This class is used to serialize and deserialize factory data to/from json
+/// </summary>
 class FactoryStats
 {
     public bool unlocked;
@@ -76,11 +79,6 @@ public class Factory : MonoBehaviour
 
     }
 
-    public void LoadInternalFactory()
-    {
-
-    }
-
     /// <summary>
     /// Saves all relevant factory stats to a json file
     /// </summary>
@@ -136,8 +134,118 @@ public class Factory : MonoBehaviour
         efficiency = fs.efficiency;
     }
 
-    public void SaveLevelToFile()
+    /// <summary>
+    /// This method will save the information for all machines in a level to a file.
+    /// </summary>
+    /// <param name="level">The array of the level to save</param>
+    /// <param name="levelwidth">The x width of the level</param>
+    /// <param name="levelheight">The y height of the level</param>
+    public void SaveLevelToFile(Tile[,] level, int levelwidth, int levelheight)
     {
+        // Create a new LevelToFile object
+        LevelToFile ltf = new LevelToFile();
 
+        // Loop through our level
+        for (int y = 0; y < levelheight; y++)
+        {
+            for (int x = 0; x < levelwidth; x++)
+            {
+
+                // Query if the current tile has a machine child
+                if (level[y, x].GetComponent<Tile>().Machine != null)
+                {
+                    // If it does, grab this machine
+                    Machine machine = level[y, x].GetComponent<Tile>().Machine;
+
+                    // Query its type
+                    switch (machine.Type)
+                    {
+
+                        // If its a conveyer, mixer or output
+                        case MachineType.conveyer:
+                        case MachineType.mixer:
+                        case MachineType.output:
+
+                            // Create a MachineToFile object to hold all relevent information
+                            MachineToFile mtf = new MachineToFile();
+                            mtf.x = machine.Parent.X;
+                            mtf.y = machine.Parent.Y;   
+                            mtf.dir = machine.GetDirection;
+                            mtf.type = machine.Type.ToString();
+
+                            // Add this to our LevelToFiles list of machines
+                            ltf.machines.Add(mtf);
+                            break;
+
+                        // If its an input:
+                        case MachineType.input:
+
+                            // Create an inputToFile object to hold all relevent information
+                            InputToFile itf = new InputToFile();
+                            itf.x = machine.Parent.X;
+                            itf.y = machine.Parent.Y;
+                            itf.dir = machine.GetDirection;
+                            itf.type = machine.Type.ToString();
+
+                            if (machine.GetComponent<Inputter>().ItemToOutput != null)
+                            {
+                                itf.ingredient = machine.GetComponent<Inputter>().ItemToOutput.DisplayName;
+                            }
+                            else
+                            {
+                                itf.ingredient = "";
+                            }
+                            
+                            // Add this to our LevelToFiles list of machines
+                            ltf.inputs.Add(itf);
+                            break;
+                    }
+                }
+            }
+        }
+
+        // Once we have looped through our level it's time to save all of our gathered data to file...
+
+        // Get the json string of our LevelToFile object
+        string json = JsonConvert.SerializeObject(ltf);
+
+        // Get the current directory
+        var currentDir = Directory.GetCurrentDirectory();
+        StringBuilder sb = new StringBuilder(currentDir);
+
+        // Add on the file name
+        sb.Append(string.Format("\\Level_{0}.json", FactoryName));
+
+        // Save to file
+        System.IO.File.WriteAllText(sb.ToString(), json);
+    }
+
+    /// <summary>
+    /// Loads the level data for this factory and returns it in a LevelToFile object
+    /// </summary>
+    /// <returns>LevelToFile, an class type containing information about the machines in a level</returns>
+    public LevelToFile LoadLevelFromFile()
+    {
+        // Get the current directory
+        var currentDir = Directory.GetCurrentDirectory();
+        StringBuilder sb = new StringBuilder(currentDir);
+
+        // Add on the file name
+        sb.Append(string.Format("\\Level_{0}.json", FactoryName));
+
+        // Check the file exists
+        if (!File.Exists(sb.ToString()))
+        {
+            return null;
+        }
+
+        // Read from file
+        string json = System.IO.File.ReadAllText(sb.ToString());
+
+        // Deserialize the object
+        LevelToFile ltf = JsonConvert.DeserializeObject<LevelToFile>(json);
+
+        // Update our variables
+        return ltf;
     }
 }

@@ -14,6 +14,11 @@ public class Inputter : Machine
         lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         ResetTickCounter();
 	}
+
+    public void SetOutputItem(Item item)
+    {
+        ItemToOutput = item;
+    }
 	
     public override void Tick()
     {

@@ -241,15 +241,22 @@ public class LevelController : MonoBehaviour
         // Remember the current factory we are in
         levelFactory = factory;
 
+        // Grab the width and height
         levelWidth = factory.Width;
         levelHeight = factory.Height;
 
+        // Initialize the array
         level = new Tile[levelWidth, levelHeight];
 
+        // Grab file of this level
+        LevelToFile ltf = factory.LoadLevelFromFile();
+
+        // Loop through our level
         for (int y = 0; y < levelHeight; y++)
         {
             for (int x = 0; x < levelWidth; x++)
             {
+                // Spawn a tile in each position
                 Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
                 tile.X = x;
                 tile.Y = y;
@@ -270,14 +277,118 @@ public class LevelController : MonoBehaviour
                     machines.Add(output);
                 }
 
+                // If our levelFile exists
+                if (ltf != null)
+                {
+                    // Loop through each machine to see if we need to spawn it
+                    foreach (var machineFromFile in ltf.machines)
+                    {
+                        HandleMachine(y, x, ref tile, machineFromFile);
+                    }
+
+                    foreach (var inputFromFile in ltf.inputs)
+                    {
+                        HandleInput(y, x, ref tile, inputFromFile);                   
+                    }
+                }
+
+                // Add our tile into our level array
                 level[y, x] = tile;
             }
         }
     }
 
+    /// <summary>
+    /// This checks a given MachineToFile, checks if it needs to spawn and 
+    /// if it doesn, sets variables
+    /// </summary>
+    /// <param name="y">y position in the level to check</param>
+    /// <param name="x">x posision in the level to check</param>
+    /// <param name="tile">the tile the machine will be parent of</param>
+    /// <param name="machineFromFile">the machine data object loaded from json</param>
+    private void HandleMachine(int y, int x, ref Tile tile, MachineToFile machineFromFile)
+    {
+        // If it is on this position
+        if (machineFromFile.y == y && machineFromFile.x == x)
+        {
+            // Create the machine
+            Machine mach;
+
+            // Check which type of machine it is and spawn it
+            if (machineFromFile.type.Equals("conveyer"))
+            {
+                mach = Instantiate(Spawnables[1]).GetComponent<Conveyer>();
+            }
+            else if (machineFromFile.type.Equals("output"))
+            {
+                mach = Instantiate(Spawnables[3]).GetComponent<Output>();
+            }
+            else if (machineFromFile.type.Equals("mixer"))
+            {
+                mach = Instantiate(Spawnables[4]).GetComponent<Mixer>();
+            }
+            else
+            {
+                return;
+            }
+
+            // Set it as a child to the tile
+            tile.SetChild(mach);
+
+            // Add it to oru list of machines
+            machines.Add(mach);
+
+            // Update its direction
+            mach.SetDir((Direction)machineFromFile.dir);
+        }
+    }
+
+    /// <summary>
+    /// This checks a given InputToFile, checks if it needs to spawn and 
+    /// if it doesn, sets variables
+    /// </summary>
+    /// <param name="y">y position in the level to check</param>
+    /// <param name="x">x posision in the level to check</param>
+    /// <param name="tile">the tile the machine will be parent of</param>
+    /// <param name="InputFromFile">the input data object loaded from json</param>
+    private void HandleInput(int y, int x, ref Tile tile, InputToFile InputFromFile)
+    {
+        if (InputFromFile.y == y && InputFromFile.x == x)
+        {
+            // Create a temporary object to be our inputter
+            Inputter inputter = Instantiate(Spawnables[2]).GetComponent<Inputter>();
+
+            // If its an inputter then we need to see what ingredient it inputs to the level
+
+            // use the GetAdditionalInfo method to get information on the inputters ingredient
+            var ingredientString = InputFromFile.ingredient;
+
+            // Loop through each ingredient to find which one this is
+            foreach (Ingredient ingredient in Ingredients)
+            {
+                if (ingredient.DisplayName.Equals(ingredientString))
+                {
+                    inputter.SetOutputItem(ingredient);
+                }
+            }
+
+            // Set it as a child to the tile
+            tile.SetChild(inputter);
+
+            // Add it to oru list of machines
+            machines.Add(inputter);
+
+            // Update its direction
+            inputter.SetDir((Direction)InputFromFile.dir);
+        }
+    }
+
+    /// <summary>
+    /// Calls the factory to save the level to the file
+    /// </summary>
     public void SaveLevel()
     {
-
+        levelFactory.SaveLevelToFile(level, levelWidth, levelHeight);
     }
 
     public void LoadOverworld()

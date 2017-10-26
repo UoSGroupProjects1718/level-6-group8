@@ -107,8 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7975ae4b106f52647aa199b4e4484637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: 0
-  parent: {fileID: 0}
   ticksToExecute: 2
+  type: 0
   ItemToOutput: {fileID: 114025710124972648, guid: ed55df5bb77e23e418c955b25bfc2b42,
     type: 2}
