@@ -42,6 +42,10 @@ public class Output : Machine
     /// </summary>
     public override void Execute()
     {
+        foreach (var item in activeChildren)
+        {
+            lc.Player.Money += item.Cost;
+        }
         // Go through our active children and destroy them
         RemoveAndDestroyListOfItems(ref activeChildren);
     }

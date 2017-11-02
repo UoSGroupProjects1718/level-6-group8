@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class will act as a controller within individual levels.
+/// This class only exists within the Game scene, when the player is inside of a factory level.
+/// For a class that is global across the entire game, use the GameManager.
+/// </summary>
 public class LevelController : MonoBehaviour
 {
     bool running;
@@ -9,9 +14,21 @@ public class LevelController : MonoBehaviour
     int levelWidth, levelHeight;
     int currentlySelected;
     float tickWaitTime;
+
+    /* This is used to remember which inputter the player clicked on, so we know which inputter
+    to change the ingredient of when the player taps a new ingredient from the list */
+    Inputter selectedInputter; 
+
+    /* This is the factory that we are currently "inside" of. */
     Factory levelFactory;
+
+    /* This is the current factories level, stored as 2d array of Tiles */
     Tile[,] level;
+
+    /* This is the list of all machines that are currently inside of the factory */
     List<Machine> machines = new List<Machine>();
+
+    /* This is the list of all items currently inside of the factory */
     List<Item> items = new List<Item>();
 
     [Header("Spawnable machines")]
@@ -26,6 +43,12 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     CraftableItem[] craftableItems;
 
+    [Header("Player")]
+    [SerializeField]
+    Player player;
+
+    public Player Player { get { return player; } }
+    public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] CraftableItems { get { return craftableItems; } }
     public List<Item> Items { get { return items; } }
@@ -36,7 +59,7 @@ public class LevelController : MonoBehaviour
         canTick = true;
         tickWaitTime = 1.0f;
         currentlySelected = -1;
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         // DebugLoadLevel();
 	}
 	
@@ -58,8 +81,6 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Run()
     {
-        Debug.Log("Runing...");
-
         // Tick
         foreach (Machine machine in machines)
         {
@@ -261,14 +282,6 @@ public class LevelController : MonoBehaviour
                 tile.X = x;
                 tile.Y = y;
 
-                // Spawn an inputter on top left corner
-                if (y == levelHeight - 1 && x == levelWidth - 1)
-                {
-                    Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
-                    tile.SetChild(inputter);
-                    machines.Add(inputter);
-                    inputter.SetDir(Direction.down);
-                }
                 // Spawn an outputt on (0, 0);
                 if (y == 0 && x == 0)
                 {
@@ -289,6 +302,18 @@ public class LevelController : MonoBehaviour
                     foreach (var inputFromFile in ltf.inputs)
                     {
                         HandleInput(y, x, ref tile, inputFromFile);                   
+                    }
+                }
+                // If our file doesn't exist, we have to spawn our own inputter
+                else
+                {
+                    // Spawn an inputter on top left corner
+                    if (y == levelHeight - 1 && x == levelWidth - 1)
+                    {
+                        Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
+                        tile.SetChild(inputter);
+                        machines.Add(inputter);
+                        inputter.SetDir(Direction.down);
                     }
                 }
 
@@ -389,6 +414,16 @@ public class LevelController : MonoBehaviour
     public void SaveLevel()
     {
         levelFactory.SaveLevelToFile(level, levelWidth, levelHeight);
+    }
+
+    /// <summary>
+    /// This method takes in an Ingredient and sets this as 
+    /// the prefab of the currently selected inputter
+    /// </summary>
+    /// <param name="item">The ingredient item</param>
+    public void UpdateSelectedInputtersIngredient(Ingredient item)
+    {
+        selectedInputter.SetOutputItem(item);
     }
 
     public void LoadOverworld()
