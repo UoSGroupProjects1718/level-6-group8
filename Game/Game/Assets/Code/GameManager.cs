@@ -15,7 +15,17 @@ public class GameManager : MonoBehaviour
 
     private Factory currentFactory;
 
+    [Header("Ingredients")]
+    [SerializeField]
+    Ingredient[] ingredients;
+
+    [Header("Craftable items")]
+    [SerializeField]
+    CraftableItem[] craftableItems;
+
     public Factory CurrentFactory { get { return currentFactory; } }
+    public Item[] Ingredients { get { return ingredients; } }
+    public CraftableItem[] CraftableItems { get { return craftableItems; } }
 
     void Awake()
     {

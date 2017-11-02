@@ -9,13 +9,11 @@ using UnityEngine.UI;
 /// </summary>
 public class OverworldCanvas : MonoBehaviour
 {
-
     [Header("Options panel")]
     [SerializeField]
     GameObject optionsPanel;
 
     [Header("Factory stats display")]
-
     [SerializeField]
     GameObject factoryStatsPanel;
     [SerializeField]
@@ -24,7 +22,6 @@ public class OverworldCanvas : MonoBehaviour
     Text factoryName;
 
     [Header("Factory purchase panel")]
-
     [SerializeField]
     GameObject factoryPurchasePanel;
     [SerializeField]
@@ -33,6 +30,14 @@ public class OverworldCanvas : MonoBehaviour
     Text factoryPurchaseName;
     [SerializeField]
     Text factoryPurchaseCost;
+
+    [Header("Cookbook parent")]
+    [SerializeField]
+    GameObject cookbookParent;
+
+    [Header("Cookbook scrollable list")]
+    [SerializeField]
+    GameObject cookbookScrollablePannel;
 
     void Start()
     {
@@ -74,6 +79,21 @@ public class OverworldCanvas : MonoBehaviour
         }
     }
 
+    public void DisplayCookbook()
+    {
+        // First, close any open menus
+        CloseAllMenus();
+
+        // Set the cookbook parent object active
+        cookbookParent.SetActive(true);
+        cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
+    }
+
+    public void CloseCookbook()
+    {
+        CloseAllMenus();
+    }
+
     public void CloseFactoryDisplays()
     {
         factoryStatsPanel.SetActive(false);
@@ -84,5 +104,6 @@ public class OverworldCanvas : MonoBehaviour
     {
         CloseFactoryDisplays();
         optionsPanel.SetActive(false);
+        cookbookParent.SetActive(false);
     }
 }

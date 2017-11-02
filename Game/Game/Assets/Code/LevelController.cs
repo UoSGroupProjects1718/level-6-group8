@@ -35,22 +35,12 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     GameObject[] Spawnables;
 
-    [Header("Ingredients")]
-    [SerializeField]
-    Ingredient[] ingredients;
-
-    [Header("Craftable items")]
-    [SerializeField]
-    CraftableItem[] craftableItems;
-
     [Header("Player")]
     [SerializeField]
     Player player;
 
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
-    public Item[] Ingredients { get { return ingredients; } }
-    public CraftableItem[] CraftableItems { get { return craftableItems; } }
     public List<Item> Items { get { return items; } }
 
     void Start ()
@@ -389,7 +379,7 @@ public class LevelController : MonoBehaviour
             var ingredientString = InputFromFile.ingredient;
 
             // Loop through each ingredient to find which one this is
-            foreach (Ingredient ingredient in Ingredients)
+            foreach (Ingredient ingredient in GameManager.instance.Ingredients)
             {
                 if (ingredient.DisplayName.Equals(ingredientString))
                 {

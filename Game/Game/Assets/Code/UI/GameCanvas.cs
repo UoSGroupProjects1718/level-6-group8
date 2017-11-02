@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameCanvas : MonoBehaviour
 {
     // Dont touch these, they works perfectly
-    [Header("Ingredient list Parent Container")]
+    [Header("Ingredient Selection Parent")]
     [SerializeField]
     GameObject ingredientListParent;
     [Header("Ingredient list scrollable")]

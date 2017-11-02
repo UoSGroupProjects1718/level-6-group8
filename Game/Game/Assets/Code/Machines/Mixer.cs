@@ -71,7 +71,7 @@ public class Mixer : Machine
     private CraftableItem CreateItem()
     {
         // Loop through the craftables
-        foreach (var craftable in lc.CraftableItems)
+        foreach (var craftable in GameManager.instance.CraftableItems)
         {
 
             // To check if we've found the correct item

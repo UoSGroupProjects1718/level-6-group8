@@ -17,6 +17,7 @@ public class IngredientPanel : MonoBehaviour
 
     public void SetInfo(Ingredient ingredientArg)
     {
+        // Remember this panels ingredient
         ingredient = ingredientArg;
 
         image.sprite = ingredient.ItemSprite;
