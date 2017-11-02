@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 0
     width: 1041
     height: 635
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 17}
@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 635
-  m_MinSize: {x: 581, y: 200}
-  m_MaxSize: {x: 12006, y: 4021}
+  m_MinSize: {x: 583, y: 221}
+  m_MaxSize: {x: 12008, y: 4021}
   vertical: 0
-  controlID: 91
+  controlID: 113
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,10 +170,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 957
-  m_MinSize: {x: 581, y: 471}
-  m_MaxSize: {x: 12006, y: 14042}
+  m_MinSize: {x: 583, y: 492}
+  m_MaxSize: {x: 12008, y: 14042}
   vertical: 1
-  controlID: 90
+  controlID: 112
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -237,10 +237,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 957
-  m_MinSize: {x: 581, y: 471}
-  m_MaxSize: {x: 12006, y: 14042}
+  m_MinSize: {x: 583, y: 492}
+  m_MaxSize: {x: 12008, y: 14042}
   vertical: 0
-  controlID: 89
+  controlID: 111
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -477,23 +477,23 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 188}
-    m_SelectedIDs: fc270000
-    m_LastClickedID: 10236
-    m_ExpandedIDs: 00000000a0270000be270000d22700000c2800003e280000402800004628000092280000b428000000ca9a3bffffff7f
+    m_SelectedIDs: 2c280000
+    m_LastClickedID: 10284
+    m_ExpandedIDs: 00000000b2270000d4270000e82700003c28000074280000762800007c280000d4280000f828000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Potions
-      m_OriginalName: Potions
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10310
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
@@ -507,7 +507,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a0270000be2700000c2800003e2800004028000092280000b4280000
+    m_ExpandedIDs: 00000000b2270000d4270000e82700003c28000074280000762800007c280000d4280000f8280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300009e290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
     speed: 2
     m_Value: 1
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: 0.46891093, y: -0.07031113, z: 0.031143356, w: 0.87989146}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -667,21 +667,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 7c18f8ff4e28f8ffd62df8ffcc2ef8ffd6b6f8ff00c2f8ff02c5f8ff0ac6f8ff26c7f8ff7204faff842bfaff30b3faff4eb6faff54b7faff6e9dfbffecd4fbff52ecfbffb804fcff3e07fcff542cfcff2a2dfcff9638feff0e4dfeffba4efeff7080feff3284feffa092feff7294feffa2a8feff70abfeff8ebdfeff4acdfefff4edfeff7cf6feff12c2fffff2defffffcdfffff1ef1ffff6ef3ffff92f4ffff7cf5ffff96f6ffff80f8ffffa6fbffff000000002e2f000096320000b4380000f838000004390000e03a0000243b0000303b0000923b0000d63b0000e23f00002640000032400000264d0000805a0000c45a0000d05a0000e45f000056610000de650000b666000008760000
+    m_ExpandedIDs: a0fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Panel_IndividualIngredient
-      m_OriginalName: Panel_IndividualIngredient
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -505418
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 4
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 3}
     m_SearchString: 

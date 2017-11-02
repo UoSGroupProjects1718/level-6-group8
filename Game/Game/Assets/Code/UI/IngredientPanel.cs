@@ -20,7 +20,10 @@ public class IngredientPanel : MonoBehaviour
         // Remember this panels ingredient
         ingredient = ingredientArg;
 
+        // Set panel sprite
         image.sprite = ingredient.ItemSprite;
+        
+        // Set panels ingredient name
         displayName.text = ingredient.DisplayName;
     }
 

@@ -8,6 +8,7 @@ public class GameCanvas : MonoBehaviour
     [Header("Ingredient Selection Parent")]
     [SerializeField]
     GameObject ingredientListParent;
+
     [Header("Ingredient list scrollable")]
     [SerializeField]
     GameObject ingredientListPanel;
