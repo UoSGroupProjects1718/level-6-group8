@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// This enum is used to control whether the player 
+/// is currently building or deleting machines
+/// </summary>
+public enum BuildStatus
+{
+    build,
+    delete,
+    none
+}
+
+/// <summary>
 /// This class will act as a controller within individual levels.
 /// This class only exists within the Game scene, when the player is inside of a factory level.
 /// For a class that is global across the entire game, use the GameManager.
@@ -14,6 +25,7 @@ public class LevelController : MonoBehaviour
     int levelWidth, levelHeight;
     int currentlySelected;
     float tickWaitTime;
+    BuildStatus buildStatus;
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
     to change the ingredient of when the player taps a new ingredient from the list */
@@ -39,6 +51,7 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     Player player;
 
+    public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
     public List<Item> Items { get { return items; } }
@@ -97,6 +110,11 @@ public class LevelController : MonoBehaviour
         canTick = true;
     }
 
+    /// <summary>
+    /// This method toggles the production line on/off. 
+    /// If toggling off, it takes care of clean up, such as removing all ingredient 
+    /// and potions from the machines.
+    /// </summary>
     public void ToggleRunning()
     {
         if (!running)
@@ -135,12 +153,34 @@ public class LevelController : MonoBehaviour
         {
             // Unselect the currently selected
             currentlySelected = -1;
+
+            // Set build mode to none
+            buildStatus = BuildStatus.none;
         }
-        // Otherwise
+        // Otherwise, if a new button is pressed
         else
         {
             // This is our selected item
             currentlySelected = i;
+
+            // Build status is now build
+            buildStatus = BuildStatus.build;
+        }
+    }
+
+    /// <summary>
+    /// Toggles whether our buildStatus is in delete mode
+    /// </summary>
+    /// <param name="bs"></param>
+    public void ToggleDeleteMode()
+    {
+        if (buildStatus == BuildStatus.delete)
+        {
+            buildStatus = BuildStatus.none;
+        }
+        else
+        {
+            buildStatus = BuildStatus.delete;
         }
     }
 
@@ -153,6 +193,7 @@ public class LevelController : MonoBehaviour
     {
         // Return checks
         if (currentlySelected == -1) { return; }
+        if (buildStatus != BuildStatus.build) { return; }
 
         // If the tile on this position owns a tile, return
         if (level[y, x].Machine != null) { return; }
@@ -240,6 +281,16 @@ public class LevelController : MonoBehaviour
             itemsToDestroy.Remove(item);
             RemoveAndDestroyItem(ref item);       
         }
+    }
+
+    /// <summary>
+    /// Takes in a machine as refferenceand removes it from 
+    /// the list of all machines.
+    /// </summary>
+    /// <param name="machine"></param>
+    public void RemoveMachine(Machine machine)
+    {
+        machines.Remove(machine);
     }
 
     /// <summary>

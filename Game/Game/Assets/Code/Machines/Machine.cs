@@ -42,6 +42,7 @@ public abstract class Machine : MonoBehaviour
     void Start ()
     {
         dir = Direction.up;
+        // lc = GameObject.Find("LevelController").GetComponent<LevelController>();
 	}
 
     /// <summary>
@@ -141,9 +142,32 @@ public abstract class Machine : MonoBehaviour
 
     private void OnMouseOver()
     {
+        // Left click
+        if (Input.GetMouseButtonDown(0))
+        {
+            // If we're in delete mode
+            if (lc.BuildStatus == BuildStatus.delete)
+            {
+                DeleteSelf();
+            }
+        }
+
+        // Right click
         if (Input.GetMouseButtonDown(1))
         {
             Rotate();
         }
+    }
+
+    protected void DeleteSelf()
+    {
+        // Our parent tiles child will be null.
+        parent.SetChild(null);
+
+        // Remove this machine from the list of machines.
+        lc.RemoveMachine(this);
+
+        // Destroy self
+        Destroy(gameObject);
     }
 }

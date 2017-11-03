@@ -13,15 +13,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject ingredientListPanel;
 
-	void Start ()
-    {
-		
-	}
-	
-	void Update ()
-    {
-		
-	}
+    void Start() { }
 
     public void LoadIngredientList()
     {

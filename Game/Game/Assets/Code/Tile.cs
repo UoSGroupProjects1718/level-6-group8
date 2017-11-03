@@ -35,9 +35,13 @@ public class Tile : MonoBehaviour
     public void SetChild(Machine newChild)
     {
         machine = newChild;
-        machine.gameObject.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        machine.SetDir(Direction.up);
-        machine.Parent = this;
+
+        if (newChild != null)
+        {
+            machine.gameObject.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            machine.SetDir(Direction.up);
+            machine.Parent = this;
+        }
     }
 
     public virtual void OnClick()

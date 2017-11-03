@@ -39,11 +39,14 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    /// <summary>
+    /// At the start of the scene, ensure that
+    /// all menus are closed.
+    /// </summary>
     void Start()
     {
         CloseAllMenus();
     }
-
 
     public void UpdatePlayerStats(/*Player player*/)
     {
@@ -52,16 +55,30 @@ public class OverworldCanvas : MonoBehaviour
         // Etc...
     }
 
+    /// <summary>
+    /// Opens the Options panel.
+    /// Disables camera drag script
+    /// </summary>
     public void DisplayOptions()
     {
         optionsPanel.SetActive(true);
+
+        // Disable dragging whilst the menu is open
+        DisableCameraMoveScript();
     }
 
+    /// <summary>
+    /// Displays the factory pannel.
+    /// If the factory is unlocked, displays factory stats and a button to enter.
+    /// Otherwise, displays level to unlock and an "Unlock" button.
+    /// </summary>
+    /// <param name="factory"></param>
     public void DisplayFactory(Factory factory)
     {
         // Close all current open menus before opening a new menu/interface
         CloseFactoryDisplays();
 
+        // Check which pannel to open
         if (factory.IsUnlocked)
         {
             factoryStatsPanel.SetActive(true);
@@ -77,8 +94,16 @@ public class OverworldCanvas : MonoBehaviour
             factoryPurchaseName.text = factory.FactoryName;
             factoryPurchaseCost.text = string.Format("Unlocked at level {0}", factory.LevelToUnlock);
         }
+
+        // Disable dragging whilst the menu is open
+        DisableCameraMoveScript();
     }
 
+    /// <summary>
+    /// Opens the Cookbook pannel.
+    /// Calls the scrollable list to create all recipes.
+    /// Disables cameras drag script.
+    /// </summary>
     public void DisplayCookbook()
     {
         // First, close any open menus
@@ -87,23 +112,49 @@ public class OverworldCanvas : MonoBehaviour
         // Set the cookbook parent object active
         cookbookParent.SetActive(true);
         cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
+
+        // Disable dragging whilst the menu is open
+        DisableCameraMoveScript();
     }
 
-    public void CloseCookbook()
-    {
-        CloseAllMenus();
-    }
-
+    /// <summary>
+    /// Closes all factory pannels.
+    /// Re-enables the camera drag script.
+    /// </summary>
     public void CloseFactoryDisplays()
     {
         factoryStatsPanel.SetActive(false);
         factoryPurchasePanel.SetActive(false);
+
+        EnableCameraMoveScript();
     }
 
+    /// <summary>
+    /// Closes all menus.
+    /// Re-Enables the camera drag script.
+    /// </summary>
     public void CloseAllMenus()
     {
         CloseFactoryDisplays();
         optionsPanel.SetActive(false);
         cookbookParent.SetActive(false);
+
+        EnableCameraMoveScript();
+    }
+
+    /// <summary>
+    /// Enables the drag script on the camera
+    /// </summary>
+    private void EnableCameraMoveScript()
+    {
+        Camera.main.GetComponent<MoveCamera>().enabled = true;
+    }
+
+    /// <summary>
+    /// Disables the drag script on the camera
+    /// </summary>
+    private void DisableCameraMoveScript()
+    {
+        Camera.main.GetComponent<MoveCamera>().enabled = false;
     }
 }

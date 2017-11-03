@@ -24,6 +24,7 @@ public class MoveCamera : MonoBehaviour
 
         // If the left mouse button is not being held
         if (!Input.GetMouseButton(0)) return;
+        ///TODO: Make it check for input.touch instead of input.getmousebutton
 
         // Set a new direction vector
         Vector3 direction = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
