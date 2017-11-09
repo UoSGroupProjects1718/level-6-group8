@@ -18,7 +18,7 @@ public class Inputter : Machine
     public void SetOutputItem(Ingredient item)
     {
         ItemToOutput = item;
-        Debug.Log(string.Format("New item: {0}", ItemToOutput.DisplayName));
+        Debug.Log(string.Format("Inputter \"{0}\" item set as: {1}", gameObject.name, ItemToOutput.DisplayName));
 
         while (ItemToOutput.DisplayName != item.DisplayName)
         {
@@ -42,6 +42,7 @@ public class Inputter : Machine
 
         // Pass item
         Item toPass = Instantiate(ItemToOutput.gameObject).GetComponent<Item>();
+        toPass.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         AddItem(ref toPass);
         neighbour.Receive(toPass);  
     }
@@ -68,7 +69,10 @@ public class Inputter : Machine
 
     private void OnMouseDown()
     {
-        GameObject.Find("LevelController").GetComponent<LevelController>().SelectedInputter = this;
-        GameObject.Find("Canvas").GetComponent<GameCanvas>().LoadIngredientList();
+        if (lc.BuildStatus != BuildStatus.delete)
+        {
+            GameObject.Find("LevelController").GetComponent<LevelController>().SelectedInputter = this;
+            GameObject.Find("Canvas").GetComponent<GameCanvas>().LoadIngredientList();
+        }
     }
 }

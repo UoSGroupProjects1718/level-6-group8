@@ -20,8 +20,8 @@ public class Output : Machine
     /// </summary>
     public override void Tick()
     {
-        return;
         // We will be receiving children during the tick() stage
+        return;
     }
 
     /// <summary>
@@ -37,17 +37,30 @@ public class Output : Machine
     }
 
     /// <summary>
+    /// Check to see if the correct potion was made
     /// Destroy all of our active children.
-    /// Behaviour here such as money gain will be implemented.
     /// </summary>
     public override void Execute()
     {
-        foreach (var item in activeChildren)
+        // Check our active children
+        foreach (Item child in activeChildren)
         {
-            lc.Player.Money += item.Cost;
+            // If we have the required potion
+            if (child.DisplayName.Equals(lc.LevelFactory.Potion.DisplayName))
+            {
+                // Level complete
+                lc.OnLevelComplete();
+            }
         }
+
         // Go through our active children and destroy them
         RemoveAndDestroyListOfItems(ref activeChildren);
+
+        // --V Old code for when we had currency
+        //foreach (var item in activeChildren)
+        //{
+        //    lc.Player.Money += item.Cost;
+        //}
     }
 
     public override void Receive(Item newItem)

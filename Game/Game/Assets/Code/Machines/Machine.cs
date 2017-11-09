@@ -61,6 +61,33 @@ public abstract class Machine : MonoBehaviour
     public abstract void Execute();
 
     /// <summary>
+    /// Takes in a child and moves this child towards the machine over the duration of the tick
+    /// </summary>
+    /// <param name="child">The child to move</param>
+    /// <returns></returns>
+    protected IEnumerator MoveChildTowardsMe(Item child)
+    {
+        float timeInterval = lc.TickTime;
+        int iters = 10;
+
+        Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
+        Vector2 childPos = new Vector2(child.transform.position.x, child.transform.position.z);
+        float distance = Vector2.Distance(myPos, childPos);
+
+        for (int i = 0; i < iters; i++)
+        {
+            // We do a null check here as the child can be "consumed" by another machine whilst moving along the conveyer
+            if (child == null) { break; }
+
+            child.transform.position = Vector3.Lerp(child.transform.position,
+                new Vector3(transform.position.x, child.transform.position.y, transform.position.z),
+                distance / iters);
+
+            yield return new WaitForSeconds(timeInterval / iters);
+        }
+    }
+
+    /// <summary>
     /// Receive an item and add it to our machines buffer
     /// </summary>
     /// <param name="newItem">The item we are receiving</param>

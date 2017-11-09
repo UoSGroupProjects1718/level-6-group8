@@ -51,9 +51,12 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     Player player;
 
+    public float TickTime { get { return tickWaitTime; } }
     public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
+    /* A getter property for the factory that we are currently inside of. */
+    public Factory LevelFactory { get { return levelFactory; } }
     public List<Item> Items { get { return items; } }
 
     void Start ()
@@ -441,12 +444,25 @@ public class LevelController : MonoBehaviour
             // Set it as a child to the tile
             tile.SetChild(inputter);
 
-            // Add it to oru list of machines
+            // Add it to our list of machines
             machines.Add(inputter);
 
             // Update its direction
             inputter.SetDir((Direction)InputFromFile.dir);
         }
+    }
+
+    /// <summary>
+    /// This method includes any behaviour that occurs when a level has been solved.
+    /// </summary>
+    public void OnLevelComplete()
+    {
+        Debug.Log(string.Format("You have completed factory: \"{0}\" by creating: {1}", LevelFactory.FactoryName, LevelFactory.Potion.DisplayName));
+        levelFactory.SetAsComplete();
+
+        // Any other behaviour to be put here
+        // e.g. calculate and display stats
+        // (lyuts tasks etc)
     }
 
     /// <summary>
@@ -467,6 +483,9 @@ public class LevelController : MonoBehaviour
         selectedInputter.SetOutputItem(item);
     }
 
+    /// <summary>
+    /// Calls the GameManager singleton to change Scene to the Overworld
+    /// </summary>
     public void LoadOverworld()
     {
         GameManager.instance.ReturnToOverworld();

@@ -20,8 +20,10 @@ public class OverworldCanvas : MonoBehaviour
     Image factorySprite;
     [SerializeField]
     Text factoryName;
+    [SerializeField]
+    Text factoryDescription;
 
-    [Header("Factory purchase panel")]
+    [Header("Factory unlock panel")]
     [SerializeField]
     GameObject factoryPurchasePanel;
     [SerializeField]
@@ -85,6 +87,7 @@ public class OverworldCanvas : MonoBehaviour
 
             factorySprite.sprite = factory.FactorySprite;
             factoryName.text = factory.FactoryName;
+            factoryDescription.text = string.Format("Potion to make: {0}", factory.Potion.DisplayName);
         }
         else
         {

@@ -1812,6 +1812,7 @@ MonoBehaviour:
   factoryStatsPanel: {fileID: 193345029}
   factorySprite: {fileID: 942527294}
   factoryName: {fileID: 1163608673}
+  factoryDescription: {fileID: 662359544}
   factoryPurchasePanel: {fileID: 1804209072}
   factoryPurchaseSprite: {fileID: 278071361}
   factoryPurchaseName: {fileID: 41214888}
@@ -1882,8 +1883,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 858695050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 448, y: 252, z: 0}
-  m_LocalScale: {x: 1.12, y: 1.12, z: 1.12}
+  m_LocalPosition: {x: 453.5, y: 255, z: 0}
+  m_LocalScale: {x: 1.13375, y: 1.13375, z: 1.13375}
   m_Children:
   - {fileID: 2006791137}
   - {fileID: 193345030}
@@ -2120,11 +2121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  completed: 0
   levelToUnlock: 5
   factoryName: Second factory
   factorySprite: {fileID: 21300000, guid: b8170fbba51c3ea44b9cf30fae6b719c, type: 3}
   width: 10
   height: 10
+  potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
 --- !u!23 &1006633268
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2222,11 +2225,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  completed: 0
   levelToUnlock: 0
   factoryName: First Factory
   factorySprite: {fileID: 21300000, guid: 7a9c97c67963a534fb5ff7efe023a4cc, type: 3}
   width: 6
   height: 6
+  potion: {fileID: 114797948831754636, guid: 4f09d7ed33ba6ba4ca46e66bf332ebe9, type: 2}
 --- !u!23 &1008415644
 MeshRenderer:
   m_ObjectHideFlags: 0

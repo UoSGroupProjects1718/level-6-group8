@@ -16,6 +16,7 @@ using Newtonsoft.Json.Linq;
 class FactoryStats
 {
     public bool unlocked;
+    public bool completed;
     public float efficiency;
 }
 
@@ -23,6 +24,8 @@ public class Factory : MonoBehaviour
 {
     [SerializeField]
     private bool unlocked;
+    [SerializeField]
+    private bool completed;
     private float efficiency;
 
     [Header("Unlock level")]
@@ -43,6 +46,11 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private int height;
 
+    [Header("Potion to make")]
+    [SerializeField]
+    private Potion potion;
+
+    public bool Completed { get { return completed; } }
     public bool IsUnlocked { get { return unlocked; } }
     public int LevelToUnlock { get { return levelToUnlock; } }
     public int Width { get { return width; } }
@@ -50,6 +58,7 @@ public class Factory : MonoBehaviour
     public float FactoryEfficiency { get { return efficiency; } }
     public string FactoryName { get { return factoryName; } }
     public Sprite FactorySprite { get { return factorySprite; } }
+    public Potion Potion { get { return potion; } }
 
     void Start()
     {
@@ -74,6 +83,11 @@ public class Factory : MonoBehaviour
         unlocked = true;
     }
 
+    public void SetAsComplete()
+    {
+        completed = true;
+    }
+
     public void CalculateEfficiency()
     {
 
@@ -87,6 +101,7 @@ public class Factory : MonoBehaviour
         // Write all of the information we want to store into a FactoryStats object
         FactoryStats fs = new FactoryStats();
         fs.unlocked = IsUnlocked;
+        fs.completed = Completed;
         fs.efficiency = FactoryEfficiency;
 
         // Get the json string
@@ -131,6 +146,7 @@ public class Factory : MonoBehaviour
 
         // Update our variables
         unlocked = fs.unlocked;
+        completed = fs.completed;
         efficiency = fs.efficiency;
     }
 

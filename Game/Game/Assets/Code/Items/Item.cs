@@ -21,6 +21,16 @@ public abstract class Item : MonoBehaviour, IMoveable
     Sprite itemSprite;
     public Sprite ItemSprite { get { return itemSprite; } }
 
+    //public static bool operator== (Item left, Item right)
+    //{
+    //    return (left.DisplayName == right.DisplayName);
+    //}
+
+    //public static bool operator != (Item left, Item right)
+    //{
+    //    return (left.DisplayName != right.DisplayName);
+    //}
+
     public bool Moving
     {
         get

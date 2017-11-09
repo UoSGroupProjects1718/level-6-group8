@@ -22,6 +22,13 @@ public class Mixer : Machine
     /// </summary>
     public override void Tick()
     {
+        /* Firslt,y go through and delete our children that are left over from our previous Execute().
+         We have already used them in the previous Execute() to create a new potion, however
+         we cannot delete them in the execute because we need to see them go into the mixer in the world
+         therefore, we delete them in the Tick() */
+         /* Essentially, we are deleting our left over junk before we pass on our createdItem later in this method */
+        RemoveAndDestroyListOfItems(ref activeChildren);
+
         // Tick count
         tickCounter++;
         if (tickCounter < ticksToExecute) { return; }
@@ -49,6 +56,18 @@ public class Mixer : Machine
 
         // Reset our buffer children
         bufferChildren = new List<Item>();
+
+        // Move the active children towards this mixer
+        if (activeChildren.Count > 0)
+        {
+            foreach (var child in activeChildren)
+            {
+                if (child != null)
+                {
+                    StartCoroutine(MoveChildTowardsMe(child));
+                }
+            }
+        }
     }
 
     public override void Execute()
@@ -56,64 +75,57 @@ public class Mixer : Machine
         // Create our item
         if (activeChildren.Count > 0)
         {
-            createdItem = CreateItem();
-
-            if (createdItem != null)
-            {
-                AddItem(ref createdItem);
-            }
+            StartCoroutine(SpawnPotionAtEndOfTick());
         }
-        
-        // Go through our active children and destroy them
-        RemoveAndDestroyListOfItems(ref activeChildren);
+    }
+
+    private IEnumerator SpawnPotionAtEndOfTick()
+    {
+        float waitTime = lc.TickTime;
+        yield return new WaitForSeconds(waitTime);
+
+        createdItem = CreateItem();
+
+        if (createdItem != null)
+        {
+            AddItem(ref createdItem);
+        }
     }
 
     private CraftableItem CreateItem()
     {
-        // Loop through the craftables
-        foreach (var craftable in GameManager.instance.CraftableItems)
+        // Loop through all craftable items
+        foreach (var potion in GameManager.instance.CraftableItems)
         {
-
-            // To check if we've found the correct item
-            bool correctItem = false;
-
-            // For each of our active children
-            foreach (var ingredient in activeChildren)
+            // Before we do any checks, ensure we have the number of ingredients that this potion requires
+            if (potion.Ingredients.Count == activeChildren.Count)
             {
-                // If the current craftables ingredients doesnt contain our current ingredient
+                bool correctPotion = false;
 
-                // --V this doesn't work currently
-                // Probably because we have no operator= for Item.cs
-                //if (!craftable.Ingredients.Contains(ingredient))
-                //{
-                //    break;
-                //}
-
-                bool containsThisIngredient = false;
-                foreach (var craftableIngredient in craftable.Ingredients)
+                // For each ingredient the potion requires...
+                foreach (Ingredient potionIngredient in potion.Ingredients)
                 {
-                    if (craftableIngredient.DisplayName.Equals(ingredient.DisplayName))
+                    // Check to see if we have this...
+                    //if (activeChildren.Contains(potionIngredient)) { correctPotion = true; }
+                    //else {correctPotion = false; break; }
+
+                    foreach (var child in activeChildren)
                     {
-                        containsThisIngredient = true;
+                        correctPotion = potionIngredient.DisplayName.Equals(child.DisplayName) ? true : false;
+                        if (correctPotion) break;
                     }
+                    if (!correctPotion) break;
                 }
-                if (!containsThisIngredient)
+
+                if (correctPotion)
                 {
-                    break;
+                    var item = Instantiate(potion, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
+                    return item;
                 }
-
-                // If we get passed all breaks, this is the correct item
-                correctItem = true;
-            }
-
-            // If this was the right item, return it
-            if (correctItem)
-            {
-                var item = Instantiate(craftable, new Vector3(0, 0, 0), Quaternion.identity);
-                return item;
             }
         }
 
+        // If we loop through every potion and don't find 
         return null;
     }
 
