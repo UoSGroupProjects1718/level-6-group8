@@ -22,6 +22,8 @@ public class LevelController : MonoBehaviour
 {
     bool running;
     bool canTick;
+    bool hasCorrectPotionHitEnd;
+    int tickCounter;
     int levelWidth, levelHeight;
     int currentlySelected;
     float tickWaitTime;
@@ -51,6 +53,7 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     Player player;
 
+    public int TickCounter { get { return tickCounter; } }
     public float TickTime { get { return tickWaitTime; } }
     public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
@@ -63,6 +66,8 @@ public class LevelController : MonoBehaviour
     {
         running = false;
         canTick = true;
+        tickCounter = 0;
+        hasCorrectPotionHitEnd = false;
         tickWaitTime = 1.0f;
         currentlySelected = -1;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -87,6 +92,8 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Run()
     {
+        tickCounter++;
+
         // Tick
         foreach (Machine machine in machines)
         {
@@ -457,12 +464,17 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void OnLevelComplete()
     {
-        Debug.Log(string.Format("You have completed factory: \"{0}\" by creating: {1}", LevelFactory.FactoryName, LevelFactory.Potion.DisplayName));
-        levelFactory.SetAsComplete();
+        // Only run this behaviour the first time the correct potion hits the output
+        if (!hasCorrectPotionHitEnd)
+        {
+            hasCorrectPotionHitEnd = true;
+            Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
+            levelFactory.SetAsComplete();
 
-        // Any other behaviour to be put here
-        // e.g. calculate and display stats
-        // (lyuts tasks etc)
+            // Any other behaviour to be put here
+            // e.g. calculate and display stats
+            // (lyuts tasks etc)
+        }
     }
 
     /// <summary>

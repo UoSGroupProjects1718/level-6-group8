@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 /// <summary>
 /// This class is used to serialize and deserialize factory data to/from json
 /// </summary>
-class FactoryStats
+public class FactoryStats
 {
     public bool unlocked;
     public bool completed;
@@ -98,26 +98,8 @@ public class Factory : MonoBehaviour
     /// </summary>
     public void SaveStatsToFile()
     {
-        // Write all of the information we want to store into a FactoryStats object
-        FactoryStats fs = new FactoryStats();
-        fs.unlocked = IsUnlocked;
-        fs.completed = Completed;
-        fs.efficiency = FactoryEfficiency;
-
-        // Get the json string
-        string json = JsonConvert.SerializeObject(fs);
-
-        // Get the current directory
-        var currentDir = Directory.GetCurrentDirectory();
-        StringBuilder sb = new StringBuilder(currentDir);
-
-        // Add on the file name
-        sb.Append(string.Format("\\{0}.json", FactoryName));
-
-        // Debug.Log(sb.ToString());
-
-        // Save to file
-        System.IO.File.WriteAllText(sb.ToString(), json);
+        // Save this to file
+        SaveLoad.SaveFactoryStatsToFile(this);
     }
 
     /// <summary>
@@ -125,24 +107,11 @@ public class Factory : MonoBehaviour
     /// </summary>
     public void LoadStatsFromFile()
     {
-        // Get the current directory
-        var currentDir = Directory.GetCurrentDirectory();
-        StringBuilder sb = new StringBuilder(currentDir);
+        // Load from file and get a FactoryStats object
+        FactoryStats fs =  SaveLoad.LoadFactoryStatsFromFile(this);
 
-        // Add on the file name
-        sb.Append(string.Format("\\{0}.json", FactoryName));
-
-        // Check the file exists
-        if (!File.Exists(sb.ToString()))
-        {
-            return;
-        }
-
-        // Read from file
-        string json = System.IO.File.ReadAllText(sb.ToString());
-
-        // Deserialize the object
-        FactoryStats fs = JsonConvert.DeserializeObject<FactoryStats>(json);
+        // Null check (if the file doesn't exist)
+        if (fs == null) { return; }
 
         // Update our variables
         unlocked = fs.unlocked;
@@ -158,82 +127,8 @@ public class Factory : MonoBehaviour
     /// <param name="levelheight">The y height of the level</param>
     public void SaveLevelToFile(Tile[,] level, int levelwidth, int levelheight)
     {
-        // Create a new LevelToFile object
-        LevelToFile ltf = new LevelToFile();
-
-        // Loop through our level
-        for (int y = 0; y < levelheight; y++)
-        {
-            for (int x = 0; x < levelwidth; x++)
-            {
-
-                // Query if the current tile has a machine child
-                if (level[y, x].GetComponent<Tile>().Machine != null)
-                {
-                    // If it does, grab this machine
-                    Machine machine = level[y, x].GetComponent<Tile>().Machine;
-
-                    // Query its type
-                    switch (machine.Type)
-                    {
-
-                        // If its a conveyer, mixer or output
-                        case MachineType.conveyer:
-                        case MachineType.mixer:
-                        case MachineType.output:
-
-                            // Create a MachineToFile object to hold all relevent information
-                            MachineToFile mtf = new MachineToFile();
-                            mtf.x = machine.Parent.X;
-                            mtf.y = machine.Parent.Y;   
-                            mtf.dir = machine.GetDirection;
-                            mtf.type = machine.Type.ToString();
-
-                            // Add this to our LevelToFiles list of machines
-                            ltf.machines.Add(mtf);
-                            break;
-
-                        // If its an input:
-                        case MachineType.input:
-
-                            // Create an inputToFile object to hold all relevent information
-                            InputToFile itf = new InputToFile();
-                            itf.x = machine.Parent.X;
-                            itf.y = machine.Parent.Y;
-                            itf.dir = machine.GetDirection;
-                            itf.type = machine.Type.ToString();
-
-                            if (machine.GetComponent<Inputter>().ItemToOutput != null)
-                            {
-                                itf.ingredient = machine.GetComponent<Inputter>().ItemToOutput.DisplayName;
-                            }
-                            else
-                            {
-                                itf.ingredient = "";
-                            }
-                            
-                            // Add this to our LevelToFiles list of machines
-                            ltf.inputs.Add(itf);
-                            break;
-                    }
-                }
-            }
-        }
-
-        // Once we have looped through our level it's time to save all of our gathered data to file...
-
-        // Get the json string of our LevelToFile object
-        string json = JsonConvert.SerializeObject(ltf);
-
-        // Get the current directory
-        var currentDir = Directory.GetCurrentDirectory();
-        StringBuilder sb = new StringBuilder(currentDir);
-
-        // Add on the file name
-        sb.Append(string.Format("\\Level_{0}.json", FactoryName));
-
-        // Save to file
-        System.IO.File.WriteAllText(sb.ToString(), json);
+        // Save this level to file
+        SaveLoad.SaveLevelToFile(this, level, levelwidth, levelheight);
     }
 
     /// <summary>
@@ -242,26 +137,6 @@ public class Factory : MonoBehaviour
     /// <returns>LevelToFile, an class type containing information about the machines in a level</returns>
     public LevelToFile LoadLevelFromFile()
     {
-        // Get the current directory
-        var currentDir = Directory.GetCurrentDirectory();
-        StringBuilder sb = new StringBuilder(currentDir);
-
-        // Add on the file name
-        sb.Append(string.Format("\\Level_{0}.json", FactoryName));
-
-        // Check the file exists
-        if (!File.Exists(sb.ToString()))
-        {
-            return null;
-        }
-
-        // Read from file
-        string json = System.IO.File.ReadAllText(sb.ToString());
-
-        // Deserialize the object
-        LevelToFile ltf = JsonConvert.DeserializeObject<LevelToFile>(json);
-
-        // Update our variables
-        return ltf;
+        return (SaveLoad.LoadLevelFromFile(this));
     }
 }
