@@ -20,6 +20,7 @@ public static class SaveLoad
     {
         // Get the current directory
         StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());
+        currentDir.Append("\\SaveData");
 
         return currentDir.ToString();
     }
