@@ -68,7 +68,7 @@ public abstract class Machine : MonoBehaviour
     protected IEnumerator MoveChildTowardsMe(Item child)
     {
         float timeInterval = lc.TickTime;
-        int iters = 10;
+        int iters = 25;
 
         Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 childPos = new Vector2(child.transform.position.x, child.transform.position.z);
@@ -79,7 +79,7 @@ public abstract class Machine : MonoBehaviour
             // We do a null check here as the child can be "consumed" by another machine whilst moving along the conveyer
             if (child == null) { break; }
 
-            child.transform.position = Vector3.Lerp(child.transform.position,
+            child.transform.position = Vector3.MoveTowards(child.transform.position,
                 new Vector3(transform.position.x, child.transform.position.y, transform.position.z),
                 distance / iters);
 

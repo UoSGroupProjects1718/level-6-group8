@@ -51,7 +51,7 @@ public class Overworld : MonoBehaviour
         if (int.MaxValue /* player.level*/ >= GameManager.instance.CurrentFactory.LevelToUnlock)
         {
             GameManager.instance.CurrentFactory.UnlockFactory();
-            GameObject.Find("Canvas").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.instance.CurrentFactory);
+            GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.instance.CurrentFactory);
         }
         else
         {

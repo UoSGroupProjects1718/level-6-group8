@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -17,7 +18,7 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     GameObject factoryStatsPanel;
     [SerializeField]
-    Image factorySprite;
+    RawImage factorySprite;
     [SerializeField]
     Text factoryName;
     [SerializeField]
@@ -27,7 +28,7 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     GameObject factoryPurchasePanel;
     [SerializeField]
-    Image factoryPurchaseSprite;
+    RawImage factoryPurchaseSprite;
     [SerializeField]
     Text factoryPurchaseName;
     [SerializeField]
@@ -85,7 +86,7 @@ public class OverworldCanvas : MonoBehaviour
         {
             factoryStatsPanel.SetActive(true);
 
-            factorySprite.sprite = factory.FactorySprite;
+            factorySprite.texture = factory.FactorySprite;
             factoryName.text = factory.FactoryName;
             factoryDescription.text = string.Format("Potion to make: {0}", factory.Potion.DisplayName);
         }
@@ -93,7 +94,8 @@ public class OverworldCanvas : MonoBehaviour
         {
             factoryPurchasePanel.SetActive(true);
 
-            factoryPurchaseSprite.sprite = factory.FactorySprite;
+            Debug.Log(factory.FactorySprite);
+            factoryPurchaseSprite.texture = factory.FactorySprite;
             factoryPurchaseName.text = factory.FactoryName;
             factoryPurchaseCost.text = string.Format("Unlocked at level {0}", factory.LevelToUnlock);
         }
@@ -130,6 +132,7 @@ public class OverworldCanvas : MonoBehaviour
         factoryPurchasePanel.SetActive(false);
 
         EnableCameraMoveScript();
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     /// <summary>

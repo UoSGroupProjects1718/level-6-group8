@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// Json
-using System;
-using System.IO;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 /// <summary>
 /// This class is used to serialize and deserialize factory data to/from json
 /// </summary>
@@ -36,9 +29,9 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private string factoryName;
 
-    [Header("Factory sprite")]
+    [Header("Factory Texture")]
     [SerializeField]
-    private Sprite factorySprite;
+    private Texture factorySprite;
 
     [Header("Factory size")]
     [SerializeField]
@@ -57,7 +50,7 @@ public class Factory : MonoBehaviour
     public int Height { get { return height; } }
     public float FactoryEfficiency { get { return efficiency; } }
     public string FactoryName { get { return factoryName; } }
-    public Sprite FactorySprite { get { return factorySprite; } }
+    public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
 
     void Start()
@@ -74,7 +67,7 @@ public class Factory : MonoBehaviour
             GameManager.instance.SetFactory(this);
 
             // Update the canvas to open a pannel with this factories stats
-            GameObject.Find("Canvas").GetComponent<OverworldCanvas>().DisplayFactory(this);
+            GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(this);
         }
     }
 
