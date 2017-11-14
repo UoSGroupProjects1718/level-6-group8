@@ -48,7 +48,7 @@ public class Overworld : MonoBehaviour
     /// </summary>
     public void PurchaseFactory()
     {
-        if (int.MaxValue /* player.level*/ >= GameManager.instance.CurrentFactory.LevelToUnlock)
+        if (int.MaxValue /* player.level*/ >= GameManager.instance.CurrentFactory.starsToUnlock)
         {
             GameManager.instance.CurrentFactory.UnlockFactory();
             GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.instance.CurrentFactory);

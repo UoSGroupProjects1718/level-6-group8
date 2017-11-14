@@ -20,6 +20,6 @@ public class UI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    Money.text = playerStats.Money.ToString("C0", CultureInfo.CreateSpecificCulture("en-GB"));
+	   // Money.text = playerStats.Money.ToString("C0", CultureInfo.CreateSpecificCulture("en-GB"));
 	}
 }

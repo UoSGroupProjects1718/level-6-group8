@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 /// <summary>
 /// This enum is used to control whether the player 
@@ -471,10 +473,29 @@ public class LevelController : MonoBehaviour
             Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
             levelFactory.SetAsComplete();
 
-            // Any other behaviour to be put here
-            // e.g. calculate and display stats
-            // (lyuts tasks etc)
+            // TODO: My work
+            Debug.Log("Score: " + CalculateFactoryScore(tickCounter));
+            levelFactory.HighScore = CalculateFactoryScore(tickCounter);
         }
+    }
+
+    /// <summary>
+    /// Calculates the score of the factory based on the inverse of the tiles occupied
+    /// with machines and the ticks taken to complete an action.
+    /// </summary>
+    /// <returns></returns>
+    private uint CalculateFactoryScore(int ticksTaken)
+    {
+        Debug.Log("Ticks: " + ticksTaken);
+        Debug.Log("Tiles taken: " + GetOccupiedTiles());
+        const int scoreScale = 100000, tileCountSkew = 1, tickSkew = 1;
+        return (uint) Mathf.Floor(scoreScale /
+            (tileCountSkew * GetOccupiedTiles() * tickSkew * ticksTaken));
+    }
+
+    private int GetOccupiedTiles()
+    {
+        return level.Cast<Tile>().Count(tile => tile.Machine != null);
     }
 
     /// <summary>

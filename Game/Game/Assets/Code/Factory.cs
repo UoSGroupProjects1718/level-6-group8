@@ -19,11 +19,12 @@ public class Factory : MonoBehaviour
     private bool unlocked;
     [SerializeField]
     private bool completed;
+
     private float efficiency;
 
-    [Header("Unlock level")]
+    [Header("Unlock Stars")]
     [SerializeField]
-    private int levelToUnlock;
+    private int starsRequired;
 
     [Header("Factory name")]
     [SerializeField]
@@ -45,13 +46,14 @@ public class Factory : MonoBehaviour
 
     public bool Completed { get { return completed; } }
     public bool IsUnlocked { get { return unlocked; } }
-    public int LevelToUnlock { get { return levelToUnlock; } }
+    public int starsToUnlock { get { return starsRequired; } }
     public int Width { get { return width; } }
     public int Height { get { return height; } }
     public float FactoryEfficiency { get { return efficiency; } }
     public string FactoryName { get { return factoryName; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
+    public uint HighScore { get; set; }
 
     void Start()
     {
@@ -79,11 +81,6 @@ public class Factory : MonoBehaviour
     public void SetAsComplete()
     {
         completed = true;
-    }
-
-    public void CalculateEfficiency()
-    {
-
     }
 
     /// <summary>

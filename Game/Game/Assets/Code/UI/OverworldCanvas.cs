@@ -23,6 +23,12 @@ public class OverworldCanvas : MonoBehaviour
     Text factoryName;
     [SerializeField]
     Text factoryDescription;
+    [SerializeField]
+    Text leaderboards;
+    [SerializeField]
+    Image factoryGoalSprite;
+    [SerializeField]
+    Text factoryGoalName;
 
     [Header("Factory unlock panel")]
     [SerializeField]
@@ -51,7 +57,7 @@ public class OverworldCanvas : MonoBehaviour
         CloseAllMenus();
     }
 
-    public void UpdatePlayerStats(/*Player player*/)
+    public void UpdatePlayerStats(Player player)
     {
         //playerMoney.text = player.Money;
 
@@ -86,18 +92,30 @@ public class OverworldCanvas : MonoBehaviour
         {
             factoryStatsPanel.SetActive(true);
 
-            factorySprite.texture = factory.FactorySprite;
             factoryName.text = factory.FactoryName;
-            factoryDescription.text = string.Format("Potion to make: {0}", factory.Potion.DisplayName);
+            factorySprite.texture = factory.FactorySprite;
+            factoryGoalSprite.sprite = factory.Potion.ItemSprite;
+            factoryGoalName.text = factory.Potion.DisplayName;
+
+            Debug.Log(factory.Completed);
+            if (!factory.Completed)
+            {
+                leaderboards.text = "Complete the level to recieve a score!";
+            } else
+            {
+                // factoryStatsPanel.GetComponent<FactoryStatsUI>().SetHighscoreText(factory.HighScore);
+                //TODO: fucntion
+                leaderboards.text = "Score: " + factory.HighScore;
+            }
         }
+
         else
         {
             factoryPurchasePanel.SetActive(true);
 
-            Debug.Log(factory.FactorySprite);
             factoryPurchaseSprite.texture = factory.FactorySprite;
             factoryPurchaseName.text = factory.FactoryName;
-            factoryPurchaseCost.text = string.Format("Unlocked at level {0}", factory.LevelToUnlock);
+            factoryPurchaseCost.text = string.Format("{0} Stars Needed", factory.starsToUnlock);
         }
 
         // Disable dragging whilst the menu is open

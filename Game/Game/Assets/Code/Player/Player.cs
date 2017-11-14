@@ -7,6 +7,8 @@ using UnityEngine.SocialPlatforms;
 
 public class Player : MonoBehaviour
 {
+    private int starcount;
+
     // Need a singleton so that money remains after scene changes and no duplicate objects are created
     // due to missing references
     void Awake()
@@ -18,13 +20,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private string playerName = "Test";
+    private string playerName = "Group 8";
     public string PlayerName
     {
         get { return playerName; }
         set { playerName = value; }
     }
 
+    /*
+     * No longer needed income
     private float money;
     public float Money
     {
@@ -52,13 +56,14 @@ public class Player : MonoBehaviour
         get { return unlockedFactories; }
         set { unlockedFactories = value; }
     }
+    */
 
     private readonly PlayerAchievements playerAchievements = new PlayerAchievements();
 
 	// Use this for initialization
 	void Start ()
     {
-        StartCoroutine(GainPassiveMoney());
+        //StartCoroutine(GainPassiveMoney());
         playerAchievements.Init();
         playerAchievements.LogAchievementDescriptions();
         playerAchievements.LogPlayerAchievementInfo();
@@ -68,6 +73,7 @@ public class Player : MonoBehaviour
     void Update () {
 	}
 
+    /*
     private IEnumerator GainPassiveMoney()
     {
         while (true)
@@ -77,4 +83,5 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
+    */
 }
