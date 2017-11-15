@@ -9,7 +9,7 @@ public class IngredientScrollableList : ScrollableList
         if (loaded == true) { return; }
         loaded = true;
 
-        int itemCount = GameManager.instance.Ingredients.Length;
+        int itemCount = GameManager.Instance.Ingredients.Length;
 
         RectTransform rowRectTransform = itemPrefab.GetComponent<RectTransform>();
         RectTransform containerRectTransform = gameObject.GetComponent<RectTransform>();
@@ -50,7 +50,7 @@ public class IngredientScrollableList : ScrollableList
             rectTransform.offsetMax = new Vector2(x, y);
 
             // Finally, update information
-            newItem.GetComponent<IngredientPanel>().SetInfo(GameManager.instance.Ingredients[i].GetComponent<Ingredient>());
+            newItem.GetComponent<IngredientPanel>().SetInfo(GameManager.Instance.Ingredients[i].GetComponent<Ingredient>());
         }
     }
 }

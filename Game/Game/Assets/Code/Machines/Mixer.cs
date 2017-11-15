@@ -95,7 +95,7 @@ public class Mixer : Machine
     private CraftableItem CreateItem()
     {
         // Loop through all craftable items
-        foreach (var potion in GameManager.instance.CraftableItems)
+        foreach (var potion in GameManager.Instance.CraftableItems)
         {
             // Before we do any checks, ensure we have the number of ingredients that this potion requires
             if (potion.Ingredients.Count == activeChildren.Count)

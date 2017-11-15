@@ -442,7 +442,7 @@ public class LevelController : MonoBehaviour
             var ingredientString = InputFromFile.ingredient;
 
             // Loop through each ingredient to find which one this is
-            foreach (Ingredient ingredient in GameManager.instance.Ingredients)
+            foreach (Ingredient ingredient in GameManager.Instance.Ingredients)
             {
                 if (ingredient.DisplayName.Equals(ingredientString))
                 {
@@ -471,11 +471,16 @@ public class LevelController : MonoBehaviour
         {
             hasCorrectPotionHitEnd = true;
             Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
-            levelFactory.SetAsComplete();
 
             // TODO: My work
-            Debug.Log("Score: " + CalculateFactoryScore(tickCounter));
-            levelFactory.HighScore = CalculateFactoryScore(tickCounter);
+            uint factoryScore = CalculateFactoryScore(tickCounter);
+
+            Debug.Log("Score: " + factoryScore);
+
+            levelFactory.Score = factoryScore;
+            LevelFactory.TicksToSolve = tickCounter;
+            LevelFactory.Solved = true;
+            LevelFactory.Stars = 0; //Default value for now
         }
     }
 
@@ -517,11 +522,13 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Calls the GameManager singleton to change Scene to the Overworld
+    /// Saves the factories stats and then calls the GameManager 
+    /// singleton to change Scene to the Overworld
     /// </summary>
     public void LoadOverworld()
     {
-        GameManager.instance.ReturnToOverworld();
+        LevelFactory.SaveStatsToFile();
+        GameManager.Instance.ReturnToOverworld();
     }
 
     /// <summary>

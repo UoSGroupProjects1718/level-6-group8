@@ -88,7 +88,7 @@ public class OverworldCanvas : MonoBehaviour
         CloseFactoryDisplays();
 
         // Check which pannel to open
-        if (factory.IsUnlocked)
+        if (factory.Unlocked)
         {
             factoryStatsPanel.SetActive(true);
 
@@ -97,15 +97,15 @@ public class OverworldCanvas : MonoBehaviour
             factoryGoalSprite.sprite = factory.Potion.ItemSprite;
             factoryGoalName.text = factory.Potion.DisplayName;
 
-            Debug.Log(factory.Completed);
-            if (!factory.Completed)
+            Debug.Log(string.Format("Has factory been solved: {0}", factory.Solved));
+            if (!factory.Solved)
             {
                 leaderboards.text = "Complete the level to recieve a score!";
             } else
             {
                 // factoryStatsPanel.GetComponent<FactoryStatsUI>().SetHighscoreText(factory.HighScore);
                 //TODO: fucntion
-                leaderboards.text = "Score: " + factory.HighScore;
+                leaderboards.text = "Score: " + factory.Score;
             }
         }
 

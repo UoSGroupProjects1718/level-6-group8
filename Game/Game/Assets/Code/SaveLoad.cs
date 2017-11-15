@@ -33,9 +33,11 @@ public static class SaveLoad
     {
         // Write all of the informationwe want to store into a FactoryStats object
         FactoryStats fs = new FactoryStats();
-        fs.unlocked = factory.IsUnlocked;
-        fs.completed = factory.Completed;
-        fs.efficiency = factory.FactoryEfficiency;
+        fs.unlocked = factory.Unlocked;
+        fs.solved = factory.Solved;
+        fs.score = factory.Score;
+        fs.ticksToSolve = factory.TicksToSolve;
+        fs.stars = factory.Stars;
 
         // Get the json string
         string json = JsonConvert.SerializeObject(fs);

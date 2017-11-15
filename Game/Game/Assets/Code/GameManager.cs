@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Singleton
-    public static GameManager instance = null;
+    private static GameManager instance = null;
 
     private Factory currentFactory;
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     CraftableItem[] craftableItems;
 
+    public static GameManager Instance { get { return instance; } }
     public Factory CurrentFactory { get { return currentFactory; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] CraftableItems { get { return craftableItems; } }
@@ -47,6 +48,25 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    void Start()
+    {
+        // At the start of the game, load factory stats from file
+        StartCoroutine(LoadAllFactoryStatsFromFile());
+    }
+
+    private IEnumerator LoadAllFactoryStatsFromFile()
+    {
+        /*  We wait for 0.25 seconds here because this will be called
+            when changing scenes. This gives time to wait for the scene
+            to finish loading. */
+        yield return new WaitForSeconds(0.25f);
+
+        foreach (var fac in Overworld.Instance.Factories)
+        {
+            fac.GetComponent<Factory>().LoadStatsFromFile();
+        }
+    }
+
 
     public void SetFactory(Factory factory)
     {
@@ -59,6 +79,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToOverworld()
     {
         SceneManager.LoadScene(0);
+        StartCoroutine(LoadAllFactoryStatsFromFile());
     }
 
     /// <summary>

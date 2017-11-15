@@ -9,18 +9,30 @@ using UnityEngine.EventSystems;
 public class FactoryStats
 {
     public bool unlocked;
-    public bool completed;
-    public float efficiency;
+    public bool solved;
+    public int ticksToSolve;
+    public uint score;
+    public uint stars;
 }
 
 public class Factory : MonoBehaviour
 {
+    [Header("Visible for debugging.")]
+    [SerializeField]
+    private bool solved;
+    [SerializeField]
+    private uint score;
+    [SerializeField]
+    private uint stars;
+    [SerializeField]
+    private int ticksToSolve;
     [SerializeField]
     private bool unlocked;
-    [SerializeField]
-    private bool completed;
 
-    private float efficiency;
+    public bool Solved { get { return solved; } set { solved = value; } }
+    public uint Score { get { return score; } set { score = value; } }
+    public uint Stars { get { return stars; } set { stars = value; } }
+    public int TicksToSolve { get { return ticksToSolve; } set { ticksToSolve = value; } }
 
     [Header("Unlock Stars")]
     [SerializeField]
@@ -44,16 +56,13 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private Potion potion;
 
-    public bool Completed { get { return completed; } }
-    public bool IsUnlocked { get { return unlocked; } }
+    public bool Unlocked { get { return unlocked; } }
     public int starsToUnlock { get { return starsRequired; } }
     public int Width { get { return width; } }
     public int Height { get { return height; } }
-    public float FactoryEfficiency { get { return efficiency; } }
     public string FactoryName { get { return factoryName; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
-    public uint HighScore { get; set; }
 
     void Start()
     {
@@ -66,7 +75,7 @@ public class Factory : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             // Set this as the currently-selected factory
-            GameManager.instance.SetFactory(this);
+            GameManager.Instance.SetFactory(this);
 
             // Update the canvas to open a pannel with this factories stats
             GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(this);
@@ -76,11 +85,6 @@ public class Factory : MonoBehaviour
     public void UnlockFactory()
     {
         unlocked = true;
-    }
-
-    public void SetAsComplete()
-    {
-        completed = true;
     }
 
     /// <summary>
@@ -105,8 +109,10 @@ public class Factory : MonoBehaviour
 
         // Update our variables
         unlocked = fs.unlocked;
-        completed = fs.completed;
-        efficiency = fs.efficiency;
+        solved = fs.solved;
+        score = fs.score;
+        ticksToSolve = fs.ticksToSolve;
+        stars = fs.stars;
     }
 
     /// <summary>

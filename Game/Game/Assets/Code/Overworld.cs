@@ -8,23 +8,26 @@ using UnityEngine;
 /// </summary>
 public class Overworld : MonoBehaviour
 {
-    //Player player;
+    private static Overworld instance = null;
 
+    [Header("Factories")]
     [SerializeField]
     Factory[] factories;
 
-    /// <summary>
-    /// Spawn the player object if it isnt found in the game. Load it's stats
-    /// </summary>
-	void Start()
+    public static Overworld Instance { get { return instance; } }
+    public Factory[] Factories { get { return factories; } }
+
+    void Awake()
     {
-        /*
-        if (!GameObject.Find("Player")
+        // Singleton pattern
+        if (instance == null)
         {
-            player = Instantiate(Player);
-            player.LoadStatsFromFile();
+            instance = this;
         }
-        */
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -40,7 +43,7 @@ public class Overworld : MonoBehaviour
         }
 
         // Call game manager to handle loading the level
-        GameManager.instance.LoadLevel(GameManager.instance.CurrentFactory);
+        GameManager.Instance.LoadLevel(GameManager.Instance.CurrentFactory);
     }
 
     /// <summary>
@@ -48,10 +51,15 @@ public class Overworld : MonoBehaviour
     /// </summary>
     public void PurchaseFactory()
     {
-        if (int.MaxValue /* player.level*/ >= GameManager.instance.CurrentFactory.starsToUnlock)
+        if (int.MaxValue /* player.level*/ >= GameManager.Instance.CurrentFactory.starsToUnlock)
         {
-            GameManager.instance.CurrentFactory.UnlockFactory();
-            GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.instance.CurrentFactory);
+            // Unlock the factory
+            GameManager.Instance.CurrentFactory.UnlockFactory();
+
+            // Save the factory to file
+            GameManager.Instance.CurrentFactory.SaveStatsToFile();
+
+            GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.Instance.CurrentFactory);
         }
         else
         {
