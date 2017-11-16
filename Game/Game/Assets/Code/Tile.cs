@@ -5,32 +5,18 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField]
-    string displayName;
-    public string DisplayName { get { return displayName; } }
-
-    [SerializeField]
-    Machine machine;
-    public Machine Machine { get { return machine; } }
-
-    public int X
-    {
-        get { return x; }
-        set { x = value; }
-    }
-    [SerializeField]
     private int x;
-
-    public int Y
-    {
-        get { return y; }
-        set { y = value; }
-    }
     [SerializeField]
     private int y;
+    [SerializeField]
+    private bool active = true;
+    [SerializeField]
+    private Machine machine;
 
-    void Start() { }
-
-    void Update() { }
+    public int X { get { return x; } set { x = value; } }
+    public int Y { get { return y; } set { y = value; } }
+    public bool ActiveTile { get { return active; } }
+    public Machine Machine { get { return machine; } }
 
     public void SetChild(Machine newChild)
     {
@@ -54,13 +40,53 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (!active) { return; }
             OnClick();
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            ToggleActive();
         }
     }
 
-    private void OnMouseDown()
+    public void SetActiveStatus(bool foo)
     {
-        OnClick();
+        if (foo)
+        {
+            Activate();
+        }
+        else
+        {
+            DeActivate();
+        }
+    }
+
+    void ToggleActive()
+    {
+        if (active)
+        {
+
+            DeActivate();
+        }
+        else
+        {
+            Activate();
+        }
+    }
+
+
+    private void Activate()
+    {
+        // Activate
+        active = true;
+        gameObject.GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    private void DeActivate()
+    {
+        // Deactivate
+        active = false;
+        gameObject.GetComponent<Renderer>().material.color = Color.black;
     }
 
 }

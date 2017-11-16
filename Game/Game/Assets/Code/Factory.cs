@@ -56,6 +56,9 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private Potion potion;
 
+    // Level --
+    public Level Level;
+
     public bool Unlocked { get { return unlocked; } }
     public int starsToUnlock { get { return starsRequired; } }
     public int Width { get { return width; } }

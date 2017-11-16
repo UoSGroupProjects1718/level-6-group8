@@ -89,15 +89,18 @@ public static class SaveLoad
     /// <param name="levelheight">The height of the level array</param>
     public static void SaveLevelToFile(Factory factory, Tile[,] level, int levelwidth, int levelheight)
     {
-
         // Create a new LevelToFile object
         LevelToFile ltf = new LevelToFile();
+        ltf.tilesActive = new bool[levelheight, levelwidth];
 
         // Loop through our level
         for (int y = 0; y < levelheight; y++)
         {
             for (int x = 0; x < levelwidth; x++)
             {
+                // Is this an active tile?
+                ltf.tilesActive[y, x] = level[y, x].ActiveTile;
+
                 // Query if the current tile has a machine child
                 if (level[y, x].GetComponent<Tile>().Machine != null)
                 {
@@ -191,8 +194,6 @@ public static class SaveLoad
 
         // Return
         return ltf;
-
     }
-
 
 }
