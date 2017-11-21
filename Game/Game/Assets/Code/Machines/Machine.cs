@@ -67,7 +67,7 @@ public abstract class Machine : MonoBehaviour
     /// <returns></returns>
     protected IEnumerator MoveChildTowardsMe(Item child)
     {
-        float timeInterval = lc.TickTime;
+        float timeInterval = LevelController.tickWaitTime;
         int iters = 25;
 
         Vector2 myPos = new Vector2(transform.position.x, transform.position.z);

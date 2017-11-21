@@ -66,10 +66,33 @@ public class Factory : MonoBehaviour
     public string FactoryName { get { return factoryName; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
+    public float PotionsPerMinute
+    {
+        get
+        {
+            if (ticksToSolve > 0)
+            {
+                float timeToMakePotion = ticksToSolve * LevelController.tickWaitTime;
+                return 60 / timeToMakePotion;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private set
+        {
+            PotionsPerMinute = value;
+        }
+    }
 
     void Start()
     {
         LoadStatsFromFile();
+    }
+
+    private void Update()
+    {
     }
 
     private void OnMouseDown()
@@ -138,4 +161,6 @@ public class Factory : MonoBehaviour
     {
         return (SaveLoad.LoadLevelFromFile(this));
     }
+
+    
 }

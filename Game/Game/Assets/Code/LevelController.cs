@@ -28,7 +28,7 @@ public class LevelController : MonoBehaviour
     int tickCounter;
     int levelWidth, levelHeight;
     int currentlySelected;
-    float tickWaitTime;
+    public static float tickWaitTime = 1.0f;
     BuildStatus buildStatus;
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
@@ -47,7 +47,6 @@ public class LevelController : MonoBehaviour
     Player player;
 
     public int TickCounter { get { return tickCounter; } }
-    public float TickTime { get { return tickWaitTime; } }
     public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
@@ -60,7 +59,6 @@ public class LevelController : MonoBehaviour
         canTick = true;
         tickCounter = 0;
         hasCorrectPotionHitEnd = false;
-        tickWaitTime = 1.0f;
         currentlySelected = -1;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         // DebugLoadLevel();

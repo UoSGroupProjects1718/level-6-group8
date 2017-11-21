@@ -81,7 +81,7 @@ public class Mixer : Machine
 
     private IEnumerator SpawnPotionAtEndOfTick()
     {
-        float waitTime = lc.TickTime;
+        float waitTime = LevelController.tickWaitTime;
         yield return new WaitForSeconds(waitTime);
 
         createdItem = CreateItem();
