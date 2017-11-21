@@ -66,7 +66,9 @@ public class LevelController : MonoBehaviour
 	
 	void Update ()
     {
-		if (running)
+        Debug.Log("Completed Items" + levelFactory.stockpile.ItemCount);
+
+        if (running)
         {
             if (canTick)
             {

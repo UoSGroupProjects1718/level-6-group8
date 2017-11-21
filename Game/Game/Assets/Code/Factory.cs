@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 /// <summary>
 /// This class is used to serialize and deserialize factory data to/from json
@@ -17,6 +18,8 @@ public class FactoryStats
 
 public class Factory : MonoBehaviour
 {
+    public Stockpile stockpile;
+
     [Header("Visible for debugging.")]
     [SerializeField]
     private bool solved;
@@ -33,6 +36,8 @@ public class Factory : MonoBehaviour
     public uint Score { get { return score; } set { score = value; } }
     public uint Stars { get { return stars; } set { stars = value; } }
     public int TicksToSolve { get { return ticksToSolve; } set { ticksToSolve = value; } }
+
+    public uint StockpileLimit = 0;
 
     [Header("Unlock Stars")]
     [SerializeField]
@@ -89,10 +94,12 @@ public class Factory : MonoBehaviour
     void Start()
     {
         LoadStatsFromFile();
+        stockpile = new Stockpile(StockpileLimit);
     }
 
     private void Update()
     {
+        
     }
 
     private void OnMouseDown()
