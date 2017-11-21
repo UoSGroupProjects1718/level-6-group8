@@ -327,8 +327,20 @@ public class LevelController : MonoBehaviour
                 Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
                 tile.X = x;
                 tile.Y = y;
+
                 // Is this an active tile?
-                tile.SetActiveStatus(ltf.tilesActive[y, x]);
+                if (ltf != null)
+                {
+                    // Read from file...
+                    tile.SetActiveStatus(ltf.tilesActive[y, x]);
+                }
+                // If no file to read from...
+                else
+                {
+                    // Default it to active
+                    tile.SetActiveStatus(true);
+                }
+
 
                 // Spawn an outputt on (0, 0);
                 if (y == 0 && x == 0)
