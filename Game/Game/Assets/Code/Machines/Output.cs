@@ -65,7 +65,7 @@ public class Output : Machine
         //}
     }
 
-    public override void Receive(Item newItem)
+    public override void Receive(ref Item newItem)
     {
         // Add this new item into our buffer
         bufferChildren.Add(newItem);

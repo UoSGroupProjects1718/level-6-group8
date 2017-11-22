@@ -67,7 +67,7 @@ public abstract class Machine : MonoBehaviour
     /// <returns></returns>
     protected IEnumerator MoveChildTowardsMe(Item child)
     {
-        float timeInterval = LevelController.tickWaitTime;
+        float timeInterval = LevelController.Instance.TickWaitTime;
         int iters = 25;
 
         Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
@@ -91,7 +91,7 @@ public abstract class Machine : MonoBehaviour
     /// Receive an item and add it to our machines buffer
     /// </summary>
     /// <param name="newItem">The item we are receiving</param>
-    public abstract void Receive(Item newItem);
+    public abstract void Receive(ref Item newItem);
 
     /// <summary>
     /// Resets the machine: destroys all its children, etc.

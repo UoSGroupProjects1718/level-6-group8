@@ -35,7 +35,7 @@ public class Conveyer : Machine
         if (activeChild == null) { return; }
 
         // Give child to neighbour
-        neighbour.Receive(activeChild);
+        neighbour.Receive(ref activeChild);
         activeChild = null;
     }
 
@@ -51,8 +51,8 @@ public class Conveyer : Machine
         bufferChild = null;
 
         // Move our active childs potition to this conveyer
-        //activeChild.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        StartCoroutine(MoveChildTowardsMe(activeChild));
+        activeChild.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        //StartCoroutine(MoveChildTowardsMe(activeChild));
     }
 
 
@@ -61,15 +61,32 @@ public class Conveyer : Machine
         // Any item modifying behaviour goes here
     }
 
-    public override void Receive(Item newItem)
+    public override void Receive(ref Item newItem)
     {
+        // If we already have a child
         if (bufferChild != null)
         {
-            // Error: conveyer has already been given a child
-            return;
-        }
+            // We are recieving multiple children
+            // Therefore, our "child" is contaminated and turns to waste..
 
-        bufferChild = newItem;
+            // Destroy our current bufferChild
+            RemoveAndDestroyItem(ref bufferChild);
+
+            // Destroy the newItem we got passed
+            RemoveAndDestroyItem(ref newItem);
+
+            // Spawn waste as our new bufferChild
+            bufferChild = Instantiate(GameManager.Instance.Waste.gameObject).GetComponent<Item>();
+            bufferChild.transform.position = new Vector3(5, transform.position.y + 0.5f, 5);
+
+            // Add it to our list of items
+            AddItem(ref activeChild);
+        }
+        // Else...
+        else
+        {
+            bufferChild = newItem;
+        }
     }
 
     public override void Reset()

@@ -46,7 +46,7 @@ public static class SaveLoad
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
 
         // Append the file name and file extension
-        saveDir.Append(string.Format("\\{0}.json", factory.FactoryName));
+        saveDir.Append(string.Format("\\Data_{0}.json", factory.FactoryId));
 
         // Save to file
         System.IO.File.WriteAllText(saveDir.ToString(), json);
@@ -62,7 +62,7 @@ public static class SaveLoad
     {
         // Get dir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
-        saveDir.Append(string.Format("\\{0}.json", factory.FactoryName));
+        saveDir.Append(string.Format("\\Data_{0}.json", factory.FactoryId));
 
         // Check to see if the file exists
         if (!File.Exists(saveDir.ToString()))
@@ -162,7 +162,7 @@ public static class SaveLoad
         // Get the savedir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
-        saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryName));
+        saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryId));
 
         // Save to file
         System.IO.File.WriteAllText(saveDir.ToString(), json);
@@ -178,7 +178,7 @@ public static class SaveLoad
         // Get the current directory
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
-        saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryName));
+        saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryId));
 
         // Check that this file exists
         if (!File.Exists(saveDir.ToString()))

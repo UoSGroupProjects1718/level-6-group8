@@ -23,8 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     CraftableItem[] craftableItems;
 
+    [Header("Waste")]
+    [SerializeField]
+    Waste waste;
+
     public static GameManager Instance { get { return instance; } }
     public Factory CurrentFactory { get { return currentFactory; } }
+    public Waste Waste { get { return waste; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] CraftableItems { get { return craftableItems; } }
 

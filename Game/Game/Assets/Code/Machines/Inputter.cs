@@ -44,7 +44,7 @@ public class Inputter : Machine
         Item toPass = Instantiate(ItemToOutput.gameObject).GetComponent<Item>();
         toPass.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         AddItem(ref toPass);
-        neighbour.Receive(toPass);  
+        neighbour.Receive(ref toPass);  
     }
 
     public override void Flush()
@@ -57,7 +57,7 @@ public class Inputter : Machine
         return;
     }
 
-    public override void Receive(Item newItem)
+    public override void Receive(ref Item newItem)
     {
         return;
     }

@@ -22,13 +22,20 @@ public enum BuildStatus
 /// </summary>
 public class LevelController : MonoBehaviour
 {
+    bool speedUp = false;
     bool running;
     bool canTick;
     bool hasCorrectPotionHitEnd;
     int tickCounter;
     int levelWidth, levelHeight;
     int currentlySelected;
-    public static float tickWaitTime = 1.0f;
+
+    [Header("Speed variables")]
+    [SerializeField]
+    float tickWaitTime;
+    [SerializeField]
+    float tickWaitTimeSpedUp;
+
     BuildStatus buildStatus;
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
@@ -38,25 +45,32 @@ public class LevelController : MonoBehaviour
     /* This is the factory that we are currently "inside" of. */
     Factory levelFactory;
 
-    [Header("Spawnable machines")]
-    [SerializeField]
-    GameObject[] Spawnables;
+    /* Singleton instance (This singleton gets destroyed when we leave the scene) */
+    private static LevelController instance;
 
     [Header("Player")]
     [SerializeField]
     Player player;
 
+    [Header("Spawnable machines")]
+    [SerializeField]
+    GameObject[] Spawnables;
+  
     public int TickCounter { get { return tickCounter; } }
+    public float TickWaitTime { get { return tickWaitTime; } }
     public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
     /* A getter property for the factory that we are currently inside of. */
     public Factory LevelFactory { get { return levelFactory; } }
+    public static LevelController Instance { get { return instance; } }
 
     void Start ()
     {
+        instance = this;
         running = false;
         canTick = true;
+        speedUp = false;
         tickCounter = 0;
         hasCorrectPotionHitEnd = false;
         currentlySelected = -1;
@@ -66,14 +80,24 @@ public class LevelController : MonoBehaviour
 	
 	void Update ()
     {
-        Debug.Log("Completed Items" + levelFactory.stockpile.ItemCount);
+        // Debug.Log("Completed Items" + levelFactory.stockpile.ItemCount);
 
         if (running)
         {
             if (canTick)
             {
                 canTick = false;
-                StartCoroutine(TickWait());
+
+                if (speedUp)
+                {
+                    StartCoroutine(TickWait(tickWaitTimeSpedUp));
+                }
+                else
+                {
+                    StartCoroutine(TickWait(TickWaitTime));
+                }
+                
+
                 Run();
             }   
         }
@@ -105,10 +129,10 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private IEnumerator TickWait()
+    private IEnumerator TickWait(float waitTime)
     {
         canTick = false;
-        yield return new WaitForSeconds(tickWaitTime);
+        yield return new WaitForSeconds(waitTime);
         canTick = true;
     }
 
@@ -127,6 +151,15 @@ public class LevelController : MonoBehaviour
         {
             StopRunning();
         }
+    }
+
+    /// <summary>
+    /// This method toggles whether or not the production
+    /// line is running sped up.
+    /// </summary>
+    public void ToggleSpeedUp()
+    {
+        speedUp = !speedUp;
     }
 
     /// <summary>

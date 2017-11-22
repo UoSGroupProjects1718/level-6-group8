@@ -1,0 +1,26 @@
+{"tilesActive":
+[[true,true,true,true,true,true],
+[true,true,true,true,true,true],
+[true,true,false,false,true,true],
+[true,false,false,false,true,true],
+[true,true,true,true,true,false],
+[true,true,true,true,true,false]],
+"machines":[
+{"x":0,"y":0,"dir":0,"type":"output"},
+{"x":1,"y":0,"dir":3,"type":"conveyer"},
+{"x":3,"y":0,"dir":0,"type":"conveyer"},
+{"x":4,"y":0,"dir":3,"type":"conveyer"},
+{"x":5,"y":0,"dir":3,"type":"conveyer"},
+{"x":0,"y":1,"dir":1,"type":"conveyer"},
+{"x":1,"y":1,"dir":2,"type":"mixer"},
+{"x":2,"y":1,"dir":3,"type":"conveyer"},
+{"x":3,"y":1,"dir":3,"type":"conveyer"},
+{"x":5,"y":1,"dir":2,"type":"conveyer"},
+{"x":0,"y":2,"dir":2,"type":"conveyer"},
+{"x":0,"y":3,"dir":2,"type":"conveyer"},
+{"x":0,"y":4,"dir":2,"type":"conveyer"},
+{"x":1,"y":4,"dir":3,"type":"conveyer"},
+{"x":2,"y":4,"dir":3,"type":"conveyer"}],
+"inputs":[
+{"ingredient":"Ingredient 2","x":5,"y":2,"dir":2,"type":"input"},
+{"ingredient":"Moldy Strawberry","x":2,"y":5,"dir":2,"type":"input"}]}

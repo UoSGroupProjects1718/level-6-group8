@@ -39,6 +39,10 @@ public class Factory : MonoBehaviour
 
     public uint StockpileLimit = 0;
 
+    [Header("Factory ID")]
+    [SerializeField]
+    private int factoryID;
+
     [Header("Unlock Stars")]
     [SerializeField]
     private int starsRequired;
@@ -65,6 +69,7 @@ public class Factory : MonoBehaviour
     public Level Level;
 
     public bool Unlocked { get { return unlocked; } }
+    public int FactoryId { get { return factoryID; } }
     public int starsToUnlock { get { return starsRequired; } }
     public int Width { get { return width; } }
     public int Height { get { return height; } }
@@ -77,7 +82,7 @@ public class Factory : MonoBehaviour
         {
             if (ticksToSolve > 0)
             {
-                float timeToMakePotion = ticksToSolve * LevelController.tickWaitTime;
+                float timeToMakePotion = ticksToSolve * LevelController.Instance.TickWaitTime;
                 return 60 / timeToMakePotion;
             }
             else

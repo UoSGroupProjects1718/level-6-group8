@@ -44,7 +44,7 @@ public class Mixer : Machine
         // Neighbour null check
         if (neighbour == null) { return; }
 
-        neighbour.Receive(createdItem);
+        neighbour.Receive(ref createdItem);
         createdItem = null;
     }
 
@@ -81,7 +81,7 @@ public class Mixer : Machine
 
     private IEnumerator SpawnPotionAtEndOfTick()
     {
-        float waitTime = LevelController.tickWaitTime;
+        float waitTime = LevelController.Instance.TickWaitTime;
         yield return new WaitForSeconds(waitTime);
 
         createdItem = CreateItem();
@@ -129,7 +129,7 @@ public class Mixer : Machine
         return null;
     }
 
-    public override void Receive(Item newItem)
+    public override void Receive(ref Item newItem)
     {
         // Add this new item into our buffer
         bufferChildren.Add(newItem);
