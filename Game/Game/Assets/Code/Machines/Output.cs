@@ -10,7 +10,6 @@ public class Output : Machine
 
 	void Start ()
     {
-        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         bufferChildren = new List<Item>();
         activeChildren = new List<Item>();
 	} 
@@ -46,12 +45,12 @@ public class Output : Machine
         foreach (Item child in activeChildren)
         {
             // This may be changed to only accept the requried item?idk
-            lc.LevelFactory.stockpile.AddOrIncrement(child);
+            LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child);
             // If we have the required potion
-            if (child.DisplayName.Equals(lc.LevelFactory.Potion.DisplayName))
+            if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Potion.DisplayName))
             {
                 // Level complete
-                lc.OnLevelComplete();
+                LevelController.Instance.OnLevelComplete();
             }
         }
 

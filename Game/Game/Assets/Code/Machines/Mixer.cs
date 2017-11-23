@@ -11,7 +11,6 @@ public class Mixer : Machine
 
     void Start()
     {
-        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         bufferChildren = new List<Item>();
         activeChildren = new List<Item>();
         ResetTickCounter();
@@ -39,7 +38,7 @@ public class Mixer : Machine
         if (createdItem == null) { return; }
 
         // Get machine im facing
-        Machine neighbour = lc.GetNeighbour(parent.X, parent.Y, dir);
+        Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, dir);
 
         // Neighbour null check
         if (neighbour == null) { return; }

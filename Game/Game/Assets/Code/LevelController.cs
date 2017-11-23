@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour
     Inputter selectedInputter; 
 
     /* This is the factory that we are currently "inside" of. */
-    Factory levelFactory;
+    Factory factory;
 
     /* Singleton instance (This singleton gets destroyed when we leave the scene) */
     private static LevelController instance;
@@ -57,17 +57,33 @@ public class LevelController : MonoBehaviour
     GameObject[] Spawnables;
   
     public int TickCounter { get { return tickCounter; } }
-    public float TickWaitTime { get { return tickWaitTime; } }
+    public int TotalMachineCost
+    {
+        get
+        {
+            int val = 0;
+            foreach (var mach in factory.Level.machines)
+            {
+                val += mach.Cost;
+            }
+            return val;
+        }
+    }
+    public float TickWaitTime { get { if (speedUp) return tickWaitTimeSpedUp; else return tickWaitTime; } }
     public BuildStatus BuildStatus { get { return buildStatus; } }
     public Player Player { get { return player; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
     /* A getter property for the factory that we are currently inside of. */
-    public Factory LevelFactory { get { return levelFactory; } }
+    public Factory LevelFactory { get { return factory; } }
     public static LevelController Instance { get { return instance; } }
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start ()
     {
-        instance = this;
         running = false;
         canTick = true;
         speedUp = false;
@@ -88,15 +104,7 @@ public class LevelController : MonoBehaviour
             {
                 canTick = false;
 
-                if (speedUp)
-                {
-                    StartCoroutine(TickWait(tickWaitTimeSpedUp));
-                }
-                else
-                {
-                    StartCoroutine(TickWait(TickWaitTime));
-                }
-                
+                StartCoroutine(TickWait(TickWaitTime));
 
                 Run();
             }   
@@ -111,19 +119,19 @@ public class LevelController : MonoBehaviour
         tickCounter++;
 
         // Tick
-        foreach (Machine machine in levelFactory.Level.machines)
+        foreach (Machine machine in factory.Level.machines)
         {
             machine.Tick();
         }
 
         // Flush
-        foreach (Machine machine in levelFactory.Level.machines)
+        foreach (Machine machine in factory.Level.machines)
         {
             machine.Flush();
         }
 
         // Execute
-        foreach (Machine machine in levelFactory.Level.machines)
+        foreach (Machine machine in factory.Level.machines)
         {
             machine.Execute();
         }
@@ -169,9 +177,9 @@ public class LevelController : MonoBehaviour
     {
         running = false;
 
-        RemoveAndDestroyListOfItems(ref levelFactory.Level.items);
+        RemoveAndDestroyListOfItems(ref factory.Level.items);
 
-        foreach (Machine machine in levelFactory.Level.machines)
+        foreach (Machine machine in factory.Level.machines)
         {
             machine.Reset();
         }
@@ -231,20 +239,20 @@ public class LevelController : MonoBehaviour
         if (buildStatus != BuildStatus.build) { return; }
 
         // If the tile on this position owns a tile, return
-        if (levelFactory.Level.grid[y, x].Machine != null) { return; }
+        if (factory.Level.grid[y, x].Machine != null) { return; }
 
         // Instantiate the machine
         Machine machine = Instantiate(Spawnables[currentlySelected], new Vector3(x, 0, y), Quaternion.identity).GetComponent<Machine>();
 
         // Set its rotation and parent
         machine.SetDir(Direction.up);
-        machine.Parent = levelFactory.Level.grid[y, x];
+        machine.Parent = factory.Level.grid[y, x];
 
         // Add this machine to the level and to our list of machines
-        levelFactory.Level.machines.Add(machine);
+        factory.Level.machines.Add(machine);
 
         // Add this machine as the child of the tile
-        levelFactory.Level.grid[y, x].SetChild(machine);
+        factory.Level.grid[y, x].SetChild(machine);
     }
 
     /// <summary>
@@ -259,22 +267,22 @@ public class LevelController : MonoBehaviour
         // Up
         if (facing == Direction.up && y < levelHeight)
         {
-            return levelFactory.Level.grid[y + 1, x].Machine;
+            return factory.Level.grid[y + 1, x].Machine;
         }
         // Right
         else if (facing == Direction.right && x < levelWidth)
         {
-            return levelFactory.Level.grid[y, x + 1].Machine;
+            return factory.Level.grid[y, x + 1].Machine;
         }
         // Down
         else if (facing == Direction.down && y > 0)
         {
-            return levelFactory.Level.grid[y - 1, x].Machine;
+            return factory.Level.grid[y - 1, x].Machine;
         }
         // Left
         else if (facing == Direction.left && x > 0)
         {
-            return levelFactory.Level.grid[y, x - 1].Machine;
+            return factory.Level.grid[y, x - 1].Machine;
         }
 
         return null;
@@ -287,7 +295,7 @@ public class LevelController : MonoBehaviour
     public void AddItem(ref Item item)
     {
         if (item == null) { return; }
-        levelFactory.Level.items.Add(item);
+        factory.Level.items.Add(item);
     }
 
     /// <summary>
@@ -298,7 +306,7 @@ public class LevelController : MonoBehaviour
     {
         if (item == null) { return; }
 
-        levelFactory.Level.items.Remove(item);
+        factory.Level.items.Remove(item);
         Destroy(item.gameObject);
     }
 
@@ -325,7 +333,7 @@ public class LevelController : MonoBehaviour
     /// <param name="machine"></param>
     public void RemoveMachine(Machine machine)
     {
-        levelFactory.Level.machines.Remove(machine);
+        factory.Level.machines.Remove(machine);
     }
 
     /// <summary>
@@ -336,7 +344,7 @@ public class LevelController : MonoBehaviour
     public void LoadLevelFromFactory(Factory factory)
     {
         // Remember the current factory we are in
-        levelFactory = factory;
+        this.factory = factory;
 
         // Grab the width and height
         levelWidth = factory.Width;
@@ -346,10 +354,13 @@ public class LevelController : MonoBehaviour
         LevelToFile ltf = factory.LoadLevelFromFile();
 
         // Initialize the level
-        levelFactory.Level = new Level();
+        this.factory.Level = new Level();
 
         // Initialize the array
-        levelFactory.Level.grid = new Tile[levelWidth, levelHeight];
+        this.factory.Level.grid = new Tile[levelWidth, levelHeight];
+
+        Transform tileHolder = transform.Find("TileHolder");
+        Transform machineHolder = transform.Find("MachineHolder");
 
         // Loop through our level
         for (int y = 0; y < levelHeight; y++)
@@ -358,8 +369,14 @@ public class LevelController : MonoBehaviour
             {
                 // Spawn a tile in each position
                 Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
+                tile.gameObject.transform.Rotate(new Vector3(90, 45, 0));
+
+                //tile.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(90, +45, +45)); // .SetEulerAngles(new Vector3(90, -45, 45)); //localRotation.eulerAngles = new Vector3(90, -45, -45);
+                //Debug.Log(string.Format("Tile localRotation: {0}", tile.gameObject.transform.localRotation));
+                tile.gameObject.transform.localScale = new Vector3(1, 1.8f, 1);
                 tile.X = x;
                 tile.Y = y;
+                tile.gameObject.transform.SetParent(tileHolder);
 
                 // Is this an active tile?
                 if (ltf != null)
@@ -373,16 +390,6 @@ public class LevelController : MonoBehaviour
                     // Default it to active
                     tile.SetActiveStatus(true);
                 }
-
-
-                // Spawn an outputt on (0, 0);
-                if (y == 0 && x == 0)
-                {
-                    Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
-                    tile.SetChild(output);
-                    levelFactory.Level.machines.Add(output);
-                }
-
                 // If our levelFile exists
                 if (ltf != null)
                 {
@@ -405,13 +412,21 @@ public class LevelController : MonoBehaviour
                     {
                         Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
                         tile.SetChild(inputter);
-                        levelFactory.Level.machines.Add(inputter);
+                        this.factory.Level.machines.Add(inputter);
                         inputter.SetDir(Direction.down);
+                    }
+
+                    // Spawn an outputt on (0, 0);
+                    if (y == 0 && x == 0)
+                    {
+                        Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
+                        tile.SetChild(output);
+                        this.factory.Level.machines.Add(output);
                     }
                 }
 
                 // Add our tile into our level array
-                levelFactory.Level.grid[y, x] = tile;
+                this.factory.Level.grid[y, x] = tile;
             }
         }
     }
@@ -426,6 +441,8 @@ public class LevelController : MonoBehaviour
     /// <param name="machineFromFile">the machine data object loaded from json</param>
     private void HandleMachine(int y, int x, ref Tile tile, MachineToFile machineFromFile)
     {
+        Transform machineHolder = transform.Find("MachineHolder");
+
         // If it is on this position
         if (machineFromFile.y == y && machineFromFile.x == x)
         {
@@ -454,10 +471,13 @@ public class LevelController : MonoBehaviour
             tile.SetChild(mach);
 
             // Add it to oru list of machines
-            levelFactory.Level.machines.Add(mach);
+            factory.Level.machines.Add(mach);
 
             // Update its direction
             mach.SetDir((Direction)machineFromFile.dir);
+
+            // It is a child of our MachineHolder
+            mach.gameObject.transform.SetParent(machineHolder);
         }
     }
 
@@ -494,7 +514,7 @@ public class LevelController : MonoBehaviour
             tile.SetChild(inputter);
 
             // Add it to our list of machines
-            levelFactory.Level.machines.Add(inputter);
+            factory.Level.machines.Add(inputter);
 
             // Update its direction
             inputter.SetDir((Direction)InputFromFile.dir);
@@ -511,13 +531,14 @@ public class LevelController : MonoBehaviour
         {
             hasCorrectPotionHitEnd = true;
             Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
+            Debug.Log(string.Format("Total machine cost: {0}", TotalMachineCost));
 
             // TODO: My work
             uint factoryScore = CalculateFactoryScore(tickCounter);
 
             Debug.Log("Score: " + factoryScore);
 
-            levelFactory.Score = factoryScore;
+            factory.Score = factoryScore;
             LevelFactory.TicksToSolve = tickCounter;
             LevelFactory.Solved = true;
             LevelFactory.Stars = 0; //Default value for now
@@ -540,7 +561,7 @@ public class LevelController : MonoBehaviour
 
     private int GetOccupiedTiles()
     {
-        return levelFactory.Level.grid.Cast<Tile>().Count(tile => tile.Machine != null);
+        return factory.Level.grid.Cast<Tile>().Count(tile => tile.Machine != null);
     }
 
     /// <summary>
@@ -548,7 +569,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void SaveLevel()
     {
-        levelFactory.SaveLevelToFile(levelFactory.Level.grid, levelWidth, levelHeight);
+        factory.SaveLevelToFile(factory.Level.grid, levelWidth, levelHeight);
     }
 
     /// <summary>
@@ -579,7 +600,7 @@ public class LevelController : MonoBehaviour
         levelWidth = 10;
         levelHeight = 10;
 
-        levelFactory.Level.grid = new Tile[levelWidth, levelHeight];
+        factory.Level.grid = new Tile[levelWidth, levelHeight];
 
         for (int y = 0; y < levelHeight; y++)
         {
@@ -594,7 +615,7 @@ public class LevelController : MonoBehaviour
                 {
                     Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
                     tile.SetChild(inputter);
-                    levelFactory.Level.machines.Add(inputter);
+                    factory.Level.machines.Add(inputter);
                     inputter.SetDir(Direction.down);
                 }
                 // Spawn an outputt on (0, 0);
@@ -602,10 +623,10 @@ public class LevelController : MonoBehaviour
                 {
                     Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
                     tile.SetChild(output);
-                    levelFactory.Level.machines.Add(output);
+                    factory.Level.machines.Add(output);
                 }
 
-                levelFactory.Level.grid[y, x] = tile;
+                factory.Level.grid[y, x] = tile;
             }
         }
     }

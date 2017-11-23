@@ -11,7 +11,6 @@ public class Inputter : Machine
 
 	void Start ()
     {
-        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         ResetTickCounter();
 	}
 
@@ -35,7 +34,7 @@ public class Inputter : Machine
         ResetTickCounter();
 
         // Get the machine im facing
-        Machine neighbour = lc.GetNeighbour(parent.X, parent.Y, dir);
+        Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, dir);
 
         // Null check
         if (neighbour == null) { Debug.Log("Null neighbour: returning."); return; }
@@ -69,9 +68,9 @@ public class Inputter : Machine
 
     private void OnMouseDown()
     {
-        if (lc.BuildStatus != BuildStatus.delete)
+        if (LevelController.Instance.BuildStatus != BuildStatus.delete)
         {
-            GameObject.Find("LevelController").GetComponent<LevelController>().SelectedInputter = this;
+            LevelController.Instance.SelectedInputter = this;
             GameObject.Find("Canvas").GetComponent<GameCanvas>().LoadIngredientList();
         }
     }

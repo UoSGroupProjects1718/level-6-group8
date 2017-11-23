@@ -21,19 +21,28 @@ public enum Direction
 
 public abstract class Machine : MonoBehaviour
 {
-    [SerializeField]
     [Header("Ticks to execute")]
+    [SerializeField]
     protected int ticksToExecute;
     protected int tickCounter;
-    [SerializeField]
+    
     [Header("Type of Machine")]
+    [SerializeField]
     protected MachineType type;
     protected Direction dir;
     protected Tile parent;
-    protected LevelController lc;
+
+    [Header("Sprites")]
+    [SerializeField]
+    private Sprite[] machineSprites;
+
+    [Header("Cost")]
+    [SerializeField]
+    protected int cost;
 
     public MachineType Type { get { return type; } }
     public Direction GetDirection { get { return dir; } }
+    public int Cost { get { return cost; } }
     public Tile Parent {
         get { return parent; }
         set { parent = value; }
@@ -104,7 +113,7 @@ public abstract class Machine : MonoBehaviour
     /// <param name="item">Item to add</param>
     public void AddItem(ref Item item)
     {
-        lc.AddItem(ref item);
+        LevelController.Instance.AddItem(ref item);
     }
 
     /// <summary>
@@ -113,7 +122,7 @@ public abstract class Machine : MonoBehaviour
     /// <param name="item">Item to remove and destroy</param>
     public void RemoveAndDestroyItem(ref Item item)
     {
-        lc.RemoveAndDestroyItem(ref item);
+        LevelController.Instance.RemoveAndDestroyItem(ref item);
     }
 
     /// <summary>
@@ -122,7 +131,7 @@ public abstract class Machine : MonoBehaviour
     /// <param name="item">List of item to remove and destroy</param>
     protected void RemoveAndDestroyListOfItems(ref List<Item> list)
     {
-        lc.RemoveAndDestroyListOfItems(ref list);
+        LevelController.Instance.RemoveAndDestroyListOfItems(ref list);
     }
 
     public void Rotate()
@@ -147,22 +156,7 @@ public abstract class Machine : MonoBehaviour
     public void SetDir(Direction newDir)
     {
         dir = newDir;
-
-        switch (dir)
-        {
-            case Direction.right:
-                transform.eulerAngles = new Vector3(0, 0, -90);
-                break;
-            case Direction.down:
-                transform.eulerAngles = new Vector3(0, 90, -90);
-                break;
-            case Direction.left:
-                transform.eulerAngles = new Vector3(0, 180, -90);
-                break;
-            case Direction.up:
-                transform.eulerAngles = new Vector3(0, -90, -90);
-                break;
-        }
+        GetComponent<SpriteRenderer>().sprite = machineSprites[(int)dir];
     }
 
     protected void ResetTickCounter() { tickCounter = 0; }
@@ -173,7 +167,7 @@ public abstract class Machine : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // If we're in delete mode
-            if (lc.BuildStatus == BuildStatus.delete)
+            if (LevelController.Instance.BuildStatus == BuildStatus.delete)
             {
                 DeleteSelf();
             }
@@ -192,7 +186,7 @@ public abstract class Machine : MonoBehaviour
         parent.SetChild(null);
 
         // Remove this machine from the list of machines.
-        lc.RemoveMachine(this);
+        LevelController.Instance.RemoveMachine(this);
 
         // Destroy self
         Destroy(gameObject);

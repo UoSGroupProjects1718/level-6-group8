@@ -12,7 +12,6 @@ public class Conveyer : Machine
     {
         bufferChild = null;
         activeChild = null;
-        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         ResetTickCounter();
     }
 
@@ -28,7 +27,7 @@ public class Conveyer : Machine
         ResetTickCounter();
 
         // Get machine im facing
-        Machine neighbour = lc.GetNeighbour(parent.X, parent.Y, dir);
+        Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, dir);
 
         // Null check
         if (neighbour == null) { return; }
