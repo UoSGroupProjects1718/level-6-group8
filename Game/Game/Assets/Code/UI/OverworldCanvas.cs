@@ -29,6 +29,13 @@ public class OverworldCanvas : MonoBehaviour
     Image factoryGoalSprite;
     [SerializeField]
     Text factoryGoalName;
+    [SerializeField]
+    Image[] factoryStars;
+    [SerializeField]
+    private Sprite StarFilled;
+    [SerializeField]
+    private Sprite StarEmpty;
+
 
     [Header("Factory unlock panel")]
     [SerializeField]
@@ -39,6 +46,7 @@ public class OverworldCanvas : MonoBehaviour
     Text factoryPurchaseName;
     [SerializeField]
     Text factoryPurchaseCost;
+
 
     [Header("Cookbook parent")]
     [SerializeField]
@@ -96,7 +104,6 @@ public class OverworldCanvas : MonoBehaviour
             factorySprite.texture = factory.FactorySprite;
             factoryGoalSprite.sprite = factory.Potion.ItemSprite;
             factoryGoalName.text = factory.Potion.DisplayName;
-
             Debug.Log(string.Format("Has factory been solved: {0}", factory.Solved));
             if (!factory.Solved)
             {
@@ -107,6 +114,7 @@ public class OverworldCanvas : MonoBehaviour
                 //TODO: fucntion
                 leaderboards.text = "Score: " + factory.Score;
             }
+
         }
 
         else

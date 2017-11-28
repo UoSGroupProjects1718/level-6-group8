@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -65,6 +66,8 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private Potion potion;
 
+    public int[] ScoreThresholds = new int[3];
+
     // Level --
     public Level Level;
 
@@ -85,14 +88,7 @@ public class Factory : MonoBehaviour
                 float timeToMakePotion = ticksToSolve * LevelController.Instance.TickWaitTime;
                 return 60 / timeToMakePotion;
             }
-            else
-            {
-                return 0;
-            }
-        }
-        private set
-        {
-            PotionsPerMinute = value;
+            return 0;
         }
     }
 
@@ -100,11 +96,7 @@ public class Factory : MonoBehaviour
     {
         LoadStatsFromFile();
         stockpile = new Stockpile(StockpileLimit);
-    }
-
-    private void Update()
-    {
-        
+        stockpile.factory = this;
     }
 
     private void OnMouseDown()
@@ -151,6 +143,7 @@ public class Factory : MonoBehaviour
         score = fs.score;
         ticksToSolve = fs.ticksToSolve;
         stars = fs.stars;
+        Overworld.Instance.AssignFactoryStars();
     }
 
     /// <summary>
@@ -174,5 +167,12 @@ public class Factory : MonoBehaviour
         return (SaveLoad.LoadLevelFromFile(this));
     }
 
-    
+
+    public void SavePpmToDisk()
+    {
+        if(Math.Abs(PlayerPrefs.GetFloat(FactoryId + "-PPM") - PotionsPerMinute) > float.Epsilon)
+            PlayerPrefs.SetFloat(FactoryId + "-PPM", PotionsPerMinute);
+        PlayerPrefs.Save();
+
+    }
 }

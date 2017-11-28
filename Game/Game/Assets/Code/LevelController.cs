@@ -92,7 +92,7 @@ public class LevelController : MonoBehaviour
         currentlySelected = -1;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         // DebugLoadLevel();
-	}
+    }
 	
 	void Update ()
     {
@@ -105,11 +105,17 @@ public class LevelController : MonoBehaviour
                 canTick = false;
 
                 StartCoroutine(TickWait(TickWaitTime));
-
+                OnTick();
                 Run();
             }   
         }
 	}
+
+    public void OnTick()
+    {
+        factory.SavePpmToDisk();
+        
+    }
 
     /// <summary>
     /// One call of this function represents one cycle within our production line

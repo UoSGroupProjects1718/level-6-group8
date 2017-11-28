@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class is responsible for handling behaviour that 
@@ -17,6 +19,9 @@ public class Overworld : MonoBehaviour
     public static Overworld Instance { get { return instance; } }
     public Factory[] Factories { get { return factories; } }
 
+    public Sprite FilledStar;
+    public Sprite EmptyStar;
+
     void Awake()
     {
         // Singleton pattern
@@ -27,6 +32,43 @@ public class Overworld : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+       
+    }
+
+    public void AssignFactoryStars()
+    {
+        foreach (var factory in factories)
+        {
+            uint starCounter = 0;
+            foreach (int scoreThreshold in factory.ScoreThresholds)
+            {
+                if (factory.Score > scoreThreshold)
+                {
+                    starCounter++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            factory.Stars = starCounter;
+            
+            //foreach (GameObject star in factory.transform.Find("Canvas").ch)
+            //{
+            //    if (starCounter == 0) break;
+            //    star.gameObject.GetComponent<Image>().sprite = FilledStar;
+            //}
+
+            for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
+            {
+                if (starCounter == 0) break;
+                factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
+            }
         }
     }
 
