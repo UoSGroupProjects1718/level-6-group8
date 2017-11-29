@@ -5,83 +5,79 @@ using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class Player : MonoBehaviour
+// This class contains all player data to be serialized to json
+public class PlayerStats
 {
-    private int starcount;
+    public uint money;
+    public string name;
+}
 
-    // Need a singleton so that money remains after scene changes and no duplicate objects are created
-    // due to missing references
-    void Awake()
+public class Player
+{
+    public Player()
     {
-        DontDestroyOnLoad(gameObject);
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
+        Init();
     }
 
+    // Private members
+    private uint money;
     private string playerName = "Group 8";
-    public string PlayerName
-    {
-        get { return playerName; }
-        set { playerName = value; }
-    }
-
-    /*
-     * No longer needed income
-    private float money;
-    public float Money
-    {
-        get { return money; }
-        set { money = value < 0 ? 0 : value; }
-    }
-
-    private int moneyPerSecond = 5;
-    public int MoneyPerSecond
-    {
-        get { return moneyPerSecond; }
-        set { moneyPerSecond = value; }
-    }
-
-    private List<Factory> lockedFactories;
-    public List<Factory> LockedFactories
-    {
-        get { return lockedFactories; }
-        set { lockedFactories = value; }
-    }
-
-    private List<Factory> unlockedFactories;
-    public List<Factory> UnlockedFactories
-    {
-        get { return unlockedFactories; }
-        set { unlockedFactories = value; }
-    }
-    */
-
     private readonly PlayerAchievements playerAchievements = new PlayerAchievements();
 
-	// Use this for initialization
-	void Start ()
+    // Public properties
+    public uint StarCount
     {
-        //StartCoroutine(GainPassiveMoney());
+        get {
+            uint sc = 0;
+            foreach (Factory fac in Overworld.Instance.Factories)
+            {
+                sc += fac.Stars;
+            }
+            return sc;
+        }
+    }
+    public uint Money { get { return money; } }
+    public string PlayerName { get { return playerName; } set { playerName = value; } }
+
+    
+	// Called on Awake by the 
+    public void Init()
+    {
         playerAchievements.Init();
         playerAchievements.LogAchievementDescriptions();
         playerAchievements.LogPlayerAchievementInfo();
+
+        Load();
     }
 
-    // Update is called once per frame
-    void Update () {
-	}
-
-    /*
-    private IEnumerator GainPassiveMoney()
+    public void AddMoney(uint i)
     {
-        while (true)
+        money += i;
+    }
+
+    public void Save()
+    {
+        SaveLoad.SavePlayerStats(this);
+    }
+
+    public void Load()
+    {
+        // Load our playerstats from the json
+        PlayerStats ps = SaveLoad.LoadPlayerStats();
+
+        // If it's not null (a save file exists)
+        if (ps != null)
         {
-            // Debug.Log(string.Format("Player money: {0}", money));
-            money += moneyPerSecond;
-            yield return new WaitForSeconds(1);
+            // Set our stats...
+            money = ps.money;
+            playerName = ps.name;
+
+            Debug.Log("Player stats loaded in from file.");
+        }
+        else
+        {
+            Debug.Log("No PlayerStats file found, setting players stats to default...");
+            money = 0;
         }
     }
-    */
 }

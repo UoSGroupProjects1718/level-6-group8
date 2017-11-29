@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// This is a class that gets serialized to json when writing 
@@ -52,24 +53,7 @@ public class Level
 
     /* This is the list of all items currently inside of the factory */
     public List<Item> items = new List<Item>();
+
+    /* A property getter for the total cost of all machines in the level */
+    public int CalculateTotalMachineCost { get { return machines.Sum(machine => machine.Cost); } }
 }
-
-/// <summary>
-/// This is a class which gets serialized to the editor. This allows us to 
-/// edit the layout of a level within the inspector when looking at a factory.
-/// Look in CustomLevelModule.cs to see.
-/// </summary>
-//[System.Serializable]
-//public class LevelData
-//{
-//    public int levelWidth = 0;
-//    public int levelHeight = 0;
-
-//    [System.Serializable]
-//    public struct rowData
-//    {
-//        public bool[] row;
-//    }
-
-//    public rowData[] rows;
-//}

@@ -15,30 +15,25 @@ public class FactoryStats
     public int ticksToSolve;
     public uint score;
     public uint stars;
+    public float potionsPerMinute;
 }
 
 public class Factory : MonoBehaviour
 {
-    public Stockpile stockpile;
-
-    [Header("Visible for debugging.")]
-    [SerializeField]
     private bool solved;
-    [SerializeField]
-    private uint score;
-    [SerializeField]
-    private uint stars;
-    [SerializeField]
-    private int ticksToSolve;
-    [SerializeField]
     private bool unlocked;
+    private uint score;
+    private uint stars;
+    private int ticksToSolve;
+    private int totalMachineCost;
+    private float potionsPerMinute;
 
     public bool Solved { get { return solved; } set { solved = value; } }
     public uint Score { get { return score; } set { score = value; } }
     public uint Stars { get { return stars; } set { stars = value; } }
     public int TicksToSolve { get { return ticksToSolve; } set { ticksToSolve = value; } }
-
-    public uint StockpileLimit = 0;
+    public int TotalMachineCost { get { return totalMachineCost; } set { totalMachineCost = value; } }
+    public float PotionsPerMinute { get { return potionsPerMinute; } set { potionsPerMinute = value; } }
 
     [Header("Factory ID")]
     [SerializeField]
@@ -66,37 +61,39 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private Potion potion;
 
-    public int[] ScoreThresholds = new int[3];
+    [Header("Stockpile limit")]
+    [SerializeField]
+    private uint stockpileLimit;
 
-    // Level --
-    public Level Level;
+    [Header("Score Thresholds")]
+    [SerializeField]
+    private int[] scoreThresholds;
+
+    // Non-GameObject class variables
+    public Stockpile stockpile;
+    public Level level;
 
     public bool Unlocked { get { return unlocked; } }
     public int FactoryId { get { return factoryID; } }
     public int starsToUnlock { get { return starsRequired; } }
     public int Width { get { return width; } }
     public int Height { get { return height; } }
+    public uint StockpileLimit { get { return stockpileLimit; } }
+    public int[] ScoreThresholds { get { return scoreThresholds; } }
     public string FactoryName { get { return factoryName; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
-    public float PotionsPerMinute
-    {
-        get
-        {
-            if (ticksToSolve > 0)
-            {
-                float timeToMakePotion = ticksToSolve * LevelController.Instance.TickWaitTime;
-                return 60 / timeToMakePotion;
-            }
-            return 0;
-        }
-    }
 
     void Start()
     {
+        // Load factory stats from file
         LoadStatsFromFile();
-        stockpile = new Stockpile(StockpileLimit);
-        stockpile.factory = this;
+
+        // Create our stockpile object
+        stockpile = new Stockpile(stockpileLimit, this);
+
+        // Load stockpile stats from file
+        stockpile.LoadFromFile();
     }
 
     private void OnMouseDown()
@@ -123,7 +120,7 @@ public class Factory : MonoBehaviour
     public void SaveStatsToFile()
     {
         // Save this to file
-        SaveLoad.SaveFactoryStatsToFile(this);
+        SaveLoad.SaveFactoryStats(this);
     }
 
     /// <summary>
@@ -132,7 +129,7 @@ public class Factory : MonoBehaviour
     public void LoadStatsFromFile()
     {
         // Load from file and get a FactoryStats object
-        FactoryStats fs =  SaveLoad.LoadFactoryStatsFromFile(this);
+        FactoryStats fs =  SaveLoad.LoadFactoryStats(this);
 
         // Null check (if the file doesn't exist)
         if (fs == null) { return; }
@@ -143,6 +140,9 @@ public class Factory : MonoBehaviour
         score = fs.score;
         ticksToSolve = fs.ticksToSolve;
         stars = fs.stars;
+        potionsPerMinute = fs.potionsPerMinute;
+
+        // Assign factory stars
         Overworld.Instance.AssignFactoryStars();
     }
 
@@ -155,7 +155,7 @@ public class Factory : MonoBehaviour
     public void SaveLevelToFile(Tile[,] level, int levelwidth, int levelheight)
     {
         // Save this level to file
-        SaveLoad.SaveLevelToFile(this, level, levelwidth, levelheight);
+        SaveLoad.SaveLevel(this, level, levelwidth, levelheight);
     }
 
     /// <summary>
@@ -164,15 +164,6 @@ public class Factory : MonoBehaviour
     /// <returns>LevelToFile, an class type containing information about the machines in a level</returns>
     public LevelToFile LoadLevelFromFile()
     {
-        return (SaveLoad.LoadLevelFromFile(this));
-    }
-
-
-    public void SavePpmToDisk()
-    {
-        if(Math.Abs(PlayerPrefs.GetFloat(FactoryId + "-PPM") - PotionsPerMinute) > float.Epsilon)
-            PlayerPrefs.SetFloat(FactoryId + "-PPM", PotionsPerMinute);
-        PlayerPrefs.Save();
-
+        return (SaveLoad.LoadLevel(this));
     }
 }

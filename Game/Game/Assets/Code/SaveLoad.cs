@@ -15,7 +15,6 @@ using Newtonsoft.Json.Linq;
 /// </summary>
 public static class SaveLoad
 {
-
     private static string GetSaveDirectory()
     {
         // Get the current directory
@@ -29,7 +28,7 @@ public static class SaveLoad
     /// Saves a factories stats to json
     /// </summary>
     /// <param name="factory"></param>
-    public static void SaveFactoryStatsToFile(Factory factory)
+    public static void SaveFactoryStats(Factory factory)
     {
         // Write all of the informationwe want to store into a FactoryStats object
         FactoryStats fs = new FactoryStats();
@@ -38,6 +37,7 @@ public static class SaveLoad
         fs.score = factory.Score;
         fs.ticksToSolve = factory.TicksToSolve;
         fs.stars = factory.Stars;
+        fs.potionsPerMinute = factory.PotionsPerMinute;
 
         // Get the json string
         string json = JsonConvert.SerializeObject(fs);
@@ -58,7 +58,7 @@ public static class SaveLoad
     /// </summary>
     /// <param name="factory"></param>
     /// <returns></returns>
-    public static FactoryStats LoadFactoryStatsFromFile(Factory factory)
+    public static FactoryStats LoadFactoryStats(Factory factory)
     {
         // Get dir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
@@ -87,7 +87,7 @@ public static class SaveLoad
     /// <param name="level">The Tile[,] array of the level</param>
     /// <param name="levelwidth">The width of the level array</param>
     /// <param name="levelheight">The height of the level array</param>
-    public static void SaveLevelToFile(Factory factory, Tile[,] level, int levelwidth, int levelheight)
+    public static void SaveLevel(Factory factory, Tile[,] level, int levelwidth, int levelheight)
     {
         // Create a new LevelToFile object
         LevelToFile ltf = new LevelToFile();
@@ -173,7 +173,7 @@ public static class SaveLoad
     /// all machines within a level
     /// </summary>
     /// <param name="">The factory to load the level of</param>
-    public static LevelToFile LoadLevelFromFile(Factory factory)
+    public static LevelToFile LoadLevel(Factory factory)
     {
         // Get the current directory
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
@@ -196,4 +196,134 @@ public static class SaveLoad
         return ltf;
     }
 
+    /// <summary>
+    /// Saves a Stockpiles stats to file
+    /// </summary>
+    /// <param name="stockpile"></param>
+    public static void SaveStockpile(Stockpile stockpile)
+    {
+        // Make a new StockpileStats object
+        StockpileStats ss = new StockpileStats();
+
+        // Copy our stockpile data over
+        ss.items = stockpile.Items;
+
+        // Serialize to json
+        string json = JsonConvert.SerializeObject(ss);
+
+        // Get the current directory
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append(string.Format("\\Stockpile_{0}.json", stockpile.Factory.FactoryId));
+
+        // Save to file 
+        System.IO.File.WriteAllText(saveDir.ToString(), json);
+    }
+
+    public static StockpileStats LoadStockpile(Stockpile stockpile)
+    {
+        // Get the current directory
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append(string.Format("\\Stockpile_{0}.json", stockpile.Factory.FactoryId));
+
+        // Check that this file exists
+        if (!File.Exists(saveDir.ToString()))
+        {
+            return null;
+        }
+
+        // Read from file
+        string json = System.IO.File.ReadAllText(saveDir.ToString());
+
+        // Deserialize the object
+        StockpileStats ss = JsonConvert.DeserializeObject<StockpileStats>(json);
+
+        // Return
+        return ss;
+    }
+
+    /// <summary>
+    /// Saves a Player objects stats to json file
+    /// </summary>
+    /// <param name="player"></param>
+    public static void SavePlayerStats(Player player)
+    {
+        // Make a new PlayerStats object
+        PlayerStats ps = new PlayerStats();
+
+        // Copy our players data over
+        ps.money = player.Money;
+        ps.name = player.PlayerName;
+
+        // Serialize the playerstats to json
+        string json = JsonConvert.SerializeObject(ps);
+
+        // Get the saveDir
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append("\\Player.json");
+
+        // Save to file 
+        System.IO.File.WriteAllText(saveDir.ToString(), json);
+    }
+
+    /// <summary>
+    /// Loads PlayerStats from json, returns PlayerStats object with appropriate 
+    /// data if file exists, otherwise returns null
+    /// </summary>
+    /// <returns></returns>
+    public static PlayerStats LoadPlayerStats()
+    {
+        // Get the current directory
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append("\\Player.json");
+
+        // Check that this file exists
+        if (!File.Exists(saveDir.ToString()))
+        {
+            return null;
+        }
+
+        // Read from file
+        string json = System.IO.File.ReadAllText(saveDir.ToString());
+
+        // Deserialize the object
+        PlayerStats ps = JsonConvert.DeserializeObject<PlayerStats>(json);
+
+        // Return
+        return ps;
+    }
+
+    public static void SaveAppCloseTime()
+    {
+        System.DateTime now = System.DateTime.Now;
+
+        string json = JsonConvert.SerializeObject(now);
+
+        // Get the saveDir
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append("\\AppCloseDateTime.json");
+
+        // Save to file 
+        System.IO.File.WriteAllText(saveDir.ToString(), json);
+    }
+
+    public static System.DateTime GetAppCloseTime()
+    {
+        // Get the saveDir
+        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+        // Append filename and file extension
+        saveDir.Append("\\AppCloseDateTime.json");
+
+
+        // Read from file
+        string json = System.IO.File.ReadAllText(saveDir.ToString());
+
+        System.DateTime closingTime = JsonConvert.DeserializeObject<System.DateTime>(json);
+
+        return closingTime; 
+    }
 }

@@ -1,64 +1,4 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using System.Linq;
-//using UnityEngine;
-
-//public class Stockpile
-//{
-//    private Dictionary<Item, uint> items = new Dictionary<Item, uint>();
-//    private readonly uint itemLimit;
-//    public long ItemCount
-//    {
-//        get { return PlayerPrefs.GetInt("TotalItemCount"); }
-//    }
-
-//    public Stockpile(uint itemLimit = 0)
-//    {
-//        this.itemLimit = itemLimit;
-//        PlayerPrefs.SetInt("ItemLimit", (int)itemLimit);
-//        PlayerPrefs.Save();
-//    }
-
-//    public bool Contains(Item item)
-//    {
-//        return PlayerPrefs.HasKey(item.name);
-//    }
-
-//    public bool IsFull()
-//    {
-//        return ItemCount >= itemLimit;
-//    }
-
-//    public void AddOrIncrement(Item item)
-//    {
-//        if (ItemCount < itemLimit)
-//        {
-//            if (PlayerPrefs.HasKey(item.name))
-//            {
-//                PlayerPrefs.SetInt("ITEM: " + item.name, PlayerPrefs.GetInt(item.name) + 1);
-//                PlayerPrefs.SetInt("TotalItemCount", PlayerPrefs.GetInt("TotalItemCount") +1);
-//            } else
-//            {
-//                PlayerPrefs.SetInt("ITEM: " + item.name, 1);
-//                PlayerPrefs.SetInt("TotalItemCount", PlayerPrefs.GetInt("TotalItemCount") + 1);
-//            }
-//        }
-//        PlayerPrefs.Save();
-//    }
-
-//    public void ClearItems()
-//    {
-//        //TODO: increment a resouce here such as money (potentially rename as sellitems)
-//        var maxItems = PlayerPrefs.GetInt("ItemLimit");
-//        PlayerPrefs.DeleteAll();
-//        PlayerPrefs.SetInt("TotalItemCount", 0);
-//        PlayerPrefs.SetInt("ItemLimit", maxItems);
-//    }
-
-
-//}
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,97 +6,179 @@ using System.Text;
 using Newtonsoft.Json.Bson;
 using UnityEngine;
 
+public class StockpileStats
+{
+    public Dictionary<string, uint> items;
+}
+
 public class Stockpile
 {
     private Dictionary<string, uint> items = new Dictionary<string, uint>();
-    public Factory factory;
-    uint itemLimit;
-    public long ItemCount
+    private Factory factory;
+    private uint itemLimit;
+
+    public long ItemCount { get { return items.Sum(x => x.Value); } }
+    public Factory Factory { get { return factory; } }
+    public Dictionary<string, uint> Items { get { return items; } }
+
+    // Constructor
+    public Stockpile(uint _itemLimit, Factory parent)
     {
-        get { return items.Sum(x => x.Value); }
+        itemLimit = _itemLimit;
+        factory = parent;
     }
 
-    public Stockpile(uint itemLimit = 0)
-    {
-        this.itemLimit = itemLimit;
-    }
+    // Methods
 
+    /// <summary>
+    /// Returns true if the stockpile contains a certain item,
+    /// else returns false.
+    /// </summary>
+    /// <param name="item">The item to check that the stockpile contains</param>
+    /// <returns></returns>
     public bool Contains(Item item)
     {
-        return items.ContainsKey(item.name);
+        return items.ContainsKey(item.DisplayName);
     }
 
+    /// <summary>
+    /// Returns true if the stockpile is full.
+    /// Else, returns false
+    /// </summary>
+    /// <returns></returns>
     public bool IsFull()
     {
         return items.Sum(x => x.Value) >= itemLimit;
     }
 
-    public void AddOrIncrement(Item item)
+    public void AddOrIncrement(Item item, uint val)
     {
-        if (items.Sum(x => x.Value) < itemLimit)
-        {
-            if (items.ContainsKey(item.name)) items[item.name]++;
-            else
-            {
-                items.Add(item.name, 1);
-            }
-        }
-    }
+        /*
+            Lyut:
+                I just quickly commented out this function and added this little bit because
+                it wasn't working properly and wanted to make sure that it would save and 
+                load fine.
 
-    public string SerialiseStockpile(string factoryToSerialiseName, Stockpile factoryToSerialiseStockpile)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendFormat("[{0}]", factoryToSerialiseName);
-        sb.Append("{");
-        foreach (var itemPair in factoryToSerialiseStockpile.items)
+                -Joe
+        */
+        if (Contains(item))
         {
-            sb.AppendFormat("({0}):{1}|", itemPair.Key, itemPair.Value);
+            items[item.DisplayName] += val;
         }
-        sb.Append("};");
-        Debug.Log("Serialised Stockpile: " + sb.ToString());
-        return sb.ToString();
-    }
-
-    public void DeserialiseStockpile(string serialisedFactory)
-    {
-        var factories = serialisedFactory.Split(';');
-        foreach (var factoryString in factories)
+        else
         {
-            var factoryName = factoryString.Split(']')[0].Substring(1);
-            Debug.Log("Factory Name: " + factoryName);
-            if (factoryName == factory.name)
-            {
-                Clear();
-                var factoryInfo = factoryString.Split('}')[0].Substring(1);
-                var itemPairs = factoryInfo.Split('|');
-                foreach (var itemPair in itemPairs)
-                {
-                    var item = itemPair.Split(':')[0].Substring(1, itemPair.Split(':')[0].Length - 1);
-                    Debug.Log(item);
-                    var itemCount = itemPair.Split(':')[1].Substring(0, itemPair.Split(':')[1].Length - 1);
-                    Debug.Log(itemCount);
-                    items.Add(item, uint.Parse(itemCount));
-                }
-                return;
-            }
+            items.Add(item.DisplayName, val);
         }
-        Debug.LogError("Could not find factory with same name as base factory in serialised string.");
 
+        Debug.Log(string.Format("Amount of {0}: {1}", item.DisplayName, items[item.DisplayName]));
+
+
+        //if (items.Count == 0)
+        //{
+        //    items.Add(item.DisplayName, val);
+
+        //    Debug.Log(string.Format("Amount of {0}: {1}", item.DisplayName, items[item.DisplayName]));
+        //    return;
+        //}
+
+        //if (items.Sum(x => x.Value) < itemLimit)
+        //{
+        //    // If it contains the key
+        //    if (items.ContainsKey(item.DisplayName))
+        //    {
+        //        // Add
+        //        items[item.DisplayName] += val;
+        //    }
+        //    else
+        //    {
+        //        items.Add(item.DisplayName, val);
+        //    }
+        //}
     }
 
     /// <summary>
-    /// Saves the stockpile of a factory to a file with the key being the factory name
+    /// Calls the SaveLoad utility class to save the stockpile to json
     /// </summary>
-    public void SaveStockpileToDevice()
+    public void SaveToFile()
     {
-        ////PlayerPrefs.SetString(factory.name, SerialiseStockpile());
+        SaveLoad.SaveStockpile(this);
     }
+
+    /// <summary>
+    /// Loads the stockpile data in from json
+    /// </summary>
+    public void LoadFromFile()
+    {
+        // Grab the data from json for this stockpile
+        StockpileStats ss = SaveLoad.LoadStockpile(this);
+
+        // If the data exists
+        if (ss != null)
+        {
+            // Apply the data
+            items = ss.items;
+        }
+        else
+        {
+            // Else, default values
+            items = new Dictionary<string, uint>();
+        }
+
+
+    }
+
+    //public string SerialiseStockpile(string factoryToSerialiseName, Stockpile factoryToSerialiseStockpile)
+    //{
+    //    StringBuilder sb = new StringBuilder();
+    //    sb.AppendFormat("[{0}]", factoryToSerialiseName);
+    //    sb.Append("{");
+    //    foreach (var itemPair in factoryToSerialiseStockpile.items)
+    //    {
+    //        sb.AppendFormat("({0}):{1}|", itemPair.Key, itemPair.Value);
+    //    }
+    //    sb.Append("};");
+    //    Debug.Log("Serialised Stockpile: " + sb.ToString());
+    //    return sb.ToString();
+    //}
+
+    //public void DeserialiseStockpile(string serialisedFactory)
+    //{
+    //    var factories = serialisedFactory.Split(';');
+    //    foreach (var factoryString in factories)
+    //    {
+    //        var factoryName = factoryString.Split(']')[0].Substring(1);
+    //        Debug.Log("Factory Name: " + factoryName);
+    //        if (factoryName == factory.name)
+    //        {
+    //            Clear();
+    //            var factoryInfo = factoryString.Split('}')[0].Substring(1);
+    //            var itemPairs = factoryInfo.Split('|');
+    //            foreach (var itemPair in itemPairs)
+    //            {
+    //                var item = itemPair.Split(':')[0].Substring(1, itemPair.Split(':')[0].Length - 1);
+    //                Debug.Log(item);
+    //                var itemCount = itemPair.Split(':')[1].Substring(0, itemPair.Split(':')[1].Length - 1);
+    //                Debug.Log(itemCount);
+    //                items.Add(item, uint.Parse(itemCount));
+    //            }
+    //            return;
+    //        }
+    //    }
+    //    Debug.LogError("Could not find factory with same name as base factory in serialised string.");
+
+    //}
+
+    ///// <summary>
+    ///// Saves the stockpile of a factory to a file with the key being the factory name
+    ///// </summary>
+    //public void SaveStockpileToDevice()
+    //{
+    //    ////PlayerPrefs.SetString(factory.name, SerialiseStockpile());
+    //}
 
     public void Clear()
     {
         //TODO: increment a resouce here such as money (potentially rename as sellitems)
         items.Clear();
     }
-
-
 }

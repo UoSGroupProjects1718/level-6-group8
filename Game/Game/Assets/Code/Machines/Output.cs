@@ -45,7 +45,8 @@ public class Output : Machine
         foreach (Item child in activeChildren)
         {
             // This may be changed to only accept the requried item?idk
-            LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child);
+            LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child, 1);
+
             // If we have the required potion
             if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Potion.DisplayName))
             {

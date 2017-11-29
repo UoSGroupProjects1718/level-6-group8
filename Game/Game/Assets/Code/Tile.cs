@@ -24,8 +24,7 @@ public class Tile : MonoBehaviour
 
         if (newChild != null)
         {
-            machine.gameObject.transform.position = new Vector3(transform.position.x, -0.3f, transform.position.z);
-            machine.transform.eulerAngles = new Vector3(60, 45, 0);
+            machine.gameObject.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             machine.SetDir(Direction.up);
             machine.Parent = this;
         }
@@ -37,13 +36,27 @@ public class Tile : MonoBehaviour
         lc.SpawnOn(x, y);
     }
 
-    public void LeftClick()
+    void OnMouseOver()
+    {
+        Transform parent = transform.parent;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            LeftClick();
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            RightClick();
+        }
+    }
+
+    private void LeftClick()
     {
         if (!active) { return; }
         OnClick();
     }
 
-    public void RightClick()
+    private void RightClick()
     {
         ToggleActive();
     }

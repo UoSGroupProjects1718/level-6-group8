@@ -32,10 +32,6 @@ public abstract class Machine : MonoBehaviour
     protected Direction dir;
     protected Tile parent;
 
-    [Header("Sprites")]
-    [SerializeField]
-    private Sprite[] machineSprites;
-
     [Header("Cost")]
     [SerializeField]
     protected int cost;
@@ -156,7 +152,22 @@ public abstract class Machine : MonoBehaviour
     public void SetDir(Direction newDir)
     {
         dir = newDir;
-        GetComponent<SpriteRenderer>().sprite = machineSprites[(int)dir];
+
+        switch (dir)
+        {
+            case Direction.right:
+                transform.eulerAngles = new Vector3(0, 0, -90);
+                break;
+            case Direction.down:
+                transform.eulerAngles = new Vector3(0, 90, -90);
+                break;
+            case Direction.left:
+                transform.eulerAngles = new Vector3(0, 180, -90);
+                break;
+            case Direction.up:
+                transform.eulerAngles = new Vector3(0, -90, -90);
+                break;
+        }
     }
 
     protected void ResetTickCounter() { tickCounter = 0; }

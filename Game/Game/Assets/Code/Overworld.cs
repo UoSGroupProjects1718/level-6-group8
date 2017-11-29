@@ -14,7 +14,7 @@ public class Overworld : MonoBehaviour
 
     [Header("Factories")]
     [SerializeField]
-    Factory[] factories;
+    private Factory[] factories;
 
     public static Overworld Instance { get { return instance; } }
     public Factory[] Factories { get { return factories; } }
@@ -33,11 +33,6 @@ public class Overworld : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-       
     }
 
     public void AssignFactoryStars()
