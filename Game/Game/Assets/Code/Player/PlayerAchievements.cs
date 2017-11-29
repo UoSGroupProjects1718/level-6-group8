@@ -34,7 +34,7 @@ namespace Assets.Code.Player
         {
             if (success)
             {
-                Debug.Log("Successfully authenticated!");
+               // Debug.Log("Successfully authenticated!");
                 LoadPlayerAchievements();
             }
         }
@@ -49,17 +49,17 @@ namespace Assets.Code.Player
                 }
                 else
                 {
-                    Debug.Log("No achievement data set up.");
+                   // Debug.Log("No achievement data set up.");
                 }
             });
         }
 
         public void LogAchievementDescriptions()
         {
-            Debug.Log("Printing achievement Descriptions");
+            //Debug.Log("Printing achievement Descriptions");
             foreach (var achievementDescription in achievementDescriptions) 
             {
-                Debug.Log(achievementDescription.achievedDescription);
+               // Debug.Log(achievementDescription.achievedDescription);
             }
         }
 
@@ -69,20 +69,20 @@ namespace Assets.Code.Player
             {
                 if (loadedAchievements.Length > 0)
                     achievements.AddRange(loadedAchievements);
-                else
-                    Debug.Log("Player has no achievements.");
+                else { }
+                //    Debug.Log("Player has no achievements.");
             });
         }
 
         public void LogPlayerAchievementInfo()
         {
-            Debug.Log("Printing player achievement info");
+          //  Debug.Log("Printing player achievement info");
 
             if (achievements.Count > 0)
             {
                 foreach (var achievement in achievements)
                 {
-                    Debug.Log(achievement);
+              //      Debug.Log(achievement);
                 }
             }
         }

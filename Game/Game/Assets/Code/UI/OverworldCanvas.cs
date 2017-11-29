@@ -17,39 +17,10 @@ public class OverworldCanvas : MonoBehaviour
 
     [Header("Factory stats display")]
     [SerializeField]
-    GameObject factoryStatsPanel;
+    GameObject factoryUI;
     [SerializeField]
-    RawImage factorySprite;
-    [SerializeField]
-    Text factoryName;
-    [SerializeField]
-    Text factoryMainText;
-    [SerializeField]
-    Text factoryGoalName;
-    [SerializeField]
-    Image[] factoryStars;
-    [SerializeField]
-    Slider factoryStockpile;
-
-
-
-    [SerializeField]
-    private Sprite StarFilled;
-    [SerializeField]
-    private Sprite StarEmpty;
-
-
-    [Header("Factory unlock panel")]
-    [SerializeField]
-    GameObject factoryPurchasePanel;
-    [SerializeField]
-    RawImage factoryPurchaseSprite;
-    [SerializeField]
-    Text factoryPurchaseName;
-    [SerializeField]
-    Text factoryPurchaseCost;
-
-
+    FactoryPanel factoryPanel;
+    
     [Header("Cookbook parent")]
     [SerializeField]
     GameObject cookbookParent;
@@ -100,52 +71,11 @@ public class OverworldCanvas : MonoBehaviour
         // Disable dragging whilst the menu is open
         DisableCameraMoveScript();
 
-        // Check which pannel to open
-        if (factory.Unlocked)
-        {
-            factoryStatsPanel.SetActive(true);
+        // Enables the factory UI
+        factoryUI.SetActive(true);
 
-            factoryName.text = factory.FactoryName;
-            factorySprite.texture = factory.FactorySprite;
-            factoryGoalName.text = factory.Potion.DisplayName;
-
-            if (factory.Solved)
-            {
-                factoryMainText.text = "Score: " + factory.Score;
-                fillfactoryStars(factory.Stars);
-               // factoryStockpile.maxValue = factory.StockpileLimit;
-            } else {
-                factoryMainText.text = "Complete the level to recieve a score!";
-                fillfactoryStars(0);
-            }
-
-            //factoryStockpile.value;
-        }
-        /*
-        else
-        {
-            factoryPurchasePanel.SetActive(true);
-
-            factoryPurchaseSprite.texture = factory.FactorySprite;
-            factoryPurchaseName.text = factory.FactoryName;
-            factoryPurchaseCost.text = string.Format("{0} Stars Needed", factory.starsToUnlock);
-        }
-        */
-    }
-
-    private void fillfactoryStars(uint stars)
-    {
-        for(int i = 0; i < factoryStars.Length; i++)
-        {
-            if (i < stars) {
-                factoryStars[i].color = Color.yellow;
-                factoryStars[i].sprite = StarFilled;
-            } else
-            {
-                factoryStars[i].color = Color.gray;
-                factoryStars[i].sprite = StarEmpty;
-            }
-        }
+        // Updates the factory UI
+        factoryPanel.UpdateUI(factory);
     }
 
     /// <summary>
@@ -172,8 +102,7 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void CloseFactoryDisplays()
     {
-        factoryStatsPanel.SetActive(false);
-        factoryPurchasePanel.SetActive(false);
+        factoryUI.SetActive(false);
 
         EnableCameraMoveScript();
         EventSystem.current.SetSelectedGameObject(null);

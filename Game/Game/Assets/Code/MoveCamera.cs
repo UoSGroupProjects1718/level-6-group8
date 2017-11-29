@@ -33,7 +33,7 @@ public class MoveCamera : MonoBehaviour
         move = new Vector3(direction.x * dragSpeed,0 , direction.y * dragSpeed);
         // Adjust for camera Angle
         /// TODO: make this use transform.rotation
-        move = Quaternion.AngleAxis(45, Vector3.up) * move;
+        move = Quaternion.AngleAxis(0, Vector3.up) * move;
 
         // Move the Camera
         transform.Translate(-move, Space.World);
