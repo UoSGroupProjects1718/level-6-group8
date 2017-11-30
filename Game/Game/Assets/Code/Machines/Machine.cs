@@ -72,23 +72,23 @@ public abstract class Machine : MonoBehaviour
     /// <returns></returns>
     protected IEnumerator MoveChildTowardsMe(Item child)
     {
-        float timeInterval = LevelController.Instance.TickWaitTime;
-        int iters = 25;
-
         Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 childPos = new Vector2(child.transform.position.x, child.transform.position.z);
-        float distance = Vector2.Distance(myPos, childPos);
 
-        for (int i = 0; i < iters; i++)
+        float duration = LevelController.Instance.TickWaitTime;
+        float timeCounter = 0;
+
+        while (timeCounter < duration)
         {
+            timeCounter += Time.deltaTime;
+
             // We do a null check here as the child can be "consumed" by another machine whilst moving along the conveyer
             if (child == null) { break; }
 
-            child.transform.position = Vector3.MoveTowards(child.transform.position,
-                new Vector3(transform.position.x, child.transform.position.y, transform.position.z),
-                distance / iters);
-
-            yield return new WaitForSeconds(timeInterval / iters);
+            child.transform.position = Vector3.MoveTowards ( child.transform.position,
+                    new Vector3(transform.position.x, child.transform.position.y, transform.position.z),
+                    timeCounter / duration );
+            yield return null;
         }
     }
 

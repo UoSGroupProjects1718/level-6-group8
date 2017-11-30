@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class Ingredient : Item
 {
-    void Start()
-    {
-
-    }
 }

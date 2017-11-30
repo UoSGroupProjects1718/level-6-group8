@@ -1841,7 +1841,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tickWaitTime: 1
   tickWaitTimeSpedUp: 0.2
-  player: {fileID: 0}
   Spawnables:
   - {fileID: 1695972475213368, guid: 5111f67fea7e8664cbc2bfc5492a500b, type: 2}
   - {fileID: 1323365034329666, guid: b71b35fa6c73d9146a46a59ec5f15eb8, type: 2}
@@ -2658,13 +2657,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1907559438}
-  m_LocalRotation: {x: 0.41223294, y: 0.34247655, z: -0.17075248, w: 0.82681155}
+  m_LocalRotation: {x: 0.39044833, y: 0.34682897, z: -0.161729, w: 0.8373192}
   m_LocalPosition: {x: -1, y: 4, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 53, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 45, z: 0}
 --- !u!1 &1943487682
 GameObject:
   m_ObjectHideFlags: 0

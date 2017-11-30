@@ -50,8 +50,8 @@ public class Conveyer : Machine
         bufferChild = null;
 
         // Move our active childs potition to this conveyer
-        activeChild.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        //StartCoroutine(MoveChildTowardsMe(activeChild));
+        //activeChild.gameObject.transform.position = new Vector3(transform.position.x, activeChild.ProductionLine_YHeight, transform.position.z);
+        StartCoroutine(MoveChildTowardsMe(activeChild));
     }
 
 

@@ -40,9 +40,19 @@ public class Inputter : Machine
         if (neighbour == null) { Debug.Log("Null neighbour: returning."); return; }
 
         // Pass item
+
+        // Instantiate the item
         Item toPass = Instantiate(ItemToOutput.gameObject).GetComponent<Item>();
-        toPass.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        
+        // Position and rotate the item
+        toPass.transform.position = new Vector3(transform.position.x, toPass.ProductionLine_YHeight, transform.position.z);
+        toPass.transform.localRotation = Quaternion.Euler(toPass.ProductionLine_Rotation); // Rotate(Item.rotation);// = Quaternion.Euler(Item.rotation);
+        toPass.transform.localScale = toPass.ProductionLine_Scale;
+
+        // Add it to our list of tiems
         AddItem(ref toPass);
+
+        // Pass it to our neighbour
         neighbour.Receive(ref toPass);  
     }
 

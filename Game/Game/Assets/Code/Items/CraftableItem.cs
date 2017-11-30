@@ -6,6 +6,7 @@ public class CraftableItem : Item
 {
     private float concentration;
 
+    [Header("Craftable variables")]
     [SerializeField]
     List<Item> ingredients;
 

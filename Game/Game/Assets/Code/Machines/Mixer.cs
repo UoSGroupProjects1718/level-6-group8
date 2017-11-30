@@ -118,7 +118,14 @@ public class Mixer : Machine
 
                 if (correctPotion)
                 {
-                    var item = Instantiate(potion, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
+                    // Instantiate the item
+                    CraftableItem item = Instantiate(potion).GetComponent<CraftableItem>();
+
+                    // Posotio, rotate and scale the item
+                    item.transform.position = new Vector3(transform.position.x, item.ProductionLine_YHeight, transform.position.z);
+                    item.transform.localRotation = Quaternion.Euler(item.ProductionLine_Rotation);
+                    item.transform.localScale = (item.ProductionLine_Scale);
+
                     return item;
                 }
             }
