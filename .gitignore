@@ -4,6 +4,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+Game/Game/Library/*
 
 */[Ll]ibrary/
 */[Tt]emp/
@@ -39,3 +40,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+

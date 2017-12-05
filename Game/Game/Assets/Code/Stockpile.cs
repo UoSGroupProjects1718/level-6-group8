@@ -61,17 +61,23 @@ public class Stockpile
 
                 -Joe
         */
-        if (Contains(item))
+        if(!IsFull())
         {
-            items[item.DisplayName] += val;
-        }
-        else
+            uint itemsToAdd = (uint)Math.Min(val, itemLimit - ItemCount);
+            if (Contains(item))
+            {
+                items[item.DisplayName] += itemsToAdd;
+            }
+            else
+            {
+                items.Add(item.DisplayName, itemsToAdd);
+            }
+            Debug.Log(string.Format("Added {0} items to {1}", itemsToAdd, factory.FactoryName)z);
+        } else
         {
-            items.Add(item.DisplayName, val);
+            Debug.Log("Factory cannot hold any more in stockpile.");
         }
-
-        Debug.Log(string.Format("Amount of {0}: {1}", item.DisplayName, items[item.DisplayName]));
-
+        
 
         //if (items.Count == 0)
         //{

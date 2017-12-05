@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -97,11 +98,7 @@ public class GameManager : MonoBehaviour
         LoadAllFactoryStatsFromFile();
     }
 
-    /// <summary>
-    /// This function is called once and only once at the beginning of the application
-    /// It calculates how much income you earned whilst you were offline
-    /// </summary>
-    private void CalculateOfflineIncome()
+    public TimeSpan GetTimespanSinceLastClose()
     {
         // What time is it now?
         System.DateTime timeAppOpen = System.DateTime.Now;
@@ -117,20 +114,29 @@ public class GameManager : MonoBehaviour
         System.TimeSpan difference = timeAppOpen - timeAppClose;
         Debug.Log(string.Format("The app was closed for (h:m:s): {0}", difference));
 
+        return difference;
+    }
 
+    /// <summary>
+    /// This function is called once and only once at the beginning of the application
+    /// It calculates how much income you earned whilst you were offline
+    /// </summary>
+    private void CalculateOfflineIncome()
+    {
         /* Calculate offline income here... */
+        var timespan = GetTimespanSinceLastClose();
 
         foreach (Factory factory in Overworld.Instance.Factories)
         {
-            float ppm = factory.PotionsPerMinute;
+            var ppm = factory.PotionsPerMinute;
 
             // You can do the rest
-
-            uint potionsGainedWhileOffline = 0;
+            var potionsGainedWhileOffline = Math.Floor(ppm * timespan.TotalMinutes);
 
             // Access the factories stockpile this like
             // Increment the number of potions the factory has by potionsGainedWhileOffline
-            factory.stockpile.AddOrIncrement(factory.Potion, potionsGainedWhileOffline);
+            Debug.Log(string.Format("Trying to add {0} potions to {1}.", potionsGainedWhileOffline, factory.FactoryName));
+            factory.stockpile.AddOrIncrement(factory.Potion, (uint)potionsGainedWhileOffline);
         }
     }
 
