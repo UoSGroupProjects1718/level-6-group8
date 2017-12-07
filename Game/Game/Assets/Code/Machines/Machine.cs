@@ -6,6 +6,8 @@ public enum MachineType
 {
     input,
     conveyer,
+    pestlemortar,
+    brewer,
     mixer,
     output
 }

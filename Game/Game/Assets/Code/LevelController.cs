@@ -438,6 +438,14 @@ public class LevelController : MonoBehaviour
             {
                 mach = Instantiate(Spawnables[4]).GetComponent<Mixer>();
             }
+            else if (machineFromFile.type.Equals("pestlemortar"))
+            {
+                mach = Instantiate(Spawnables[5]).GetComponent<PestleMortar>();
+            }
+            else if (machineFromFile.type.Equals("brewer"))
+            {
+                mach = Instantiate(Spawnables[6]).GetComponent<Brewer>();
+            }
             else
             {
                 return;

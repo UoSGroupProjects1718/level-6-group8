@@ -72,7 +72,7 @@ public class Stockpile
             {
                 items.Add(item.DisplayName, itemsToAdd);
             }
-            Debug.Log(string.Format("Added {0} items to {1}", itemsToAdd, factory.FactoryName)z);
+            Debug.Log(string.Format("Added {0} items to {1}", itemsToAdd, factory.FactoryName));
         } else
         {
             Debug.Log("Factory cannot hold any more in stockpile.");

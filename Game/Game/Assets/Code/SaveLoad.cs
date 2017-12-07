@@ -114,6 +114,8 @@ public static class SaveLoad
                         case MachineType.conveyer:
                         case MachineType.mixer:
                         case MachineType.output:
+                        case MachineType.pestlemortar:
+                        case MachineType.brewer:
 
                             // Create a MachineToFile object to hold all relevent information
                             MachineToFile mtf = new MachineToFile();

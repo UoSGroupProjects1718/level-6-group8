@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    rawIngredient,
+    compound,
+    potion,
+    waste
+}
+
 public abstract class Item : MonoBehaviour, IMoveable
 {
     /*
@@ -25,19 +33,22 @@ public abstract class Item : MonoBehaviour, IMoveable
 
     [Header("Item variables")]
     [SerializeField]
+    private ItemType itemType;
+    [SerializeField]
     private float cost;
+    [SerializeField]
+    string displayName;
+    [SerializeField]
+    Sprite itemSprite;
+
+
+    public ItemType ItemType { get { return itemType; } }
     public float Cost
     {
         get { return cost; }
         set { cost = value; }
     }
-
-    [SerializeField]
-    string displayName;
     public string DisplayName { get { return displayName; } }
-
-    [SerializeField]
-    Sprite itemSprite;
     public Sprite ItemSprite { get { return itemSprite; } }
 
     //public static bool operator== (Item left, Item right)

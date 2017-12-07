@@ -17,7 +17,7 @@ public class RecipePanel : MonoBehaviour
     [SerializeField]
     Text potionIngredientText;
 
-    public void SetInfo(CraftableItem crafted)
+    public void SetInfo(Potion crafted)
     {
         // Set the sprite
         image.sprite = crafted.ItemSprite;

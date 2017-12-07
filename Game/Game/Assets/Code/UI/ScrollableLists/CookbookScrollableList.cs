@@ -10,7 +10,7 @@ public class CookbookScrollableList : ScrollableList
         if (loaded == true) { return; }
         loaded = true;
 
-        int itemCount = GameManager.Instance.CraftableItems.Length;
+        int itemCount = GameManager.Instance.Potions.Length;
 
         RectTransform rowRectTransform = itemPrefab.GetComponent<RectTransform>();
         RectTransform containerRectTransform = gameObject.GetComponent<RectTransform>();
@@ -51,7 +51,7 @@ public class CookbookScrollableList : ScrollableList
             rectTransform.offsetMax = new Vector2(x, y);
 
             // Finally, update information
-            newItem.GetComponent<RecipePanel>().SetInfo(GameManager.Instance.CraftableItems[i].GetComponent<CraftableItem>());
+            newItem.GetComponent<RecipePanel>().SetInfo(GameManager.Instance.Potions[i].GetComponent<Potion>());
         }
     }
 }

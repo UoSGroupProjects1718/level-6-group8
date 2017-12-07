@@ -18,15 +18,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Ingredients")]
     [SerializeField]
-    Ingredient[] ingredients;
+    private Ingredient[] ingredients;
 
-    [Header("Craftable items")]
+    [Header("Potions")]
     [SerializeField]
-    CraftableItem[] craftableItems;
+    private Potion[] potions;
+
+    [Header("Compound")]
+    [SerializeField]
+    private Compound compound;
 
     [Header("Waste")]
     [SerializeField]
-    Waste waste;
+    private Waste waste;
 
     /* The player class object to hold all of the players stats, achievements, etc */
     private Player player;
@@ -34,9 +38,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public Factory CurrentFactory { get { return currentFactory; } }
     public Waste Waste { get { return waste; } }
+    public Compound Compound { get { return compound; } }
     public Player Player { get { return player; } }
     public Item[] Ingredients { get { return ingredients; } }
-    public CraftableItem[] CraftableItems { get { return craftableItems; } }
+    public CraftableItem[] Potions { get { return potions; } }
 
     void Awake()
     {

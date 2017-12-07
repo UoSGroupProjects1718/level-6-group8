@@ -94,7 +94,7 @@ public class Mixer : Machine
     private CraftableItem CreateItem()
     {
         // Loop through all craftable items
-        foreach (var potion in GameManager.Instance.CraftableItems)
+        foreach (var potion in GameManager.Instance.Potions)
         {
             // Before we do any checks, ensure we have the number of ingredients that this potion requires
             if (potion.Ingredients.Count == activeChildren.Count)
@@ -121,7 +121,7 @@ public class Mixer : Machine
                     // Instantiate the item
                     CraftableItem item = Instantiate(potion).GetComponent<CraftableItem>();
 
-                    // Posotio, rotate and scale the item
+                    // Posotion, rotate and scale the item
                     item.transform.position = new Vector3(transform.position.x, item.ProductionLine_YHeight, transform.position.z);
                     item.transform.localRotation = Quaternion.Euler(item.ProductionLine_Rotation);
                     item.transform.localScale = (item.ProductionLine_Scale);

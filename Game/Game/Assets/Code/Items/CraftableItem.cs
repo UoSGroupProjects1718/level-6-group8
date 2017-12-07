@@ -20,11 +20,6 @@ public class CraftableItem : Item
     {
         get { return ingredients; }
     }
-
-    void Start ()
-    {
-		
-	}
 	
     /// <summary>
     /// Changes the concentration of a craftableItem by a set amount.
