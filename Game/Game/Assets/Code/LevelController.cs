@@ -93,6 +93,21 @@ public class LevelController : MonoBehaviour
 	}
 
     /// <summary>
+    /// This function runs once after the level has been loaded in.
+    /// </summary>
+    public void OnLevelLoad()
+    {
+        /*
+            Access the potion variables like this:
+        */
+
+        Debug.Log(string.Format("Potion to make: {0}", factory.Potion.DisplayName));
+
+        // factory.Potion.DisplayName;
+        // factory.Potion.ItemSprite;
+    }
+
+    /// <summary>
     /// One call of this function represents one cycle within our production line
     /// </summary>
     private void Run()

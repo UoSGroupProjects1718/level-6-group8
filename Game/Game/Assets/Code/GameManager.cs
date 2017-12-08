@@ -200,6 +200,9 @@ public class GameManager : MonoBehaviour
 
         // Find the level controller and load the factory
         GameObject.Find("LevelController").GetComponent<LevelController>().LoadLevelFromFactory(factory);
+
+        // Call the level controllers OnLevelLoad function
+        GameObject.Find("LevelController").GetComponent<LevelController>().OnLevelLoad();
     }
 
     /// <summary>
