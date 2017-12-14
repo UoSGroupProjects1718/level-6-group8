@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Code.Player;
-using NUnit.Framework.Constraints;
+// using NUnit.Framework.Constraints; Disabled for android
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
