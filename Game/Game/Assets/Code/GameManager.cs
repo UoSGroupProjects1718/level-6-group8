@@ -69,23 +69,23 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaitInit()
     {
         /*
-            We wait here for .1 seconds just to give enough time 
+            We wait here for .2 seconds just to give enough time 
             for everything else to load, such as the Overworld 
             Singleton instance.
         */
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Init();
     }
 
     /// <summary>
     /// This method is called once and only once at the very start of the game 
-    /// when the singleton gets created,
+    /// when the singleton gets created
     /// </summary>
     private void Init()
     {
         // Load our player
         /*
-            The Player constructor calls an Init() method which takes care of 
+            The Player constructor calls an InitPlayer() method which takes care of 
             loading the player stats in from file and loading the achievements, etc. 
         */
         player = new Player();
@@ -95,31 +95,15 @@ public class GameManager : MonoBehaviour
 
         // Calculate offline income...
         CalculateOfflineIncome();
+
+        // By default, factory 0 will be unlocked
+        GetFacoryByID(0).UnlockFactory();
     }
 
     void Start()
     {
         // At the start of the game, load factory stats from file
         LoadAllFactoryStatsFromFile();
-    }
-
-    public TimeSpan GetTimespanSinceLastClose()
-    {
-        // What time is it now?
-        System.DateTime timeAppOpen = System.DateTime.Now;
-
-        // What time was it when the application was closed?
-        System.DateTime timeAppClose = SaveLoad.GetAppCloseTime();
-
-        // Debug
-        Debug.Log(string.Format("You last closed the app on: {0}", timeAppClose));
-        Debug.Log(string.Format("You have now opened the app on: {0}", timeAppOpen));
-
-        // How long was it closed for?
-        System.TimeSpan difference = timeAppOpen - timeAppClose;
-        Debug.Log(string.Format("The app was closed for (h:m:s): {0}", difference));
-
-        return difference;
     }
 
     /// <summary>
@@ -130,6 +114,12 @@ public class GameManager : MonoBehaviour
     {
         /* Calculate offline income here... */
         var timespan = GetTimespanSinceLastClose();
+
+        // If the app hasn't been opened before it returns MinValue
+        if (timespan == TimeSpan.MinValue)
+        {
+            return;
+        }
 
         foreach (Factory factory in Overworld.Instance.Factories)
         {
@@ -143,6 +133,31 @@ public class GameManager : MonoBehaviour
             Debug.Log(string.Format("Trying to add {0} potions to {1}.", potionsGainedWhileOffline, factory.FactoryName));
             factory.stockpile.AddOrIncrement(factory.Potion, (uint)potionsGainedWhileOffline);
         }
+    }
+
+    public TimeSpan GetTimespanSinceLastClose()
+    {
+        // What time is it now?
+        System.DateTime timeAppOpen = System.DateTime.Now;
+
+        // What time was it when the application was closed?
+        System.DateTime timeAppClose = SaveLoad.GetAppCloseTime();
+
+        // If the app hasn't been opened before, return
+        if (timeAppClose == DateTime.MinValue)
+        {
+            return TimeSpan.MinValue;
+        }
+
+        // Debug
+        Debug.Log(string.Format("You last closed the app on: {0}", timeAppClose));
+        Debug.Log(string.Format("You have now opened the app on: {0}", timeAppOpen));
+
+        // How long was it closed for?
+        System.TimeSpan difference = timeAppOpen - timeAppClose;
+        Debug.Log(string.Format("The app was closed for (h:m:s): {0}", difference));
+
+        return difference;
     }
 
     private IEnumerator WaitAndLoadAllFactoryStatsFromFile()
@@ -166,6 +181,15 @@ public class GameManager : MonoBehaviour
     public void SetFactory(Factory factory)
     {
         currentFactory = factory;
+    }
+
+    public Factory GetFacoryByID(int id)
+    {
+        foreach (var factory in Overworld.Instance.Factories)
+        {
+            if (factory.FactoryId == id) { return factory; }
+        }
+        return null;
     }
 
     /// <summary>

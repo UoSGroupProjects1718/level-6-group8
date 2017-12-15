@@ -16,6 +16,12 @@ public class Inputter : Machine
 
     public void SetOutputItem(Ingredient item)
     {
+        if (item == null)
+        {
+            ItemToOutput = null;
+            return;
+        }
+
         ItemToOutput = item;
         Debug.Log(string.Format("Inputter \"{0}\" item set as: {1}", gameObject.name, ItemToOutput.DisplayName));
 
@@ -78,7 +84,7 @@ public class Inputter : Machine
 
     private void OnMouseDown()
     {
-        if (LevelController.Instance.BuildStatus != BuildStatus.delete)
+        if (LevelController.Instance.BuildStatus != BuildMode.delete)
         {
             LevelController.Instance.SelectedInputter = this;
             GameObject.Find("Canvas").GetComponent<GameCanvas>().LoadIngredientList();

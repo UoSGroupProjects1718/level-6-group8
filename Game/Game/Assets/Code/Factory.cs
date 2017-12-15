@@ -18,15 +18,31 @@ public class FactoryStats
     public float potionsPerMinute;
 }
 
+/// <summary>
+/// The Factory class will have an array of type DefaultMachines.
+/// Each object of this class holds data about which machine the 
+/// factory has by default, its x,y position and its direction.
+/// For example, a Factory will have an output on (10, 10).
+/// </summary>
+[System.Serializable]
+public class DefaultMachine
+{
+    public MachineType machineType;
+    public int x;
+    public int y;
+    public Direction dir;
+}
+
 public class Factory : MonoBehaviour
 {
-    private bool solved;
-    private bool unlocked;
-    private uint score;
-    private uint stars;
-    private int ticksToSolve;
-    private int totalMachineCost;
-    private float potionsPerMinute;
+    [Header("Visible for debugging")]
+    [SerializeField] private bool solved;   
+    [SerializeField] private bool unlocked;
+    [SerializeField] private uint score;
+    [SerializeField] private uint stars;
+    [SerializeField] private int ticksToSolve;
+    [SerializeField] private int totalMachineCost;
+    [SerializeField] private float potionsPerMinute;
 
     public bool Solved { get { return solved; } set { solved = value; } }
     public uint Score { get { return score; } set { score = value; } }
@@ -57,6 +73,10 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private int height;
 
+    [Header("Default Machines")]
+    [SerializeField]
+    private DefaultMachine[] defaultMachines;
+
     [Header("Potion to make")]
     [SerializeField]
     private Potion potion;
@@ -83,6 +103,7 @@ public class Factory : MonoBehaviour
     public string FactoryName { get { return factoryName; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
+    public DefaultMachine[] DefaultMachines { get { return defaultMachines; } }
 
     void Start()
     {
@@ -132,7 +153,20 @@ public class Factory : MonoBehaviour
         FactoryStats fs =  SaveLoad.LoadFactoryStats(this);
 
         // Null check (if the file doesn't exist)
-        if (fs == null) { return; }
+        if (fs == null)
+        {
+            // Then everything defaults...
+
+            unlocked = false;
+            solved = false;
+            score = 0;
+            ticksToSolve = 0;
+            Stars = 0;
+            potionsPerMinute = 0;
+            Overworld.Instance.AssignFactoryStars(factoryID);
+
+            return;
+        }
 
         // Update our variables
         unlocked = fs.unlocked;
@@ -143,7 +177,7 @@ public class Factory : MonoBehaviour
         potionsPerMinute = fs.potionsPerMinute;
 
         // Assign factory stars
-        Overworld.Instance.AssignFactoryStars();
+        Overworld.Instance.AssignFactoryStars(FactoryId);
     }
 
     /// <summary>

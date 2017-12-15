@@ -30,36 +30,61 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public virtual void OnClick()
-    {
-        LevelController lc = GameObject.Find("LevelController").GetComponent<LevelController>();
-        lc.SpawnOn(x, y);
-    }
+    #region PcControls
 
+    // Mouse controls, specific to PC
     void OnMouseOver()
     {
-        Transform parent = transform.parent;
-
+#if UNITY_EDITOR
+        // Left click
         if (Input.GetMouseButtonDown(0))
         {
             LeftClick();
         }
+        
+        // Right click
         else if (Input.GetMouseButtonDown(1))
         {
             RightClick();
         }
+#endif
     }
 
     private void LeftClick()
     {
         if (!active) { return; }
-        OnClick();
+
+        LevelController.Instance.SpawnOn(x, y);
     }
 
     private void RightClick()
     {
         ToggleActive();
     }
+
+    #endregion
+
+    #region MobileControls
+
+    // This will detect when a user taps on the tile
+    void OnMouseDown()
+    {
+        // Return unless we're active
+        if (!active) { return; }
+
+        // Check that the user is in an appropriate build mode
+        // (What do they have selected?)
+        switch (LevelController.Instance.BuildStatus)
+        {
+            case BuildMode.brewer:
+            case BuildMode.conveyer:
+            case BuildMode.grinder:
+                LevelController.Instance.SpawnOn(x, y);
+                break;
+        }
+    }
+
+    #endregion
 
     public void SetActiveStatus(bool foo)
     {

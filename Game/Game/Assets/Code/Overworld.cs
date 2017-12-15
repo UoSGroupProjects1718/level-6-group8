@@ -35,34 +35,33 @@ public class Overworld : MonoBehaviour
         }
     }
 
-    public void AssignFactoryStars()
+    public void AssignFactoryStars(int theFactoryID)
     {
         foreach (var factory in factories)
         {
-            uint starCounter = 0;
-            foreach (int scoreThreshold in factory.ScoreThresholds)
+            if (factory.FactoryId == theFactoryID)
             {
-                if (factory.Score > scoreThreshold)
+                uint starCounter = 0;
+                foreach (int scoreThreshold in factory.ScoreThresholds)
                 {
-                    starCounter++;
+                    if (factory.Score > scoreThreshold)
+                    {
+                        starCounter++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    break;
-                }
-            }
-            factory.Stars = starCounter;
-            
-            //foreach (GameObject star in factory.transform.Find("Canvas").ch)
-            //{
-            //    if (starCounter == 0) break;
-            //    star.gameObject.GetComponent<Image>().sprite = FilledStar;
-            //}
+                factory.Stars = starCounter;
 
-            for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
-            {
-                if (starCounter == 0) break;
-                factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
+                for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
+                {
+                    if (starCounter == 0) break;
+                    factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
+                }
+
+                return;
             }
         }
     }

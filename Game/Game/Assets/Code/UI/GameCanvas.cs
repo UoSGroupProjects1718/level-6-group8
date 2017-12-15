@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject ingredientListPanel;
 
-    void Start() { }
+    [Header("Debug text - build mode")]
+    public Text debugBuildModeText;
 
     public void LoadIngredientList()
     {
@@ -24,5 +26,10 @@ public class GameCanvas : MonoBehaviour
     public void CloseIngredientList()
     {
         ingredientListParent.SetActive(false);
+    }
+
+    public void Debug_SetBuildModeText(BuildMode bm)
+    {
+        debugBuildModeText.text = string.Format("Mode: {0}", bm.ToString());
     }
 }

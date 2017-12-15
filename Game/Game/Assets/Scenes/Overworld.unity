@@ -754,12 +754,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solved: 0
+  unlocked: 0
+  score: 0
+  stars: 0
+  ticksToSolve: 0
+  totalMachineCost: 0
+  potionsPerMinute: 0
   factoryID: 0
   starsRequired: 0
   factoryName: The Obtuse Orchid
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 6
   height: 6
+  defaultMachines:
+  - machineType: 5
+    x: 0
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 1
+    y: 5
+    dir: 2
+  - machineType: 0
+    x: 3
+    y: 5
+    dir: 2
+  - machineType: 0
+    x: 5
+    y: 1
+    dir: 3
+  - machineType: 0
+    x: 5
+    y: 3
+    dir: 3
   potion: {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
   stockpileLimit: 2000
   scoreThresholds: 0a000000140000001e000000
@@ -3960,6 +3988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleAmount: 0.1
+  perspectiveZoomSpeed: 0.5
 --- !u!1 &743361522 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
@@ -3994,12 +4023,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solved: 0
+  unlocked: 0
+  score: 0
+  stars: 0
+  ticksToSolve: 0
+  totalMachineCost: 0
+  potionsPerMinute: 0
   factoryID: 1
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 7
   height: 7
+  defaultMachines: []
   potion: {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000
@@ -4049,12 +4086,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solved: 0
+  unlocked: 0
+  score: 0
+  stars: 0
+  ticksToSolve: 0
+  totalMachineCost: 0
+  potionsPerMinute: 0
   factoryID: 3
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 7
   height: 7
+  defaultMachines: []
   potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000
@@ -10983,12 +11028,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solved: 0
+  unlocked: 0
+  score: 0
+  stars: 0
+  ticksToSolve: 0
+  totalMachineCost: 0
+  potionsPerMinute: 0
   factoryID: 4
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 10
   height: 10
+  defaultMachines: []
   potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000

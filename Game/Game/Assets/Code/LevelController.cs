@@ -8,9 +8,12 @@ using UnityEngine.SocialPlatforms.Impl;
 /// This enum is used to control whether the player 
 /// is currently building or deleting machines
 /// </summary>
-public enum BuildStatus
+public enum BuildMode
 {
-    build,
+    conveyer = 0,
+    grinder,
+    brewer,
+    rotate,
     delete,
     none
 }
@@ -28,15 +31,13 @@ public class LevelController : MonoBehaviour
     bool hasCorrectPotionHitEnd;
     int tickCounter;
     int levelWidth, levelHeight;
-    int currentlySelected;
+    BuildMode buildingMode;
 
     [Header("Speed variables")]
     [SerializeField]
     float tickWaitTime;
     [SerializeField]
     float tickWaitTimeSpedUp;
-
-    BuildStatus buildStatus;
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
     to change the ingredient of when the player taps a new ingredient from the list */
@@ -54,7 +55,7 @@ public class LevelController : MonoBehaviour
   
     public int TickCounter { get { return tickCounter; } }
     public float TickWaitTime { get { if (speedUp) return tickWaitTimeSpedUp; else return tickWaitTime; } }
-    public BuildStatus BuildStatus { get { return buildStatus; } }
+    public BuildMode BuildStatus { get { return buildingMode; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
     /* A getter property for the factory that we are currently inside of. */
     public Factory LevelFactory { get { return factory; } }
@@ -72,7 +73,6 @@ public class LevelController : MonoBehaviour
         speedUp = false;
         tickCounter = 0;
         hasCorrectPotionHitEnd = false;
-        currentlySelected = -1;
         // DebugLoadLevel();
     }
 	
@@ -97,6 +97,9 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void OnLevelLoad()
     {
+        SetBuildMode(5);
+
+
         /*
             Access the potion variables like this:
         */
@@ -185,41 +188,22 @@ public class LevelController : MonoBehaviour
     /// Updates which machine we have currently selected to build
     /// </summary>
     /// <param name="i">array of machines indexer</param>
-    public void SetCurrentlySelected(int i)
+    public void SetBuildMode(int i)
     {
-        // If the same button is pressed again,
-        if (currentlySelected == i)
-        {
-            // Unselect the currently selected
-            currentlySelected = -1;
+        BuildMode bm = (BuildMode)i;
 
+        // If the same button is pressed again
+        if (bm == buildingMode)
+        {
             // Set build mode to none
-            buildStatus = BuildStatus.none;
-        }
-        // Otherwise, if a new button is pressed
-        else
-        {
-            // This is our selected item
-            currentlySelected = i;
+            buildingMode = BuildMode.none;
 
-            // Build status is now build
-            buildStatus = BuildStatus.build;
-        }
-    }
-
-    /// <summary>
-    /// Toggles whether our buildStatus is in delete mode
-    /// </summary>
-    /// <param name="bs"></param>
-    public void ToggleDeleteMode()
-    {
-        if (buildStatus == BuildStatus.delete)
-        {
-            buildStatus = BuildStatus.none;
+            GameObject.Find("Canvas").GetComponent<GameCanvas>().Debug_SetBuildModeText(BuildMode.none);
         }
         else
         {
-            buildStatus = BuildStatus.delete;
+            buildingMode = bm;
+            GameObject.Find("Canvas").GetComponent<GameCanvas>().Debug_SetBuildModeText(bm);
         }
     }
 
@@ -231,14 +215,37 @@ public class LevelController : MonoBehaviour
     public void SpawnOn(int x, int y)
     {
         // Return checks
-        if (currentlySelected == -1) { return; }
-        if (buildStatus != BuildStatus.build) { return; }
+        switch (BuildStatus)
+        {
+            case BuildMode.delete:
+            case BuildMode.rotate:
+            case BuildMode.none:
+                return;
+        }
 
         // If the tile on this position owns a tile, return
         if (factory.level.grid[y, x].Machine != null) { return; }
 
         // Instantiate the machine
-        Machine machine = Instantiate(Spawnables[currentlySelected], new Vector3(x, 0, y), Quaternion.identity).GetComponent<Machine>();
+        Machine machine;
+
+        int spawnIndex;
+        switch (BuildStatus)
+        {
+            case BuildMode.conveyer:
+                spawnIndex = 3;
+                break;
+            case BuildMode.grinder:
+                spawnIndex = 4;
+                break;
+            case BuildMode.brewer:
+                spawnIndex = 5;
+                break;
+            default:
+                return;
+        }
+
+        machine = Instantiate(Spawnables[spawnIndex], new Vector3(x, 0, y), Quaternion.identity).GetComponent<Machine>();
 
         // Set its rotation and parent
         machine.SetDir(Direction.up);
@@ -381,43 +388,56 @@ public class LevelController : MonoBehaviour
                     // Default it to active
                     tile.SetActiveStatus(true);
                 }
-                // If our levelFile exists
-                if (ltf != null)
-                {
-                    // Loop through each machine to see if we need to spawn it
-                    foreach (var machineFromFile in ltf.machines)
-                    {
-                        HandleMachine(y, x, ref tile, machineFromFile);
-                    }
-
-                    foreach (var inputFromFile in ltf.inputs)
-                    {
-                        HandleInput(y, x, ref tile, inputFromFile);                   
-                    }
-                }
-                // If our file doesn't exist, we have to spawn our own inputter
-                else
-                {
-                    // Spawn an inputter on top left corner
-                    if (y == levelHeight - 1 && x == levelWidth - 1)
-                    {
-                        Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
-                        tile.SetChild(inputter);
-                        this.factory.level.machines.Add(inputter);
-                        inputter.SetDir(Direction.down);
-                    }
-
-                    // Spawn an outputt on (0, 0);
-                    if (y == 0 && x == 0)
-                    {
-                        Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
-                        tile.SetChild(output);
-                        this.factory.level.machines.Add(output);
-                    }
-                }
 
                 // Add our tile into our level array
                 this.factory.level.grid[y, x] = tile;
+            }
+        }
+
+        // If our levelFile exists
+        if (ltf != null)
+        {
+            // Loop through each machine and spawn it
+            foreach (var machineFromFile in ltf.machines)
+            {
+                HandleMachine(machineFromFile);
+            }
+
+            foreach (var inputFromFile in ltf.inputs)
+            {
+                HandleInput(inputFromFile);
+            }
+        }
+        // Otherwise, spawn our default machines...
+        else
+        {
+            foreach (var machine in factory.DefaultMachines)
+            {
+                if (machine.machineType == MachineType.input)
+                {
+                    InputToFile input = new InputToFile();
+
+                    input.dir = machine.dir;
+                    input.type = machine.machineType.ToString();
+                    input.x = machine.x;
+                    input.y = machine.y;
+                    input.ingredient = "";
+
+                    HandleInput(input);
+                }
+                else
+                {
+                    MachineToFile mach = new MachineToFile();
+
+                    mach.dir = machine.dir;
+                    mach.type = machine.machineType.ToString();
+                    mach.x = machine.x;
+                    mach.y = machine.y;
+
+                    HandleMachine(mach);
+                }
+
+
             }
         }
     }
@@ -426,80 +446,69 @@ public class LevelController : MonoBehaviour
     /// This checks a given MachineToFile, checks if it needs to spawn and 
     /// if it doesn, sets variables
     /// </summary>
-    /// <param name="y">y position in the level to check</param>
-    /// <param name="x">x posision in the level to check</param>
-    /// <param name="tile">the tile the machine will be parent of</param>
     /// <param name="machineFromFile">the machine data object loaded from json</param>
-    private void HandleMachine(int y, int x, ref Tile tile, MachineToFile machineFromFile)
+    private void HandleMachine(MachineToFile machineFromFile)
     {
         Transform machineHolder = transform.Find("MachineHolder");
 
-        // If it is on this position
-        if (machineFromFile.y == y && machineFromFile.x == x)
+        Machine mach;
+
+        // Check which type of machine it is and spawn it
+        if (machineFromFile.type.Equals("output"))
         {
-            // Create the machine
-            Machine mach;
-
-            // Check which type of machine it is and spawn it
-            if (machineFromFile.type.Equals("conveyer"))
-            {
-                mach = Instantiate(Spawnables[1]).GetComponent<Conveyer>();
-            }
-            else if (machineFromFile.type.Equals("output"))
-            {
-                mach = Instantiate(Spawnables[3]).GetComponent<Output>();
-            }
-            else if (machineFromFile.type.Equals("mixer"))
-            {
-                mach = Instantiate(Spawnables[4]).GetComponent<Mixer>();
-            }
-            else if (machineFromFile.type.Equals("pestlemortar"))
-            {
-                mach = Instantiate(Spawnables[5]).GetComponent<PestleMortar>();
-            }
-            else if (machineFromFile.type.Equals("brewer"))
-            {
-                mach = Instantiate(Spawnables[6]).GetComponent<Brewer>();
-            }
-            else
-            {
-                return;
-            }
-
-            // Set it as a child to the tile
-            tile.SetChild(mach);
-
-            // Add it to oru list of machines
-            factory.level.machines.Add(mach);
-
-            // Update its direction
-            mach.SetDir((Direction)machineFromFile.dir);
-
-            // It is a child of our MachineHolder
-            mach.gameObject.transform.SetParent(machineHolder);
+            mach = Instantiate(Spawnables[2]).GetComponent<Output>();
         }
+        else if (machineFromFile.type.Equals("conveyer"))
+        {
+            mach = Instantiate(Spawnables[3]).GetComponent<Conveyer>();
+        }
+        else if (machineFromFile.type.Equals("grinder"))
+        {
+            mach = Instantiate(Spawnables[4]).GetComponent<PestleMortar>();
+        }
+        else if (machineFromFile.type.Equals("brewer"))
+        {
+            mach = Instantiate(Spawnables[5]).GetComponent<Brewer>();
+        }
+        else
+        {
+            return;
+        }
+
+        // Set it as a child to the tile
+        this.factory.level.grid[machineFromFile.y, machineFromFile.x].SetChild(mach);
+
+        // Add it to our list of machines
+        factory.level.machines.Add(mach);
+
+        // Update its direction
+        mach.SetDir((Direction)machineFromFile.dir);
+
+        // It is a child of our MachineHolder
+        mach.gameObject.transform.SetParent(machineHolder);
     }
 
     /// <summary>
     /// This checks a given InputToFile, checks if it needs to spawn and 
     /// if it doesn, sets variables
     /// </summary>
-    /// <param name="y">y position in the level to check</param>
-    /// <param name="x">x posision in the level to check</param>
-    /// <param name="tile">the tile the machine will be parent of</param>
     /// <param name="InputFromFile">the input data object loaded from json</param>
-    private void HandleInput(int y, int x, ref Tile tile, InputToFile InputFromFile)
+    private void HandleInput(InputToFile InputFromFile)
     {
-        if (InputFromFile.y == y && InputFromFile.x == x)
+        // Create a temporary object to be our inputter
+        Inputter inputter = Instantiate(Spawnables[1]).GetComponent<Inputter>();
+
+        // If its an inputter then we need to see what ingredient it inputs to the level
+
+        // use the GetAdditionalInfo method to get information on the inputters ingredient
+        var ingredientString = InputFromFile.ingredient;
+
+        if (ingredientString == "")
         {
-            // Create a temporary object to be our inputter
-            Inputter inputter = Instantiate(Spawnables[2]).GetComponent<Inputter>();
-
-            // If its an inputter then we need to see what ingredient it inputs to the level
-
-            // use the GetAdditionalInfo method to get information on the inputters ingredient
-            var ingredientString = InputFromFile.ingredient;
-
+            inputter.SetOutputItem(null);
+        }
+        else
+        {
             // Loop through each ingredient to find which one this is
             foreach (Ingredient ingredient in GameManager.Instance.Ingredients)
             {
@@ -508,16 +517,16 @@ public class LevelController : MonoBehaviour
                     inputter.SetOutputItem(ingredient);
                 }
             }
-
-            // Set it as a child to the tile
-            tile.SetChild(inputter);
-
-            // Add it to our list of machines
-            factory.level.machines.Add(inputter);
-
-            // Update its direction
-            inputter.SetDir((Direction)InputFromFile.dir);
         }
+
+        // Set it as a child to the tile
+        factory.level.grid[InputFromFile.y, InputFromFile.x].SetChild(inputter);
+
+        // Add it to our list of machines
+        factory.level.machines.Add(inputter);
+
+        // Update its direction
+        inputter.SetDir((Direction)InputFromFile.dir);
     }
 
     /// <summary>

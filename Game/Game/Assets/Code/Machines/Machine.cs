@@ -174,24 +174,38 @@ public abstract class Machine : MonoBehaviour
 
     protected void ResetTickCounter() { tickCounter = 0; }
 
+    #region PcControls
     private void OnMouseOver()
     {
-        // Left click
-        if (Input.GetMouseButtonDown(0))
-        {
-            // If we're in delete mode
-            if (LevelController.Instance.BuildStatus == BuildStatus.delete)
-            {
-                DeleteSelf();
-            }
-        }
-
         // Right click
         if (Input.GetMouseButtonDown(1))
         {
             Rotate();
         }
     }
+    #endregion
+
+    #region MobileControls
+
+    // This will detect when a user taps on the tile
+    void OnMouseDown()
+    {
+        // Check that the user is in an appropriate build mode
+        // (What do they have selected?)
+        switch (LevelController.Instance.BuildStatus)
+        {
+            case BuildMode.rotate:
+                Rotate();
+                break;
+            case BuildMode.delete:
+                // Don't delete if it's an input or an ouput
+                // (they are static and cannot be moved, rotated or deleted)
+                if (type == MachineType.input || type == MachineType.output) { return; }
+                DeleteSelf();
+                break;
+        }
+    }
+    #endregion
 
     protected void DeleteSelf()
     {

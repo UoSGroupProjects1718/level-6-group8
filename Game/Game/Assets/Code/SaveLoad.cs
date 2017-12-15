@@ -17,11 +17,16 @@ public static class SaveLoad
 {
     private static string GetSaveDirectory()
     {
+#if UNITY_EDITOR
         // Get the current directory
         StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());
         currentDir.Append("\\SaveData");
-
         return currentDir.ToString();
+
+#elif UNITY_ANDROID
+        return Application.persistentDataPath;
+#endif
+
     }
 
     /// <summary>
@@ -320,6 +325,10 @@ public static class SaveLoad
         // Append filename and file extension
         saveDir.Append("\\AppCloseDateTime.json");
 
+        if (!File.Exists(saveDir.ToString()))
+        {
+            return default(DateTime);
+        }
 
         // Read from file
         string json = System.IO.File.ReadAllText(saveDir.ToString());

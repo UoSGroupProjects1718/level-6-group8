@@ -6,18 +6,36 @@ public class MoveCamera : MonoBehaviour
     [SerializeField]
     private float scaleAmount;
 
+    [Header("Camera zoom speed")]
+    [SerializeField]
+    private float perspectiveZoomSpeed;
 
+    // Perspective zoom limits
+    int zoomMin = 30;
+    int zoomMax = 60;
+
+    // Camera pinch to zoom speed on ortho
+    float orthoZoomSpeed = .5f;
+
+    // Camera movement
     Vector2 touchPoint;
     Vector2 currentTouchPoint;
     Vector3 cameraStartPoint;
 
     void Update()
     {
-        TouchInput();
-        // MouseInput();
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            TouchDrag();
+            TouchPinchToZoom();
+        }
+        else if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            MouseInput();
+        }
     }
 
-    private void TouchInput()
+    private void TouchDrag()
     {
         // On the frame that the user touched...
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -71,6 +89,37 @@ public class MoveCamera : MonoBehaviour
                 normalizedDifference.y = -normalizedDifference.y;
 
                 transform.position = new Vector3(cameraStartPoint.x + normalizedDifference.x, cameraStartPoint.y, cameraStartPoint.z + normalizedDifference.y);
+            }
+        }
+    }
+
+    private void TouchPinchToZoom()
+    {
+        // https://unity3d.com/learn/tutorials/topics/mobile-touch/pinch-zoom
+
+        // Only pinch to zoom if there are two touches in the device
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            Vector2 touchZeroPreviousPosition = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePreviousPosition = touchOne.position - touchOne.deltaPosition;
+
+            float prevTouchDeltaMag = (touchZeroPreviousPosition - touchOnePreviousPosition).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOnePreviousPosition).magnitude;
+
+            float deltaMagnitideDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            if (Camera.main.orthographic)
+            {
+                Camera.main.orthographicSize += deltaMagnitideDiff * orthoZoomSpeed;
+                Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, .1f);
+            }
+            else
+            {
+                Camera.main.fieldOfView += deltaMagnitideDiff * perspectiveZoomSpeed;
+                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, zoomMin, zoomMax);
             }
         }
     }
