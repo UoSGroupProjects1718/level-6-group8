@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b481598ecd2a1c042a709a414ee0f13c
-timeCreated: 1511945715
+timeCreated: 1513436727
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,8 @@ TextureImporter:
     21300018: assets UI_1
     21300020: assets UI_2
     21300022: assets UI_3
+    21300024: assets UI_4
+    21300026: assets UI_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -272,6 +274,34 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 170, y: 186, z: 146, w: 62}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: assets UI_4
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 340
+        width: 938
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: assets UI_5
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 939
+        width: 62
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 7, y: 3, z: 7, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
