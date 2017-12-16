@@ -1,22 +1,54 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameCanvas : MonoBehaviour
 {
-    // Dont touch these, they works perfectly
-    [Header("Ingredient Selection Parent")]
+    [Header("UI Parents")]
+    [SerializeField]
+    GameObject EntryPanel;
+
+    [SerializeField]
+    GameObject selectionListParent;
+
     [SerializeField]
     GameObject ingredientListParent;
 
-    [Header("Ingredient list scrollable")]
     [SerializeField]
     GameObject ingredientListPanel;
 
     [Header("Debug text - build mode")]
     public Text debugBuildModeText;
 
+    /// <summary>
+    ///     Initilization for the UI objects
+    ///     @Params Factory
+    /// </summary>
+
+    public void BuildUI(Factory factory)
+    {
+        this.GetComponent<UI_FactoryEntry>().UpdateUI(factory);
+    }
+
+    /// <summary>
+    ///     Toggles the Entry Panel
+    /// </summary>
+    public void ToggleEntryPanel()
+    {
+        EntryPanel.SetActive(!EntryPanel.activeSelf);
+    }
+
+    /// <summary>
+    ///     Toggles the Selection Panel
+    /// </summary>
+    public void ToggleSelectionPanel()
+    {
+        selectionListParent.SetActive(!selectionListParent.activeSelf);
+    }
+
+    //TODO: maybe overhaul this (John)
     public void LoadIngredientList()
     {
         ingredientListParent.SetActive(true);

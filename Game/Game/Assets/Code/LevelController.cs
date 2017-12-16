@@ -39,6 +39,10 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     float tickWaitTimeSpedUp;
 
+    // UI Controller
+    [SerializeField]
+    private GameObject UI_Controller;
+
     /* This is used to remember which inputter the player clicked on, so we know which inputter
     to change the ingredient of when the player taps a new ingredient from the list */
     Inputter selectedInputter; 
@@ -99,15 +103,9 @@ public class LevelController : MonoBehaviour
     {
         SetBuildMode(5);
 
-
-        /*
-            Access the potion variables like this:
-        */
-
-        Debug.Log(string.Format("Potion to make: {0}", factory.Potion.DisplayName));
-
-        // factory.Potion.DisplayName;
-        // factory.Potion.ItemSprite;
+        // UI Functions 
+        UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
+        UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
     }
 
     /// <summary>
