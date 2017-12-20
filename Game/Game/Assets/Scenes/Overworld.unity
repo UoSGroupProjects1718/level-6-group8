@@ -964,6 +964,10 @@ Prefab:
       propertyPath: m_TagString
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3300000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
@@ -4034,8 +4038,8 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 7
-  height: 7
+  width: 15
+  height: 5
   defaultMachines: []
   potion: {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   stockpileLimit: 0

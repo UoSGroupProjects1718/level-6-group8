@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -40,6 +42,9 @@ public class MoveCamera : MonoBehaviour
         // On the frame that the user touched...
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
+            // Raycast to ensure that we didnt tap on UI...
+            if (IsPointerOverUIObject(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y)) { return; }
+
             // Get the point on the screen we touched
             touchPoint = Input.GetTouch(0).position;
 
@@ -50,6 +55,9 @@ public class MoveCamera : MonoBehaviour
         // If the user is dragging...
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
+            // Raycast to ensure that we didnt tap on UI...
+            if (IsPointerOverUIObject(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y)) { return; }
+
             // Where are we currently touching
             currentTouchPoint = Input.GetTouch(0).position;
 
@@ -129,6 +137,9 @@ public class MoveCamera : MonoBehaviour
         // On the frame that we left click...
         if (Input.GetMouseButtonDown(0))
         {
+            // Raycast to ensure that we didnt click on UI...
+            if (IsPointerOverUIObject(Input.mousePosition.x, Input.mousePosition.y)) { return; }
+
             // Get the point on the screen we touched
             touchPoint = Input.mousePosition;
 
@@ -139,6 +150,9 @@ public class MoveCamera : MonoBehaviour
         // If we're holding the mouse...
         if (Input.GetMouseButton(0))
         {
+            // Raycast to ensure that we didnt click on UI...
+            if (IsPointerOverUIObject(Input.mousePosition.x, Input.mousePosition.y)) { return; }
+
             // Where are we currently touching
             currentTouchPoint = Input.mousePosition;
 
@@ -195,5 +209,24 @@ public class MoveCamera : MonoBehaviour
         // Convert to vector
         Vector2 newVec = new Vector2(Mathf.Cos(vectorAngle), Mathf.Sin(vectorAngle));
         return newVec;
+    }
+
+    /// <summary>
+    /// Checks to see if the provided (x, y) coordinate is over a UI object
+    /// </summary>
+    /// <param name="x">Mouse/Touch x pos</param>
+    /// <param name="y">Mouse/Touch y pos</param>
+    /// <returns>True if over a UI object, otherwise false</returns>
+    private bool IsPointerOverUIObject(float x, float y)
+    {
+        // https://answers.unity.com/questions/1073979/android-touches-pass-through-ui-elements.html
+
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(x, y);
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        return (results.Count > 0);
     }
 }

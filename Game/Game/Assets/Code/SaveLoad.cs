@@ -96,21 +96,27 @@ public static class SaveLoad
     {
         // Create a new LevelToFile object
         LevelToFile ltf = new LevelToFile();
-        ltf.tilesActive = new bool[levelheight, levelwidth];
+        ltf.tilesActive = new bool[levelwidth, levelheight];
+
+        /*
+        for (int x = 0; x < levelWidth; x++)
+        {
+            for (int y = 0; y < levelHeight; y++)
+        */
 
         // Loop through our level
-        for (int y = 0; y < levelheight; y++)
+        for (int x = 0; x < levelwidth; x++)
         {
-            for (int x = 0; x < levelwidth; x++)
+            for (int y = 0; y < levelheight; y++)
             {
                 // Is this an active tile?
-                ltf.tilesActive[y, x] = level[y, x].ActiveTile;
+                ltf.tilesActive[x, y] = level[x, y].ActiveTile;
 
                 // Query if the current tile has a machine child
-                if (level[y, x].GetComponent<Tile>().Machine != null)
+                if (level[x, y].GetComponent<Tile>().Machine != null)
                 {
                     // If it does, grab this machine
-                    Machine machine = level[y, x].GetComponent<Tile>().Machine;
+                    Machine machine = level[x, y].GetComponent<Tile>().Machine;
 
                     // Query it's type
                     switch (machine.Type)

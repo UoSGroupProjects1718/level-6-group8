@@ -38,6 +38,7 @@ public class GameCanvas : MonoBehaviour
     public void ToggleEntryPanel()
     {
         EntryPanel.SetActive(!EntryPanel.activeSelf);
+        LevelController.Instance.EnableDragScript(!EntryPanel.activeSelf);
     }
 
     /// <summary>
@@ -53,11 +54,13 @@ public class GameCanvas : MonoBehaviour
     {
         ingredientListParent.SetActive(true);
         ingredientListPanel.GetComponent<ScrollableList>().Fill();
+        LevelController.Instance.EnableDragScript(false);
     }
 
     public void CloseIngredientList()
     {
         ingredientListParent.SetActive(false);
+        LevelController.Instance.EnableDragScript(true);
     }
 
     public void Debug_SetBuildModeText(BuildMode bm)

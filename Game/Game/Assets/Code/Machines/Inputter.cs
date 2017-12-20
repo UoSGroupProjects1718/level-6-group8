@@ -39,10 +39,13 @@ public class Inputter : Machine
 
         ResetTickCounter();
 
+        // Item null check
+        if (ItemToOutput == null) { Debug.Log("Null output item: returning."); return; }
+
         // Get the machine im facing
         Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, dir);
 
-        // Null check
+        // Neighbour null check
         if (neighbour == null) { Debug.Log("Null neighbour: returning."); return; }
 
         // Pass item
@@ -84,10 +87,16 @@ public class Inputter : Machine
 
     private void OnMouseDown()
     {
-        if (LevelController.Instance.BuildStatus != BuildMode.delete)
+        if (LevelController.Instance.BuildStatus != BuildMode.delete && LevelController.Instance.BuildStatus != BuildMode.debugdelete)
         {
             LevelController.Instance.SelectedInputter = this;
             GameObject.Find("Canvas").GetComponent<GameCanvas>().LoadIngredientList();
+        }
+        // Inputters can only be deleted in debugDelete mode
+        // debugDelete is not available to the player - only used in debugging
+        else if (LevelController.Instance.BuildStatus == BuildMode.debugdelete)
+        {
+            DeleteSelf();
         }
     }
 }

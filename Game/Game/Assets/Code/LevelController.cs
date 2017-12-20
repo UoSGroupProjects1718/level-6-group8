@@ -11,11 +11,17 @@ using UnityEngine.SocialPlatforms.Impl;
 public enum BuildMode
 {
     conveyer = 0,
-    grinder,
-    brewer,
-    rotate,
-    delete,
-    none
+    grinder,    //1
+    brewer,     //2
+    rotate,     //3
+    delete,     //4
+    none,        //5
+    /* below are for use in the debug menu, not 
+    available to the player: */
+    input,      //6
+    output,     //7
+    // (only debugDelete can delete input/output tiles, delete cannot).
+    debugdelete // 8 
 }
 
 /// <summary>
@@ -101,9 +107,15 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void OnLevelLoad()
     {
+        // Set the build mode to none
         SetBuildMode(5);
 
-        // UI Functions 
+        // Move the camera to the appropriate position
+        Camera.main.transform.position =
+            new Vector3((factory.Width / 2 )-1, Camera.main.transform.position.y, Camera.main.transform.position.z);
+
+        // UI Functions
+        UI_Controller = GameObject.Find("Canvas");
         UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
         UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
     }
@@ -206,6 +218,15 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
+    /// Enables or Disables drag script based on parameter
+    /// </summary>
+    /// <param name="a">True = enabled, False = disabled</param>
+    public void EnableDragScript(bool a)
+    {
+        Camera.main.GetComponent<MoveCamera>().enabled = a;
+    }
+
+    /// <summary>
     /// Spawns the selected machine on a given (x, y) coordinate
     /// </summary>
     /// <param name="x">x position</param>
@@ -222,7 +243,7 @@ public class LevelController : MonoBehaviour
         }
 
         // If the tile on this position owns a tile, return
-        if (factory.level.grid[y, x].Machine != null) { return; }
+        if (factory.level.grid[x, y].Machine != null) { return; }
 
         // Instantiate the machine
         Machine machine;
@@ -239,6 +260,16 @@ public class LevelController : MonoBehaviour
             case BuildMode.brewer:
                 spawnIndex = 5;
                 break;
+            /*
+                For use with the debug menu, these options 
+                are not available to the player:
+            */
+            case BuildMode.input:
+                spawnIndex = 1;
+                break;
+            case BuildMode.output:
+                spawnIndex = 2;
+                break;
             default:
                 return;
         }
@@ -247,13 +278,13 @@ public class LevelController : MonoBehaviour
 
         // Set its rotation and parent
         machine.SetDir(Direction.up);
-        machine.Parent = factory.level.grid[y, x];
+        machine.Parent = factory.level.grid[x, y];
 
         // Add this machine to the level and to our list of machines
         factory.level.machines.Add(machine);
 
         // Add this machine as the child of the tile
-        factory.level.grid[y, x].SetChild(machine);
+        factory.level.grid[x, y].SetChild(machine);
     }
 
     /// <summary>
@@ -268,22 +299,22 @@ public class LevelController : MonoBehaviour
         // Up
         if (facing == Direction.up && y < levelHeight)
         {
-            return factory.level.grid[y + 1, x].Machine;
+            return factory.level.grid[x, y + 1].Machine;
         }
         // Right
         else if (facing == Direction.right && x < levelWidth)
         {
-            return factory.level.grid[y, x + 1].Machine;
+            return factory.level.grid[x + 1, y].Machine;
         }
         // Down
         else if (facing == Direction.down && y > 0)
         {
-            return factory.level.grid[y - 1, x].Machine;
+            return factory.level.grid[x, y - 1].Machine;
         }
         // Left
         else if (facing == Direction.left && x > 0)
         {
-            return factory.level.grid[y, x - 1].Machine;
+            return factory.level.grid[x - 1, y].Machine;
         }
 
         return null;
@@ -364,21 +395,22 @@ public class LevelController : MonoBehaviour
         Transform machineHolder = transform.Find("MachineHolder");
 
         // Loop through our level
-        for (int y = 0; y < levelHeight; y++)
+
+        for (int x = 0; x < levelWidth; x++)
         {
-            for (int x = 0; x < levelWidth; x++)
+            for (int y = 0; y < levelHeight; y++)
             {
                 // Spawn a tile in each position
                 Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
-                tile.X = x;
                 tile.Y = y;
+                tile.X = x;
                 tile.gameObject.transform.SetParent(tileHolder);
 
                 // Is this an active tile?
                 if (ltf != null)
                 {
                     // Read from file...
-                    tile.SetActiveStatus(ltf.tilesActive[y, x]);
+                    tile.SetActiveStatus(ltf.tilesActive[x, y]);
                 }
                 // If no file to read from...
                 else
@@ -388,7 +420,7 @@ public class LevelController : MonoBehaviour
                 }
 
                 // Add our tile into our level array
-                this.factory.level.grid[y, x] = tile;
+                this.factory.level.grid[x, y] = tile;
             }
         }
 
@@ -460,7 +492,7 @@ public class LevelController : MonoBehaviour
         {
             mach = Instantiate(Spawnables[3]).GetComponent<Conveyer>();
         }
-        else if (machineFromFile.type.Equals("grinder"))
+        else if (machineFromFile.type.Equals("pestlemortar"))
         {
             mach = Instantiate(Spawnables[4]).GetComponent<PestleMortar>();
         }
@@ -474,7 +506,7 @@ public class LevelController : MonoBehaviour
         }
 
         // Set it as a child to the tile
-        this.factory.level.grid[machineFromFile.y, machineFromFile.x].SetChild(mach);
+        this.factory.level.grid[machineFromFile.x, machineFromFile.y].SetChild(mach);
 
         // Add it to our list of machines
         factory.level.machines.Add(mach);
@@ -518,7 +550,7 @@ public class LevelController : MonoBehaviour
         }
 
         // Set it as a child to the tile
-        factory.level.grid[InputFromFile.y, InputFromFile.x].SetChild(inputter);
+        factory.level.grid[InputFromFile.x, InputFromFile.y].SetChild(inputter);
 
         // Add it to our list of machines
         factory.level.machines.Add(inputter);
@@ -539,8 +571,19 @@ public class LevelController : MonoBehaviour
             Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
 
             // Calculate factory score
-            // TODO: My work (lyut)
             uint factoryScore = CalculateFactoryScore(tickCounter);
+
+            /* Give the player a currency reward upon level
+            completion or level improvement */
+            uint oldScore = factory.Score;
+            Debug.Log(string.Format("Old factory score: {0}", oldScore));
+            Debug.Log(string.Format("New factory score: {0}", factoryScore));
+
+            /* Give the player however much they improved their score by
+            (This will be the full amount if the level was previously unsolved) */
+            uint scoreDifference = factoryScore - oldScore;
+            Debug.Log(string.Format("Giving player {0} currency reward", scoreDifference));
+            GameManager.Instance.Player.AddMoney(scoreDifference);
 
             // Calculate potions per minute
             float ppm = 0;
@@ -622,16 +665,16 @@ public class LevelController : MonoBehaviour
 
         factory.level.grid = new Tile[levelWidth, levelHeight];
 
-        for (int y = 0; y < levelHeight; y++)
+        for (int i = 0; i < levelHeight; i++)
         {
-            for (int x = 0; x < levelWidth; x++)
+            for (int j = 0; j < levelWidth; j++)
             {
-                Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
-                tile.X = x;
-                tile.Y = y;
+                Tile tile = Instantiate(Spawnables[0], new Vector3(j, -0.5f, i), Quaternion.identity).GetComponent<Tile>();
+                tile.X = i;
+                tile.Y = j;
 
                 // Spawn an inputter on top left corner
-                if (y == levelHeight - 1 && x == levelWidth - 1)
+                if (i == levelHeight - 1 && j == levelWidth - 1)
                 {
                     Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
                     tile.SetChild(inputter);
@@ -639,14 +682,14 @@ public class LevelController : MonoBehaviour
                     inputter.SetDir(Direction.down);
                 }
                 // Spawn an outputt on (0, 0);
-                if (y == 0 && x == 0)
+                if (i == 0 && j == 0)
                 {
                     Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
                     tile.SetChild(output);
                     factory.level.machines.Add(output);
                 }
 
-                factory.level.grid[y, x] = tile;
+                factory.level.grid[i, j] = tile;
             }
         }
     }

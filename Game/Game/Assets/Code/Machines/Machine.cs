@@ -31,7 +31,9 @@ public abstract class Machine : MonoBehaviour
     [Header("Type of Machine")]
     [SerializeField]
     protected MachineType type;
+    [SerializeField]
     protected Direction dir;
+    [SerializeField]
     protected Tile parent;
 
     [Header("Cost")]
@@ -74,8 +76,8 @@ public abstract class Machine : MonoBehaviour
     /// <returns></returns>
     protected IEnumerator MoveChildTowardsMe(Item child)
     {
-        Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
-        Vector2 childPos = new Vector2(child.transform.position.x, child.transform.position.z);
+        //Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
+        //Vector2 childPos = new Vector2(child.transform.position.x, child.transform.position.z);
 
         float duration = LevelController.Instance.TickWaitTime;
         float timeCounter = 0;
@@ -87,9 +89,9 @@ public abstract class Machine : MonoBehaviour
             // We do a null check here as the child can be "consumed" by another machine whilst moving along the conveyer
             if (child == null) { break; }
 
-            child.transform.position = Vector3.MoveTowards ( child.transform.position,
+            child.transform.position = Vector3.MoveTowards(child.transform.position,
                     new Vector3(transform.position.x, child.transform.position.y, transform.position.z),
-                    timeCounter / duration );
+                    timeCounter / duration);
             yield return null;
         }
     }
@@ -194,6 +196,13 @@ public abstract class Machine : MonoBehaviour
         // (What do they have selected?)
         switch (LevelController.Instance.BuildStatus)
         {
+            // Debugging mode...
+            case BuildMode.debugdelete:
+                // Only inputs and outputs can be deleted in debug delete mode
+                // debug delete mode is not available to the player
+                if (type == MachineType.input || type == MachineType.output) { DeleteSelf(); }
+                break;
+
             case BuildMode.rotate:
                 Rotate();
                 break;
