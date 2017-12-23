@@ -19,8 +19,31 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject ingredientListPanel;
 
+    [SerializeField]
+    GameObject cookbookParent;
+
+    [SerializeField]
+    GameObject cookbookScrollablePannel;
+
+    [SerializeField]
+    GameObject playButton;
+    [SerializeField]
+    GameObject speedButton;
+    [SerializeField]
+    GameObject cookbookButton;
+
+    [SerializeField]
+    GameObject dullPanel;
+
+    [SerializeField]
+    Sprite play;
+    [SerializeField]
+    Sprite pause;
+
     [Header("Debug text - build mode")]
     public Text debugBuildModeText;
+
+    private bool playing;
 
     /// <summary>
     ///     Initilization for the UI objects
@@ -30,6 +53,25 @@ public class GameCanvas : MonoBehaviour
     public void BuildUI(Factory factory)
     {
         this.GetComponent<UI_FactoryEntry>().UpdateUI(factory);
+        playing = false;
+    }
+
+    public void ToggleDull()
+    {
+        dullPanel.SetActive(!dullPanel.activeSelf);
+    }
+
+    /// <summary>
+    ///     Toggles the Entry Panel
+    /// </summary>
+    public void TogglePlaySprite()
+    {
+        playing = !playing;
+
+        if (playing)
+            playButton.GetComponent<Image>().sprite = pause;
+        else
+            playButton.GetComponent<Image>().sprite = play;
     }
 
     /// <summary>
@@ -42,16 +84,35 @@ public class GameCanvas : MonoBehaviour
     }
 
     /// <summary>
-    ///     Toggles the Selection Panel
+    ///     Toggles the UI used in the level
     /// </summary>
-    public void ToggleSelectionPanel()
+    public void ToggleLevelUI()
     {
         selectionListParent.SetActive(!selectionListParent.activeSelf);
+        playButton.SetActive(!playButton.activeSelf);
+        speedButton.SetActive(!speedButton.activeSelf);
+        cookbookButton.SetActive(!cookbookButton.activeSelf);
+    }
+
+    public void DisplayCookbook()
+    {
+        ToggleDull();
+        cookbookParent.SetActive(true);
+        cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
+        LevelController.Instance.EnableDragScript(false);
+    }
+
+    public void ToggleCookbook()
+    {
+        ToggleDull();
+        cookbookParent.SetActive(!cookbookParent.activeSelf);
+        LevelController.Instance.EnableDragScript(!cookbookParent.activeSelf);
     }
 
     //TODO: maybe overhaul this (John)
     public void LoadIngredientList()
     {
+        ToggleDull();
         ingredientListParent.SetActive(true);
         ingredientListPanel.GetComponent<ScrollableList>().Fill();
         LevelController.Instance.EnableDragScript(false);
@@ -59,6 +120,7 @@ public class GameCanvas : MonoBehaviour
 
     public void CloseIngredientList()
     {
+        ToggleDull();
         ingredientListParent.SetActive(false);
         LevelController.Instance.EnableDragScript(true);
     }

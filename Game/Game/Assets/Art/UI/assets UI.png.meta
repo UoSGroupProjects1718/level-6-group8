@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b481598ecd2a1c042a709a414ee0f13c
-timeCreated: 1513436727
+timeCreated: 1513999606
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -144,7 +144,7 @@ TextureImporter:
         x: 20
         y: 761
         width: 815
-        height: 530
+        height: 522
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,9 +281,9 @@ TextureImporter:
       name: assets UI_4
       rect:
         serializedVersion: 2
-        x: 892
+        x: 894
         y: 340
-        width: 938
+        width: 932
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -300,7 +300,7 @@ TextureImporter:
         width: 62
         height: 381
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 7, y: 3, z: 7, w: 6}
       outline: []
       physicsShape: []
