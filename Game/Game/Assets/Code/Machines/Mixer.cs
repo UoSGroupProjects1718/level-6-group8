@@ -21,7 +21,7 @@ public class Mixer : Machine
     /// </summary>
     public override void Tick()
     {
-        /* Firslt,y go through and delete our children that are left over from our previous Execute().
+        /* Firstly, go through and delete our children that are left over from our previous Execute().
          We have already used them in the previous Execute() to create a new potion, however
          we cannot delete them in the execute because we need to see them go into the mixer in the world
          therefore, we delete them in the Tick() */

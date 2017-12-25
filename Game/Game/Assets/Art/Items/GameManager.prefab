@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1984545142673406}
+  m_IsPrefabParent: 1
+--- !u!1 &1984545142673406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4381240117526604}
+  - component: {fileID: 114283947613895474}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4381240117526604
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1984545142673406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114283947613895474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1984545142673406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce263e41cf4edd44809c271c7471ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 114792452479405514, guid: 7743f41300f19764ba26eda514dea1c3, type: 2}
+  - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}
+  - {fileID: 114450978081715366, guid: 7a3bfdc039240024ab413b77da537af0, type: 2}
+  - {fileID: 114485982338976164, guid: 303890ff3890c3140a9f3d8ea18f5c77, type: 2}
+  - {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae, type: 2}
+  - {fileID: 114517795095533288, guid: a1708e945f7d940478069daffcb5983e, type: 2}
+  - {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8, type: 2}
+  - {fileID: 114373784753054782, guid: 7f0ca3a2d50d133458b938b8c0821db6, type: 2}
+  - {fileID: 114573527100314038, guid: 2d4e81cb3aa8d9d40947c98758e1f30e, type: 2}
+  - {fileID: 114849525854985824, guid: 0fbd6b288e86ef1438ee7af54d28abf0, type: 2}
+  - {fileID: 114468770350683204, guid: c5a5bf691be35b442ba287dd44804c8a, type: 2}
+  - {fileID: 114444173738331884, guid: 849ca448d44c2a146ac639b7bc34fe5c, type: 2}
+  - {fileID: 114215952565469808, guid: ebd146c4ab4f1f342bbf9a20dc24d938, type: 2}
+  - {fileID: 114672638378656358, guid: cf6fb835fdc1f7a47995a8496cce2fc5, type: 2}
+  potions:
+  - {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
+  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  - {fileID: 114766385601742350, guid: 9b6ca0f78c741124c8b4c66a08786b95, type: 2}
+  - {fileID: 114970336893621952, guid: 97cf388e525e52b4299cb1585059c016, type: 2}
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  compound: {fileID: 114807706654586008, guid: 0256dfd507a3c2a4186dc532c0fc2a9a, type: 2}
+  waste: {fileID: 114697495383823362, guid: ebf462672f4514c45994f966fedd2c68, type: 2}
+  burntIngredient: {fileID: 114841002428436610, guid: 4fe63192c33914a418fa84688bb4e3dc,
+    type: 2}

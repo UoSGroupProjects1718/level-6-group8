@@ -32,7 +32,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Waste waste;
 
-    /* The player class object to hold all of the players stats, achievements, etc */
+    [Header("Burnt ingredient")]
+    [SerializeField]
+    private Ingredient burntIngredient;
+
+    /* The player class object to hold all of the players currency, stats, achievements, etc */
     private Player player;
 
     public static GameManager Instance { get { return instance; } }
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Waste Waste { get { return waste; } }
     public Compound Compound { get { return compound; } }
     public Player Player { get { return player; } }
+    public Ingredient BurntIngredient { get { return burntIngredient; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] Potions { get { return potions; } }
 

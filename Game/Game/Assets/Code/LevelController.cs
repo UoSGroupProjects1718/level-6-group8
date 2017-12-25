@@ -10,18 +10,26 @@ using UnityEngine.SocialPlatforms.Impl;
 /// </summary>
 public enum BuildMode
 {
-    conveyer = 0,
-    grinder,    //1
-    brewer,     //2
-    rotate,     //3
-    delete,     //4
-    none,        //5
-    /* below are for use in the debug menu, not 
+    /* Below are for use in the debug menu, not 
     available to the player: */
-    input,      //6
-    output,     //7
+
     // (only debugDelete can delete input/output tiles, delete cannot).
-    debugdelete // 8 
+    debugdelete = 0,    // 0
+    input,              // 1
+    output,             // 2
+
+    /* Below are for use by the player */
+
+    // Edit options
+    rotate,             // 3
+    delete,             // 4
+    none,               // 5
+
+    // Machine selections
+    conveyer,           // 6
+    grinder,            // 7
+    brewer,             // 8
+    oven                // 9
 }
 
 /// <summary>
@@ -259,6 +267,9 @@ public class LevelController : MonoBehaviour
                 break;
             case BuildMode.brewer:
                 spawnIndex = 5;
+                break;
+            case BuildMode.oven:
+                spawnIndex = 6;
                 break;
             /*
                 For use with the debug menu, these options 

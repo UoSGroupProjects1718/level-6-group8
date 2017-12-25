@@ -79,6 +79,7 @@ public class Tile : MonoBehaviour
             case BuildMode.brewer:
             case BuildMode.conveyer:
             case BuildMode.grinder:
+            case BuildMode.oven:
                 LevelController.Instance.SpawnOn(x, y);
                 break;
         }

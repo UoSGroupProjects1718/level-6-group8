@@ -9,6 +9,7 @@ public enum MachineType
     pestlemortar,
     brewer,
     mixer,
+    oven,
     output
 }
 
