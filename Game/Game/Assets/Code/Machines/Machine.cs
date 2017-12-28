@@ -160,16 +160,16 @@ public abstract class Machine : MonoBehaviour
         switch (dir)
         {
             case Direction.right:
-                transform.eulerAngles = new Vector3(90, 270, transform.rotation.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270, transform.eulerAngles.z);
                 break;
             case Direction.down:
-                transform.eulerAngles = new Vector3(90, 0, transform.rotation.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
                 break;
             case Direction.left:
-                transform.eulerAngles = new Vector3(90, 90, transform.rotation.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
                 break;
             case Direction.up:
-                transform.eulerAngles = new Vector3(90, 180, transform.rotation.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180, transform.eulerAngles.z);
                 break;
         }
     }

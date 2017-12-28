@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b481598ecd2a1c042a709a414ee0f13c
-timeCreated: 1513999606
+timeCreated: 1514485551
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -281,10 +281,10 @@ TextureImporter:
       name: assets UI_4
       rect:
         serializedVersion: 2
-        x: 894
-        y: 340
-        width: 932
-        height: 256
+        x: 899
+        y: 343
+        width: 923
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

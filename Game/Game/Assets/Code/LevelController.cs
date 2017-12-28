@@ -285,7 +285,7 @@ public class LevelController : MonoBehaviour
                 return;
         }
 
-        machine = Instantiate(Spawnables[spawnIndex], new Vector3(x, 0, y), Quaternion.identity).GetComponent<Machine>();
+        machine = Instantiate(Spawnables[spawnIndex], new Vector3(x, 0, y), Spawnables[spawnIndex].transform.rotation).GetComponent<Machine>();
 
         // Set its rotation and parent
         machine.SetDir(Direction.up);
