@@ -220,6 +220,7 @@ public static class SaveLoad
 
         // Copy our stockpile data over
         ss.items = stockpile.Items;
+        ss.Value = stockpile.Value;
 
         // Serialize to json
         string json = JsonConvert.SerializeObject(ss);

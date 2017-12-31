@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Newtonsoft.Json.Bson;
 using UnityEngine;
 
 public class StockpileStats
 {
     public Dictionary<string, uint> items;
+    public float Value;
 }
 
 public class Stockpile
@@ -20,6 +22,7 @@ public class Stockpile
     public long ItemCount { get { return items.Sum(x => x.Value); } }
     public Factory Factory { get { return factory; } }
     public Dictionary<string, uint> Items { get { return items; } }
+    public float Value { get; set; }
 
     // Constructor
     public Stockpile(uint _itemLimit, Factory parent)
@@ -185,6 +188,9 @@ public class Stockpile
     public void Clear()
     {
         //TODO: increment a resouce here such as PrimaryMoney (potentially rename as sellitems)
+
+        GameManager.Instance.Player.AddPrimaryMoney((uint)Math.Floor(Value));
         items.Clear();
+        Value = 0;
     }
 }
