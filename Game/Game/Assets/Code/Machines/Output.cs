@@ -46,7 +46,6 @@ public class Output : Machine
         {
             // This may be changed to only accept the requried item?idk
             LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child, 1);
-            LevelController.Instance.LevelFactory.stockpile.Value += child.Cost;
             // If we have the required potion
             if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Potion.DisplayName))
             {
