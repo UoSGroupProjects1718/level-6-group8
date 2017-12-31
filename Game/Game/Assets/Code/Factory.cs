@@ -24,7 +24,7 @@ public class FactoryStats
 /// factory has by default, its x,y position and its direction.
 /// For example, a Factory will have an output on (10, 10).
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class DefaultMachine
 {
     public MachineType machineType;

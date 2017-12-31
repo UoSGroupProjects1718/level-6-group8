@@ -54,7 +54,7 @@ public static class SaveLoad
         saveDir.Append(string.Format("\\Data_{0}.json", factory.FactoryId));
 
         // Save to file
-        System.IO.File.WriteAllText(saveDir.ToString(), json);
+        File.WriteAllText(saveDir.ToString(), json);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public static class SaveLoad
         }
 
         // Read from file
-        string json = System.IO.File.ReadAllText(saveDir.ToString());
+        string json = File.ReadAllText(saveDir.ToString());
 
         // Deserialize the object
         FactoryStats fs = JsonConvert.DeserializeObject<FactoryStats>(json);
@@ -178,7 +178,7 @@ public static class SaveLoad
         saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryId));
 
         // Save to file
-        System.IO.File.WriteAllText(saveDir.ToString(), json);
+        File.WriteAllText(saveDir.ToString(), json);
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public static class SaveLoad
         }
 
         // Read from file
-        string json = System.IO.File.ReadAllText(saveDir.ToString());
+        string json = File.ReadAllText(saveDir.ToString());
 
         // Deserialize the object
         LevelToFile ltf = JsonConvert.DeserializeObject<LevelToFile>(json);
@@ -230,7 +230,7 @@ public static class SaveLoad
         saveDir.Append(string.Format("\\Stockpile_{0}.json", stockpile.Factory.FactoryId));
 
         // Save to file 
-        System.IO.File.WriteAllText(saveDir.ToString(), json);
+        File.WriteAllText(saveDir.ToString(), json);
     }
 
     public static StockpileStats LoadStockpile(Stockpile stockpile)
@@ -247,7 +247,7 @@ public static class SaveLoad
         }
 
         // Read from file
-        string json = System.IO.File.ReadAllText(saveDir.ToString());
+        string json = File.ReadAllText(saveDir.ToString());
 
         // Deserialize the object
         StockpileStats ss = JsonConvert.DeserializeObject<StockpileStats>(json);
@@ -266,7 +266,8 @@ public static class SaveLoad
         PlayerStats ps = new PlayerStats();
 
         // Copy our players data over
-        ps.money = player.Money;
+        ps.PrimaryMoney = player.PrimaryMoney;
+        ps.PremiumMoney = player.PremiumMoney;
         ps.name = player.PlayerName;
 
         // Serialize the playerstats to json
@@ -278,7 +279,7 @@ public static class SaveLoad
         saveDir.Append("\\Player.json");
 
         // Save to file 
-        System.IO.File.WriteAllText(saveDir.ToString(), json);
+        File.WriteAllText(saveDir.ToString(), json);
     }
 
     /// <summary>
@@ -296,11 +297,12 @@ public static class SaveLoad
         // Check that this file exists
         if (!File.Exists(saveDir.ToString()))
         {
+            Debug.LogError("Unable to find player stats file to load from.");
             return null;
         }
 
         // Read from file
-        string json = System.IO.File.ReadAllText(saveDir.ToString());
+        string json = File.ReadAllText(saveDir.ToString());
 
         // Deserialize the object
         PlayerStats ps = JsonConvert.DeserializeObject<PlayerStats>(json);
@@ -311,7 +313,7 @@ public static class SaveLoad
 
     public static void SaveAppCloseTime()
     {
-        System.DateTime now = System.DateTime.Now;
+        DateTime now = DateTime.Now;
 
         string json = JsonConvert.SerializeObject(now);
 
@@ -321,10 +323,10 @@ public static class SaveLoad
         saveDir.Append("\\AppCloseDateTime.json");
 
         // Save to file 
-        System.IO.File.WriteAllText(saveDir.ToString(), json);
+        File.WriteAllText(saveDir.ToString(), json);
     }
 
-    public static System.DateTime GetAppCloseTime()
+    public static DateTime GetAppCloseTime()
     {
         // Get the saveDir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
@@ -337,9 +339,9 @@ public static class SaveLoad
         }
 
         // Read from file
-        string json = System.IO.File.ReadAllText(saveDir.ToString());
+        string json = File.ReadAllText(saveDir.ToString());
 
-        System.DateTime closingTime = JsonConvert.DeserializeObject<System.DateTime>(json);
+        DateTime closingTime = JsonConvert.DeserializeObject<DateTime>(json);
 
         return closingTime; 
     }

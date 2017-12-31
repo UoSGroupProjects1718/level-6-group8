@@ -29,6 +29,12 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    [Header("Player Money")]
+    [SerializeField]
+    Text primaryMoney;
+    [SerializeField]
+    Text premiumMoney;
+
     /// <summary>
     /// At the start of the scene, ensure that
     /// all menus are closed.
@@ -36,13 +42,30 @@ public class OverworldCanvas : MonoBehaviour
     void Start()
     {
         CloseAllMenus();
+        StartCoroutine(WaitForPlayerLoad());
     }
 
-    public void UpdatePlayerStats(Player player)
+    void Update()
     {
-        //playerMoney.text = player.Money;
+        UpdatePlayerStats();
+    }
 
-        // Etc...
+    IEnumerator WaitForPlayerLoad()
+    {
+        yield return new WaitForSeconds(GameManager.LoadTime + float.Epsilon);
+    }
+
+    /// <summary>
+    /// Updates the player money pane in the overworld with the player's primary and premium money count.
+    /// </summary>
+    /// <param name="player">The player object to get the money values from.</param>
+    public void UpdatePlayerStats()
+    {
+        if (GameManager.Instance.Player != null)
+        {
+            primaryMoney.text = GameManager.Instance.Player.PrimaryMoney.ToString();
+            premiumMoney.text = GameManager.Instance.Player.PremiumMoney.ToString();
+        }
     }
 
     /// <summary>

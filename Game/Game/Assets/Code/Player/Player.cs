@@ -8,7 +8,8 @@ using UnityEngine.SocialPlatforms;
 // This class contains all player data to be serialized to json
 public class PlayerStats
 {
-    public uint money;
+    public uint PrimaryMoney;
+    public uint PremiumMoney;
     public string name;
 }
 
@@ -20,7 +21,8 @@ public class Player
     }
 
     // Private members
-    private uint money;
+    private uint primaryMoney;
+    private uint premiumMoney;
     private string playerName = "Group 8";
     private readonly PlayerAchievements playerAchievements = new PlayerAchievements();
 
@@ -36,23 +38,35 @@ public class Player
             return sc;
         }
     }
-    public uint Money { get { return money; } }
+    public uint PrimaryMoney { get { return primaryMoney; } }
+    public uint PremiumMoney { get { return premiumMoney; } }
     public string PlayerName { get { return playerName; } set { playerName = value; } }
 
-    
-	// Called on Awake by the 
     public void Init()
     {
         playerAchievements.Init();
-        playerAchievements.LogAchievementDescriptions();
-        playerAchievements.LogPlayerAchievementInfo();
 
         Load();
     }
 
-    public void AddMoney(uint i)
+    public void AddPrimaryMoney(uint i)
     {
-        money += i;
+        primaryMoney += i;
+    }
+
+    public void RemovePrimaryMoney(uint i)
+    {
+        primaryMoney -= i;
+    }
+
+    public void AddPremiumMoney(uint i)
+    {
+        premiumMoney += i;
+    }
+
+    public void RemovePremiumMoney(uint i)
+    {
+        premiumMoney -= i;
     }
 
     public void Save()
@@ -69,7 +83,8 @@ public class Player
         if (ps != null)
         {
             // Set our stats...
-            money = ps.money;
+            primaryMoney = ps.PrimaryMoney;
+            premiumMoney = ps.PremiumMoney;
             playerName = ps.name;
 
             Debug.Log("Player stats loaded in from file.");
@@ -77,7 +92,8 @@ public class Player
         else
         {
             Debug.Log("No PlayerStats file found, setting players stats to default...");
-            money = 0;
+            primaryMoney = 0;
+            premiumMoney = 0;
         }
     }
 }

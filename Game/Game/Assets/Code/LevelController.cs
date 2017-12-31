@@ -517,7 +517,7 @@ public class LevelController : MonoBehaviour
         }
 
         // Set it as a child to the tile
-        this.factory.level.grid[machineFromFile.x, machineFromFile.y].SetChild(mach);
+        factory.level.grid[machineFromFile.x, machineFromFile.y].SetChild(mach);
 
         // Add it to our list of machines
         factory.level.machines.Add(mach);
@@ -594,7 +594,7 @@ public class LevelController : MonoBehaviour
             (This will be the full amount if the level was previously unsolved) */
             uint scoreDifference = factoryScore - oldScore;
             Debug.Log(string.Format("Giving player {0} currency reward", scoreDifference));
-            GameManager.Instance.Player.AddMoney(scoreDifference);
+            GameManager.Instance.Player.AddPrimaryMoney(scoreDifference);
 
             // Calculate potions per minute
             float ppm = 0;

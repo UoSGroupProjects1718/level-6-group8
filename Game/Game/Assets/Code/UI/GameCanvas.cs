@@ -52,7 +52,7 @@ public class GameCanvas : MonoBehaviour
 
     public void BuildUI(Factory factory)
     {
-        this.GetComponent<UI_FactoryEntry>().UpdateUI(factory);
+        GetComponent<UI_FactoryEntry>().UpdateUI(factory);
         playing = false;
     }
 

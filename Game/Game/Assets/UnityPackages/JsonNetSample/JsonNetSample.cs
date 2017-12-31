@@ -52,7 +52,7 @@ public class JsonNetSample : MonoBehaviour
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class CharacterListItem
     {
         public int Id { get; set; }

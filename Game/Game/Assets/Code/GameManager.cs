@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public Ingredient BurntIngredient { get { return burntIngredient; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] Potions { get { return potions; } }
+    public const float LoadTime = 0.2f;
 
     void Awake()
     {
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
             for everything else to load, such as the Overworld 
             Singleton instance.
         */
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(LoadTime);
         Init();
     }
 
@@ -143,10 +144,10 @@ public class GameManager : MonoBehaviour
     public TimeSpan GetTimespanSinceLastClose()
     {
         // What time is it now?
-        System.DateTime timeAppOpen = System.DateTime.Now;
+        DateTime timeAppOpen = DateTime.Now;
 
         // What time was it when the application was closed?
-        System.DateTime timeAppClose = SaveLoad.GetAppCloseTime();
+        DateTime timeAppClose = SaveLoad.GetAppCloseTime();
 
         // If the app hasn't been opened before, return
         if (timeAppClose == DateTime.MinValue)
@@ -159,7 +160,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(string.Format("You have now opened the app on: {0}", timeAppOpen));
 
         // How long was it closed for?
-        System.TimeSpan difference = timeAppOpen - timeAppClose;
+        TimeSpan difference = timeAppOpen - timeAppClose;
         Debug.Log(string.Format("The app was closed for (h:m:s): {0}", difference));
 
         return difference;

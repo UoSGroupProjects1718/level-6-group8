@@ -184,7 +184,7 @@ public class Stockpile
 
     public void Clear()
     {
-        //TODO: increment a resouce here such as money (potentially rename as sellitems)
+        //TODO: increment a resouce here such as PrimaryMoney (potentially rename as sellitems)
         items.Clear();
     }
 }
