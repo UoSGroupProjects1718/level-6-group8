@@ -97,19 +97,31 @@ public class GameManager : MonoBehaviour
         player = new Player();
 
         // At the start of the game, load factory stats from file
-        LoadAllFactoryStatsFromFile();
+        LoadTownSectionsAndFactoriesFromFile();
 
         // Calculate offline income...
         CalculateOfflineIncome();
 
-        // By default, factory 0 will be unlocked
-        GetFacoryByID(0).UnlockFactory();
+        // By default, Mapsection 0 will be unlocked
+
+        /*  Commenting this for now...
+            Perhaps we get the player to unlock section 0
+            for free to teach them about how to 
+            unlock map sections?
+
+        foreach (Factory factory in Overworld.Instance.TownSections[0].Factories)
+        {
+            factory.Unlock();
+        }
+        */
+
+        Overworld.Instance.EnableLights();
     }
 
     void Start()
     {
         // At the start of the game, load factory stats from file
-        LoadAllFactoryStatsFromFile();
+        LoadTownSectionsAndFactoriesFromFile();
     }
 
     /// <summary>
@@ -127,17 +139,20 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        foreach (Factory factory in Overworld.Instance.Factories)
+        foreach (TownSection section in Overworld.Instance.TownSections)
         {
-            var ppm = factory.PotionsPerMinute;
+            foreach (Factory factory in section.Factories)
+            {
+                var ppm = factory.PotionsPerMinute;
 
-            // You can do the rest
-            var potionsGainedWhileOffline = Math.Floor(ppm * timespan.TotalMinutes);
+                // You can do the rest
+                var potionsGainedWhileOffline = Math.Floor(ppm * timespan.TotalMinutes);
 
-            // Access the factories stockpile this like
-            // Increment the number of potions the factory has by potionsGainedWhileOffline
-            Debug.Log(string.Format("Trying to add {0} potions to {1}.", potionsGainedWhileOffline, factory.FactoryName));
-            factory.stockpile.AddOrIncrement(factory.Potion, (uint)potionsGainedWhileOffline);
+                // Access the factories stockpile this like
+                // Increment the number of potions the factory has by potionsGainedWhileOffline
+                Debug.Log(string.Format("Trying to add {0} potions to {1}.", potionsGainedWhileOffline, factory.FactoryName));
+                factory.stockpile.AddOrIncrement(factory.Potion, (uint)potionsGainedWhileOffline);
+            }
         }
     }
 
@@ -172,14 +187,31 @@ public class GameManager : MonoBehaviour
             when changing scenes. This gives time to wait for the scene
             to finish loading before we start loading from file.*/
         yield return new WaitForSeconds(0.25f);
-        LoadAllFactoryStatsFromFile();
+        LoadTownSectionsAndFactoriesFromFile();
+        Overworld.Instance.EnableLights();
     }
 
-    private void LoadAllFactoryStatsFromFile()
+    private void SaveTownSectionsAndFactories()
     {
-        foreach (var fac in Overworld.Instance.Factories)
+        foreach (TownSection section in Overworld.Instance.TownSections)
         {
-            fac.GetComponent<Factory>().LoadStatsFromFile();
+            section.SaveToFile();
+            foreach (Factory factory in section.Factories)
+            {
+                factory.SaveStatsToFile();
+            }
+        }
+    }
+
+    private void LoadTownSectionsAndFactoriesFromFile()
+    {
+        foreach (TownSection section in Overworld.Instance.TownSections)
+        {
+            section.LoadFromFile();
+            foreach (Factory factory in section.Factories)
+            {
+                factory.LoadStatsFromFile();
+            }
         }
     }
 
@@ -191,9 +223,12 @@ public class GameManager : MonoBehaviour
 
     public Factory GetFacoryByID(int id)
     {
-        foreach (var factory in Overworld.Instance.Factories)
+        foreach (TownSection section in Overworld.Instance.TownSections)
         {
-            if (factory.FactoryId == id) { return factory; }
+            foreach (Factory factory in section.Factories)
+            {
+                if (factory.FactoryId == id) { return factory; }
+            }
         }
         return null;
     }
@@ -205,6 +240,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         StartCoroutine(WaitAndLoadAllFactoryStatsFromFile());
+        
     }
 
     /// <summary>
@@ -222,6 +258,9 @@ public class GameManager : MonoBehaviour
     /// <param name="factory">The factory to load</param>
     IEnumerator LoadLevelCoroutine(Factory factory)
     {
+        // Save before we change
+        SaveTownSectionsAndFactories();
+
         // Load the scene
         SceneManager.LoadScene(1);
 

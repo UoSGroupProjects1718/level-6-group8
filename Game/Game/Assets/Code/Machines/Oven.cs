@@ -100,7 +100,7 @@ public class Oven : Machine
                 // Instantiate the booked ingredient
                 Ingredient cooked = Instantiate(activeChild.GetComponent<Ingredient>().CookedVariant).GetComponent<Ingredient>();
 
-                // Posotio, rotate and scale the item
+                // Position, rotate and scale the item
                 cooked.transform.position = new Vector3(transform.position.x, cooked.ProductionLine_YHeight, transform.position.z);
                 cooked.transform.localRotation = Quaternion.Euler(cooked.ProductionLine_Rotation);
                 cooked.transform.localScale = (cooked.ProductionLine_Scale);

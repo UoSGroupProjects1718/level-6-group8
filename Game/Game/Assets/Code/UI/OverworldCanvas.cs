@@ -29,6 +29,10 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    [Header("Town hall")]
+    [SerializeField]
+    GameObject townhallPanel;
+
     [Header("Player Money")]
     [SerializeField]
     Text primaryMoney;
@@ -132,6 +136,33 @@ public class OverworldCanvas : MonoBehaviour
     }
 
     /// <summary>
+    /// Enables the Town Hall UI Panel
+    /// </summary>
+    public void DisplayTownHall()
+    {
+        // First, close any open menus
+        CloseAllMenus();
+
+        // Set the UI active
+        townhallPanel.SetActive(true);
+
+        // Disable dragging whilst the menu is open
+        DisableCameraMoveScript();
+    }
+
+    /// <summary>
+    /// Disables the Town Hall UI Panel
+    /// </summary>
+    public void CloseTownHall()
+    {
+        // Close menus
+        CloseAllMenus();
+
+        // Reenable camera drag
+        EnableCameraMoveScript();
+    }
+
+    /// <summary>
     /// Closes all menus.
     /// Re-Enables the camera drag script.
     /// </summary>
@@ -140,6 +171,7 @@ public class OverworldCanvas : MonoBehaviour
         CloseFactoryDisplays();
         optionsPanel.SetActive(false);
         cookbookParent.SetActive(false);
+        townhallPanel.SetActive(false);
 
         EnableCameraMoveScript();
     }

@@ -31,9 +31,12 @@ public class Player
     {
         get {
             uint sc = 0;
-            foreach (Factory fac in Overworld.Instance.Factories)
+            foreach (TownSection section in Overworld.Instance.TownSections)
             {
-                sc += fac.Stars;
+                foreach (Factory fac in section.Factories)
+                {
+                    sc += fac.Stars;
+                }
             }
             return sc;
         }

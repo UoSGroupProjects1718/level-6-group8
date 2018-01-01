@@ -130,7 +130,7 @@ public class Factory : MonoBehaviour
         }
     }
 
-    public void UnlockFactory()
+    public void Unlock()
     {
         unlocked = true;
     }

@@ -12,13 +12,14 @@ public class Overworld : MonoBehaviour
 {
     private static Overworld instance = null;
 
-    [Header("Factories")]
+    [Header("Town sections")]
     [SerializeField]
-    private Factory[] factories;
+    private TownSection[] townSections;
 
     public static Overworld Instance { get { return instance; } }
-    public Factory[] Factories { get { return factories; } }
+    public TownSection[] TownSections { get { return townSections; } }
 
+    [Header("Misc")]
     public Sprite FilledStar;
     public Sprite EmptyStar;
 
@@ -37,31 +38,34 @@ public class Overworld : MonoBehaviour
 
     public void AssignFactoryStars(int theFactoryID)
     {
-        foreach (var factory in factories)
+        foreach (TownSection section in townSections)
         {
-            if (factory.FactoryId == theFactoryID)
+            foreach (Factory factory in section.Factories)
             {
-                uint starCounter = 0;
-                foreach (int scoreThreshold in factory.ScoreThresholds)
+                if (factory.FactoryId == theFactoryID)
                 {
-                    if (factory.Score > scoreThreshold)
+                    uint starCounter = 0;
+                    foreach (int scoreThreshold in factory.ScoreThresholds)
                     {
-                        starCounter++;
+                        if (factory.Score > scoreThreshold)
+                        {
+                            starCounter++;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
-                    else
+                    factory.Stars = starCounter;
+
+                    for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
                     {
-                        break;
+                        if (starCounter == 0) break;
+                        factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
                     }
-                }
-                factory.Stars = starCounter;
 
-                for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
-                {
-                    if (starCounter == 0) break;
-                    factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
+                    return;
                 }
-
-                return;
             }
         }
     }
@@ -73,13 +77,20 @@ public class Overworld : MonoBehaviour
     public void LoadFactory()
     {
         // Save all factory data to file
-        foreach (Factory factory in factories)
+        foreach (TownSection section in townSections)
         {
-            factory.SaveStatsToFile();
+            foreach (Factory factory in section.Factories)
+            {
+                factory.SaveStatsToFile();
+            }
         }
 
-        // Call game manager to handle loading the level
-        GameManager.Instance.LoadLevel(GameManager.Instance.CurrentFactory);
+        // Check that the factory is unlocked
+        if (GameManager.Instance.CurrentFactory.Unlocked)
+        {
+            // Call game manager to handle loading the level
+            GameManager.Instance.LoadLevel(GameManager.Instance.CurrentFactory);
+        }
     }
 
     /// <summary>
@@ -90,7 +101,7 @@ public class Overworld : MonoBehaviour
         if (int.MaxValue /* player.level*/ >= GameManager.Instance.CurrentFactory.starsToUnlock)
         {
             // Unlock the factory
-            GameManager.Instance.CurrentFactory.UnlockFactory();
+            GameManager.Instance.CurrentFactory.Unlock();
 
             // Save the factory to file
             GameManager.Instance.CurrentFactory.SaveStatsToFile();
@@ -101,5 +112,19 @@ public class Overworld : MonoBehaviour
         {
             // Display "insufficient level"
         } 
+    }
+
+    /// <summary>
+    /// Enables the lights for every unlocked town section.
+    /// </summary>
+    public void EnableLights()
+    {
+        foreach (TownSection section in townSections)
+        {
+            if (section.Unlocked)
+            {
+                section.EnableLights();
+            }
+        }
     }
 }
