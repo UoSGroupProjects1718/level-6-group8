@@ -5,7 +5,10 @@ Game/Game/[Bb]uild/
 Game/Game/[Bb]uilds/
 Game/Game/Assets/AssetStoreTools*
 Game/Game/.vs/
-google-sevices.json
+Game/Game/Assets/Firebase/google-services.json
+
+Game/Game/Assets/Firebase/google-services.json.meta
+
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -36,5 +39,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
 
