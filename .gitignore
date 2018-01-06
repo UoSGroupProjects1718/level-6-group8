@@ -4,6 +4,7 @@ Game/Game/[Oo]bj/
 Game/Game/[Bb]uild/
 Game/Game/[Bb]uilds/
 Game/Game/Assets/AssetStoreTools*
+Game/Game/.vs/
 
 # Visual Studio 2015 cache directory
 /.vs/
