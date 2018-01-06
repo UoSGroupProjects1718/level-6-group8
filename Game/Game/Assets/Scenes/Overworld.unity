@@ -4128,7 +4128,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739895280}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 24.47, y: 46.68, z: -91.9}
+  m_LocalPosition: {x: 8.3, y: 46.68, z: -96.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4147,6 +4147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleAmount: 0.1
   perspectiveZoomSpeed: 0.5
+  minX: -5
+  maxX: 80
+  minZ: -115
+  maxZ: -24
 --- !u!1 &743361522 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
@@ -4255,8 +4259,8 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 7
-  height: 7
+  width: 10
+  height: 5
   defaultMachines: []
   potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
   stockpileLimit: 0

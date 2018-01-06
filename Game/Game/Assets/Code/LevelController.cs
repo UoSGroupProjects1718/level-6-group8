@@ -53,8 +53,11 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     float tickWaitTimeSpedUp;
 
-    // UI Controller
+    [Header("Floor tile plane")]
     [SerializeField]
+    private GameObject floorTile;
+
+    // UI Controller
     private GameObject UI_Controller;
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
@@ -122,10 +125,35 @@ public class LevelController : MonoBehaviour
         Camera.main.transform.position =
             new Vector3((factory.Width / 2 )-1, Camera.main.transform.position.y, Camera.main.transform.position.z);
 
+        // Set the camera bounds
+        Camera.main.GetComponent<MoveCamera>().UpdateBounds(0, factory.Width - 1, -2, factory.Height - 3);
+
+        // Spawn the floor
+        SpawnFloorTiles(0, levelWidth, 0, levelHeight);
+
         // UI Functions
         UI_Controller = GameObject.Find("Canvas");
         UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
         UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+    }
+
+    private void SpawnFloorTiles(int xMin, int xMax, int zMin, int zMax)
+    {
+        int planeSize = 10;
+
+        int minX = xMin - planeSize;
+        int maxX = xMax + planeSize;
+
+        int minZ = zMin - planeSize;
+        int maxZ = zMax + planeSize;
+        
+        for (int z = minZ; z < maxZ; z += planeSize)
+        {
+            for (int x = minX; x < maxX; x += planeSize)
+            {
+                Instantiate(floorTile, new Vector3(x, -1, z), Quaternion.identity);
+            }
+        }
     }
 
     /// <summary>
@@ -666,42 +694,4 @@ public class LevelController : MonoBehaviour
         GameManager.Instance.ReturnToOverworld();
     }
 
-    /// <summary>
-    /// Instantiates test level for debugging purposes
-    /// </summary>
-    private void DebugLoadLevel()
-    {
-        levelWidth = 10;
-        levelHeight = 10;
-
-        factory.level.grid = new Tile[levelWidth, levelHeight];
-
-        for (int i = 0; i < levelHeight; i++)
-        {
-            for (int j = 0; j < levelWidth; j++)
-            {
-                Tile tile = Instantiate(Spawnables[0], new Vector3(j, -0.5f, i), Quaternion.identity).GetComponent<Tile>();
-                tile.X = i;
-                tile.Y = j;
-
-                // Spawn an inputter on top left corner
-                if (i == levelHeight - 1 && j == levelWidth - 1)
-                {
-                    Machine inputter = Instantiate(Spawnables[2]).GetComponent<Machine>();
-                    tile.SetChild(inputter);
-                    factory.level.machines.Add(inputter);
-                    inputter.SetDir(Direction.down);
-                }
-                // Spawn an outputt on (0, 0);
-                if (i == 0 && j == 0)
-                {
-                    Machine output = Instantiate(Spawnables[3]).GetComponent<Machine>();
-                    tile.SetChild(output);
-                    factory.level.machines.Add(output);
-                }
-
-                factory.level.grid[i, j] = tile;
-            }
-        }
-    }
 }

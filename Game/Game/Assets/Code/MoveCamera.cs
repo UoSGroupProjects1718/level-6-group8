@@ -12,6 +12,16 @@ public class MoveCamera : MonoBehaviour
     [SerializeField]
     private float perspectiveZoomSpeed;
 
+    [Header("Camera bounds")]
+    [SerializeField]
+    private int minX;
+    [SerializeField]
+    private int maxX;
+    [SerializeField]
+    private int minZ;
+    [SerializeField]
+    private int maxZ;
+
     // Perspective zoom limits
     int zoomMin = 30;
     int zoomMax = 60;
@@ -35,6 +45,14 @@ public class MoveCamera : MonoBehaviour
         {
             MouseInput();
         }
+    }
+
+    public void UpdateBounds(int _minX, int _maxX, int _minZ, int _maxZ)
+    {
+        minX = _minX;
+        maxX = _maxX;
+        minZ = _minZ;
+        maxZ = _maxZ;
     }
 
     private void TouchDrag()
@@ -75,8 +93,8 @@ public class MoveCamera : MonoBehaviour
                 difference.x = -difference.x;
                 difference.y = -difference.y;
 
-                // Move
-                transform.position = new Vector3(cameraStartPoint.x + difference.x, cameraStartPoint.y, cameraStartPoint.z + difference.y);
+                // Update pos
+                UpdateCameraPosition(difference.x, difference.y);
             }
             // Else
             else
@@ -96,7 +114,8 @@ public class MoveCamera : MonoBehaviour
                 normalizedDifference.x = -normalizedDifference.x;
                 normalizedDifference.y = -normalizedDifference.y;
 
-                transform.position = new Vector3(cameraStartPoint.x + normalizedDifference.x, cameraStartPoint.y, cameraStartPoint.z + normalizedDifference.y);
+                // Update pos
+                UpdateCameraPosition(normalizedDifference.x, normalizedDifference.y);
             }
         }
     }
@@ -170,8 +189,8 @@ public class MoveCamera : MonoBehaviour
                 difference.x = -difference.x;
                 difference.y = -difference.y;
 
-                // Move
-                transform.position = new Vector3(cameraStartPoint.x + difference.x, cameraStartPoint.y, cameraStartPoint.z + difference.y);
+                // Update camera pos
+                UpdateCameraPosition(difference.x, difference.y);
             }
             // Else
             else
@@ -191,9 +210,27 @@ public class MoveCamera : MonoBehaviour
                 normalizedDifference.x = -normalizedDifference.x;
                 normalizedDifference.y = -normalizedDifference.y;
 
-                transform.position = new Vector3(cameraStartPoint.x + normalizedDifference.x, cameraStartPoint.y, cameraStartPoint.z + normalizedDifference.y);
+                // Update camera pos
+                UpdateCameraPosition(normalizedDifference.x, normalizedDifference.y);
             }
         }
+    }
+
+    private void UpdateCameraPosition(float diffX, float diffZ)
+    {
+        // Find our new X and Z positions
+        float newX = cameraStartPoint.x + diffX;
+        float newZ = cameraStartPoint.z + diffZ;
+
+        // Keep them within our bounds
+        if (newX < minX) newX = minX;
+        else if (newX > maxX) newX = maxX;
+
+        if (newZ < minZ) newZ = minZ;
+        else if (newZ > maxZ) newZ = maxZ;
+
+        // Set pos
+        transform.position = new Vector3(newX, transform.position.y, newZ);
     }
 
     private Vector2 RotateVectorToCameraAngle(Vector2 vec, float deg)
