@@ -1,9 +1,9 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Assets/AssetStoreTools*
+Game/Game/[Ll]ibrary/
+Game/Game/[Tt]emp/
+Game/Game/[Oo]bj/
+Game/Game/[Bb]uild/
+Game/Game/[Bb]uilds/
+Game/Game/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -35,5 +35,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-Game/Game/Library
 
