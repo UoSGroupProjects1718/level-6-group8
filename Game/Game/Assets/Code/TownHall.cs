@@ -2,27 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TownHall : MonoBehaviour
 {
-    public void UnloadMapSection(int i)
+    private int currentSectionIndex = 0;
+
+    [SerializeField]
+    Button sectionButton;
+    [SerializeField]
+    Text sectionButtonText;
+    [SerializeField]
+    Text sectionPrice;
+    [SerializeField]
+    Image primaryCost;
+
+    public void Start()
     {
-        // Return if its already unlocked
-        if (Overworld.Instance.TownSections[i].Unlocked)
+        // @Johny TODO: Store/find saved players unlocked areas
+        //currentSection = GameManager.Instance.Player.
+        for(int i = 0; i < Overworld.Instance.TownSections.Length; i++)
         {
-            return;
+            if (Overworld.Instance.TownSections[i].Unlocked)
+            {
+                currentSectionIndex++;
+            } else
+            {
+                break;
+            }
         }
 
+        setNextSection();
+    }
+
+    public void UnloadMapSection()
+    {
         // Check the player has enough money
-        if (GameManager.Instance.Player.PrimaryMoney >= Overworld.Instance.TownSections[i].Cost)
+        if (GameManager.Instance.Player.PrimaryMoney >= Overworld.Instance.TownSections[currentSectionIndex].Cost)
         {
             // Remove money
-            GameManager.Instance.Player.RemovePrimaryMoney(Overworld.Instance.TownSections[i].Cost);
+            GameManager.Instance.Player.RemovePrimaryMoney(Overworld.Instance.TownSections[currentSectionIndex].Cost);
 
             // Unlock the factory
-            Overworld.Instance.TownSections[i].Unlock();
+            Overworld.Instance.TownSections[currentSectionIndex].Unlock();
 
             Debug.Log("New map section unlocked!");
+
+            currentSectionIndex++;
+            // Set the UI for the next section
+            setNextSection();
+        }
+
+
+    }
+
+    private void setNextSection()
+    {
+        // Checks if new sections can be unlocked
+        if(currentSectionIndex == Overworld.Instance.TownSections.Length)
+        {
+            sectionButton.interactable = false;
+            sectionPrice.text = "";
+            sectionButtonText.text = "More Coming Soon";
+            primaryCost.enabled = false;
+        } else
+        {
+            TownSection section = Overworld.Instance.TownSections[currentSectionIndex];
+            sectionPrice.text = section.Cost.ToString();
         }
     }
 

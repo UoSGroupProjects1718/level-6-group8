@@ -11,6 +11,10 @@ using UnityEngine.UI;
 /// </summary>
 public class OverworldCanvas : MonoBehaviour
 {
+    [Header("Dull Panel")]
+    [SerializeField]
+    GameObject dullPanel;
+
     [Header("Options panel")]
     [SerializeField]
     GameObject optionsPanel;
@@ -140,6 +144,8 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void DisplayTownHall()
     {
+        dullPanel.SetActive(true);
+
         // First, close any open menus
         CloseAllMenus();
 
@@ -155,6 +161,8 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void CloseTownHall()
     {
+        dullPanel.SetActive(false);
+
         // Close menus
         CloseAllMenus();
 
