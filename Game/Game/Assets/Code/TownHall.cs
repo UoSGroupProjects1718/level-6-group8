@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class TownHall : MonoBehaviour
 {
-    private int currentSectionIndex = 0;
-
+    [Header("UI Objects")]
     [SerializeField]
     Button sectionButton;
     [SerializeField]
@@ -17,57 +16,41 @@ public class TownHall : MonoBehaviour
     [SerializeField]
     Image primaryCost;
 
-    public void Start()
-    {
-        // @Johny TODO: Store/find saved players unlocked areas
-        //currentSection = GameManager.Instance.Player.
-        for(int i = 0; i < Overworld.Instance.TownSections.Length; i++)
-        {
-            if (Overworld.Instance.TownSections[i].Unlocked)
-            {
-                currentSectionIndex++;
-            } else
-            {
-                break;
-            }
-        }
-
-        setNextSection();
-    }
-
     public void UnloadMapSection()
     {
+
+
         // Check the player has enough money
-        if (GameManager.Instance.Player.PrimaryMoney >= Overworld.Instance.TownSections[currentSectionIndex].Cost)
+        if (GameManager.Instance.Player.PrimaryMoney >= Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost)
         {
             // Remove money
-            GameManager.Instance.Player.RemovePrimaryMoney(Overworld.Instance.TownSections[currentSectionIndex].Cost);
+            GameManager.Instance.Player.RemovePrimaryMoney(Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost);
 
             // Unlock the factory
-            Overworld.Instance.TownSections[currentSectionIndex].Unlock();
+            Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Unlock();
 
             Debug.Log("New map section unlocked!");
 
-            currentSectionIndex++;
+            GameManager.Instance.Player.UnlockNextMapSection();
+
             // Set the UI for the next section
             setNextSection();
         }
-
-
     }
 
     private void setNextSection()
     {
         // Checks if new sections can be unlocked
-        if(currentSectionIndex == Overworld.Instance.TownSections.Length)
+        if((int)GameManager.Instance.Player.MapSectionsUnlocked == Overworld.Instance.TownSections.Length)
         {
             sectionButton.interactable = false;
             sectionPrice.text = "";
             sectionButtonText.text = "More Coming Soon";
             primaryCost.enabled = false;
-        } else
+        }
+        else
         {
-            TownSection section = Overworld.Instance.TownSections[currentSectionIndex];
+            TownSection section = Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked];
             sectionPrice.text = section.Cost.ToString();
         }
     }
@@ -77,6 +60,8 @@ public class TownHall : MonoBehaviour
         // This check makes sure we didn't simply click on UI ontop of the game object
         if (EventSystem.current.currentSelectedGameObject == null)
         {
+            setNextSection();
+
             // Update the canvas to open a pannel with this factories stats
             GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayTownHall();
         }

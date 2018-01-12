@@ -10,6 +10,7 @@ public class PlayerStats
 {
     public uint PrimaryMoney;
     public uint PremiumMoney;
+    public uint MapSectionsUnlocked;
     public string name;
 }
 
@@ -23,6 +24,7 @@ public class Player
     // Private members
     private uint primaryMoney;
     private uint premiumMoney;
+    private uint mapSectionsUnlocked;
     private string playerName = "Group 8";
     private readonly PlayerAchievements playerAchievements = new PlayerAchievements();
 
@@ -43,6 +45,7 @@ public class Player
     }
     public uint PrimaryMoney { get { return primaryMoney; } }
     public uint PremiumMoney { get { return premiumMoney; } }
+    public uint MapSectionsUnlocked { get { return mapSectionsUnlocked; } }
     public string PlayerName { get { return playerName; } set { playerName = value; } }
 
     public void Init()
@@ -72,6 +75,11 @@ public class Player
         premiumMoney -= i;
     }
 
+    public void UnlockNextMapSection()
+    {
+        mapSectionsUnlocked++;
+    }
+
     public void Save()
     {
         SaveLoad.SavePlayerStats(this);
@@ -89,6 +97,7 @@ public class Player
             primaryMoney = ps.PrimaryMoney;
             premiumMoney = ps.PremiumMoney;
             playerName = ps.name;
+            mapSectionsUnlocked = ps.MapSectionsUnlocked;
 
             Debug.Log("Player stats loaded in from file.");
         }
@@ -97,6 +106,7 @@ public class Player
             Debug.Log("No PlayerStats file found, setting players stats to default...");
             primaryMoney = 0;
             premiumMoney = 0;
+            mapSectionsUnlocked = 0;
         }
     }
 }

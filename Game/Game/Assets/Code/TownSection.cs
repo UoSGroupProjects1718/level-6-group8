@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TownSectionToFile
-{
-    public bool unlocked;
-}
-
 [System.Serializable]
 public class TownSection : MonoBehaviour
 {
     [Header("Town section stats")]
-    [SerializeField]
-    bool unlocked;
     [SerializeField]
     uint cost;
     [SerializeField]
@@ -24,7 +17,6 @@ public class TownSection : MonoBehaviour
     [SerializeField]
     private GameObject[] lights;
 
-    public bool Unlocked { get { return unlocked; } }
     public uint Cost { get { return cost; } }
     public uint ID { get { return id; } }
     public Factory[] Factories { get { return factories; } }
@@ -35,8 +27,6 @@ public class TownSection : MonoBehaviour
     /// </summary>
     public void Unlock()
     {
-        unlocked = true;
-
         // Unlock factories
         foreach (Factory factory in factories)
         {
@@ -54,22 +44,11 @@ public class TownSection : MonoBehaviour
         }
     }
 
-    public void SaveToFile()
+    public void DisableLights()
     {
-        SaveLoad.SaveTownSection(this);
-    }
-
-    public void LoadFromFile()
-    {
-        TownSectionToFile saveData = SaveLoad.LoadTownSection(id);
-
-        if (saveData == null)
+        foreach (GameObject light in lights)
         {
-            unlocked = false;
-        }
-        else
-        {
-            unlocked = saveData.unlocked;
+            light.SetActive(false);
         }
     }
 }

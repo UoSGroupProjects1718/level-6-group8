@@ -111,19 +111,22 @@ public class Overworld : MonoBehaviour
         else
         {
             // Display "insufficient level"
-        } 
+        }
     }
 
-    /// <summary>
-    /// Enables the lights for every unlocked town section.
-    /// </summary>
-    public void EnableLights()
+    public void UnlockTownSections()
     {
         foreach (TownSection section in townSections)
         {
-            if (section.Unlocked)
+            // If this section is unlocked
+            if (section.ID <= GameManager.Instance.Player.MapSectionsUnlocked)
             {
-                section.EnableLights();
+                section.Unlock();
+            }
+            // Else if its locked
+            else
+            {
+                section.DisableLights();
             }
         }
     }

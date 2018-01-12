@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     public Ingredient BurntIngredient { get { return burntIngredient; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] Potions { get { return potions; } }
-    public const float LoadTime = 0.2f;
+    public const float LoadTime = 0.1f;
 
     void Awake()
     {
@@ -97,7 +97,10 @@ public class GameManager : MonoBehaviour
         player = new Player();
 
         // At the start of the game, load factory stats from file
-        LoadTownSectionsAndFactoriesFromFile();
+        LoadFactoriesFromFile();
+
+        // Unlock town sections
+        Overworld.Instance.UnlockTownSections();
 
         // Calculate offline income...
         CalculateOfflineIncome();
@@ -114,14 +117,6 @@ public class GameManager : MonoBehaviour
             factory.Unlock();
         }
         */
-
-        Overworld.Instance.EnableLights();
-    }
-
-    void Start()
-    {
-        // At the start of the game, load factory stats from file
-        LoadTownSectionsAndFactoriesFromFile();
     }
 
     /// <summary>
@@ -187,15 +182,14 @@ public class GameManager : MonoBehaviour
             when changing scenes. This gives time to wait for the scene
             to finish loading before we start loading from file.*/
         yield return new WaitForSeconds(0.25f);
-        LoadTownSectionsAndFactoriesFromFile();
-        Overworld.Instance.EnableLights();
+        LoadFactoriesFromFile();
+        Overworld.Instance.UnlockTownSections();
     }
 
-    private void SaveTownSectionsAndFactories()
+    private void SaveFactories()
     {
         foreach (TownSection section in Overworld.Instance.TownSections)
         {
-            section.SaveToFile();
             foreach (Factory factory in section.Factories)
             {
                 factory.SaveStatsToFile();
@@ -203,18 +197,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadTownSectionsAndFactoriesFromFile()
+    private void LoadFactoriesFromFile()
     {
         foreach (TownSection section in Overworld.Instance.TownSections)
         {
-            section.LoadFromFile();
             foreach (Factory factory in section.Factories)
             {
                 factory.LoadStatsFromFile();
             }
         }
     }
-
 
     public void SetFactory(Factory factory)
     {
@@ -259,7 +251,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadLevelCoroutine(Factory factory)
     {
         // Save before we change
-        SaveTownSectionsAndFactories();
+        SaveFactories();
 
         // Load the scene
         SceneManager.LoadScene(1);
@@ -281,6 +273,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Saving player stats to file...");
         player.Save();
+
+        Debug.Log("Saving factories to file...");
+        SaveFactories();
 
         Debug.Log("Saving current DateTime to file...");
         SaveLoad.SaveAppCloseTime();

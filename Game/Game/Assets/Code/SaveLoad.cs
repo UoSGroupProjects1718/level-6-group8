@@ -270,6 +270,7 @@ public static class SaveLoad
         ps.PrimaryMoney = player.PrimaryMoney;
         ps.PremiumMoney = player.PremiumMoney;
         ps.name = player.PlayerName;
+        ps.MapSectionsUnlocked = player.MapSectionsUnlocked;
 
         // Serialize the playerstats to json
         string json = JsonConvert.SerializeObject(ps);
@@ -345,40 +346,5 @@ public static class SaveLoad
         DateTime closingTime = JsonConvert.DeserializeObject<DateTime>(json);
 
         return closingTime; 
-    }
-
-    public static void SaveTownSection(TownSection ts)
-    {
-        // Make the object which is to be saved to json
-        TownSectionToFile tofile = new TownSectionToFile();
-        tofile.unlocked = ts.Unlocked;
-
-        // Serialize to json
-        string json = JsonConvert.SerializeObject(tofile);
-
-        // Get save dir
-        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
-        saveDir.Append(string.Format("\\TownSection_{0}.json", ts.ID));
-
-        //Save
-        File.WriteAllText(saveDir.ToString(), json);
-    }
-
-    public static TownSectionToFile LoadTownSection(uint id)
-    {
-        // Get dir
-        StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
-        saveDir.Append(string.Format("\\TownSection_{0}.json", id));
-
-        // Check this exists
-        if (!File.Exists(saveDir.ToString())) { return null; }
-
-        // Read
-        string json = File.ReadAllText(saveDir.ToString());
-
-        // Deserialize
-        TownSectionToFile tofile = JsonConvert.DeserializeObject<TownSectionToFile>(json);
-
-        return tofile;
     }
 }
