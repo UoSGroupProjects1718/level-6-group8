@@ -476,6 +476,22 @@ public class LevelController : MonoBehaviour
             {
                 HandleInput(inputFromFile);
             }
+
+            // And spawn the output
+            foreach (var machine in factory.DefaultMachines)
+            {
+                if (machine.machineType == MachineType.output)
+                {
+                    MachineToFile mach = new MachineToFile();
+
+                    mach.dir = machine.dir;
+                    mach.type = machine.machineType.ToString();
+                    mach.x = machine.x;
+                    mach.y = machine.y;
+
+                    HandleMachine(mach);
+                }
+            }
         }
         // Otherwise, spawn our default machines...
         else

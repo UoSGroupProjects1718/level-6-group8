@@ -30,7 +30,6 @@ public class InputToFile : MachineToFile
 /// </summary>
 public class LevelToFile
 {
-    public bool[,] tilesActive;
     public List<MachineToFile> machines = new List<MachineToFile>();
     public List<InputToFile> inputs = new List<InputToFile>();
 }

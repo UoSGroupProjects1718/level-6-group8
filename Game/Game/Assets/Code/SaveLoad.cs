@@ -96,7 +96,6 @@ public static class SaveLoad
     {
         // Create a new LevelToFile object
         LevelToFile ltf = new LevelToFile();
-        ltf.tilesActive = new bool[levelwidth, levelheight];
 
         /*
         for (int x = 0; x < levelWidth; x++)
@@ -109,8 +108,6 @@ public static class SaveLoad
         {
             for (int y = 0; y < levelheight; y++)
             {
-                // Is this an active tile?
-                ltf.tilesActive[x, y] = level[x, y].ActiveTile;
 
                 // Query if the current tile has a machine child
                 if (level[x, y].GetComponent<Tile>().Machine != null)
