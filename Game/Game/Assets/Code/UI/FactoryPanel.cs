@@ -103,6 +103,6 @@ public class FactoryPanel : MonoBehaviour {
     /// </summary>
     private void DisableCameraMoveScript()
     {
-        Camera.main.GetComponent<MoveCamera>().enabled = false;
+        Camera.main.GetComponent<OrthoCameraDrag>().enabled = false;
     }
 }

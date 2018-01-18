@@ -119,14 +119,14 @@ public class LevelController : MonoBehaviour
     public void OnLevelLoad()
     {
         // Set the build mode to none
-        SetBuildMode(5);
+        SetBuildMode(BuildMode.none);
 
         // Move the camera to the appropriate position
         Camera.main.transform.position =
-            new Vector3((factory.Width / 2 )-1, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            new Vector3(-.5f, Camera.main.transform.position.y, 0);
 
         // Set the camera bounds
-        Camera.main.GetComponent<MoveCamera>().UpdateBounds(0, factory.Width - 1, -2, factory.Height - 3);
+        Camera.main.GetComponent<OrthoCameraDrag>().UpdateCameraBounds(-2, -1, factory.Width -3, factory.Height -2);
 
         // Spawn the floor
         SpawnFloorTiles(0, levelWidth, 0, levelHeight);
@@ -254,12 +254,22 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
+    /// Updates the current building mode in the level
+    /// </summary>
+    /// <param name="bm"></param>
+    public void SetBuildMode(BuildMode bm)
+    {
+        int index = (int)bm;
+        SetBuildMode(index);
+    }
+
+    /// <summary>
     /// Enables or Disables drag script based on parameter
     /// </summary>
     /// <param name="a">True = enabled, False = disabled</param>
-    public void EnableDragScript(bool a)
+    public void EnableDragScript(bool enab)
     {
-        Camera.main.GetComponent<MoveCamera>().enabled = a;
+        Camera.main.GetComponent<OrthoCameraDrag>().enabled = enab;
     }
 
     /// <summary>
@@ -615,14 +625,17 @@ public class LevelController : MonoBehaviour
             /* Give the player a currency reward upon level
             completion or level improvement */
             uint oldScore = factory.Score;
-            Debug.Log(string.Format("Old factory score: {0}", oldScore));
-            Debug.Log(string.Format("New factory score: {0}", factoryScore));
+            Debug.Log(string.Format("Previous score: {0}", oldScore));
+            Debug.Log(string.Format("new score: {0}", factoryScore));
 
             /* Give the player however much they improved their score by
             (This will be the full amount if the level was previously unsolved) */
-            uint scoreDifference = factoryScore - oldScore;
-            Debug.Log(string.Format("Giving player {0} currency reward", scoreDifference));
-            GameManager.Instance.Player.AddPrimaryMoney(scoreDifference);
+            if (factoryScore > oldScore)
+            {
+                uint scoreDifference = factoryScore - oldScore;
+                Debug.Log(string.Format("New high score! Giving player {0} currency reward", scoreDifference));
+                GameManager.Instance.Player.AddPrimaryMoney(scoreDifference);
+            }
 
             // Calculate potions per minute
             float ppm = 0;

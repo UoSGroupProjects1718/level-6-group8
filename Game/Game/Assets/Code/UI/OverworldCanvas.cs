@@ -189,7 +189,7 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     private void EnableCameraMoveScript()
     {
-        Camera.main.GetComponent<MoveCamera>().enabled = true;
+        Camera.main.GetComponent<OrthoCameraDrag>().enabled = true;
     }
 
     /// <summary>
@@ -197,6 +197,6 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     private void DisableCameraMoveScript()
     {
-        Camera.main.GetComponent<MoveCamera>().enabled = false;
+        Camera.main.GetComponent<OrthoCameraDrag>().enabled = false;
     }
 }
