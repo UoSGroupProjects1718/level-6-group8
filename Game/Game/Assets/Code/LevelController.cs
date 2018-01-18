@@ -444,7 +444,6 @@ public class LevelController : MonoBehaviour
         Transform machineHolder = transform.Find("MachineHolder");
 
         // Loop through our level
-
         for (int x = 0; x < levelWidth; x++)
         {
             for (int y = 0; y < levelHeight; y++)
@@ -455,18 +454,9 @@ public class LevelController : MonoBehaviour
                 tile.X = x;
                 tile.gameObject.transform.SetParent(tileHolder);
 
-                // Is this an active tile?
-                if (ltf != null)
-                {
-                    // Read from file...
-                    tile.SetActiveStatus(ltf.tilesActive[x, y]);
-                }
-                // If no file to read from...
-                else
-                {
-                    // Default it to active
-                    tile.SetActiveStatus(true);
-                }
+
+                // Default it to active
+                tile.SetActiveStatus(true);
 
                 // Add our tile into our level array
                 this.factory.level.grid[x, y] = tile;
@@ -518,6 +508,12 @@ public class LevelController : MonoBehaviour
 
 
             }
+        }
+
+        // Deactivate any tiles that need deactivating
+        foreach (Vector2 inactiveTile in factory.InactiveTiles)
+        {
+            factory.level.grid[(int)inactiveTile.x, (int)inactiveTile.y].SetActiveStatus(false);
         }
     }
 

@@ -77,6 +77,10 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private DefaultMachine[] defaultMachines;
 
+    [Header("Inactive tiles")]
+    [SerializeField]
+    private Vector2[] inactiveTiles;
+
     [Header("Potion to make")]
     [SerializeField]
     private Potion potion;
@@ -104,6 +108,7 @@ public class Factory : MonoBehaviour
     public Texture FactorySprite { get { return factorySprite; } }
     public Potion Potion { get { return potion; } }
     public DefaultMachine[] DefaultMachines { get { return defaultMachines; } }
+    public Vector2[] InactiveTiles { get { return inactiveTiles; } }
 
     void Start()
     {

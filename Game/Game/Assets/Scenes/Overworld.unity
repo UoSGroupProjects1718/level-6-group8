@@ -829,6 +829,7 @@ MonoBehaviour:
     x: 5
     y: 3
     dir: 3
+  inactiveTiles: []
   potion: {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
   stockpileLimit: 2000
   scoreThresholds: 0a000000140000001e000000
@@ -3628,7 +3629,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 643998939}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.345
+  m_Size: 0.69
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4767,9 +4768,30 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 15
-  height: 5
-  defaultMachines: []
+  width: 7
+  height: 7
+  defaultMachines:
+  - machineType: 6
+    x: 0
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 3
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 5
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 1
+    y: 6
+    dir: 2
+  - machineType: 0
+    x: 3
+    y: 6
+    dir: 2
+  inactiveTiles: []
   potion: {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000
@@ -4898,10 +4920,47 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 10
-  height: 5
-  defaultMachines: []
-  potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
+  width: 9
+  height: 11
+  defaultMachines:
+  - machineType: 6
+    x: 0
+    y: 5
+    dir: 1
+  - machineType: 0
+    x: 2
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 6
+    y: 0
+    dir: 0
+  - machineType: 0
+    x: 2
+    y: 10
+    dir: 2
+  - machineType: 0
+    x: 6
+    y: 10
+    dir: 2
+  inactiveTiles:
+  - {x: 0, y: 3}
+  - {x: 1, y: 3}
+  - {x: 2, y: 3}
+  - {x: 3, y: 3}
+  - {x: 5, y: 3}
+  - {x: 6, y: 3}
+  - {x: 7, y: 3}
+  - {x: 8, y: 3}
+  - {x: 0, y: 7}
+  - {x: 1, y: 7}
+  - {x: 2, y: 7}
+  - {x: 3, y: 7}
+  - {x: 5, y: 7}
+  - {x: 6, y: 7}
+  - {x: 7, y: 7}
+  - {x: 8, y: 7}
+  potion: {fileID: 114970336893621952, guid: 97cf388e525e52b4299cb1585059c016, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000
 --- !u!65 &772326554
@@ -6338,7 +6397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 92.99997, y: 7.499983}
+  m_AnchoredPosition: {x: 93, y: 7.4999905}
   m_SizeDelta: {x: 600, y: -15.000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &941776641
@@ -11804,6 +11863,10 @@ Prefab:
       propertyPath: m_TagString
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
   m_IsPrefabParent: 0
@@ -13134,7 +13197,8 @@ MonoBehaviour:
   width: 10
   height: 10
   defaultMachines: []
-  potion: {fileID: 114885259430696492, guid: e3293be51c3cb794dbda7a4d0af884e1, type: 2}
+  inactiveTiles: []
+  potion: {fileID: 114766385601742350, guid: 9b6ca0f78c741124c8b4c66a08786b95, type: 2}
   stockpileLimit: 0
   scoreThresholds: 0a000000140000001e000000
 --- !u!65 &1674618149

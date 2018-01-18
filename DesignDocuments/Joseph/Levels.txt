@@ -1,0 +1,26 @@
+0:
+Width: 6
+Height: 6
+Output: 0, 0
+Input: 1, 5
+Input: 3, 5
+Input: 5, 1
+Input: 5, 3
+
+1:
+Width: 7
+Height: 7
+Output: 0, 0
+Input: 3, 0
+Input: 5, 0
+Input: 6, 1
+Input: 6, 3
+
+2:
+Width: 9
+Height: 11
+Output: 0, 5
+Input: 2, 0
+Input: 6, 0
+Input, 2, 10
+Input: 6, 10
