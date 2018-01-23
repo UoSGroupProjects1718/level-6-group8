@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,16 +7,34 @@ using Firebase.Auth;
 public class AuthServices : MonoBehaviour
 {
     public Toggle SignUpToggle;
-    public InputField UserField;
+    public InputField NickField;
+    public InputField EmailField;
     public InputField PasswordField;
+    public Text SignedInText;
+    public Button SignInDialogButton;
+    public bool isSignedIn;
 
     private FirebaseAuth auth;
-	// Use this for initialization
-	void Start () {
+    private FirebaseUser user;
+
+    // Use this for initialization
+    void Start () {
 	    auth = FirebaseAuth.DefaultInstance;
-	    auth.StateChanged += AuthStateChanged;
-	    AuthStateChanged(this, null);
+        auth.StateChanged += AuthStateChanged;
+        AuthStateChanged(this, null);
+        UpdateUIComponents();
 	}
+
+    public void SignOut()
+    {
+        if(isSignedIn)
+        {
+            auth.SignOut();
+        } else
+        {
+            Debug.LogError("Can't log out - Not signed in!");
+        }
+    }
 
     void AuthStateChanged(object sender, EventArgs e)
     {
@@ -29,22 +44,47 @@ public class AuthServices : MonoBehaviour
             if (!signedIn && user != null)
             {
                 Debug.Log("Signed out " + user.UserId);
+                isSignedIn = false;
             }
             user = auth.CurrentUser;
             if (signedIn)
             {
                 Debug.Log("Signed in " + user.UserId);
-                displayName = user.DisplayName ?? "";
-                emailAddress = user.Email ?? "";
+                isSignedIn = true;
             }
         }
-
+		UpdateUIComponents();
     }
 
     // Update is called once per frame
     void Update () {
 		
 	}
+
+    void UpdateUIComponents()
+    {
+        UpdateSignedInText();
+        UpdateSignInDialogButton();
+    }
+
+    void UpdateSignedInText()
+    {
+        SignedInText.text = isSignedIn ? auth.CurrentUser.DisplayName + " Signed in" : "Nobody signed in.";
+    }
+
+    void UpdateSignInDialogButton()
+    {
+        var buttonText = SignInDialogButton.gameObject.transform.GetChild(0).GetComponent<Text>();
+        if(buttonText != null)
+        {
+            if (isSignedIn)
+            {
+                buttonText.text = "Sign Out";
+            } else {
+                buttonText.text = "Sign In/Register";
+            }
+        }
+    }
 
     public bool IsEmailValid(string email)
     {
@@ -74,7 +114,7 @@ public class AuthServices : MonoBehaviour
 
     public void SignInOrSignUp()
     {
-        if (IsEmailValid(UserField.text))
+        if (IsEmailValid(EmailField.text))
         {
             if (SignUpToggle.isOn)
             {
@@ -92,9 +132,9 @@ public class AuthServices : MonoBehaviour
         }
     }
 
-    void SignIn()
+    string SignIn()
     {
-        auth.SignInWithEmailAndPasswordAsync(UserField.text, PasswordField.text).ContinueWith(task => {
+        auth.SignInWithEmailAndPasswordAsync(EmailField.text, PasswordField.text).ContinueWith(task => {
             if (task.IsCanceled)
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
@@ -110,12 +150,35 @@ public class AuthServices : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 user.DisplayName, user.UserId);
         });
-
+        Debug.Log("User with ID " + auth.CurrentUser.UserId + " is signed in.");
+        return auth.CurrentUser.UserId;
     }
 
-    void SignUp()
+    string SignIn(string username, string password)
     {
-        auth.CreateUserWithEmailAndPasswordAsync(UserField.text, PasswordField.text).ContinueWith(task =>
+        auth.SignInWithEmailAndPasswordAsync(username, password).ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            FirebaseUser user = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})",
+                user.DisplayName, user.UserId);
+        });
+        Debug.Log("User with ID " + auth.CurrentUser.UserId + " is signed in.");
+        return auth.CurrentUser.UserId;
+    }
+
+    string SignUp()
+    {
+        auth.CreateUserWithEmailAndPasswordAsync(EmailField.text, PasswordField.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -123,12 +186,41 @@ public class AuthServices : MonoBehaviour
             }
             if (task.IsFaulted)
             {
-                Debug.LogError("Sign in encountered an error: " + task.Exception);
+                Debug.LogError("Sign up encountered an error: " + task.Exception);
             }
 
             FirebaseUser newUser = task.Result;
+            GenerateUserProfile(newUser, NickField.text);
             Debug.LogFormat("Firebase User created successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
         });
+        Debug.Log("User with ID " + auth.CurrentUser.UserId + " is signed in.");
+        return auth.CurrentUser.UserId;
+    }
+
+    private void GenerateUserProfile(FirebaseUser newUser, string nickname)
+    {
+        if(newUser != null)
+        {
+            UserProfile profile = new UserProfile
+            {
+                DisplayName = nickname
+            };
+            user.UpdateUserProfileAsync(profile).ContinueWith(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("UpdateUserProfileAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
+                    return;
+                }
+                Debug.Log("User profile updated successfully.");
+                UpdateUIComponents();
+            });
+        }
     }
 
     void CloseSignupDialog()

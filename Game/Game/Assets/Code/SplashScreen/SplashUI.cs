@@ -8,15 +8,26 @@ public class SplashUI : MonoBehaviour
 {
     public GameObject SignInDialog;
     public InputField NicknameField;
+    public Button SignInSignOutButton;
 
     public void LoadOverworld()
     {
         SceneManager.LoadScene("Overworld");
     }
 
-    public void OpenSignInDialog()
+    public void SignInSignOut()
     {
-        SignInDialog.SetActive(true);
+        var authServices = GetComponent<AuthServices>();
+        if(authServices != null)
+        {
+            if(authServices.isSignedIn)
+            {
+                authServices.SignOut();
+            } else
+            {
+                SignInDialog.SetActive(true);
+            }
+        }
     }
 
     public void CloseSignInDialog()
