@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1864462705697524}
+  m_RootGameObject: {fileID: 1547913062839908}
   m_IsPrefabParent: 1
---- !u!1 &1864462705697524
+--- !u!1 &1547913062839908
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4479418911996538}
-  - component: {fileID: 33390067516822820}
-  - component: {fileID: 65707362250134100}
-  - component: {fileID: 23102770188694338}
-  - component: {fileID: 114451633011359524}
+  - component: {fileID: 4409747565849622}
+  - component: {fileID: 33985003736397220}
+  - component: {fileID: 23869061385685948}
+  - component: {fileID: 114651494283489238}
+  - component: {fileID: 65501712460532920}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -30,33 +30,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4479418911996538
+--- !u!4 &4409747565849622
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864462705697524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.662, y: 7.89, z: -107.92004}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_GameObject: {fileID: 1547913062839908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 2}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23102770188694338
+--- !u!23 &23869061385685948
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864462705697524}
+  m_GameObject: {fileID: 1547913062839908}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a80076676c9598a4ab16b6584d4cc910, type: 2}
+  - {fileID: 2100000, guid: 7234a94465ad2af4fbfe975e8bd8b7d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64,9 +65,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -75,31 +77,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33390067516822820
+--- !u!33 &33985003736397220
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864462705697524}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65707362250134100
+  m_GameObject: {fileID: 1547913062839908}
+  m_Mesh: {fileID: 4300000, guid: 80b741ebff71d6e4aadc595c82f9bc1e, type: 3}
+--- !u!65 &65501712460532920
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864462705697524}
+  m_GameObject: {fileID: 1547913062839908}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114451633011359524
+  m_Size: {x: 30, y: 40, z: 30}
+  m_Center: {x: 0, y: 20, z: 0}
+--- !u!114 &114651494283489238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864462705697524}
+  m_GameObject: {fileID: 1547913062839908}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afa4fe14bed55a44880e0f313043eea7, type: 3}
@@ -108,5 +110,5 @@ MonoBehaviour:
   ticksToExecute: 1
   type: 5
   dir: 0
-  parent: {fileID: 0}
   cost: 0
+  yOffset: -0.4

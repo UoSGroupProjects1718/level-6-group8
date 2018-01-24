@@ -40,9 +40,19 @@ public abstract class Machine : MonoBehaviour
     [SerializeField]
     protected int cost;
 
+    [Header("Y offset from floor")]
+    [SerializeField]
+    protected float yOffset;
+
+    [Header("Rotation offset")]
+    [SerializeField]
+    protected float rotationOffset;
+
     public MachineType Type { get { return type; } }
     public Direction GetDirection { get { return dir; } }
     public int Cost { get { return cost; } }
+    public float YOffset { get { return yOffset; } }
+    public float RotationOffset { get { return rotationOffset; } }
     public Tile Parent {
         get { return parent; }
         set { parent = value; }
@@ -51,7 +61,6 @@ public abstract class Machine : MonoBehaviour
     void Start ()
     {
         dir = Direction.up;
-        // lc = GameObject.Find("LevelController").GetComponent<LevelController>();
 	}
 
     /// <summary>
@@ -160,16 +169,16 @@ public abstract class Machine : MonoBehaviour
         switch (dir)
         {
             case Direction.right:
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270, transform.eulerAngles.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270 + RotationOffset, transform.eulerAngles.z);
                 break;
             case Direction.down:
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0 + RotationOffset, transform.eulerAngles.z);
                 break;
             case Direction.left:
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90 + RotationOffset, transform.eulerAngles.z);
                 break;
             case Direction.up:
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180, transform.eulerAngles.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180 + RotationOffset, transform.eulerAngles.z);
                 break;
         }
     }

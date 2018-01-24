@@ -57,6 +57,10 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private GameObject floorTile;
 
+    [Header("Wall tile plane")]
+    [SerializeField]
+    private GameObject wallTile;
+
     // UI Controller
     private GameObject UI_Controller;
 
@@ -130,6 +134,7 @@ public class LevelController : MonoBehaviour
 
         // Spawn the floor
         SpawnFloorTiles(0, levelWidth, 0, levelHeight);
+        SpawnWalls(0, levelWidth, 0, levelHeight);
 
         // UI Functions
         UI_Controller = GameObject.Find("Canvas");
@@ -139,11 +144,12 @@ public class LevelController : MonoBehaviour
 
     private void SpawnFloorTiles(int xMin, int xMax, int zMin, int zMax)
     {
+        // How long are our planes
         int planeSize = 10;
 
+        // Calculate new boundary values
         int minX = xMin - planeSize;
         int maxX = xMax + planeSize;
-
         int minZ = zMin - planeSize;
         int maxZ = zMax + planeSize;
         
@@ -154,6 +160,33 @@ public class LevelController : MonoBehaviour
                 Instantiate(floorTile, new Vector3(x, -1, z), Quaternion.identity);
             }
         }
+    }
+
+    private void SpawnWalls(int xMin, int xMax, int zMin, int zMax)
+    {
+        // How big are our walls
+        int wallSize = 10;
+
+        // Calculate our new boundary values
+        int minX = xMin - wallSize;
+        int maxX = xMax + wallSize;
+        int minZ = zMin - wallSize;
+        int maxZ = zMax + wallSize;
+
+        // Spawn along the Z axis
+        for (int z = minZ; z < maxZ; z += wallSize)
+        {
+            GameObject wall = Instantiate(wallTile, new Vector3(xMax + 2.5f, 4, z), Quaternion.identity);
+            wall.transform.Rotate(-90, 90, 0);
+        }
+
+        // Spawn along the X axis
+        for (int x = minX; x < maxX; x += wallSize)
+        {
+            GameObject wall = Instantiate(wallTile, new Vector3(x, 4, zMax + 2.5f), Quaternion.identity);
+            wall.transform.Rotate(-90, 0, 0);
+        }
+
     }
 
     /// <summary>
