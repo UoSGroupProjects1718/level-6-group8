@@ -36,25 +36,18 @@ public class Tile : MonoBehaviour
     void OnMouseOver()
     {
 #if UNITY_EDITOR
-        // Left click
+
         if (Input.GetMouseButtonDown(0))
         {
-            LeftClick();
+            OnTouch(Input.mousePosition.x, Input.mousePosition.y);
         }
-        
+
         // Right click
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             RightClick();
         }
 #endif
-    }
-
-    private void LeftClick()
-    {
-        if (!active) { return; }
-
-        LevelController.Instance.SpawnOn(x, y);
     }
 
     private void RightClick()
@@ -69,23 +62,44 @@ public class Tile : MonoBehaviour
     // This will detect when a user taps on the tile
     void OnMouseDown()
     {
+        if (Input.touchCount == 1)
+        {
+            OnTouch(Input.GetTouch(0).position.x, Input.GetTouch(1).position.y);
+        }
+    }
+
+    #endregion
+
+    void OnTouch(float touchX, float touchY)
+    {
         // Return unless we're active
         if (!active) { return; }
+
+        // Return if the production line is running
+        if (LevelController.Instance.Running) { return; }
+
+        // Return if we tapped over UI
+        if (Utility.IsOverUIObject(touchX, touchY)) { return; }
 
         // Check that the user is in an appropriate build mode
         // (What do they have selected?)
         switch (LevelController.Instance.BuildStatus)
         {
+            /* Debug options */
+            case BuildMode.input:
+            case BuildMode.output:
+
+            /* Regular options */
             case BuildMode.brewer:
             case BuildMode.conveyer:
             case BuildMode.grinder:
             case BuildMode.oven:
+            case BuildMode.slow_conveyer:
+            case BuildMode.rotate_conveyer:
                 LevelController.Instance.SpawnOn(x, y);
                 break;
         }
     }
-
-    #endregion
 
     public void SetActiveStatus(bool foo)
     {

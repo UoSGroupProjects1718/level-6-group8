@@ -35,14 +35,13 @@ public class DefaultMachine
 
 public class Factory : MonoBehaviour
 {
-    [Header("Visible for debugging")]
-    [SerializeField] private bool solved;   
-    [SerializeField] private bool unlocked;
-    [SerializeField] private uint score;
-    [SerializeField] private uint stars;
-    [SerializeField] private int ticksToSolve;
-    [SerializeField] private int totalMachineCost;
-    [SerializeField] private float potionsPerMinute;
+    private bool solved;   
+    private bool unlocked;
+    private uint score;
+    private uint stars;
+    private int ticksToSolve;
+    private int totalMachineCost;
+    private float potionsPerMinute;
 
     public bool Solved { get { return solved; } set { solved = value; } }
     public uint Score { get { return score; } set { score = value; } }

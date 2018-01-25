@@ -120,10 +120,11 @@ public static class SaveLoad
                     {
                         // If it's a "normal" type:
                         case MachineType.conveyer:
-                        case MachineType.mixer:
                         case MachineType.output:
-                        case MachineType.pestlemortar:
+                        case MachineType.grinder:
                         case MachineType.brewer:
+                        case MachineType.slow_conveyer:
+                        case MachineType.rotate_conveyer:
 
                             // Create a MachineToFile object to hold all relevent information
                             MachineToFile mtf = new MachineToFile();

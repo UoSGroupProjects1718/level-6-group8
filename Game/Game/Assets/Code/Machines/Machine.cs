@@ -4,13 +4,17 @@ using UnityEngine;
 
 public enum MachineType
 {
+    // Default
     input,
+    output,
+
+    // Player-spawnable
     conveyer,
-    pestlemortar,
+    grinder,
     brewer,
-    mixer,
     oven,
-    output
+    slow_conveyer,
+    rotate_conveyer
 }
 
 [System.Serializable]
@@ -143,6 +147,25 @@ public abstract class Machine : MonoBehaviour
         LevelController.Instance.RemoveAndDestroyListOfItems(ref list);
     }
 
+    public void RotateAnticlockwise()
+    {
+        switch (dir)
+        {
+            case Direction.up:
+                SetDir(Direction.left);
+                break;
+            case Direction.right:
+                SetDir(Direction.up);
+                break;
+            case Direction.down:
+                SetDir(Direction.right);
+                break;
+            case Direction.left:
+                SetDir(Direction.down);
+                break;
+        }
+    }
+
     public void Rotate()
     {
         switch (dir)
@@ -191,6 +214,9 @@ public abstract class Machine : MonoBehaviour
         // Right click
         if (Input.GetMouseButtonDown(1))
         {
+            // Return if the production line is running...
+            if (LevelController.Instance.Running) { return; }
+
             Rotate();
         }
     }
@@ -201,6 +227,9 @@ public abstract class Machine : MonoBehaviour
     // This will detect when a user taps on the tile
     void OnMouseDown()
     {
+        // Return if the production line is running...
+        if (LevelController.Instance.Running) { return; }
+
         // Check that the user is in an appropriate build mode
         // (What do they have selected?)
         switch (LevelController.Instance.BuildStatus)

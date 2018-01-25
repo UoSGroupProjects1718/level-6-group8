@@ -20,22 +20,26 @@ public class Conveyer : Machine
     /// </summary>
     public override void Tick()
     {
-        // Tick count
-        tickCounter++;
-        if (tickCounter < ticksToExecute) { return; }
+        // If we have an active child, start ticking
+        if (activeChild != null)
+        {
 
-        ResetTickCounter();
+            // Tick count
+            tickCounter++;
+            if (tickCounter < ticksToExecute) { return; }
 
-        // Get machine im facing
-        Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, dir);
+            ResetTickCounter();
 
-        // Null check
-        if (neighbour == null) { return; }
-        if (activeChild == null) { return; }
+            // Get the machine im facing
+            Machine neighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, GetDirection);
 
-        // Give child to neighbour
-        neighbour.Receive(ref activeChild);
-        activeChild = null;
+            // Null check
+            if (neighbour == null) { return; }
+
+            // Give child to neighbour
+            neighbour.Receive(ref activeChild);
+            activeChild = null;
+        }
     }
 
     public override void Flush()

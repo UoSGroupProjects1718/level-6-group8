@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ticksToExecute: 1
-  type: 2
+  type: 3
   dir: 0
   cost: 0
   yOffset: -0.4

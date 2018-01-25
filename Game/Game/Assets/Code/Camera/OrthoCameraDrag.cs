@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public class OrthoCameraDrag : MonoBehaviour
 {
@@ -69,7 +69,7 @@ public class OrthoCameraDrag : MonoBehaviour
     private void UpdatePosition()
     {
         // Raycast to ensure that we didnt click on UI...
-        if (IsPointerOverUIObject(dragPos.x, dragPos.y)) { return; }
+        if (Utility.IsOverUIObject(dragPos.x, dragPos.y)) { return; }
 
         // Find the difference
         Vector2 difference = downPos - dragPos;
@@ -87,31 +87,14 @@ public class OrthoCameraDrag : MonoBehaviour
 
         // Abide by boundaries
         if (newPos.x < minX) newPos.x = minX;
-        if (newPos.x > maxX) newPos.x = maxX;
+        else if (newPos.x > maxX) newPos.x = maxX;
         if (newPos.z < minZ) newPos.z = minZ;
-        if (newPos.z > maxZ) newPos.z = maxZ;
+        else if (newPos.z > maxZ) newPos.z = maxZ;
 
         transform.position = newPos;
     }
 
-    /// <summary>
-    /// Checks to see if the provided (x, y) coordinate is over a UI object
-    /// </summary>
-    /// <param name="x">Mouse/Touch x pos</param>
-    /// <param name="y">Mouse/Touch y pos</param>
-    /// <returns>True if over a UI object, otherwise false</returns>
-    private bool IsPointerOverUIObject(float x, float y)
-    {
-        // https://answers.unity.com/questions/1073979/android-touches-pass-through-ui-elements.html
 
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(x, y);
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-
-        return (results.Count > 0);
-    }
 
     /// <summary>
     /// Sets the maximum and minimum bounds for the camera.

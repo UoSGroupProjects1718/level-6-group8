@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ticksToExecute: 1
-  type: 6
+  type: 1
   dir: 0
   cost: 0
   yOffset: -0.4

@@ -29,7 +29,9 @@ public enum BuildMode
     conveyer,           // 6
     grinder,            // 7
     brewer,             // 8
-    oven                // 9
+    oven,               // 9
+    slow_conveyer,      // 10
+    rotate_conveyer     // 11
 }
 
 /// <summary>
@@ -77,7 +79,8 @@ public class LevelController : MonoBehaviour
     [Header("Spawnable machines")]
     [SerializeField]
     GameObject[] Spawnables;
-  
+
+    public bool Running { get { return running; } }
     public int TickCounter { get { return tickCounter; } }
     public float TickWaitTime { get { if (speedUp) return tickWaitTimeSpedUp; else return tickWaitTime; } }
     public BuildMode BuildStatus { get { return buildingMode; } }
@@ -342,6 +345,13 @@ public class LevelController : MonoBehaviour
             case BuildMode.oven:
                 spawnIndex = 6;
                 break;
+            case BuildMode.slow_conveyer:
+                spawnIndex = 7;
+                break;
+            case BuildMode.rotate_conveyer:
+                spawnIndex = 8;
+                break;
+
             /*
                 For use with the debug menu, these options 
                 are not available to the player:
@@ -586,13 +596,25 @@ public class LevelController : MonoBehaviour
         {
             mach = Instantiate(Spawnables[3]).GetComponent<Conveyer>();
         }
-        else if (machineFromFile.type.Equals("pestlemortar"))
+        else if (machineFromFile.type.Equals("grinder"))
         {
             mach = Instantiate(Spawnables[4]).GetComponent<PestleMortar>();
         }
         else if (machineFromFile.type.Equals("brewer"))
         {
             mach = Instantiate(Spawnables[5]).GetComponent<Brewer>();
+        }
+        else if (machineFromFile.type.Equals("oven"))
+        {
+            mach = Instantiate(Spawnables[6]).GetComponent<Oven>();
+        }
+        else if (machineFromFile.type.Equals("slow_conveyer"))
+        {
+            mach = Instantiate(Spawnables[7]).GetComponent<Conveyer>();
+        }
+        else if (machineFromFile.type.Equals("rotate_conveyer"))
+        {
+            mach = Instantiate(Spawnables[8]).GetComponent<RotatingConveyer>();
         }
         else
         {

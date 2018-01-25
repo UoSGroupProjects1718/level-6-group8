@@ -26,13 +26,11 @@ public class FactoryPanel : MonoBehaviour {
     [SerializeField]
     Slider factoryCost;
 
-
     [Header("Asset Reference")]
     [SerializeField]
     private Sprite StarFilled;
     [SerializeField]
     private Sprite StarEmpty;
-
 
     /// <summary>
     /// Displays the factory pannel.
