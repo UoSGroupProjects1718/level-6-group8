@@ -20,7 +20,7 @@ public class SplashUI : MonoBehaviour
         var authServices = GetComponent<AuthServices>();
         if(authServices != null)
         {
-            if(authServices.isSignedIn)
+            if(AuthServices.isSignedIn)
             {
                 authServices.SignOut();
             } else

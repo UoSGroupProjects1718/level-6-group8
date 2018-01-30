@@ -19,6 +19,11 @@ public class HighscoreManager : MonoBehaviour
 		
 	}
 
+    HighscoreManager()
+    {
+        db = FirebaseDatabase.DefaultInstance.RootReference;
+    }
+
     void TestWrite()
     {
         db.Child("Testing").SetValueAsync("TestString");
@@ -35,4 +40,9 @@ public class HighscoreManager : MonoBehaviour
     {
         
     }
+
+    public void PushScore(int score)
+    {
+        db.Child()
+    }   
 }

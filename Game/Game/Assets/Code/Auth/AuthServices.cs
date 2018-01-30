@@ -12,7 +12,7 @@ public class AuthServices : MonoBehaviour
     public InputField PasswordField;
     public Text SignedInText;
     public Button SignInDialogButton;
-    public bool isSignedIn;
+    public static bool isSignedIn;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
