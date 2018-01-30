@@ -217,7 +217,12 @@ public class AuthServices : MonoBehaviour
                     Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
                     return;
                 }
-                Debug.Log("User profile updated successfully.");
+                if(task.IsCompleted)
+                {
+                    Debug.Log("User profile updated successfully.");
+                    DBManager db = new DBManager();
+                    db.WriteNewUser(newUser);
+                }
                 UpdateUIComponents();
             });
         }

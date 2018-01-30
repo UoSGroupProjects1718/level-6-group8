@@ -616,8 +616,8 @@ public class LevelController : MonoBehaviour
             if (AuthServices.isSignedIn)
             {
                 var user = FirebaseAuth.DefaultInstance.CurrentUser;
-                HighscoreManager hsm = new HighscoreManager();
-                hsm.
+                DBManager dbm = new DBManager();
+                dbm.WriteScore(factoryScore, factory.FactoryId, user);
             }
 
             // Debug output
