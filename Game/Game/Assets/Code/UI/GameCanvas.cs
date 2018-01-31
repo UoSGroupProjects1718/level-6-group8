@@ -45,6 +45,13 @@ public class GameCanvas : MonoBehaviour
 
     private bool playing;
 
+
+    private GameObject pressed;
+    [SerializeField]
+    private Color buttonPressedColor;
+    [SerializeField]
+    private Color buttonDefaultColor;
+
     /// <summary>
     ///     Initilization for the UI objects
     ///     @Params Factory
@@ -59,6 +66,21 @@ public class GameCanvas : MonoBehaviour
     public void ToggleDull()
     {
         dullPanel.SetActive(!dullPanel.activeSelf);
+    }
+
+    public void deSelectPreviousButton()
+    {
+        if(pressed != null)
+        {
+            pressed.GetComponent<Image>().color = buttonDefaultColor;
+        }
+    }
+
+    public void buttonPressed(GameObject button)
+    {
+        deSelectPreviousButton();
+        pressed = button;
+        pressed.GetComponent<Image>().color = buttonPressedColor;
     }
 
     /// <summary>
