@@ -234,7 +234,7 @@ public class LevelController : MonoBehaviour
     {
         if (!running)
         {
-            running = true;
+            StartRunning();
         }
         else
         {
@@ -249,6 +249,19 @@ public class LevelController : MonoBehaviour
     public void ToggleSpeedUp()
     {
         speedUp = !speedUp;
+    }
+
+    /// <summary>
+    /// Starts the production line, calls the Begin() function on all machines
+    /// </summary>
+    private void StartRunning()
+    {
+        running = true;
+
+        foreach (Machine machine in factory.level.machines)
+        {
+            machine.Begin();
+        }
     }
 
     /// <summary>
@@ -389,12 +402,12 @@ public class LevelController : MonoBehaviour
     public Machine GetNeighbour(int x, int y, Direction facing)
     {
         // Up
-        if (facing == Direction.up && y < levelHeight)
+        if (facing == Direction.up && y < levelHeight -1)
         {
             return factory.level.grid[x, y + 1].Machine;
         }
         // Right
-        else if (facing == Direction.right && x < levelWidth)
+        else if (facing == Direction.right && x < levelWidth -1)
         {
             return factory.level.grid[x + 1, y].Machine;
         }

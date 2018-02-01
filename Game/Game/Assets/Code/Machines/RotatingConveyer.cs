@@ -5,24 +5,109 @@ using UnityEngine;
 
 public class RotatingConveyer : Machine
 {
+    bool rotate;
+    bool firstRun;
+    int rotateCounter;
     Item bufferChild;
     Item activeChild;
-    bool rotate;
-    Orientation orientation;
-
-    private enum Orientation
-    {
-        normal,
-        rotated
-    }
+    Direction originalDirection;
+    List<Direction> directionsToFace;
 
 	void Start ()
     {
         bufferChild = null;
         activeChild = null;
         rotate = false;
+        firstRun = true;
+        directionsToFace = new List<Direction>();
         ResetTickCounter();	
 	}
+
+    private List<Direction> GetClockwiseSpinFrom(Direction dir)
+    {
+        List<Direction> dirs = new List<Direction>();
+
+        switch (dir)
+        {
+            case Direction.up:
+                dirs.Add(Direction.right);
+                dirs.Add(Direction.down);
+                dirs.Add(Direction.left);
+                break;
+
+            case Direction.right:
+                dirs.Add(Direction.down);
+                dirs.Add(Direction.left);
+                dirs.Add(Direction.up);
+                break;
+
+            case Direction.down:
+                dirs.Add(Direction.left);
+                dirs.Add(Direction.up);
+                dirs.Add(Direction.right);
+                break;
+
+            case Direction.left:
+                dirs.Add(Direction.up);
+                dirs.Add(Direction.right);
+                dirs.Add(Direction.down);
+                break;
+        }
+
+        return dirs;
+    }
+
+    private Direction GetOppositeDirection(Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.up:
+                return Direction.down;
+            case Direction.right:
+                return Direction.left;
+            case Direction.down:
+                return Direction.up;
+            case Direction.left:
+            default:
+                return Direction.right;
+        }
+    }
+
+    /// <summary>
+    /// Calculates which directions it has to face based on its neighbours
+    /// </summary>
+    public override void Begin()
+    {
+        // Remember the original direction
+        originalDirection = GetDirection;
+        rotateCounter = 0;
+
+        // Clear our directions to face
+        directionsToFace.Clear();
+
+        // Get a list of a full spin relative to our facing direction
+        List<Direction> dirs = GetClockwiseSpinFrom(originalDirection);
+
+        // Add in our first dir
+        directionsToFace.Add(originalDirection);
+
+        // Check every other dir
+        foreach (Direction direction in dirs)
+        {
+            // Get the neighbour in this direction
+            Machine dirNeighbour = LevelController.Instance.GetNeighbour(parent.X, parent.Y, direction);
+
+            // If its not null and not facing us (thus not giving us items)
+            if (dirNeighbour != null && dirNeighbour.GetDirection != GetOppositeDirection(direction))
+            {
+                // We will rotate to this direction
+                directionsToFace.Add(direction);
+            }
+        }
+
+        // Finally, reset our rotation
+        SetDir(originalDirection);
+    }
 
     /// <summary>
     /// Give our activeChild to the machine we are facing's buffer
@@ -68,24 +153,21 @@ public class RotatingConveyer : Machine
 
     public override void Execute()
     {
-        // If we passed an item this cycle
         if (rotate)
         {
-            // Rotate
-            switch (orientation)
-            {
-                case Orientation.normal:
-                    orientation = Orientation.rotated;
-                    Rotate();
-                    break;
-                case Orientation.rotated:
-                    orientation = Orientation.normal;
-                    RotateAnticlockwise();
-                    break;
-            }
-        }
+            rotate = false;
 
-        rotate = false;
+            // Move onto the next rotation
+            rotateCounter++;
+
+            if (rotateCounter == directionsToFace.Count)
+                rotateCounter = 0;
+
+            // Face this direction
+            SetDir(directionsToFace[rotateCounter]);
+
+
+        }
     }
 
     public override void Receive(ref Item newItem)
@@ -118,6 +200,9 @@ public class RotatingConveyer : Machine
 
     public override void Reset()
     {
+        // Reset the machine back to its original rotation
+        SetDir(originalDirection);
+
         RemoveAndDestroyItem(ref bufferChild);
         RemoveAndDestroyItem(ref activeChild);
     }

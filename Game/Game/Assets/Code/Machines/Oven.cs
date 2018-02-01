@@ -16,6 +16,11 @@ public class Oven : Machine
     }
 
     /// <summary>
+    /// Called upon the production line beginning
+    /// </summary>
+    public override void Begin() { return; }
+
+    /// <summary>
     /// Give our activeChild to the machine we are facing's buffer
     /// </summary>
     public override void Tick()

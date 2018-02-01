@@ -12,7 +12,12 @@ public class Output : Machine
     {
         bufferChildren = new List<Item>();
         activeChildren = new List<Item>();
-	} 
+	}
+
+    /// <summary>
+    /// Called upon the production line beginning
+    /// </summary>
+    public override void Begin() { return; }
 
     /// <summary>
     /// Output inplements no Tick(). Simply returns;

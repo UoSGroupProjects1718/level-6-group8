@@ -30,7 +30,12 @@ public class Inputter : Machine
             ItemToOutput = item;
         }
     }
-	
+
+    /// <summary>
+    /// Called upon the production line beginning
+    /// </summary>
+    public override void Begin() { return; }
+
     public override void Tick()
     {
         // Tick +

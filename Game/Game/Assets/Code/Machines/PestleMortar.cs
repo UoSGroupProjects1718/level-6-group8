@@ -16,6 +16,11 @@ public class PestleMortar : Machine
     }
 
     /// <summary>
+    /// Called upon the production line beginning
+    /// </summary>
+    public override void Begin() { return; }
+
+    /// <summary>
     /// Pass our createdItem over to the neighbour
     /// </summary>
     public override void Tick()

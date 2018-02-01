@@ -68,6 +68,11 @@ public abstract class Machine : MonoBehaviour
 	}
 
     /// <summary>
+    /// This function is called on the machine when the production line starts running
+    /// </summary>
+    public abstract void Begin();
+
+    /// <summary>
     /// Pass item to next machines buffer
     /// </summary>
     public abstract void Tick();
