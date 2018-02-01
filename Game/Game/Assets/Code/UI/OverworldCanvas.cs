@@ -53,11 +53,6 @@ public class OverworldCanvas : MonoBehaviour
         StartCoroutine(WaitForPlayerLoad());
     }
 
-    void Update()
-    {
-        UpdatePlayerStats();
-    }
-
     IEnumerator WaitForPlayerLoad()
     {
         yield return new WaitForSeconds(GameManager.LoadTime + float.Epsilon);
@@ -67,13 +62,10 @@ public class OverworldCanvas : MonoBehaviour
     /// Updates the player money pane in the overworld with the player's primary and premium money count.
     /// </summary>
     /// <param name="player">The player object to get the money values from.</param>
-    public void UpdatePlayerStats()
+    public void UpdatePlayerStats(uint primary, uint premium)
     {
-        if (GameManager.Instance.Player != null)
-        {
-            primaryMoney.text = GameManager.Instance.Player.PrimaryMoney.ToString();
-            premiumMoney.text = GameManager.Instance.Player.PremiumMoney.ToString();
-        }
+        primaryMoney.text = Utility.NumberToCommaSeparatedString(primary);
+        premiumMoney.text = Utility.NumberToCommaSeparatedString(premium);
     }
 
     /// <summary>

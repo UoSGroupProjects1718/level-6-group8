@@ -23,6 +23,9 @@ public class Overworld : MonoBehaviour
     public Sprite FilledStar;
     public Sprite EmptyStar;
 
+    private OverworldCanvas oc;
+    public OverworldCanvas OverworldCanvas { get { return oc; } }
+
     void Awake()
     {
         // Singleton pattern
@@ -34,6 +37,8 @@ public class Overworld : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        oc = GameObject.FindGameObjectWithTag("OverworldCanvas").GetComponent<OverworldCanvas>();
     }
 
     public void AssignFactoryStars(int theFactoryID)

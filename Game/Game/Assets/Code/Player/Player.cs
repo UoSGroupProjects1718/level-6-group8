@@ -51,28 +51,39 @@ public class Player
     public void Init()
     {
         playerAchievements.Init();
-
         Load();
     }
 
     public void AddPrimaryMoney(uint i)
     {
         primaryMoney += i;
+
+        // Update UI
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
     }
 
     public void RemovePrimaryMoney(uint i)
     {
         primaryMoney -= i;
+
+        // Update UI
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
     }
 
     public void AddPremiumMoney(uint i)
     {
         premiumMoney += i;
+
+        // Update UI
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
     }
 
     public void RemovePremiumMoney(uint i)
     {
         premiumMoney -= i;
+
+        // Update UI
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
     }
 
     public void UnlockNextMapSection()
@@ -108,5 +119,8 @@ public class Player
             premiumMoney = 0;
             mapSectionsUnlocked = 0;
         }
+
+        // Update UI
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
     }
 }

@@ -23,7 +23,6 @@ public class Conveyer : Machine
         // If we have an active child, start ticking
         if (activeChild != null)
         {
-
             // Tick count
             tickCounter++;
             if (tickCounter < ticksToExecute) { return; }

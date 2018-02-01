@@ -19,7 +19,12 @@ public class Output : Machine
     /// </summary>
     public override void Tick()
     {
-        // We will be receiving children during the tick() stage
+        // Destroy our active children, left over from the Execute()
+        // Go through our active children and destroy them
+        if (activeChildren.Count > 0)
+            RemoveAndDestroyListOfItems(ref activeChildren);
+
+        // We will be receiving children in the Tick() stage
         return;
     }
 
@@ -33,6 +38,18 @@ public class Output : Machine
 
         // Reset our buffer children
         bufferChildren = new List<Item>();
+
+        // Move the active children towards this output
+        if (activeChildren.Count > 0)
+        {
+            foreach (var child in activeChildren)
+            {
+                if (child != null)
+                {
+                    StartCoroutine(MoveChildTowardsMe(child));
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -53,9 +70,6 @@ public class Output : Machine
                 LevelController.Instance.OnLevelComplete();
             }
         }
-
-        // Go through our active children and destroy them
-        RemoveAndDestroyListOfItems(ref activeChildren);
 
         // --V Old code for when we had currency
         //foreach (var item in activeChildren)

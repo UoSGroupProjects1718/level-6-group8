@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Factory
+  - Canvas
+  - OverworldCanvas
   layers:
   - Default
   - TransparentFX

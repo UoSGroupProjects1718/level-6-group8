@@ -1,10 +1,28 @@
 ﻿using System.Collections;
+using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public static class  Utility
 {
+    public static string NumberToCommaSeparatedString(int val)
+    {
+        StringBuilder sb = new StringBuilder(val.ToString());
+
+        for (int i = sb.Length -3; i >= 3; i-=3)
+        {
+            sb.Insert(i, ',');
+        }
+
+        return sb.ToString();
+    }
+
+    public static string NumberToCommaSeparatedString(uint val)
+    {
+        return NumberToCommaSeparatedString((int)val);
+    }
+
     /// <summary>
     /// Checks to see if the provided (x, y) coordinate is over a UI object
     /// </summary>

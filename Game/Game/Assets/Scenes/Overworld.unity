@@ -7646,7 +7646,7 @@ GameObject:
   - component: {fileID: 858695051}
   m_Layer: 5
   m_Name: Canvas_ScreenSpace
-  m_TagString: Untagged
+  m_TagString: OverworldCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
