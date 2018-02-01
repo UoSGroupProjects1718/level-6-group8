@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1378b84ea4c693346b920508a63a2080
-timeCreated: 1517475558
+timeCreated: 1517505481
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -119,7 +119,7 @@ TextureImporter:
         width: 353
         height: 373
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,7 +133,7 @@ TextureImporter:
         width: 368
         height: 409
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,21 +147,7 @@ TextureImporter:
         width: 538
         height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_3
-      rect:
-        serializedVersion: 2
-        x: 1514
-        y: 1173
-        width: 13
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +156,12 @@ TextureImporter:
       name: Game_UI_4
       rect:
         serializedVersion: 2
-        x: 1578
-        y: 930
-        width: 62
-        height: 371
+        x: 1581
+        y: 928
+        width: 59
+        height: 309
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +170,12 @@ TextureImporter:
       name: Game_UI_5
       rect:
         serializedVersion: 2
-        x: 1698
-        y: 921
-        width: 89
-        height: 311
+        x: 1725
+        y: 928
+        width: 66
+        height: 308
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,105 +189,7 @@ TextureImporter:
         width: 415
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_7
-      rect:
-        serializedVersion: 2
-        x: 1546
-        y: 1096
-        width: 8
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_8
-      rect:
-        serializedVersion: 2
-        x: 1693
-        y: 1090
-        width: 9
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_9
-      rect:
-        serializedVersion: 2
-        x: 1560
-        y: 990
-        width: 4
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_10
-      rect:
-        serializedVersion: 2
-        x: 1571
-        y: 999
-        width: 4
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_11
-      rect:
-        serializedVersion: 2
-        x: 1719
-        y: 998
-        width: 5
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_12
-      rect:
-        serializedVersion: 2
-        x: 1542
-        y: 951
-        width: 11
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_13
-      rect:
-        serializedVersion: 2
-        x: 1688
-        y: 959
-        width: 5
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,8 +203,8 @@ TextureImporter:
         width: 790
         height: 782
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 92, y: 95, z: 92, w: 79}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -324,26 +212,12 @@ TextureImporter:
       name: Game_UI_15
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 505
+        x: 1129
+        y: 497
         width: 263
         height: 259
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_16
-      rect:
-        serializedVersion: 2
-        x: 1130
-        y: 589
-        width: 4
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,7 +231,7 @@ TextureImporter:
         width: 391
         height: 388
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -371,36 +245,8 @@ TextureImporter:
         width: 391
         height: 388
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_19
-      rect:
-        serializedVersion: 2
-        x: 1121
-        y: 580
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Game_UI_20
-      rect:
-        serializedVersion: 2
-        x: 1301
-        y: 494
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 51, z: 44, w: 40}
       outline: []
       physicsShape: []
       tessellationDetail: 0
