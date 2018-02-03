@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -732,6 +733,13 @@ public class LevelController : MonoBehaviour
             factory.Stars = 0; //Default value for now
             factory.TotalMachineCost = factory.level.CalculateTotalMachineCost;
             factory.PotionsPerMinute = ppm;
+
+            if (AuthServices.isSignedIn)
+            {
+                var user = FirebaseAuth.DefaultInstance.CurrentUser;
+                DBManager dbm = new DBManager();
+                dbm.WriteScore(factoryScore, factory.FactoryId, user);
+            }
 
             // Debug output
             Debug.Log(string.Format("Total machine cost: {0}", LevelFactory.TotalMachineCost));
