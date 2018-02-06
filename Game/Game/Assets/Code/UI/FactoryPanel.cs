@@ -25,6 +25,7 @@ public class FactoryPanel : MonoBehaviour {
     Slider factoryIncome;
     [SerializeField]
     Slider factoryCost;
+    public Image HighscorePanel; 
 
     [Header("Asset Reference")]
     [SerializeField]
@@ -94,6 +95,11 @@ public class FactoryPanel : MonoBehaviour {
                 factoryStars[i].sprite = StarEmpty;
             }
         }
+    }
+
+    public void ToggleHighscorePanel()
+    {
+        HighscorePanel.gameObject.SetActive(!HighscorePanel.gameObject.activeSelf);
     }
 
     /// <summary>

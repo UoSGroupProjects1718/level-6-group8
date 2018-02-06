@@ -715,6 +715,13 @@ public class LevelController : MonoBehaviour
             {
                 uint scoreDifference = factoryScore - oldScore;
                 Debug.Log(string.Format("New high score! Giving player {0} currency reward", scoreDifference));
+                if (AuthServices.isSignedIn)
+                {
+                    var user = FirebaseAuth.DefaultInstance.CurrentUser;
+                    DBManager dbm = new DBManager();
+                    dbm.WriteScore(factoryScore, factory.FactoryId, user);
+                }
+
                 GameManager.Instance.Player.AddPrimaryMoney(scoreDifference);
             }
 
@@ -734,12 +741,6 @@ public class LevelController : MonoBehaviour
             factory.TotalMachineCost = factory.level.CalculateTotalMachineCost;
             factory.PotionsPerMinute = ppm;
 
-            if (AuthServices.isSignedIn)
-            {
-                var user = FirebaseAuth.DefaultInstance.CurrentUser;
-                DBManager dbm = new DBManager();
-                dbm.WriteScore(factoryScore, factory.FactoryId, user);
-            }
 
             // Debug output
             Debug.Log(string.Format("Total machine cost: {0}", LevelFactory.TotalMachineCost));
