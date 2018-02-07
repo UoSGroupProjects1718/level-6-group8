@@ -18,8 +18,6 @@ public class TownHall : MonoBehaviour
 
     public void UnloadMapSection()
     {
-
-
         // Check the player has enough money
         if (GameManager.Instance.Player.PrimaryMoney >= Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost)
         {
@@ -27,7 +25,7 @@ public class TownHall : MonoBehaviour
             GameManager.Instance.Player.RemovePrimaryMoney(Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost);
 
             // Unlock the factory
-            Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Unlock();
+            Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Unlock(true);
 
             Debug.Log("New map section unlocked!");
 

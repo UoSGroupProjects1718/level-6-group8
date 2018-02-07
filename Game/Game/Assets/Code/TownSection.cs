@@ -10,6 +10,8 @@ public class TownSection : MonoBehaviour
     uint cost;
     [SerializeField]
     uint id;
+    [SerializeField]
+    bool unlocked;
 
     [Header("Factories")]
     [SerializeField]
@@ -19,36 +21,29 @@ public class TownSection : MonoBehaviour
 
     public uint Cost { get { return cost; } }
     public uint ID { get { return id; } }
+    public bool Unlocked { get { return unlocked; } }
+
     public Factory[] Factories { get { return factories; } }
 
     /// <summary>
     /// Unlocks this section of the map. Unlocks the factories 
     /// and enables all of the lights.
     /// </summary>
-    public void Unlock()
+    public void Unlock(bool unlock)
     {
         // Unlock factories
         foreach (Factory factory in factories)
         {
-            factory.Unlock();
+            factory.Unlock(unlock);
         }
-
-        EnableLights();
+        EnableLights(unlock);
     }
 
-    public void EnableLights()
+    public void EnableLights(bool status)
     {
         foreach (GameObject light in lights)
         {
-            light.SetActive(true);
-        }
-    }
-
-    public void DisableLights()
-    {
-        foreach (GameObject light in lights)
-        {
-            light.SetActive(false);
+            light.SetActive(status);
         }
     }
 }

@@ -20,8 +20,9 @@ public class Overworld : MonoBehaviour
     public TownSection[] TownSections { get { return townSections; } }
 
     [Header("Misc")]
-    public Sprite FilledStar;
-    public Sprite EmptyStar;
+    public Sprite Sprite_FilledStar;
+    public Sprite Sprite_EmptyStar;
+    public Sprite Sprite_Lock;
 
     private OverworldCanvas oc;
     public OverworldCanvas OverworldCanvas { get { return oc; } }
@@ -39,40 +40,6 @@ public class Overworld : MonoBehaviour
         }
 
         oc = GameObject.FindGameObjectWithTag("OverworldCanvas").GetComponent<OverworldCanvas>();
-    }
-
-    public void AssignFactoryStars(int theFactoryID)
-    {
-        foreach (TownSection section in townSections)
-        {
-            foreach (Factory factory in section.Factories)
-            {
-                if (factory.FactoryId == theFactoryID)
-                {
-                    uint starCounter = 0;
-                    foreach (int scoreThreshold in factory.ScoreThresholds)
-                    {
-                        if (factory.Score > scoreThreshold)
-                        {
-                            starCounter++;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    factory.Stars = starCounter;
-
-                    for (int i = 0; i < factory.transform.Find("Canvas").childCount; i++)
-                    {
-                        if (starCounter == 0) break;
-                        factory.transform.Find("Canvas").GetChild(i).gameObject.GetComponent<Image>().sprite = FilledStar;
-                    }
-
-                    return;
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -98,40 +65,16 @@ public class Overworld : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Unlocks a factory if all requirements are met.
-    /// </summary>
-    public void PurchaseFactory()
-    {
-        if (int.MaxValue /* player.level*/ >= GameManager.Instance.CurrentFactory.starsToUnlock)
-        {
-            // Unlock the factory
-            GameManager.Instance.CurrentFactory.Unlock();
-
-            // Save the factory to file
-            GameManager.Instance.CurrentFactory.SaveStatsToFile();
-
-            GameObject.Find("Canvas_ScreenSpace").GetComponent<OverworldCanvas>().DisplayFactory(GameManager.Instance.CurrentFactory);
-        }
-        else
-        {
-            // Display "insufficient level"
-        }
-    }
-
     public void UnlockTownSections()
     {
         foreach (TownSection section in townSections)
         {
-            // If this section is unlocked
+            // Check if the section is unlocked
             if (section.ID <= GameManager.Instance.Player.MapSectionsUnlocked)
             {
-                section.Unlock();
-            }
-            // Else if its locked
-            else
-            {
-                section.DisableLights();
+                section.Unlock(true);
+            } else {
+                section.Unlock(false);
             }
         }
     }

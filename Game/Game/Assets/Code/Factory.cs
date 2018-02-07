@@ -134,9 +134,10 @@ public class Factory : MonoBehaviour
         }
     }
 
-    public void Unlock()
+    public void Unlock(bool status)
     {
-        unlocked = true;
+        unlocked = status;
+        this.transform.Find("Canvas").GetComponent<UI_FactoryOverworld>().setUI();
     }
 
     /// <summary>
@@ -156,32 +157,25 @@ public class Factory : MonoBehaviour
         // Load from file and get a FactoryStats object
         FactoryStats fs =  SaveLoad.LoadFactoryStats(this);
 
+        unlocked = false;
+
         // Null check (if the file doesn't exist)
         if (fs == null)
         {
             // Then everything defaults...
-
-            unlocked = false;
             solved = false;
             score = 0;
             ticksToSolve = 0;
             Stars = 0;
-            potionsPerMinute = 0;
-            Overworld.Instance.AssignFactoryStars(factoryID);
-
-            return;
+            potionsPerMinute = 0;        
+        } else {
+            // Update our variables
+            solved = fs.solved;
+            score = fs.score;
+            ticksToSolve = fs.ticksToSolve;
+            stars = fs.stars;
+            potionsPerMinute = fs.potionsPerMinute;
         }
-
-        // Update our variables
-        unlocked = fs.unlocked;
-        solved = fs.solved;
-        score = fs.score;
-        ticksToSolve = fs.ticksToSolve;
-        stars = fs.stars;
-        potionsPerMinute = fs.potionsPerMinute;
-
-        // Assign factory stars
-        Overworld.Instance.AssignFactoryStars(FactoryId);
     }
 
     /// <summary>

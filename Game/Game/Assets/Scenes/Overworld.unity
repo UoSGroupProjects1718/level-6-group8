@@ -1308,6 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 250
   id: 3
+  unlocked: 0
   factories:
   - {fileID: 1555749787}
   - {fileID: 1947026600}
@@ -5953,6 +5954,7 @@ GameObject:
   - component: {fileID: 711253010}
   - component: {fileID: 711253009}
   - component: {fileID: 711253008}
+  - component: {fileID: 711253012}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6050,6 +6052,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &711253012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711253006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 160433127}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 1439242980}
+  - {fileID: 780722615}
+  - {fileID: 1543181003}
 --- !u!1001 &724719925
 Prefab:
   m_ObjectHideFlags: 0
@@ -7262,6 +7283,7 @@ GameObject:
   - component: {fileID: 796192847}
   - component: {fileID: 796192846}
   - component: {fileID: 796192845}
+  - component: {fileID: 796192849}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7359,6 +7381,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &796192849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796192843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1555749787}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 32004326}
+  - {fileID: 781511405}
+  - {fileID: 1292635562}
 --- !u!1 &797315576
 GameObject:
   m_ObjectHideFlags: 0
@@ -8151,7 +8192,6 @@ MonoBehaviour:
   dullPanel: {fileID: 725139915}
   optionsPanel: {fileID: 2006791136}
   factoryUI: {fileID: 193345029}
-  factoryPanel: {fileID: 193345031}
   cookbookParent: {fileID: 1386951051}
   cookbookScrollablePannel: {fileID: 1526123132}
   townhallPanel: {fileID: 237713293}
@@ -9482,6 +9522,7 @@ GameObject:
   - component: {fileID: 1013074460}
   - component: {fileID: 1013074459}
   - component: {fileID: 1013074458}
+  - component: {fileID: 1013074462}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9579,6 +9620,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1013074462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1013074456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1947026600}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 448179387}
+  - {fileID: 1184148985}
+  - {fileID: 1931499509}
 --- !u!1 &1036804055
 GameObject:
   m_ObjectHideFlags: 0
@@ -11387,6 +11447,7 @@ GameObject:
   - component: {fileID: 1191214491}
   - component: {fileID: 1191214490}
   - component: {fileID: 1191214489}
+  - component: {fileID: 1191214493}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11484,6 +11545,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1191214493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1191214487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1674618148}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 1564352054}
+  - {fileID: 643834094}
+  - {fileID: 1777273080}
 --- !u!1 &1193344460
 GameObject:
   m_ObjectHideFlags: 0
@@ -12790,6 +12870,7 @@ GameObject:
   - component: {fileID: 1325809555}
   - component: {fileID: 1325809554}
   - component: {fileID: 1325809557}
+  - component: {fileID: 1325809558}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12887,6 +12968,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPos: {x: 0, y: 0, z: 0}
+--- !u!114 &1325809558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325809552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 160433127}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 999503821}
+  - {fileID: 227099583}
+  - {fileID: 1347589673}
 --- !u!1001 &1338060267
 Prefab:
   m_ObjectHideFlags: 0
@@ -16396,7 +16496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 0.74509805}
+  m_Color: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -17203,6 +17303,7 @@ GameObject:
   - component: {fileID: 1713954000}
   - component: {fileID: 1713953999}
   - component: {fileID: 1713953998}
+  - component: {fileID: 1713954002}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17300,6 +17401,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1713954002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713953996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1660723134}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 1622119975}
+  - {fileID: 756846162}
+  - {fileID: 103528342}
 --- !u!1 &1718285241
 GameObject:
   m_ObjectHideFlags: 0
@@ -17512,8 +17632,9 @@ MonoBehaviour:
   - {fileID: 2081652483}
   - {fileID: 2032612810}
   - {fileID: 192063584}
-  FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_FilledStar: {fileID: 0}
+  Sprite_EmptyStar: {fileID: 0}
+  Sprite_Lock: {fileID: 0}
 --- !u!4 &1758502678
 Transform:
   m_ObjectHideFlags: 0
@@ -18154,6 +18275,7 @@ GameObject:
   - component: {fileID: 1822069010}
   - component: {fileID: 1822069009}
   - component: {fileID: 1822069012}
+  - component: {fileID: 1822069013}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -18251,6 +18373,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPos: {x: 0, y: 0, z: 0}
+--- !u!114 &1822069013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1822069007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 746537229}
+  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
+  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
+  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  stars:
+  - {fileID: 201389629}
+  - {fileID: 27320385}
+  - {fileID: 126048209}
 --- !u!1 &1822560538
 GameObject:
   m_ObjectHideFlags: 0
@@ -20329,6 +20470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   id: 2
+  unlocked: 0
   factories:
   - {fileID: 1674618148}
   - {fileID: 1660723134}
@@ -20484,6 +20626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   id: 1
+  unlocked: 0
   factories:
   - {fileID: 160433127}
   - {fileID: 746537229}

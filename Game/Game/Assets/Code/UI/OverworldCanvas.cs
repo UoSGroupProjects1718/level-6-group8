@@ -22,8 +22,6 @@ public class OverworldCanvas : MonoBehaviour
     [Header("Factory stats display")]
     [SerializeField]
     GameObject factoryUI;
-    [SerializeField]
-    FactoryPanel factoryPanel;
     
     [Header("Cookbook parent")]
     [SerializeField]
@@ -98,7 +96,7 @@ public class OverworldCanvas : MonoBehaviour
         factoryUI.SetActive(true);
 
         // Updates the factory UI
-        factoryPanel.UpdateUI(factory);
+        factoryUI.GetComponent<FactoryPanel>().UpdateUI(factory);
     }
 
     /// <summary>
