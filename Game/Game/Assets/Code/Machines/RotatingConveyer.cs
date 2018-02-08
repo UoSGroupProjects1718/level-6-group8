@@ -186,7 +186,7 @@ public class RotatingConveyer : Machine
 
             // Spawn waste as our new bufferChild
             bufferChild = Instantiate(GameManager.Instance.Waste.gameObject).GetComponent<Item>();
-            bufferChild.transform.position = new Vector3(5, transform.position.y + 0.5f, 5);
+            bufferChild.transform.position = new Vector3(transform.position.x, bufferChild.ProductionLine_YHeight, transform.position.z);
 
             // Add it to our list of items
             AddItem(ref activeChild);

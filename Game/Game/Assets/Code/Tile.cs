@@ -18,6 +18,24 @@ public class Tile : MonoBehaviour
     public bool ActiveTile { get { return active; } }
     public Machine Machine { get { return machine; } }
 
+    void Update()
+    {
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            // Raycast to see if we hit
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit raycastHit;
+            if (Physics.Raycast(raycast, out raycastHit))
+            {
+                if (raycastHit.collider.transform == this.gameObject.transform)
+                {
+                    OnTouch(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+                }
+            }
+
+        }
+    }
+
     public void SetChild(Machine newChild)
     {
         machine = newChild;
@@ -57,18 +75,6 @@ public class Tile : MonoBehaviour
 
     #endregion
 
-    #region MobileControls
-
-    // This will detect when a user taps on the tile
-    void OnMouseDown()
-    {
-        if (Input.touchCount == 1)
-        {
-            OnTouch(Input.GetTouch(0).position.x, Input.GetTouch(1).position.y);
-        }
-    }
-
-    #endregion
 
     void OnTouch(float touchX, float touchY)
     {

@@ -77,9 +77,13 @@ public class LevelController : MonoBehaviour
     /* Singleton instance (This singleton gets destroyed when we leave the scene) */
     private static LevelController instance;
 
+    [Header("Tile")]
+    [SerializeField]
+    GameObject tilePrefab;
+
     [Header("Spawnable machines")]
     [SerializeField]
-    GameObject[] Spawnables;
+    Machine[] machines;
 
     public bool Running { get { return running; } }
     public int TickCounter { get { return tickCounter; } }
@@ -115,11 +119,66 @@ public class LevelController : MonoBehaviour
             {
                 canTick = false;
 
-                StartCoroutine(TickWait(TickWaitTime));
                 Run();
             }   
         }
 	}
+
+    /// <summary>
+    /// Returns a new machine that matches the given machine type
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public Machine GetMachine(MachineType type)
+    {
+        foreach (var machine in machines)
+        {
+            if (machine.Type == type)
+            {
+                return machine;
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Returns a new machine that matches the given build mode.
+    /// If an invalid build mode is given, null is returned
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public Machine GetMachine(BuildMode bm)
+    {
+        switch (bm)
+        {
+            case BuildMode.brewer:
+                return GetMachine(MachineType.brewer);
+
+            case BuildMode.conveyer:
+                return GetMachine(MachineType.conveyer);
+
+            case BuildMode.grinder:
+                return GetMachine(MachineType.grinder);
+
+            case BuildMode.input:
+                return GetMachine(MachineType.input);
+
+            case BuildMode.output:
+                return GetMachine(MachineType.output);
+
+            case BuildMode.oven:
+                return GetMachine(MachineType.oven);
+
+            case BuildMode.rotate_conveyer:
+                return GetMachine(MachineType.rotate_conveyer);
+
+            case BuildMode.slow_conveyer:
+                return GetMachine(MachineType.slow_conveyer);
+
+            default:
+                return null;
+        }
+    }
 
     /// <summary>
     /// This function runs once after the level has been loaded in.
@@ -211,6 +270,8 @@ public class LevelController : MonoBehaviour
         {
             machine.Flush();
         }
+
+        StartCoroutine(TickWait(TickWaitTime));
 
         // Execute
         foreach (Machine machine in factory.level.machines)
@@ -342,45 +403,8 @@ public class LevelController : MonoBehaviour
         if (factory.level.grid[x, y].Machine != null) { return; }
 
         // Instantiate the machine
-        Machine machine;
-
-        int spawnIndex;
-        switch (BuildStatus)
-        {
-            case BuildMode.conveyer:
-                spawnIndex = 3;
-                break;
-            case BuildMode.grinder:
-                spawnIndex = 4;
-                break;
-            case BuildMode.brewer:
-                spawnIndex = 5;
-                break;
-            case BuildMode.oven:
-                spawnIndex = 6;
-                break;
-            case BuildMode.slow_conveyer:
-                spawnIndex = 7;
-                break;
-            case BuildMode.rotate_conveyer:
-                spawnIndex = 8;
-                break;
-
-            /*
-                For use with the debug menu, these options 
-                are not available to the player:
-            */
-            case BuildMode.input:
-                spawnIndex = 1;
-                break;
-            case BuildMode.output:
-                spawnIndex = 2;
-                break;
-            default:
-                return;
-        }
-
-        machine = Instantiate(Spawnables[spawnIndex], new Vector3(x, 0, y), Spawnables[spawnIndex].transform.rotation).GetComponent<Machine>();
+        Machine machine = GetMachine(BuildStatus);
+        machine = Instantiate(machine, new Vector3(x, y, 0), machine.transform.rotation);
 
         // Set its rotation and parent
         machine.SetDir(Direction.up);
@@ -506,11 +530,10 @@ public class LevelController : MonoBehaviour
             for (int y = 0; y < levelHeight; y++)
             {
                 // Spawn a tile in each position
-                Tile tile = Instantiate(Spawnables[0], new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
+                Tile tile = Instantiate(tilePrefab, new Vector3(x, -0.5f, y), Quaternion.identity).GetComponent<Tile>();
                 tile.Y = y;
                 tile.X = x;
                 tile.gameObject.transform.SetParent(tileHolder);
-
 
                 // Default it to active
                 tile.SetActiveStatus(true);
@@ -578,8 +601,6 @@ public class LevelController : MonoBehaviour
 
                     HandleMachine(mach);
                 }
-
-
             }
         }
 
@@ -604,31 +625,31 @@ public class LevelController : MonoBehaviour
         // Check which type of machine it is and spawn it
         if (machineFromFile.type.Equals("output"))
         {
-            mach = Instantiate(Spawnables[2]).GetComponent<Output>();
+            mach = Instantiate(GetMachine(MachineType.output)).GetComponent<Output>();
         }
         else if (machineFromFile.type.Equals("conveyer"))
         {
-            mach = Instantiate(Spawnables[3]).GetComponent<Conveyer>();
+            mach = Instantiate(GetMachine(MachineType.conveyer)).GetComponent<Conveyer>();
         }
         else if (machineFromFile.type.Equals("grinder"))
         {
-            mach = Instantiate(Spawnables[4]).GetComponent<PestleMortar>();
+            mach = Instantiate(GetMachine(MachineType.grinder)).GetComponent<PestleMortar>();
         }
         else if (machineFromFile.type.Equals("brewer"))
         {
-            mach = Instantiate(Spawnables[5]).GetComponent<Brewer>();
+            mach = Instantiate(GetMachine(MachineType.brewer)).GetComponent<Brewer>();
         }
         else if (machineFromFile.type.Equals("oven"))
         {
-            mach = Instantiate(Spawnables[6]).GetComponent<Oven>();
+            mach = Instantiate(GetMachine(MachineType.oven)).GetComponent<Oven>();
         }
         else if (machineFromFile.type.Equals("slow_conveyer"))
         {
-            mach = Instantiate(Spawnables[7]).GetComponent<Conveyer>();
+            mach = Instantiate(GetMachine(MachineType.slow_conveyer)).GetComponent<Conveyer>();
         }
         else if (machineFromFile.type.Equals("rotate_conveyer"))
         {
-            mach = Instantiate(Spawnables[8]).GetComponent<RotatingConveyer>();
+            mach = Instantiate(GetMachine(MachineType.rotate_conveyer)).GetComponent<RotatingConveyer>();
         }
         else
         {
@@ -656,7 +677,7 @@ public class LevelController : MonoBehaviour
     private void HandleInput(InputToFile InputFromFile)
     {
         // Create a temporary object to be our inputter
-        Inputter inputter = Instantiate(Spawnables[1]).GetComponent<Inputter>();
+        Inputter inputter = Instantiate(GetMachine(MachineType.input)).GetComponent<Inputter>();
 
         // If its an inputter then we need to see what ingredient it inputs to the level
 
@@ -741,7 +762,6 @@ public class LevelController : MonoBehaviour
             factory.TotalMachineCost = factory.level.CalculateTotalMachineCost;
             factory.PotionsPerMinute = ppm;
 
-
             // Debug output
             Debug.Log(string.Format("Total machine cost: {0}", LevelFactory.TotalMachineCost));
             Debug.Log("Score: " + factoryScore);
@@ -795,5 +815,4 @@ public class LevelController : MonoBehaviour
         LevelFactory.stockpile.SaveToFile();
         GameManager.Instance.ReturnToOverworld();
     }
-
 }

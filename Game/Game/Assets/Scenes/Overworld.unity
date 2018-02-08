@@ -5623,6 +5623,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
+  zoomSpeed: 0.05
+  defaultSize: 37.3
+  minSize: 10
+  maxSize: 50
   minX: -55
   minZ: -130
   maxX: 45
