@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class Potion : CraftableItem
 {
-
+    [Header("Required machines")]
+    [SerializeField]
+    Machine[] machinesRequired;
 }

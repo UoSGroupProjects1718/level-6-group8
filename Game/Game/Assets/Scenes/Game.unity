@@ -6157,16 +6157,16 @@ MonoBehaviour:
   tickWaitTimeSpedUp: 0.2
   floorTile: {fileID: 1623250026686498, guid: 7c3d8221b4386444a8f62865571f4f6b, type: 2}
   wallTile: {fileID: 1975651356609008, guid: e240feaaf6221604da4609554499d6e4, type: 2}
-  Spawnables:
-  - {fileID: 1695972475213368, guid: 5111f67fea7e8664cbc2bfc5492a500b, type: 2}
-  - {fileID: 1597695714483620, guid: 0966f5f89912dce4dbda2c3944b32c85, type: 2}
-  - {fileID: 1869953640523768, guid: 9e996eb190a35d44a91fe4c3594b6145, type: 2}
-  - {fileID: 1680710124514460, guid: 640c4282d72a100488213c113c3e75d2, type: 2}
-  - {fileID: 1188651926541586, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
-  - {fileID: 1910041612052428, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
-  - {fileID: 1547913062839908, guid: 7a2af5c247d92634fbead7c8a14dd7f5, type: 2}
-  - {fileID: 1291877577033236, guid: d595510ee75f83b479dc6159c21a523e, type: 2}
-  - {fileID: 1593670184724296, guid: f8d233e6e7bb9ef4b99f40a29ab3baf6, type: 2}
+  tilePrefab: {fileID: 1695972475213368, guid: 5111f67fea7e8664cbc2bfc5492a500b, type: 2}
+  machines:
+  - {fileID: 114251664077123934, guid: 640c4282d72a100488213c113c3e75d2, type: 2}
+  - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
+  - {fileID: 114359581979837952, guid: 0966f5f89912dce4dbda2c3944b32c85, type: 2}
+  - {fileID: 114591545278246766, guid: 9e996eb190a35d44a91fe4c3594b6145, type: 2}
+  - {fileID: 114651494283489238, guid: 7a2af5c247d92634fbead7c8a14dd7f5, type: 2}
+  - {fileID: 114231650395314256, guid: f8d233e6e7bb9ef4b99f40a29ab3baf6, type: 2}
+  - {fileID: 114792646061265048, guid: d595510ee75f83b479dc6159c21a523e, type: 2}
+  - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
 --- !u!4 &1566333928
 Transform:
   m_ObjectHideFlags: 0
@@ -7888,6 +7888,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.075
+  zoomSpeed: 0.01
+  defaultSize: 3
+  minSize: 2
+  maxSize: 4
   minX: 0
   minZ: 0
   maxX: 0

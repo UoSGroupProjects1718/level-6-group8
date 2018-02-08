@@ -64,6 +64,9 @@ MonoBehaviour:
   - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}
   - {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae, type: 2}
   - {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8, type: 2}
+  machinesRequired:
+  - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
+  - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
 --- !u!212 &212457120181180076
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -73,6 +76,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -88,6 +92,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

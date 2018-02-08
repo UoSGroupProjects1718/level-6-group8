@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Conveyer : Machine
 {
-    Item bufferChild;
     Item activeChild;
+    List<Item> bufferChildren;
 
     void Start()
     {
-        bufferChild = null;
+        bufferChildren = new List<Item>();
         activeChild = null;
         ResetTickCounter();
     }
@@ -40,7 +40,7 @@ public class Conveyer : Machine
             // Null check
             if (neighbour == null) { return; }
 
-            // Give child to neighbour
+            // Give children to neighbour
             neighbour.Receive(ref activeChild);
             activeChild = null;
         }
@@ -49,56 +49,63 @@ public class Conveyer : Machine
     public override void Flush()
     {
         // Check if we have a buffer to flush
-        if (bufferChild == null) { return; }
+        if (bufferChildren.Count == 0) { return; }
 
-        // Shove our buffer child into our active child
-        activeChild = bufferChild;
+        // 1 buffer child
+        else if (bufferChildren.Count == 1)
+        {
+            // Shove our buffer child into our active child
+            activeChild = bufferChildren[0];
 
-        // Set our buffer to null
-        bufferChild = null;
+            // Clear bufferchildren
+            bufferChildren.Clear();
 
-        // Move our active childs potition to this conveyer
-        //activeChild.gameObject.transform.position = new Vector3(transform.position.x, activeChild.ProductionLine_YHeight, transform.position.z);
-        StartCoroutine(MoveChildTowardsMe(activeChild));
+            // Move our active childs potition to this conveyer
+            //activeChild.gameObject.transform.position = new Vector3(transform.position.x, activeChild.ProductionLine_YHeight, transform.position.z);
+            StartCoroutine(MoveChildTowardsMe(activeChild));
+        }
+
+        // More
+        else
+        {
+            foreach (Item child in bufferChildren)
+            {
+                // Move our active childs potition to this conveyer
+                StartCoroutine(MoveChildTowardsMe(child));
+            }
+        }
     }
 
 
     public override void Execute()
     {
-        // Any item modifying behaviour goes here
-    }
-
-    public override void Receive(ref Item newItem)
-    {
-        // If we already have a child
-        if (bufferChild != null)
+        // If we need to spawn waste
+        if (bufferChildren.Count > 1)
         {
-            // We are recieving multiple children
-            // Therefore, our "child" is contaminated and turns to waste..
-
             // Destroy our current bufferChild
-            RemoveAndDestroyItem(ref bufferChild);
+            RemoveAndDestroyListOfItems(ref bufferChildren);
 
-            // Destroy the newItem we got passed
-            RemoveAndDestroyItem(ref newItem);
-
-            // Spawn waste as our new bufferChild
-            bufferChild = Instantiate(GameManager.Instance.Waste.gameObject).GetComponent<Item>();
-            bufferChild.transform.position = new Vector3(5, transform.position.y + 0.5f, 5);
+            // Spawn waste
+            activeChild = Instantiate(GameManager.Instance.Waste.gameObject).GetComponent<Item>();
+            activeChild.transform.position = new Vector3(transform.position.x, activeChild.ProductionLine_YHeight, transform.position.z);
+            activeChild.transform.Rotate(activeChild.ProductionLine_Rotation);
+            activeChild.transform.localScale = activeChild.ProductionLine_Scale;
 
             // Add it to our list of items
             AddItem(ref activeChild);
         }
-        // Else...
-        else
-        {
-            bufferChild = newItem;
-        }
+
+        bufferChildren.Clear();
+    }
+
+    public override void Receive(ref Item newItem)
+    {
+        bufferChildren.Add(newItem);
     }
 
     public override void Reset()
     {
-        RemoveAndDestroyItem(ref bufferChild);
+        RemoveAndDestroyListOfItems(ref bufferChildren);
         RemoveAndDestroyItem(ref activeChild);
     }
 }

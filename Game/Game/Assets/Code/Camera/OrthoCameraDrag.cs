@@ -9,6 +9,16 @@ public class OrthoCameraDrag : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    [Header("Camera zooming")]
+    [SerializeField]
+    private float zoomSpeed;
+    [SerializeField]
+    private float defaultSize;
+    [SerializeField]
+    private float minSize;
+    [SerializeField]
+    private float maxSize;
+
     [Header("Camera bounds")]
     [SerializeField]
     private float minX;
@@ -21,10 +31,17 @@ public class OrthoCameraDrag : MonoBehaviour
 
     private Vector2 downPos;
     private Vector2 dragPos;
+    private Camera camera;
+
+    void Start()
+    {
+        camera = Camera.main;
+        camera.orthographicSize = defaultSize;
+    }
 
     void Update()
     {
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             TouchController();
         }
@@ -64,6 +81,35 @@ public class OrthoCameraDrag : MonoBehaviour
             dragPos = Input.GetTouch(0).position;
             UpdatePosition();
         }
+
+        // Pinch to zoom
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            // Find the position of these touches last frame
+            Vector2 touchZeroPreviousPosition = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePreviousPosition = touchOne.position - touchOne.deltaPosition;
+
+            // Find the distance between the touches on both frames
+            float previousTouchDeltaMagnitude = (touchZeroPreviousPosition - touchOnePreviousPosition).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // Find the difference in distance
+            float deltaMagnitudeDifference = previousTouchDeltaMagnitude - touchDeltaMag;
+
+            if (camera.orthographic)
+            {
+                // Change the orthographic size based on the distance change
+                camera.orthographicSize += deltaMagnitudeDifference * zoomSpeed;
+
+                // Abide by global boundaries
+                if (camera.orthographicSize > maxSize) { camera.orthographicSize = maxSize; }
+                else if (camera.orthographicSize < minSize) { camera.orthographicSize = minSize; }
+            }
+        }
+
     }
 
     private void UpdatePosition()

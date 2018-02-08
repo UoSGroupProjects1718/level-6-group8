@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445a4c63745cbb549afa24d98c900335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prodline_yHeight: 0.61
+  prodline_rotation: {x: 36.225, y: 44, z: 0}
+  prodline_scale: {x: 0.3, y: 0.3, z: 1}
+  itemType: 0
   cost: 0
   displayName: Waste
   itemSprite: {fileID: 21300000, guid: 422b563c3447e8c4a843bf7147b2756b, type: 3}
@@ -64,6 +68,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -79,6 +84,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
