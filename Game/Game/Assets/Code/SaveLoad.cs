@@ -23,7 +23,7 @@ public static class SaveLoad
         currentDir.Append("\\SaveData");
         return currentDir.ToString();
 
-#elif UNITY_ANDROID
+#elif (UNITY_ANDROID || UNITY_IOS)
         return Application.persistentDataPath;
 #endif
 
