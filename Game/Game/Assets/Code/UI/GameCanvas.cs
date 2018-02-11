@@ -63,9 +63,9 @@ public class GameCanvas : MonoBehaviour
         playing = false;
     }
 
-    public void ToggleDull()
+    public void ToggleDull(bool status)
     {
-        dullPanel.SetActive(!dullPanel.activeSelf);
+        dullPanel.SetActive(status);
     }
 
     public void deSelectPreviousButton()
@@ -118,32 +118,32 @@ public class GameCanvas : MonoBehaviour
 
     public void DisplayCookbook()
     {
-        ToggleDull();
         cookbookParent.SetActive(true);
+        ToggleDull(cookbookParent.activeSelf);
         cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
         LevelController.Instance.EnableDragScript(false);
     }
 
     public void ToggleCookbook()
     {
-        ToggleDull();
         cookbookParent.SetActive(!cookbookParent.activeSelf);
+        ToggleDull(cookbookParent.activeSelf);
         LevelController.Instance.EnableDragScript(!cookbookParent.activeSelf);
     }
 
     //TODO: maybe overhaul this (John)
     public void LoadIngredientList()
-    {
-        ToggleDull();
+    { 
         ingredientListParent.SetActive(true);
+        ToggleDull(ingredientListParent.activeSelf);
         ingredientListPanel.GetComponent<ScrollableList>().Fill();
         LevelController.Instance.EnableDragScript(false);
     }
 
     public void CloseIngredientList()
     {
-        ToggleDull();
         ingredientListParent.SetActive(false);
+        ToggleDull(ingredientListParent.activeSelf);
         LevelController.Instance.EnableDragScript(true);
     }
 
