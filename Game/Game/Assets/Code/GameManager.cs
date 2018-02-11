@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
         SaveFactories();
 
         // Load the scene
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
 
         // Wait a second for everything to load
         yield return new WaitForSeconds(0.25f);
