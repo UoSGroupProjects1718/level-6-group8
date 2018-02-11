@@ -50,8 +50,13 @@ public static class SaveLoad
         // Get dir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
 
-        // Append the file name and file extension
+#if UNITY_IOS
+        saveDir.Append(string.Format("/Data_{0}.json", factory.FactoryId));
+#else
         saveDir.Append(string.Format("\\Data_{0}.json", factory.FactoryId));
+#endif
+
+        // Append the file name and file extension
 
         // Save to file
         File.WriteAllText(saveDir.ToString(), json);
@@ -67,7 +72,11 @@ public static class SaveLoad
     {
         // Get dir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
+#if UNITY_IOS
+        saveDir.Append(string.Format("/Data_{0}.json", factory.FactoryId));
+#else
         saveDir.Append(string.Format("\\Data_{0}.json", factory.FactoryId));
+#endif
 
         // Check to see if the file exists
         if (!File.Exists(saveDir.ToString()))
@@ -173,7 +182,11 @@ public static class SaveLoad
         // Get the savedir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append(string.Format("/Level_{0}.json", factory.FactoryId));
+#else
         saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryId));
+#endif
 
         // Save to file
         File.WriteAllText(saveDir.ToString(), json);
@@ -189,7 +202,11 @@ public static class SaveLoad
         // Get the current directory
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append(string.Format("/Level_{0}.json", factory.FactoryId));
+#else
         saveDir.Append(string.Format("\\Level_{0}.json", factory.FactoryId));
+#endif
 
         // Check that this file exists
         if (!File.Exists(saveDir.ToString()))
@@ -226,7 +243,11 @@ public static class SaveLoad
         // Get the current directory
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append(string.Format("/Stockpile_{0}.json", stockpile.Factory.FactoryId));
+#else
         saveDir.Append(string.Format("\\Stockpile_{0}.json", stockpile.Factory.FactoryId));
+#endif
 
         // Save to file 
         File.WriteAllText(saveDir.ToString(), json);
@@ -276,7 +297,12 @@ public static class SaveLoad
         // Get the saveDir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append("/Player.json");
+#else
         saveDir.Append("\\Player.json");
+#endif
+
 
         // Save to file 
         File.WriteAllText(saveDir.ToString(), json);
@@ -292,7 +318,11 @@ public static class SaveLoad
         // Get the current directory
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append("/Player.json");
+#else
         saveDir.Append("\\Player.json");
+#endif
 
         // Check that this file exists
         if (!File.Exists(saveDir.ToString()))
@@ -320,7 +350,11 @@ public static class SaveLoad
         // Get the saveDir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append("/AppCloseDateTime.json");
+#else
         saveDir.Append("\\AppCloseDateTime.json");
+#endif
 
         // Save to file 
         File.WriteAllText(saveDir.ToString(), json);
@@ -331,7 +365,11 @@ public static class SaveLoad
         // Get the saveDir
         StringBuilder saveDir = new StringBuilder(GetSaveDirectory());
         // Append filename and file extension
+#if UNITY_IOS
+        saveDir.Append("/AppCloseDateTime.json");
+#else
         saveDir.Append("\\AppCloseDateTime.json");
+#endif
 
         if (!File.Exists(saveDir.ToString()))
         {

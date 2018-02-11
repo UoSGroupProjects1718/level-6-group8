@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ReturnToOverworld()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Overworld");
         StartCoroutine(WaitAndLoadAllFactoryStatsFromFile());
         
     }
