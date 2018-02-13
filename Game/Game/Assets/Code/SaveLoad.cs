@@ -17,16 +17,18 @@ public static class SaveLoad
 {
     private static string GetSaveDirectory()
     {
-#if UNITY_EDITOR
-        // Get the current directory
-        StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());
-        currentDir.Append("\\SaveData");
-        return currentDir.ToString();
-
-#elif (UNITY_ANDROID || UNITY_IOS)
-        return Application.persistentDataPath;
-#endif
-
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            return Application.persistentDataPath;
+        }
+        else if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            // Get the current directory
+            StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());
+            currentDir.Append("\\SaveData");
+            return currentDir.ToString();
+        }
+        return "";
     }
 
     /// <summary>
