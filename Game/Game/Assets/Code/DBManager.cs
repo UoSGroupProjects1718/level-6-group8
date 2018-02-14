@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using JetBrains.Annotations;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class DBManager
@@ -83,6 +88,36 @@ public class DBManager
         {
             return null;
         }
+    }
+
+    [CanBeNull]
+    public List<KeyValuePair<string, long>> GetNearbyScores(int factoryID, int numberOfScores)
+    {
+        List<KeyValuePair<string, long>> scores = new List<KeyValuePair<string, long>>();
+        var userID = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        var factoryHighscores = FirebaseDatabase.DefaultInstance
+            .GetReference("highscores").Child(factoryID.ToString());
+        factoryHighscores.GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+
+            }
+            else if (task.IsCompleted)
+            {
+                scores.AddRange(task.Result.Children.Select(child => 
+                    new KeyValuePair<string, long>(child.Key, (long) child.Value)));
+            }
+        });
+        var index = scores.FindIndex(score => score.Key == userID);
+        var numberOfBelowScores = Math.Min(0,Math.Min(index - 1, Math.Ceiling((double)numberOfScores / 2 - 1)));
+        var numberOfAboveScores = numberOfScores - numberOfBelowScores - 1;
+
+        scores = scores.GetRange(index - (int)numberOfBelowScores, (int)numberOfAboveScores + 1);
+
+
+        return scores;
+
     }
 
     //public List<int> GetFactoryHighscores(int factoryID)
