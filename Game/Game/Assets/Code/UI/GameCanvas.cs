@@ -45,64 +45,23 @@ public class GameCanvas : MonoBehaviour
 
     private bool playing;
 
-
     private GameObject pressed;
     [SerializeField]
     private Color buttonPressedColor;
     [SerializeField]
     private Color buttonDefaultColor;
 
+    private bool isPanelActive;
+    private GameObject lastPanel;
+
     /// <summary>
     ///     Initilization for the UI objects
     ///     @Params Factory
     /// </summary>
-
     public void BuildUI(Factory factory)
     {
         GetComponent<UI_FactoryEntry>().UpdateUI(factory);
         playing = false;
-    }
-
-    public void ToggleDull(bool status)
-    {
-        dullPanel.SetActive(status);
-    }
-
-    public void deSelectPreviousButton()
-    {
-        if(pressed != null)
-        {
-            pressed.GetComponent<Image>().color = buttonDefaultColor;
-        }
-    }
-
-    public void buttonPressed(GameObject button)
-    {
-        deSelectPreviousButton();
-        pressed = button;
-        pressed.GetComponent<Image>().color = buttonPressedColor;
-    }
-
-    /// <summary>
-    ///     Toggles the Entry Panel
-    /// </summary>
-    public void TogglePlaySprite()
-    {
-        playing = !playing;
-
-        if (playing)
-            playButton.GetComponent<Image>().sprite = pause;
-        else
-            playButton.GetComponent<Image>().sprite = play;
-    }
-
-    /// <summary>
-    ///     Toggles the Entry Panel
-    /// </summary>
-    public void ToggleEntryPanel()
-    {
-        EntryPanel.SetActive(!EntryPanel.activeSelf);
-        LevelController.Instance.EnableDragScript(!EntryPanel.activeSelf);
     }
 
     /// <summary>
@@ -116,35 +75,94 @@ public class GameCanvas : MonoBehaviour
         cookbookButton.SetActive(!cookbookButton.activeSelf);
     }
 
-    public void DisplayCookbook()
+    public void onPanelUpdate(GameObject panel)
     {
-        cookbookParent.SetActive(true);
-        ToggleDull(cookbookParent.activeSelf);
-        cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
-        LevelController.Instance.EnableDragScript(false);
+        isPanelActive = panel.activeSelf;
+        lastPanel = panel;
+
+        LevelController.Instance.EnableDragScript(!isPanelActive);
+        ToggleDull(isPanelActive);
+    }
+    private void ToggleDull(bool status)
+    {
+        dullPanel.SetActive(status);
     }
 
+    /// <summary>
+    ///     Button Functions
+    /// </summary>
+    public void deSelectPreviousButton()
+    {
+        if(pressed != null)
+        {
+            pressed.GetComponent<Image>().color = buttonDefaultColor;
+        }
+    }
+    public void buttonPressed(GameObject button)
+    {
+        deSelectPreviousButton();
+        pressed = button;
+        pressed.GetComponent<Image>().color = buttonPressedColor;
+    }
+    public void TogglePlaySprite()
+    {
+        playing = !playing;
+        if (playing)
+            playButton.GetComponent<Image>().sprite = pause;
+        else
+            playButton.GetComponent<Image>().sprite = play;
+    }
+
+    /// <summary>
+    ///     Toggles the Entry Panel
+    /// </summary>
+    public void ToggleEntryPanel()
+    {
+        EntryPanel.SetActive(!EntryPanel.activeSelf);
+        onPanelUpdate(EntryPanel);
+    }
+
+    /// <summary>
+    ///     Cookbook Functions
+    /// </summary>
     public void ToggleCookbook()
     {
-        cookbookParent.SetActive(!cookbookParent.activeSelf);
-        ToggleDull(cookbookParent.activeSelf);
-        LevelController.Instance.EnableDragScript(!cookbookParent.activeSelf);
+        if (!isPanelActive)
+        {
+            cookbookParent.SetActive(!cookbookParent.activeSelf);
+            if (cookbookParent.activeSelf)
+                loadCookbook();
+            onPanelUpdate(cookbookParent);
+        }
     }
-
-    //TODO: maybe overhaul this (John)
-    public void LoadIngredientList()
-    { 
-        ingredientListParent.SetActive(true);
-        ToggleDull(ingredientListParent.activeSelf);
-        ingredientListPanel.GetComponent<ScrollableList>().Fill();
-        LevelController.Instance.EnableDragScript(false);
-    }
-
-    public void CloseIngredientList()
+    private void loadCookbook()
     {
-        ingredientListParent.SetActive(false);
-        ToggleDull(ingredientListParent.activeSelf);
-        LevelController.Instance.EnableDragScript(true);
+        cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
+    }
+
+    /// <summary>
+    ///     Ingredients Functions
+    /// </summary>
+    public void ToggleIngredientList()
+    {
+        if (!isPanelActive)
+        {
+            ingredientListParent.SetActive(!ingredientListParent.activeSelf);
+            if (ingredientListParent.activeSelf)
+                LoadIngredientList();
+            onPanelUpdate(ingredientListParent);
+        }
+    }
+    private void LoadIngredientList()
+    {
+        ingredientListPanel.GetComponent<ScrollableList>().Fill();
+    }
+    public void CloseIngredientsList()
+    {
+        ingredientListParent.SetActive(!ingredientListParent.activeSelf);
+        if (ingredientListParent.activeSelf)
+            LoadIngredientList();
+        onPanelUpdate(ingredientListParent);
     }
 
     public void Debug_SetBuildModeText(BuildMode bm)
