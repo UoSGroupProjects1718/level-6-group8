@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Elliot\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_Game.1002858182.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Elliot\Desktop\Projects\GroupProject\Game\Game" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Code" t="Include">
+          <e p="Auth" t="Include">
+            <e p="AuthServices.cs" t="Include" />
+          </e>
+          <e p="Camera" t="Include">
+            <e p="FollowCamera.cs" t="Include" />
+            <e p="MoveCamera.cs" t="Include" />
+            <e p="OrthoCameraDrag.cs" t="Include" />
+          </e>
+          <e p="DBManager.cs" t="Include" />
+          <e p="Extensions" t="Include">
+            <e p="Vector2Extension.cs" t="Include" />
+          </e>
+          <e p="Factory.cs" t="Include" />
+          <e p="FactoryHighscore.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IMoveable.cs" t="Include" />
+            <e p="IMultipleChild.cs" t="Include" />
+            <e p="ISingleChild.cs" t="Include" />
+          </e>
+          <e p="Items" t="Include">
+            <e p="CraftableItem.cs" t="Include" />
+            <e p="Ingredient.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="Potion.cs" t="Include" />
+            <e p="Waste.cs" t="Include" />
+          </e>
+          <e p="Level.cs" t="Include" />
+          <e p="LevelController.cs" t="Include" />
+          <e p="Machines" t="Include">
+            <e p="Brewer.cs" t="Include" />
+            <e p="Compound.cs" t="Include" />
+            <e p="Conveyer.cs" t="Include" />
+            <e p="Inputter.cs" t="Include" />
+            <e p="Machine.cs" t="Include" />
+            <e p="Mixer.cs" t="Include" />
+            <e p="Output.cs" t="Include" />
+            <e p="Oven.cs" t="Include" />
+            <e p="PestleMortar.cs" t="Include" />
+            <e p="RotatingConveyer.cs" t="Include" />
+            <e p="TileChildCollider.cs" t="Include" />
+          </e>
+          <e p="Overworld.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="Player.cs" t="Include" />
+            <e p="PlayerAchievements.cs" t="Include" />
+          </e>
+          <e p="SaveLoad.cs" t="Include" />
+          <e p="SplashScreen" t="Include">
+            <e p="SplashUI.cs" t="Include" />
+          </e>
+          <e p="Stockpile.cs" t="Include" />
+          <e p="Tile.cs" t="Include" />
+          <e p="TownHall.cs" t="Include" />
+          <e p="TownSection.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="FactoryPanel.cs" t="Include" />
+            <e p="FactoryStatsUI.cs" t="Include" />
+            <e p="Frosted.shader" t="Include" />
+            <e p="GameCanvas.cs" t="Include" />
+            <e p="HighscoreUI.cs" t="Include" />
+            <e p="IngredientPanel.cs" t="Include" />
+            <e p="OverworldCanvas.cs" t="Include" />
+            <e p="RecipePanel.cs" t="Include" />
+            <e p="ScrollableLists" t="Include">
+              <e p="CookbookScrollableList.cs" t="Include" />
+              <e p="IngredientScrollableList.cs" t="Include" />
+              <e p="ScrollableList.cs" t="Include" />
+            </e>
+            <e p="UI_FactoryEntry.cs" t="Include" />
+            <e p="UI_SelectionScript.cs" t="Include" />
+          </e>
+          <e p="UI.cs" t="Include" />
+          <e p="Utility.cs" t="Include" />
+        </e>
+        <e p="Editor" t="Include">
+          <e p="CustomLevelModule.cs" t="Include" />
+        </e>
+        <e p="Firebase" t="Include">
+          <e p="Editor" t="Include">
+            <e p="AppDependencies.xml" t="Include" />
+            <e p="AuthDependencies.xml" t="Include" />
+            <e p="FirebaseAuth_v4.3.0_manifest.txt" t="Include" />
+            <e p="FirebaseDatabase_v4.3.0_manifest.txt" t="Include" />
+          </e>
+          <e p="m2repository" t="Include">
+            <e p="com" t="Include">
+              <e p="google" t="Include">
+                <e p="Firebase" t="Include">
+                  <e p="firebase-app-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-auth-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Plugins" t="Include">
+            <e p="Http" t="Include">
+              <e p="link.xml" t="Include" />
+            </e>
+            <e p="link.xml" t="Include" />
+          </e>
+        </e>
+        <e p="PlayServicesResolver" t="Include">
+          <e p="Editor" t="Include">
+            <e p="play-services-resolver_v1.2.59.0.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="UI_FactoryOverworld.cs" t="Include" />
+        <e p="UnityPackages" t="Include">
+          <e p="JsonNetSample" t="Include">
+            <e p="JsonNetSample.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Game.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
