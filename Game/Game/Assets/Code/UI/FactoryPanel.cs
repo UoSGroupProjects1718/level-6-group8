@@ -60,7 +60,7 @@ public class FactoryPanel : MonoBehaviour {
                 factoryStockpile.value = factory.stockpile.ItemCount;
 
                 //TODO: we need score thresholds stored in the factory data
-                factoryIncome.value = factory.Potion.Cost / factory.TicksToSolve;
+                factoryIncome.value = factory.Target.Cost / factory.TicksToSolve;
                 factoryIncome.maxValue = 30; // factory.maxTicksToSolve, predicted maximum ticks to solve
 
                 factoryCost.value = factory.TotalMachineCost; //factory.totalmachineCost;

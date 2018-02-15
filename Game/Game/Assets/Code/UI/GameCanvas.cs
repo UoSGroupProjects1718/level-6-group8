@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class GameCanvas : MonoBehaviour
 {
+    // Singleton
+    private static GameCanvas instance;
+    public static GameCanvas Instance { get { return instance; } }
+
     [Header("UI Parents")]
     [SerializeField]
     GameObject EntryPanel;
@@ -25,6 +29,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    [Header("Buttons")]
     [SerializeField]
     GameObject playButton;
     [SerializeField]
@@ -32,13 +37,21 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookButton;
 
+    [Header("Dull")]
     [SerializeField]
     GameObject dullPanel;
 
+    [Header("Sprites")]
     [SerializeField]
     Sprite play;
     [SerializeField]
     Sprite pause;
+
+    [Header("Mayor display message")]
+    [SerializeField]
+    GameObject messagePanel;
+    [SerializeField]
+    Text messageText;
 
     [Header("Debug text - build mode")]
     public Text debugBuildModeText;
@@ -53,6 +66,28 @@ public class GameCanvas : MonoBehaviour
 
     private bool isPanelActive;
     private GameObject lastPanel;
+
+    private void Start()
+    {
+        // Initialiaze the Singleton
+        if (instance == null) instance = this;
+        else Destroy(this.gameObject);
+    }
+
+    /// <summary>
+    /// Displays a given message to the screen in a text box
+    /// </summary>
+    /// <param name="message"></param>
+    public void DisplayMessage(string message)
+    {
+        messagePanel.SetActive(true);
+        messageText.text = message;
+    }
+
+    public void CloseMessage()
+    {
+        messagePanel.SetActive(false);
+    }
 
     /// <summary>
     ///     Initilization for the UI objects

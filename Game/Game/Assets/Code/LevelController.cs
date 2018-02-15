@@ -90,8 +90,10 @@ public class LevelController : MonoBehaviour
     public float TickWaitTime { get { if (speedUp) return tickWaitTimeSpedUp; else return tickWaitTime; } }
     public BuildMode BuildStatus { get { return buildingMode; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
-    /* A getter property for the factory that we are currently inside of. */
+
+    //! A getter property for the factory that we are currently inside of.
     public Factory LevelFactory { get { return factory; } }
+
     public static LevelController Instance { get { return instance; } }
 
     void Awake()
@@ -202,7 +204,20 @@ public class LevelController : MonoBehaviour
         // UI Functions
         UI_Controller = GameObject.Find("Canvas");
         UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
-        UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+
+        // If tutorial, Progress()
+        if (LevelFactory.IsTutorial)
+        {
+            LevelFactory.Tutorial.Reset();
+            LevelFactory.Tutorial.Progress();
+            UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+        }
+        // Else, show the entry pannel
+        else
+        {
+            UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+        }
+        
     }
 
     private void SpawnFloorTiles(int xMin, int xMax, int zMin, int zMax)
@@ -719,7 +734,7 @@ public class LevelController : MonoBehaviour
         if (!hasCorrectPotionHitEnd)
         {
             hasCorrectPotionHitEnd = true;
-            Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Potion.DisplayName));
+            Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Target.DisplayName));
 
             // Calculate factory score
             uint factoryScore = CalculateFactoryScore(tickCounter);

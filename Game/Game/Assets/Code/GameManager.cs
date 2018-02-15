@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
                 // Access the factories stockpile this like
                 // Increment the number of potions the factory has by potionsGainedWhileOffline
                 // Debug.Log(string.Format("Trying to add {0} potions to {1}.", potionsGainedWhileOffline, factory.FactoryName));
-                factory.stockpile.AddOrIncrement(factory.Potion, (uint)potionsGainedWhileOffline);
+                factory.stockpile.AddOrIncrement(factory.Target, (uint)potionsGainedWhileOffline);
             }
         }
     }

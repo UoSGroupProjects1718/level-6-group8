@@ -26,12 +26,12 @@ public class UI_FactoryEntry : MonoBehaviour
     public void UpdateUI(Factory factory)
     {
         text_factoryName.text = factory.FactoryName;
-        text_factoryPotionName.text = factory.Potion.DisplayName;
-        text_factoryPotion.text = factory.Potion.DisplayName;
+        text_factoryPotionName.text = factory.Target.DisplayName;
+        text_factoryPotion.text = factory.Target.DisplayName;
 
         // TODO: Random hint on load
         text_factoryHint.text = "Hint: The recipe book contains vitial instructions on potion creation.";
 
-        img_potion.sprite = factory.Potion.ItemSprite;
+        img_potion.sprite = factory.Target.ItemSprite;
     }
 }

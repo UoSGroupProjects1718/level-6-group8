@@ -8,8 +8,11 @@ public class Output : Machine
     List<Item> bufferChildren;
     List<Item> activeChildren;
 
+    bool itemRecieved;
+
 	void Start ()
     {
+        itemRecieved = false;
         bufferChildren = new List<Item>();
         activeChildren = new List<Item>();
 	}
@@ -68,11 +71,18 @@ public class Output : Machine
         {
             // This may be changed to only accept the requried item?idk
             LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child, 1);
+
             // If we have the required potion
-            if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Potion.DisplayName))
+            if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Target.DisplayName))
             {
-                // Level complete
-                LevelController.Instance.OnLevelComplete();
+                // Send an "Level_Solved" event the first time we recieve the potion"
+                if (!itemRecieved)
+                {
+                    itemRecieved = true;
+
+                    // Level complete
+                    EventManager.Instance.AddEvent(EventType.Level_Solved);
+                }
             }
         }
 

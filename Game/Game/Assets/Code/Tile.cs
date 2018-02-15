@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour
         if (newChild != null)
         {
             machine.gameObject.transform.position = new Vector3(transform.position.x, (0 + newChild.YOffset), transform.position.z);
-            machine.SetDir(Direction.up);
+            machine.SetDir(Direction.down);
             machine.Parent = this;
         }
     }

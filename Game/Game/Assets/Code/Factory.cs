@@ -82,7 +82,13 @@ public class Factory : MonoBehaviour
 
     [Header("Potion to make")]
     [SerializeField]
-    private Potion potion;
+    private Item target;
+
+    [Header("Tutorial")]
+    [SerializeField]
+    bool isTutorial;
+    [SerializeField]
+    Tutorial tutorial;
 
     [Header("Stockpile limit")]
     [SerializeField]
@@ -96,6 +102,7 @@ public class Factory : MonoBehaviour
     public Stockpile stockpile;
     public Level level;
 
+    public bool IsTutorial { get { return isTutorial; } }
     public bool Unlocked { get { return unlocked; } }
     public int FactoryId { get { return factoryID; } }
     public int starsToUnlock { get { return starsRequired; } }
@@ -104,8 +111,9 @@ public class Factory : MonoBehaviour
     public uint StockpileLimit { get { return stockpileLimit; } }
     public int[] ScoreThresholds { get { return scoreThresholds; } }
     public string FactoryName { get { return factoryName; } }
+    public Tutorial Tutorial { get { return tutorial; } }
     public Texture FactorySprite { get { return factorySprite; } }
-    public Potion Potion { get { return potion; } }
+    public Item Target { get { return target; } }
     public DefaultMachine[] DefaultMachines { get { return defaultMachines; } }
     public Vector2[] InactiveTiles { get { return inactiveTiles; } }
 
