@@ -50,6 +50,8 @@ public class CookbookScrollableList : ScrollableList
             y = rectTransform.offsetMin.y + height;
             rectTransform.offsetMax = new Vector2(x, y);
 
+            newItem.transform.localScale = new Vector3(0.85f, 0.9f, 1f);
+
             // Finally, update information
             newItem.GetComponent<RecipePanel>().SetInfo(GameManager.Instance.Potions[i].GetComponent<Potion>());
         }

@@ -19,6 +19,7 @@ public class IngredientScrollableList : ScrollableList
         float ratio = width / rowRectTransform.rect.width;
         float height = rowRectTransform.rect.height * ratio;
         int rowCount = itemCount / columnCount;
+
         if (rowCount != 0 && itemCount % rowCount > 0) { rowCount++; }
 
         // Adjust the height of the container so that it fits all children
@@ -48,6 +49,8 @@ public class IngredientScrollableList : ScrollableList
             x = rectTransform.offsetMin.x + width;
             y = rectTransform.offsetMin.y + height;
             rectTransform.offsetMax = new Vector2(x, y);
+
+            newItem.transform.localScale = new Vector3(0.9f, 0.9f, 1f);
 
             // Finally, update information
             newItem.GetComponent<IngredientPanel>().SetInfo(GameManager.Instance.Ingredients[i].GetComponent<Ingredient>());

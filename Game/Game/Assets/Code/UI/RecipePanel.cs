@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RecipePanel : MonoBehaviour
 {
+    Potion potion;
+
     [Header("Potion sprite")]
     [SerializeField]
     Image image;
@@ -13,12 +15,10 @@ public class RecipePanel : MonoBehaviour
     [SerializeField]
     Text potionName;
 
-    [Header("Potion ingredient string")]
-    [SerializeField]
-    Text potionIngredientText;
-
     public void SetInfo(Potion crafted)
     {
+        potion = crafted;
+
         // Set the sprite
         image.sprite = crafted.ItemSprite;
 
@@ -26,6 +26,7 @@ public class RecipePanel : MonoBehaviour
         potionName.text = crafted.DisplayName;
 
         // Build string of ingredient text
+        /*
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
         sb.Append("Ingredients:\n");
         foreach (Item item in crafted.Ingredients)
@@ -35,5 +36,13 @@ public class RecipePanel : MonoBehaviour
 
         // Set the ingredients text
         potionIngredientText.text = sb.ToString();
+        */
+    }
+
+    public void changePanel()
+    {
+        GameObject panelToLoad = GameObject.Find("Panel_Cookbook");
+        CookbookManager cm = panelToLoad.GetComponent<CookbookManager>();
+        cm.detailedView(potion);
     }
 }

@@ -3482,7 +3482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.94482756, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5360,9 +5360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 160433127}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 1439242980}
   - {fileID: 780722615}
@@ -6572,9 +6572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1555749787}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 32004326}
   - {fileID: 781511405}
@@ -8708,9 +8708,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1947026600}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 448179387}
   - {fileID: 1184148985}
@@ -10303,9 +10303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1674618148}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 1564352054}
   - {fileID: 643834094}
@@ -11650,9 +11650,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 160433127}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 999503821}
   - {fileID: 227099583}
@@ -15310,9 +15310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 245257838}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 1820372238}
   - {fileID: 1878680874}
@@ -15508,9 +15508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1660723134}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 1622119975}
   - {fileID: 756846162}
@@ -16282,7 +16282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.94482756, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -16425,9 +16425,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 746537229}
-  Sprite_FilledStar: {fileID: 21300000, guid: 3c4f1ffb562f4804196cacbc05f930d3, type: 3}
-  Sprite_EmptyStar: {fileID: 21300000, guid: 5895ff7b537b5c849b33bf7eb58825c1, type: 3}
-  Sprite_Lock: {fileID: 21300000, guid: d07aaa1fe82192648bc72b59d9f9b305, type: 3}
+  Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   stars:
   - {fileID: 201389629}
   - {fileID: 27320385}
@@ -16739,7 +16739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.94482756, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

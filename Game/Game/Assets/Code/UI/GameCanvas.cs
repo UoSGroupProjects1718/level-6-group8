@@ -170,6 +170,11 @@ public class GameCanvas : MonoBehaviour
             onPanelUpdate(cookbookParent);
         }
     }
+    public void CloseCookbook()
+    {
+        cookbookParent.SetActive(!cookbookParent.activeSelf);
+        onPanelUpdate(cookbookParent);
+    }
     private void loadCookbook()
     {
         cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
