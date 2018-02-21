@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Tile : DimmableObject
 {
     [SerializeField]
     private int x;
@@ -75,7 +75,6 @@ public class Tile : MonoBehaviour
 
     #endregion
 
-
     void OnTouch(float touchX, float touchY)
     {
         // Return unless we're active
@@ -132,6 +131,15 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public override void Brighten()
+    {
+        GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+
+        if (active)
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
+        else
+            gameObject.GetComponent<Renderer>().material.color = Color.black;
+    }
 
     private void Activate()
     {

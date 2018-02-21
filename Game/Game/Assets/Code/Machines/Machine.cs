@@ -26,7 +26,7 @@ public enum Direction
     left
 }
 
-public abstract class Machine : MonoBehaviour
+public abstract class Machine : DimmableObject
 {
     [Header("Ticks to execute")]
     [SerializeField]
@@ -44,6 +44,10 @@ public abstract class Machine : MonoBehaviour
     [SerializeField]
     protected int cost;
 
+    [Header("Sprite")]
+    [SerializeField]
+    protected Sprite sprite;
+
     [Header("Y offset from floor")]
     [SerializeField]
     protected float yOffset;
@@ -57,6 +61,7 @@ public abstract class Machine : MonoBehaviour
     public int Cost { get { return cost; } }
     public float YOffset { get { return yOffset; } }
     public float RotationOffset { get { return rotationOffset; } }
+    public Sprite Sprite { get { return sprite; } }
     public Tile Parent {
         get { return parent; }
         set { parent = value; }

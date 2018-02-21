@@ -77,6 +77,13 @@ public class LevelController : MonoBehaviour
     /* Singleton instance (This singleton gets destroyed when we leave the scene) */
     private static LevelController instance;
 
+    /* The gameObjects that hold the Tiles and Machines respectively.
+    This is kept so that we have a refference to the tiles/machines for dimming during tutorials 
+    to bring certain machines to the front of the visual hierarchy. */
+    Transform tileHolder;
+    Transform machineHolder;
+    Transform decorationHolder;
+
     [Header("Tile")]
     [SerializeField]
     GameObject tilePrefab;
@@ -90,6 +97,9 @@ public class LevelController : MonoBehaviour
     public float TickWaitTime { get { if (speedUp) return tickWaitTimeSpedUp; else return tickWaitTime; } }
     public BuildMode BuildStatus { get { return buildingMode; } }
     public Inputter SelectedInputter { get { return selectedInputter; } set { selectedInputter = value; } }
+    public Transform TileHolder { get { return tileHolder; } }
+    public Transform MachineHolder { get { return machineHolder; } }
+    public Transform DecorationHolder { get { return decorationHolder; } }
 
     //! A getter property for the factory that we are currently inside of.
     public Factory LevelFactory { get { return factory; } }
@@ -108,6 +118,11 @@ public class LevelController : MonoBehaviour
         speedUp = false;
         tickCounter = 0;
         hasCorrectPotionHitEnd = false;
+
+        // Find parent transforms
+        tileHolder = transform.Find("TileHolder");
+        machineHolder = transform.Find("MachineHolder");
+        decorationHolder = transform.Find("DecorationHolder");
         // DebugLoadLevel();
     }
 	
@@ -217,7 +232,6 @@ public class LevelController : MonoBehaviour
         {
             UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
         }
-        
     }
 
     private void SpawnFloorTiles(int xMin, int xMax, int zMin, int zMax)
@@ -235,7 +249,8 @@ public class LevelController : MonoBehaviour
         {
             for (int x = minX; x < maxX; x += planeSize)
             {
-                Instantiate(floorTile, new Vector3(x, -1, z), Quaternion.identity);
+                GameObject tile = Instantiate(floorTile, new Vector3(x, -1, z), Quaternion.identity);
+                tile.transform.SetParent(decorationHolder);
             }
         }
     }
@@ -256,6 +271,7 @@ public class LevelController : MonoBehaviour
         {
             GameObject wall = Instantiate(wallTile, new Vector3(xMax + 2.5f, 4, z), Quaternion.identity);
             wall.transform.Rotate(-90, 90, 0);
+            wall.transform.SetParent(decorationHolder);
         }
 
         // Spawn along the X axis
@@ -263,8 +279,8 @@ public class LevelController : MonoBehaviour
         {
             GameObject wall = Instantiate(wallTile, new Vector3(x, 4, zMax + 2.5f), Quaternion.identity);
             wall.transform.Rotate(-90, 0, 0);
+            wall.transform.SetParent(decorationHolder);
         }
-
     }
 
     /// <summary>
@@ -536,9 +552,6 @@ public class LevelController : MonoBehaviour
         // Initialize the array
         this.factory.level.grid = new Tile[levelWidth, levelHeight];
 
-        Transform tileHolder = transform.Find("TileHolder");
-        Transform machineHolder = transform.Find("MachineHolder");
-
         // Loop through our level
         for (int x = 0; x < levelWidth; x++)
         {
@@ -723,6 +736,72 @@ public class LevelController : MonoBehaviour
 
         // Update its direction
         inputter.SetDir((Direction)InputFromFile.dir);
+    }
+
+    /// <summary>
+    /// Dims the textures colour of all Tiles in the level
+    /// </summary>
+    public void DimTiles()
+    {
+        for (int i = 0; i < tileHolder.childCount; i++)
+        {
+            tileHolder.GetChild(i).GetComponent<DimmableObject>().Dim();
+        }
+    }
+
+    /// <summary>
+    /// Brightens the textures colour of all Tiles in the level
+    /// </summary>
+    public void BrightenTiles()
+    {
+        for (int i = 0; i < tileHolder.childCount; i++)
+        {
+            tileHolder.GetChild(i).GetComponent<Tile>().Brighten();
+        }
+    }
+
+    /// <summary>
+    /// Dims the textures colour of all Machines in the level
+    /// </summary>
+    public void DimMachines()
+    {
+        for (int i = 0; i < machineHolder.childCount; i++)
+        {
+            machineHolder.GetChild(i).GetComponent<DimmableObject>().Dim();
+        }
+    }
+
+    /// <summary>
+    /// Brightens the textures colour of all Machines in the level
+    /// </summary>
+    public void BrightenMachines()
+    {
+        for (int i = 0; i < machineHolder.childCount; i++)
+        {
+            machineHolder.GetChild(i).GetComponent<DimmableObject>().Brighten();
+        }
+    }
+
+    /// <summary>
+    /// Dims all decoration objects within the Level scene
+    /// </summary>
+    public void DimFactory()
+    {
+        for (int i = 0; i < decorationHolder.childCount; i++)
+        {
+            decorationHolder.GetChild(i).GetComponent<DimmableObject>().Dim();
+        }
+    }
+
+    /// <summary>
+    /// Brightens all decoration objects within the Level scene
+    /// </summary>
+    public void BrightenFactory()
+    {
+        for (int i = 0; i < decorationHolder.childCount; i++)
+        {
+            decorationHolder.GetChild(i).GetComponent<DimmableObject>().Brighten();
+        }
     }
 
     /// <summary>

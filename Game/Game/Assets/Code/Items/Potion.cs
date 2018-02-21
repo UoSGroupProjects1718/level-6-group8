@@ -7,4 +7,6 @@ public class Potion : CraftableItem
     [Header("Required machines")]
     [SerializeField]
     Machine[] machinesRequired;
+
+    public Machine[] Machines { get { return machinesRequired; } }
 }

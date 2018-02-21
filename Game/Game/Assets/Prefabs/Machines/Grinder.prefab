@@ -126,5 +126,6 @@ MonoBehaviour:
   type: 3
   dir: 0
   cost: 0
+  sprite: {fileID: 21300000, guid: 5ee72d58a2f641a4e9003bfa91bdb31c, type: 3}
   yOffset: -0.4
   rotationOffset: 0

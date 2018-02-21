@@ -4,6 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Buttons
+{
+    ovenButton,
+    conveyerButton,
+    grinderButton,
+    brewerButton,
+    rotateButton,
+    deleteButton,
+    slowConveyerButton,
+    RotateConveyerButton
+}
+
 public class GameCanvas : MonoBehaviour
 {
     // Singleton
@@ -29,13 +41,33 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
-    [Header("Buttons")]
+    [Header("Production line buttons")]
     [SerializeField]
     GameObject playButton;
     [SerializeField]
     GameObject speedButton;
+
+    [Header("Cookbook button")]
     [SerializeField]
     GameObject cookbookButton;
+
+    [Header("Selection Buttons (Left panel)")]
+    [SerializeField]
+    GameObject ovenButton;
+    [SerializeField]
+    GameObject conveyerButton;
+    [SerializeField]
+    GameObject grinderButton;
+    [SerializeField]
+    GameObject brewerButton;
+    [SerializeField]
+    GameObject rotateButton;
+    [SerializeField]
+    GameObject deleteButton;
+    [SerializeField]
+    GameObject slowConveyerButton;
+    [SerializeField]
+    GameObject RotateConveyerButton;
 
     [Header("Dull")]
     [SerializeField]
@@ -56,22 +88,65 @@ public class GameCanvas : MonoBehaviour
     [Header("Debug text - build mode")]
     public Text debugBuildModeText;
 
-    private bool playing;
 
-    private GameObject pressed;
+
     [SerializeField]
     private Color buttonPressedColor;
     [SerializeField]
     private Color buttonDefaultColor;
 
-    private bool isPanelActive;
+    // Private
+    private bool isPanelActive;  
+    private bool playing;
+    private GameObject pressed;
     private GameObject lastPanel;
+    private Dictionary<Buttons, GameObject> machineButtons;
 
     private void Start()
     {
         // Initialiaze the Singleton
         if (instance == null) instance = this;
         else Destroy(this.gameObject);
+
+        // Pushback machine buttons
+        InitButtonDictionary();
+    }
+
+    /// <summary>
+    /// Initializes the private dictionary we keep to store each 
+    /// button against an enum.
+    /// </summary>
+    private void InitButtonDictionary()
+    {
+        machineButtons = new Dictionary<Buttons, GameObject>();
+
+        machineButtons.Add(Buttons.brewerButton, brewerButton);
+        machineButtons.Add(Buttons.conveyerButton, conveyerButton);
+        machineButtons.Add(Buttons.deleteButton, deleteButton);
+        machineButtons.Add(Buttons.grinderButton, grinderButton);
+        machineButtons.Add(Buttons.ovenButton, ovenButton);
+        machineButtons.Add(Buttons.rotateButton, rotateButton);
+        machineButtons.Add(Buttons.RotateConveyerButton, RotateConveyerButton);
+        machineButtons.Add(Buttons.slowConveyerButton, slowConveyerButton);
+    }
+
+    /// <summary>
+    /// Disables each Machine button in the left panel
+    /// </summary>
+    public void DisableMachineButtons()
+    {
+        foreach (var pair in machineButtons)
+        {
+            pair.Value.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Enables a given Machine button
+    /// </summary>
+    public void EnableMachineButton(Buttons key)
+    {
+        machineButtons[key].SetActive(true);
     }
 
     /// <summary>
@@ -84,6 +159,9 @@ public class GameCanvas : MonoBehaviour
         messageText.text = message;
     }
 
+    /// <summary>
+    /// Closes the Major Display Pannel
+    /// </summary>
     public void CloseMessage()
     {
         messagePanel.SetActive(false);
