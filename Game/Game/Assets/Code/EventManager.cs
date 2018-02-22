@@ -4,6 +4,9 @@ using UnityEngine;
 
 public enum EventType
 {
+    Enter_Factory,
+    Ingredient_Selected,
+    Factory_Started,
     Level_Solved,
 }
 
@@ -32,24 +35,23 @@ public class EventManager : MonoBehaviour
         EventType _event = events.Peek();
         events.Dequeue();
 
+        // If it's a tutorial level, send the event to the Tutorial
+        if (LevelController.Instance.LevelFactory.IsTutorial)
+        {
+            LevelController.Instance.LevelFactory.Tutorial.Progress(_event);
+        }
+
+        // Event specific behaviour
         switch (_event)
         {
             case EventType.Level_Solved:
 
-                // Is this a tutorial level?
-                if (LevelController.Instance.LevelFactory.IsTutorial)
+                // Is this is not a a tutorial level
+                if (!LevelController.Instance.LevelFactory.IsTutorial)
                 {
-                    // Progress further in the tutorial
-                    LevelController.Instance.LevelFactory.Tutorial.Progress();
-                }
-
-                // If not
-                else
-                {
-                    // Level is complete!
+                    // Display the LevelComplete screen
                     LevelController.Instance.OnLevelComplete();
                 }
-
                 break;
         }
     }

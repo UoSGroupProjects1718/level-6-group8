@@ -14,7 +14,7 @@ public abstract class Tutorial : MonoBehaviour
 
     //! A method to progress to the next 'Step' of the tutorial
     //! E.g. display the next bit of text, show an icon, move the camera, etc...
-    public abstract void Progress();
+    public abstract void Progress(EventType _event);
 
     public void Reset()
     {

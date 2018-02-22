@@ -36,4 +36,9 @@ public class IngredientPanel : MonoBehaviour
     {
         GameObject.Find("Canvas").GetComponent<GameCanvas>().CloseIngredientsList();
     }
+
+    public void SendEvent()
+    {
+        EventManager.Instance.AddEvent(EventType.Ingredient_Selected);
+    }
 }

@@ -224,7 +224,6 @@ public class LevelController : MonoBehaviour
         if (LevelFactory.IsTutorial)
         {
             LevelFactory.Tutorial.Reset();
-            LevelFactory.Tutorial.Progress();
             UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
         }
         // Else, show the entry pannel

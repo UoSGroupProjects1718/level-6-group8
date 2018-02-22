@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class IntroductionTutorial : Tutorial
 {
-    [SerializeField]
-    GameObject firstInput;
 
-    public override void Progress()
+    public override void Progress(EventType _event)
     {
-        // Advance onto the next section of the tutorial
-        progress++;
+        int machineX, machineY;
 
         // What to do per section
         switch (progress)
         {
-                //1: Introduce the inputter
-            case 1:
+                //0: Highlight inputter
+            case 0:
                 // Disable all UI buttons, we don't need any yet
                 GameCanvas.Instance.DisableMachineButtons();
 
@@ -27,10 +24,46 @@ public class IntroductionTutorial : Tutorial
                 LevelController.Instance.DimTiles();
                 LevelController.Instance.DimMachines();
                 LevelController.Instance.DimFactory();
+
+                // Highlight the inputter
+                machineX = LevelController.Instance.LevelFactory.DefaultMachines[0].x;
+                machineY = LevelController.Instance.LevelFactory.DefaultMachines[0].y;
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Highlight(true);
+
+                // Advance
+                progress++;
                 break;
 
-                //2: Player has to place voneyers
+                //1: Highlight play button
+            case 1:
+
+                // When then ingredient has been selected
+                if (_event != EventType.Ingredient_Selected) return;
+
+                // Brighten the factory again
+                LevelController.Instance.BrightenTiles();
+                LevelController.Instance.BrightenMachines();
+                LevelController.Instance.BrightenFactory();
+
+                // Unhighlight the inputter
+                machineX = LevelController.Instance.LevelFactory.DefaultMachines[0].x;
+                machineY = LevelController.Instance.LevelFactory.DefaultMachines[0].y;
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Highlight(false);
+
+                // Send message
+                GameCanvas.Instance.DisplayMessage("Now try hitting the Play button!");
+
+                // Advance
+                progress++;
+                break;
+
+
+                // Tutorial section 2
             case 2:
+
+                // When the correct ingredient reaches the end
+                if (_event != EventType.Level_Solved) return;
+
                 // Stop running the factories
                 LevelController.Instance.ToggleRunning();
                 GameCanvas.Instance.TogglePlaySprite();
@@ -42,10 +75,7 @@ public class IntroductionTutorial : Tutorial
                 // Enable the conveyor button
                 GameCanvas.Instance.EnableMachineButton(Buttons.conveyerButton);
 
-                // Brighten the factory again
-                LevelController.Instance.BrightenTiles();
-                LevelController.Instance.BrightenMachines();
-                LevelController.Instance.BrightenFactory();
+
                 break;
 
                 //3: Player has to rotate conveyers around a corner
