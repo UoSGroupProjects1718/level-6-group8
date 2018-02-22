@@ -288,8 +288,7 @@ public static class SaveLoad
         PlayerStats ps = new PlayerStats();
 
         // Copy our players data over
-        ps.PrimaryMoney = player.PrimaryMoney;
-        ps.PremiumMoney = player.PremiumMoney;
+        ps.Stars = player.Stars;
         ps.name = player.PlayerName;
         ps.MapSectionsUnlocked = player.MapSectionsUnlocked;
 

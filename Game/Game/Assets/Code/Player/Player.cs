@@ -8,8 +8,7 @@ using UnityEngine.SocialPlatforms;
 // This class contains all player data to be serialized to json
 public class PlayerStats
 {
-    public uint PrimaryMoney;
-    public uint PremiumMoney;
+    public uint Stars;
     public uint MapSectionsUnlocked;
     public string name;
 }
@@ -21,30 +20,30 @@ public class Player
         Init();
     }
 
-    // Private members
-    private uint primaryMoney;
-    private uint premiumMoney;
+    private uint stars;
     private uint mapSectionsUnlocked;
     private string playerName = "Group 8";
     private readonly PlayerAchievements playerAchievements = new PlayerAchievements();
 
     // Public properties
-    public uint StarCount
+//    public uint StarCount
+//    {
+//        get {
+//            uint sc = 0;
+//            foreach (TownSection section in Overworld.Instance.TownSections)
+//            {
+//                foreach (Factory fac in section.Factories)
+//                {
+//                    sc += fac.Stars;
+//                }
+//            }
+//            return sc;
+//        }
+//    }
+    public uint Stars
     {
-        get {
-            uint sc = 0;
-            foreach (TownSection section in Overworld.Instance.TownSections)
-            {
-                foreach (Factory fac in section.Factories)
-                {
-                    sc += fac.Stars;
-                }
-            }
-            return sc;
-        }
+        get { return stars; }
     }
-    public uint PrimaryMoney { get { return primaryMoney; } }
-    public uint PremiumMoney { get { return premiumMoney; } }
     public uint MapSectionsUnlocked { get { return mapSectionsUnlocked; } }
     public string PlayerName { get { return playerName; } set { playerName = value; } }
 
@@ -53,37 +52,15 @@ public class Player
         playerAchievements.Init();
         Load();
     }
-
-    public void AddPrimaryMoney(uint i)
+    
+    public void AddStars(uint numberOfStarsToRemove)
     {
-        primaryMoney += i;
-
-        // Update UI
-        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
+        stars += numberOfStarsToRemove;
     }
 
-    public void RemovePrimaryMoney(uint i)
+    public void RemoveStars(uint numberOfStarsToRemove)
     {
-        primaryMoney -= i;
-
-        // Update UI
-        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
-    }
-
-    public void AddPremiumMoney(uint i)
-    {
-        premiumMoney += i;
-
-        // Update UI
-        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
-    }
-
-    public void RemovePremiumMoney(uint i)
-    {
-        premiumMoney -= i;
-
-        // Update UI
-        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
+        stars -= numberOfStarsToRemove;
     }
 
     public void UnlockNextMapSection()
@@ -105,8 +82,7 @@ public class Player
         if (ps != null)
         {
             // Set our stats...
-            primaryMoney = ps.PrimaryMoney;
-            premiumMoney = ps.PremiumMoney;
+            stars = ps.Stars;
             playerName = ps.name;
             mapSectionsUnlocked = ps.MapSectionsUnlocked;
 
@@ -115,12 +91,11 @@ public class Player
         else
         {
             Debug.Log("No PlayerStats file found, setting players stats to default...");
-            primaryMoney = 0;
-            premiumMoney = 0;
+            stars = 0;
             mapSectionsUnlocked = 0;
         }
 
         // Update UI
-        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(primaryMoney, premiumMoney);
+        Overworld.Instance.OverworldCanvas.UpdatePlayerStats(stars);
     }
 }

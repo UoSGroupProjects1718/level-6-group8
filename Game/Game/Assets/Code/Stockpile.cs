@@ -190,7 +190,7 @@ public class Stockpile
     {
         //TODO: increment a resouce here such as PrimaryMoney (potentially rename as sellitems)
 
-        GameManager.Instance.Player.AddPrimaryMoney((uint)Math.Floor(Value));
+//        GameManager.Instance.Player.AddPrimaryMoney((uint)Math.Floor(Value));
         items.Clear();
         Value = 0;
     }

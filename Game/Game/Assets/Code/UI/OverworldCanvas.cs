@@ -37,9 +37,7 @@ public class OverworldCanvas : MonoBehaviour
 
     [Header("Player Money")]
     [SerializeField]
-    Text primaryMoney;
-    [SerializeField]
-    Text premiumMoney;
+    Text stars;
 
     /// <summary>
     /// At the start of the scene, ensure that
@@ -47,6 +45,7 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        UpdatePlayerStats(GameManager.Instance.Player.Stars);
         CloseAllMenus();
         StartCoroutine(WaitForPlayerLoad());
     }
@@ -60,10 +59,9 @@ public class OverworldCanvas : MonoBehaviour
     /// Updates the player money pane in the overworld with the player's primary and premium money count.
     /// </summary>
     /// <param name="player">The player object to get the money values from.</param>
-    public void UpdatePlayerStats(uint primary, uint premium)
+    public void UpdatePlayerStats(uint totalStars)
     {
-        primaryMoney.text = Utility.NumberToCommaSeparatedString(primary);
-        premiumMoney.text = Utility.NumberToCommaSeparatedString(premium);
+        stars.text = Utility.NumberToCommaSeparatedString(totalStars);
     }
 
     /// <summary>

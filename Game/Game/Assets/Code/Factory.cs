@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
+using System.Runtime.InteropServices;
+using NUnit.Compatibility;
 
 /// <summary>
 /// This class is used to serialize and deserialize factory data to/from json
@@ -205,5 +207,27 @@ public class Factory : MonoBehaviour
     public LevelToFile LoadLevelFromFile()
     {
         return (SaveLoad.LoadLevel(this));
+    }
+
+    public uint GetCurrentAttainedStars()
+    {
+        uint stars = 0;
+        foreach (var scoreThreshold in scoreThresholds)
+        {
+            if (score >= scoreThreshold) stars++;
+        }
+
+        return stars;
+    }
+
+    public uint CalculateStarsFromScore(uint score)
+    {
+        uint stars = 0;
+        foreach (var scoreThreshold in scoreThresholds)
+        {
+            if (score >= scoreThreshold) stars++;
+        }
+
+        return stars;
     }
 }

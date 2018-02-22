@@ -828,6 +828,8 @@ public class LevelController : MonoBehaviour
             if (factoryScore > oldScore)
             {
                 uint scoreDifference = factoryScore - oldScore;
+                uint starDifference = factory.CalculateStarsFromScore(factoryScore) -
+                                      factory.CalculateStarsFromScore(oldScore);
                 Debug.Log(string.Format("New high score! Giving player {0} currency reward", scoreDifference));
                 if (AuthServices.isSignedIn)
                 {
@@ -836,7 +838,7 @@ public class LevelController : MonoBehaviour
                     dbm.WriteScore(factoryScore, factory.FactoryId, user);
                 }
 
-                GameManager.Instance.Player.AddPrimaryMoney(scoreDifference);
+                GameManager.Instance.Player.AddStars(starDifference);
             }
 
             // Calculate potions per minute
