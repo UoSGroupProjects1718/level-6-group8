@@ -43,3 +43,4 @@ sysinfo.txt
 Game/Game/SaveData/AppCloseDateTime.json
 Game/Game/Assets/Firebase/GoogleService-Info.plist
 Game/Game/Assets/Firebase/GoogleService-Info.plist.meta
+Game/Game/.idea/*
