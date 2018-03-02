@@ -41,6 +41,10 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    [Header("Final score screen")]
+    [SerializeField]
+    UI_ScoreScreen scoreScreen;
+
     [Header("Production line buttons")]
     [SerializeField]
     GameObject playButton;
@@ -275,12 +279,28 @@ public class GameCanvas : MonoBehaviour
     {
         ingredientListPanel.GetComponent<ScrollableList>().Fill();
     }
+
     public void CloseIngredientsList()
     {
         ingredientListParent.SetActive(!ingredientListParent.activeSelf);
         if (ingredientListParent.activeSelf)
             LoadIngredientList();
         onPanelUpdate(ingredientListParent);
+    }
+
+    public void ShowScoreScreen(int score, int ticks)
+    {
+        // Set it active
+        scoreScreen.gameObject.SetActive(true);
+
+        // Update the values
+        scoreScreen.SetScore(score, ticks);
+    }
+
+    public void CloseScoreScreen()
+    {
+        // Set it inactive
+        scoreScreen.gameObject.SetActive(false);
     }
 
     public void Debug_SetBuildModeText(BuildMode bm)

@@ -836,7 +836,8 @@ public class LevelController : MonoBehaviour
                 uint scoreDifference = factoryScore - oldScore;
                 uint starDifference = factory.CalculateStarsFromScore(factoryScore) -
                                       factory.CalculateStarsFromScore(oldScore);
-                Debug.Log(string.Format("New high score! Giving player {0} currency reward", scoreDifference));
+                Debug.Log("New high score!");
+                Debug.Log(string.Format("DEPRECATED: Giving player {0} currency reward", scoreDifference));
                 if (AuthServices.isSignedIn)
                 {
                     var user = FirebaseAuth.DefaultInstance.CurrentUser;
@@ -866,6 +867,12 @@ public class LevelController : MonoBehaviour
             // Debug output
             Debug.Log(string.Format("Total machine cost: {0}", LevelFactory.TotalMachineCost));
             Debug.Log("Score: " + factoryScore);
+
+            // If it' s not a tutorial, Display the  Final Score Screen
+            if (!factory.IsTutorial)
+            {
+                GameCanvas.Instance.ShowScoreScreen((int)factoryScore, TickCounter);
+            }
         }
     }
 

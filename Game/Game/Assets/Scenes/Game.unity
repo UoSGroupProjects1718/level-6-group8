@@ -2010,6 +2010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 525449661}
   - component: {fileID: 525449662}
+  - component: {fileID: 525449663}
   m_Layer: 5
   m_Name: Panel_FactoryComplete
   m_TagString: Untagged
@@ -2051,6 +2052,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 525449660}
+--- !u!114 &525449663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 525449660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7ee79bb89bf6d44b01fe9c515e22dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionImage: {fileID: 759384665}
+  statsText: {fileID: 1610739704}
+  scoreText: {fileID: 552799012}
 --- !u!1 &552607818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7584,14 +7599,14 @@ MonoBehaviour:
   wallTile: {fileID: 1975651356609008, guid: e240feaaf6221604da4609554499d6e4, type: 2}
   tilePrefab: {fileID: 1695972475213368, guid: 5111f67fea7e8664cbc2bfc5492a500b, type: 2}
   machines:
-  - {fileID: 114251664077123934, guid: 640c4282d72a100488213c113c3e75d2, type: 2}
+  - {fileID: 114960739535995074, guid: e8019ffdfab63e045a58519d787a0950, type: 2}
   - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
   - {fileID: 114359581979837952, guid: 0966f5f89912dce4dbda2c3944b32c85, type: 2}
   - {fileID: 114591545278246766, guid: 9e996eb190a35d44a91fe4c3594b6145, type: 2}
   - {fileID: 114651494283489238, guid: 7a2af5c247d92634fbead7c8a14dd7f5, type: 2}
   - {fileID: 114231650395314256, guid: f8d233e6e7bb9ef4b99f40a29ab3baf6, type: 2}
   - {fileID: 114792646061265048, guid: d595510ee75f83b479dc6159c21a523e, type: 2}
-  - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
+  - {fileID: 114472777394744264, guid: 1d0eac99b6cd31f4aa512f8999f1daf1, type: 2}
 --- !u!4 &1566333928
 Transform:
   m_ObjectHideFlags: 0
@@ -7688,7 +7703,7 @@ GameObject:
   - component: {fileID: 1610739704}
   - component: {fileID: 1610739703}
   m_Layer: 5
-  m_Name: Text_FactoryMain
+  m_Name: Text_StatsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8482,6 +8497,7 @@ MonoBehaviour:
   ingredientListPanel: {fileID: 1401732786}
   cookbookParent: {fileID: 1934853599}
   cookbookScrollablePannel: {fileID: 360823267}
+  scoreScreen: {fileID: 525449663}
   playButton: {fileID: 1342655258}
   speedButton: {fileID: 845372494}
   cookbookButton: {fileID: 1157090994}
