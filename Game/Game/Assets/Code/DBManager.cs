@@ -6,7 +6,6 @@ using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 using JetBrains.Annotations;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class DBManager

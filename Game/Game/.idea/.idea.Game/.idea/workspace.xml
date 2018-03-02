@@ -14,9 +14,48 @@
       <file leaf-file-name="Factory.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1580">
-              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="20">
+              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+              <folding>
+                <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+                <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+                <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+                <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+                <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+                <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+                <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+                <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+                <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Code/UI.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <marker date="1516622160060" expanded="true" signature="6:128" ph="..." />
+                <marker date="1516622160060" expanded="true" signature="161:573" ph="{...}" />
+                <marker date="1516622160060" expanded="true" signature="296:413" ph="{...}" />
+                <marker date="1516622160060" expanded="true" signature="467:571" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -24,9 +63,151 @@
       <file leaf-file-name="LevelController.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14840">
+            <state relative-caret-position="2295">
               <caret line="742" column="26" lean-forward="false" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
-              <folding />
+              <folding>
+                <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+                <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+                <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+                <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+                <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+                <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+                <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+                <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+                <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+                <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+                <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+                <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+                <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+                <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+                <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+                <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+                <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+                <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+                <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+                <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+                <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+                <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+                <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+                <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+                <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+                <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+                <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+                <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+                <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+                <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+                <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+                <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+                <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+                <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+                <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+                <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+                <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+                <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+                <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+                <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+                <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+                <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+                <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,25 +215,115 @@
       <file leaf-file-name="DBManager.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1900">
-              <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="160">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+                <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+                <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameraController.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SaveLoad.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Code/SaveLoad.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+              <folding>
+                <marker date="1520013891472" expanded="false" signature="6:188" ph="..." />
+                <marker date="1520013891472" expanded="true" signature="190:319" ph="/// A static utilities class which handles all of the saving  ... " />
+                <marker date="1520013891472" expanded="true" signature="348:12539" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="395:982" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="518:589" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="718:957" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="988:1099" ph="/// Saves a factories stats to json ... " />
+                <marker date="1520013891472" expanded="true" signature="1156:2034" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="1908:1975" ph="/* Append the file name and file extension ... */" />
+                <marker date="1520013891472" expanded="true" signature="2040:2234" ph="/// Loads and returns a FactoryStats object containing all the  ... " />
+                <marker date="1520013891472" expanded="true" signature="2299:2953" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="2665:2710" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="2959:3337" ph="/// Saves all information about machines in a level to a file ... " />
+                <marker date="1520013891472" expanded="true" signature="3435:6950" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="3539:3657" ph="/* for (int x = 0; x &lt; levelWidth; x++) ... */" />
+                <marker date="1520013891472" expanded="true" signature="3737:6308" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="3797:6285" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="3947:6271" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="4180:6253" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="5757:5925" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="5958:6071" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="6331:6483" ph="/* Once we have looped through our level it's time to save all of our gathered data to file... ... */" />
+                <marker date="1520013891472" expanded="true" signature="6956:7165" ph="/// Loads and returns a LevelToFile object containing information about  ... " />
+                <marker date="1520013891472" expanded="true" signature="7222:7938" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="7650:7695" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="7944:8058" ph="/// Saves a Stockpiles stats to file ... " />
+                <marker date="1520013891472" expanded="true" signature="8116:8864" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="8933:9563" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="9271:9316" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="9569:9689" ph="/// Saves a Player objects stats to json file ... " />
+                <marker date="1520013891472" expanded="true" signature="9743:10444" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="10450:10644" ph="/// Loads PlayerStats from json, returns PlayerStats object with appropriate  ... " />
+                <marker date="1520013891472" expanded="true" signature="10692:11405" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="11046:11164" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="11448:11906" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="11952:12537" ph="{...}" />
+                <marker date="1520013891472" expanded="true" signature="12277:12335" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CameraController.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1519153434013" expanded="false" signature="6:78" ph="..." />
-                <marker date="1519153434013" expanded="true" signature="125:778" ph="{...}" />
                 <marker date="1519153434013" expanded="true" signature="186:245" ph="{...}" />
                 <marker date="1519153434013" expanded="true" signature="300:367" ph="{...}" />
                 <marker date="1519153434013" expanded="true" signature="432:776" ph="{...}" />
                 <marker date="1519153434013" expanded="true" signature="570:769" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TownHall.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Code/TownHall.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+              <folding>
+                <marker date="1519333381199" expanded="false" signature="6:132" ph="..." />
+                <marker date="1519333381199" expanded="true" signature="171:2202" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="420:1151" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="619:1145" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="1186:1774" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="1349:1551" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="1564:1768" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="1806:2200" ph="{...}" />
+                <marker date="1519333381199" expanded="true" signature="1966:2194" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -94,7 +365,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/SaveLoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/TownHall.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/UI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/HighscoreUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Factory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,7 +378,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Code/UI/HighscoreUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Factory.cs" />
         <option value="$PROJECT_DIR$/Assets/Code/DBManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/SaveLoad.cs" />
       </list>
     </option>
   </component>
@@ -114,7 +390,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="734" />
     <option name="width" value="1833" />
     <option name="height" value="1407" />
@@ -134,6 +410,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -141,13 +418,30 @@
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="Game (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Game (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Game (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Game (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Code" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-file-system" value="false" />
         <option name="show-all-items" value="false" />
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -184,11 +478,13 @@
       <workItem from="1518548817160" duration="4323000" />
       <workItem from="1518598335712" duration="1562000" />
       <workItem from="1519573824397" duration="206000" />
+      <workItem from="1519574333001" duration="92000" />
+      <workItem from="1520013610734" duration="336000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6091000" />
+    <option name="totallyTimeSpent" value="6519000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -200,7 +496,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="734" y="0" width="1833" height="1407" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -210,7 +506,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18104906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12957075" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2893031" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -257,8 +553,560 @@
     <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1580">
-          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+            <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+            <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+            <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+            <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+            <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14840">
+          <caret line="742" column="26" lean-forward="false" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
+          <folding>
+            <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+            <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+            <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+            <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+            <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+            <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+            <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+            <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+            <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+            <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+            <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+            <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+            <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+            <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+            <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+            <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+            <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+            <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+            <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+            <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+            <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+            <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+            <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+            <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+            <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+            <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+            <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+            <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+            <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+            <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+            <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+            <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+            <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1900">
+          <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+          <folding>
+            <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+            <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1519153434013" expanded="false" signature="6:78" ph="..." />
+            <marker date="1519153434013" expanded="true" signature="186:245" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="300:367" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="432:776" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="570:769" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/UI/HighscoreUI.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <marker date="1518599512012" expanded="false" signature="6:135" ph="..." />
+            <marker date="1518599512012" expanded="true" signature="177:1444" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="319:740" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="421:737" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="462:681" ph="/* Debug.Log(GetHighscores(_factoryId)); ... */" />
+            <marker date="1518599512012" expanded="true" signature="789:894" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="941:1378" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1065:1375" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1158:1282" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1290:1371" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1435:1442" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/GameManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="136" column="25" lean-forward="false" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/TownHall.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding>
+            <marker date="1519333381199" expanded="false" signature="6:132" ph="..." />
+            <marker date="1519333381199" expanded="true" signature="171:2202" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="420:1151" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="619:1145" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1186:1774" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1349:1551" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1564:1768" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1806:2200" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1966:2194" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1580">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+            <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+            <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+            <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+            <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+            <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14840">
+          <caret line="742" column="26" lean-forward="false" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
+          <folding>
+            <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+            <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+            <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+            <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+            <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+            <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+            <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+            <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+            <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+            <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+            <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+            <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+            <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+            <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+            <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+            <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+            <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+            <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+            <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+            <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+            <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+            <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+            <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+            <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+            <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+            <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+            <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+            <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+            <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+            <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+            <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+            <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+            <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1900">
+          <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+          <folding>
+            <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+            <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/UI/HighscoreUI.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <marker date="1518599512012" expanded="false" signature="6:135" ph="..." />
+            <marker date="1518599512012" expanded="true" signature="177:1444" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="319:740" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="421:737" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="462:681" ph="/* Debug.Log(GetHighscores(_factoryId)); ... */" />
+            <marker date="1518599512012" expanded="true" signature="789:894" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="941:1378" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1065:1375" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1158:1282" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1290:1371" ph="{...}" />
+            <marker date="1518599512012" expanded="true" signature="1435:1442" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/GameManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="136" column="25" lean-forward="false" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1519153434013" expanded="false" signature="6:78" ph="..." />
+            <marker date="1519153434013" expanded="true" signature="186:245" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="300:367" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="432:776" ph="{...}" />
+            <marker date="1519153434013" expanded="true" signature="570:769" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1580">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+            <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+            <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+            <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+            <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+            <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -266,7 +1114,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14840">
           <caret line="742" column="26" lean-forward="true" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
-          <folding />
+          <folding>
+            <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+            <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+            <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+            <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+            <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+            <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+            <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+            <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+            <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+            <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+            <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+            <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+            <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+            <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+            <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+            <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+            <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+            <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+            <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+            <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+            <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+            <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+            <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+            <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+            <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+            <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+            <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+            <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+            <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+            <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+            <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+            <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+            <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -302,7 +1292,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
           <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-          <folding />
+          <folding>
+            <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+            <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -310,7 +1323,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1580">
           <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
-          <folding />
+          <folding>
+            <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+            <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+            <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+            <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+            <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+            <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -318,7 +1355,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14840">
           <caret line="742" column="33" lean-forward="false" selection-start-line="742" selection-start-column="33" selection-end-line="742" selection-end-column="33" />
-          <folding />
+          <folding>
+            <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+            <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+            <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+            <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+            <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+            <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+            <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+            <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+            <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+            <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+            <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+            <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+            <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+            <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+            <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+            <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+            <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+            <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+            <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+            <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+            <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+            <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+            <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+            <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+            <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+            <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+            <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+            <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+            <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+            <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+            <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+            <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+            <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -334,15 +1513,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1680">
           <caret line="84" column="26" lean-forward="false" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1580">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+            <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -350,14 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2720">
           <caret line="136" column="25" lean-forward="false" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14840">
-          <caret line="742" column="26" lean-forward="false" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -382,25 +1568,306 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1900">
-          <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1519153434013" expanded="false" signature="6:78" ph="..." />
-            <marker date="1519153434013" expanded="true" signature="125:778" ph="{...}" />
             <marker date="1519153434013" expanded="true" signature="186:245" ph="{...}" />
             <marker date="1519153434013" expanded="true" signature="300:367" ph="{...}" />
             <marker date="1519153434013" expanded="true" signature="432:776" ph="{...}" />
             <marker date="1519153434013" expanded="true" signature="570:769" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/TownHall.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding>
+            <marker date="1519333381199" expanded="false" signature="6:132" ph="..." />
+            <marker date="1519333381199" expanded="true" signature="171:2202" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="420:1151" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="619:1145" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1186:1774" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1349:1551" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1564:1768" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1806:2200" ph="{...}" />
+            <marker date="1519333381199" expanded="true" signature="1966:2194" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Factory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+          <folding>
+            <marker date="1520013649427" expanded="true" signature="6:181" ph="..." />
+            <marker date="1520013649427" expanded="true" signature="182:288" ph="/// This class is used to serialize and deserialize factory data to/from json ... " />
+            <marker date="1520013649427" expanded="true" signature="314:478" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="480:764" ph="/// The Factory class will have an array of type DefaultMachines. ... " />
+            <marker date="1520013649427" expanded="true" signature="807:909" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="947:6895" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3636:3891" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="3923:4399" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4083:4393" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4436:4558" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4564:4652" ph="/// Saves all relevant factory stats to a json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4686:4768" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="4774:4866" ph="/// Loads all relevent factory stats from its json file ... " />
+            <marker date="1520013649427" expanded="true" signature="4902:5582" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5126:5335" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="5588:5906" ph="/// This method will save the information for all machines in a level to a file. ... " />
+            <marker date="1520013649427" expanded="true" signature="5986:6099" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6105:6329" ph="/// Loads the level data for this factory and returns it in a LevelToFile object ... " />
+            <marker date="1520013649427" expanded="true" signature="6372:6427" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6470:6655" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6556:6626" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6708:6893" ph="{...}" />
+            <marker date="1520013649427" expanded="true" signature="6794:6864" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/UI.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1516622160060" expanded="true" signature="6:128" ph="..." />
+            <marker date="1516622160060" expanded="true" signature="161:573" ph="{...}" />
+            <marker date="1516622160060" expanded="true" signature="296:413" ph="{...}" />
+            <marker date="1516622160060" expanded="true" signature="467:571" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/LevelController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="742" column="26" lean-forward="false" selection-start-line="742" selection-start-column="26" selection-end-line="742" selection-end-column="26" />
+          <folding>
+            <marker date="1519335751398" expanded="false" signature="6:158" ph="..." />
+            <marker date="1519335751398" expanded="true" signature="160:288" ph="/// This enum is used to control whether the player  ... " />
+            <marker date="1519335751398" expanded="true" signature="310:909" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="317:393" ph="/* Below are for use in the debug menu, not ... */" />
+            <marker date="1519335751398" expanded="true" signature="700:731" ph="/* 5 ... */" />
+            <marker date="1519335751398" expanded="true" signature="911:1177" ph="/// This class will act as a controller within individual levels. ... " />
+            <marker date="1519335751398" expanded="true" signature="1222:28302" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="1772:1950" ph="/* This is used to remember which inputter the player clicked on, so we know which inputter ... */" />
+            <marker date="1519335751398" expanded="true" signature="2206:2440" ph="/* The gameObjects that hold the Tiles and Machines respectively. ... */" />
+            <marker date="1519335751398" expanded="true" signature="3506:3543" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3562:3948" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="3966:4206" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4070:4203" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4105:4190" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4212:4374" ph="/// Returns a new machine that matches the given machine type ... " />
+            <marker date="1519335751398" expanded="true" signature="4422:4615" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4470:4588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4518:4578" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4621:4842" ph="/// Returns a new machine that matches the given build mode. ... " />
+            <marker date="1519335751398" expanded="true" signature="4886:5748" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="4912:5742" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="5754:5854" ph="/// This function runs once after the level has been loaded in. ... " />
+            <marker date="1519335751398" expanded="true" signature="5884:6920" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6633:6769" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6821:6914" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="6994:7588" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7315:7582" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7382:7572" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="7657:8550" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8000:8229" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8316:8544" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8556:8670" ph="/// One call of this function represents one cycle within our production line ... " />
+            <marker date="1519335751398" expanded="true" signature="8693:9160" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8799:8847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="8925:8974" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9103:9154" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9210:9322" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9328:9541" ph="/// This method toggles the production line on/off.  ... " />
+            <marker date="1519335751398" expanded="true" signature="9573:9715" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9601:9649" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9662:9709" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9721:9844" ph="/// This method toggles whether or not the production ... " />
+            <marker date="1519335751398" expanded="true" signature="9876:9916" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="9922:10033" ph="/// Starts the production line, calls the Begin() function on all machines ... " />
+            <marker date="1519335751398" expanded="true" signature="10065:10211" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10156:10205" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10217:10342" ph="/// Stops the process from running, destroys and removes all items, resets all machines. ... " />
+            <marker date="1519335751398" expanded="true" signature="10373:10583" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10528:10577" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10589:10745" ph="/// Updates which machine we have currently selected to build ... " />
+            <marker date="1519335751398" expanded="true" signature="10781:11274" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="10904:11111" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11124:11268" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11280:11401" ph="/// Updates the current building mode in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="11444:11514" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11520:11676" ph="/// Enables or Disables drag script based on parameter ... " />
+            <marker date="1519335751398" expanded="true" signature="11720:11800" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="11806:11989" ph="/// Spawns the selected machine on a given (x, y) coordinate ... " />
+            <marker date="1519335751398" expanded="true" signature="12027:12894" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12087:12234" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="12900:13181" ph="/// Returns the machine neighbouring a given (x,y) coordinate and direction ... " />
+            <marker date="1519335751398" expanded="true" signature="13245:13877" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13323:13400" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13482:13559" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13627:13704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13772:13849" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="13883:13993" ph="/// Adds an item to our list of items ... " />
+            <marker date="1519335751398" expanded="true" signature="14032:14121" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14127:14263" ph="/// Removes an item from the list of items and then destroys it ... " />
+            <marker date="1519335751398" expanded="true" signature="14315:14442" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14448:14608" ph="/// Destroys all gameobjects inside a list of items and then empties the list ... " />
+            <marker date="1519335751398" expanded="true" signature="14683:14942" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14782:14936" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="14948:15114" ph="/// Takes in a machine as refferenceand removes it from  ... " />
+            <marker date="1519335751398" expanded="true" signature="15161:15221" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="15227:15433" ph="/// This method loads the level using data from the factory, this includes placing objects in the  ... " />
+            <marker date="1519335751398" expanded="true" signature="15487:18732" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16035:16617" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16095:16607" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16678:17531" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16800:16876" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="16931:17003" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17101:17521" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17178:17507" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17596:18489" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17667:18479" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="17743:18115" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18136:18465" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18609:18726" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="18738:18969" ph="/// This checks a given MachineToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="19031:20834" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19237:19344" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19402:19513" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19570:19684" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19740:19847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="19901:20004" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20067:20183" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20248:20374" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20387:20427" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="20840:21065" ph="/// This checks a given InputToFile, checks if it needs to spawn and  ... " />
+            <marker date="1519335751398" expanded="true" signature="21121:22296" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21290:21462" ph="/* If its an inputter then we need to see what ingredient it inputs to the level ... */" />
+            <marker date="1519335751398" expanded="true" signature="21556:21618" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21631:21990" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21791:21980" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="21874:21966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22302:22393" ph="/// Dims the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22420:22581" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22482:22575" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22587:22683" ph="/// Brightens the textures colour of all Tiles in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="22715:22871" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22777:22865" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="22877:22971" ph="/// Dims the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23001:23168" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23066:23162" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23174:23273" ph="/// Brightens the textures colour of all Machines in the level ... " />
+            <marker date="1519335751398" expanded="true" signature="23308:23480" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23373:23474" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23486:23577" ph="/// Dims all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23606:23779" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23674:23773" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23785:23881" ph="/// Brightens all decoration objects within the Level scene ... " />
+            <marker date="1519335751398" expanded="true" signature="23915:24093" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="23983:24087" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24099:24216" ph="/// This method includes any behaviour that occurs when a level has been solved. ... " />
+            <marker date="1519335751398" expanded="true" signature="24250:26710" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24378:26704" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="24732:24826" ph="/* Give the player a currency reward upon level ... */" />
+            <marker date="1519335751398" expanded="true" signature="25024:25167" ph="/* Give the player however much they improved their score by ... */" />
+            <marker date="1519335751398" expanded="true" signature="25208:25932" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="25610:25847" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26037:26179" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="26716:26928" ph="/// Calculates the score of the factory based on the inverse of the tiles occupied ... " />
+            <marker date="1519335751398" expanded="true" signature="26983:27289" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27325:27421" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27427:27515" ph="/// Calls the factory to save the level to the file ... " />
+            <marker date="1519335751398" expanded="true" signature="27543:27633" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27639:27841" ph="/// This method takes in an Ingredient and sets this as  ... " />
+            <marker date="1519335751398" expanded="true" signature="27908:27966" ph="{...}" />
+            <marker date="1519335751398" expanded="true" signature="27972:28121" ph="/// Saves the factories stats and then calls the GameManager  ... " />
+            <marker date="1519335751398" expanded="true" signature="28153:28300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/DBManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1520013678551" expanded="true" signature="6:205" ph="..." />
+            <marker date="1520013678551" expanded="true" signature="229:4336" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="289:482" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="504:800" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="821:842" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="894:1519" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1044:1511" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1086:1240" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1278:1375" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1414:1501" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1593:1705" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="1777:2402" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2005:2273" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2047:2076" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2115:2263" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2299:2346" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2351:2396" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2514:3570" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2877:3180" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2919:2948" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="2987:3170" ph="{...}" />
+            <marker date="1520013678551" expanded="true" signature="3576:4334" ph="/* public List&lt;int&gt; GetFactoryHighscores(int factoryID) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/SaveLoad.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <marker date="1520013891472" expanded="false" signature="6:188" ph="..." />
+            <marker date="1520013891472" expanded="true" signature="190:319" ph="/// A static utilities class which handles all of the saving  ... " />
+            <marker date="1520013891472" expanded="true" signature="348:12539" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="395:982" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="518:589" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="718:957" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="988:1099" ph="/// Saves a factories stats to json ... " />
+            <marker date="1520013891472" expanded="true" signature="1156:2034" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="1908:1975" ph="/* Append the file name and file extension ... */" />
+            <marker date="1520013891472" expanded="true" signature="2040:2234" ph="/// Loads and returns a FactoryStats object containing all the  ... " />
+            <marker date="1520013891472" expanded="true" signature="2299:2953" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="2665:2710" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="2959:3337" ph="/// Saves all information about machines in a level to a file ... " />
+            <marker date="1520013891472" expanded="true" signature="3435:6950" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="3539:3657" ph="/* for (int x = 0; x &lt; levelWidth; x++) ... */" />
+            <marker date="1520013891472" expanded="true" signature="3737:6308" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="3797:6285" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="3947:6271" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="4180:6253" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="5757:5925" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="5958:6071" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="6331:6483" ph="/* Once we have looped through our level it's time to save all of our gathered data to file... ... */" />
+            <marker date="1520013891472" expanded="true" signature="6956:7165" ph="/// Loads and returns a LevelToFile object containing information about  ... " />
+            <marker date="1520013891472" expanded="true" signature="7222:7938" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="7650:7695" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="7944:8058" ph="/// Saves a Stockpiles stats to file ... " />
+            <marker date="1520013891472" expanded="true" signature="8116:8864" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="8933:9563" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="9271:9316" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="9569:9689" ph="/// Saves a Player objects stats to json file ... " />
+            <marker date="1520013891472" expanded="true" signature="9743:10444" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="10450:10644" ph="/// Loads PlayerStats from json, returns PlayerStats object with appropriate  ... " />
+            <marker date="1520013891472" expanded="true" signature="10692:11405" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="11046:11164" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="11448:11906" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="11952:12537" ph="{...}" />
+            <marker date="1520013891472" expanded="true" signature="12277:12335" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -21,7 +21,7 @@ public static class SaveLoad
         {
             return Application.persistentDataPath;
         }
-        else if (Application.platform == RuntimePlatform.WindowsEditor)
+        else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
             // Get the current directory
             StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());

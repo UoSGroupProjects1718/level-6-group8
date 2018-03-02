@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 using System.Runtime.InteropServices;
-using NUnit.Compatibility;
-
 /// <summary>
 /// This class is used to serialize and deserialize factory data to/from json
 /// </summary>

@@ -1811,7 +1811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 21
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -10959,7 +10959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 19
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -15859,7 +15859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 5
+  factoryID: 20
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
