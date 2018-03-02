@@ -9,6 +9,8 @@ public class IntroductionTutorial : Tutorial
     {
         int machineX, machineY;
 
+        Debug.Log(string.Format("Progress: {0}", progress));
+
         // What to do per section
         switch (progress)
         {
@@ -58,7 +60,7 @@ public class IntroductionTutorial : Tutorial
                 break;
 
 
-                // Tutorial section 2
+                //2: Ingredient reaches end
             case 2:
 
                 // When the correct ingredient reaches the end
@@ -75,11 +77,16 @@ public class IntroductionTutorial : Tutorial
                 // Enable the conveyor button
                 GameCanvas.Instance.EnableMachineButton(Buttons.conveyerButton);
 
-
+                // Advance
+                progress++;
                 break;
 
                 //3: Player has to rotate conveyers around a corner
             case 3:
+
+                // When the correct ingredient reaches the end
+                if (_event != EventType.Level_Solved) return;
+
                 // Stop running the factories
                 LevelController.Instance.ToggleRunning();
                 GameCanvas.Instance.TogglePlaySprite();
@@ -90,14 +97,20 @@ public class IntroductionTutorial : Tutorial
 
                 // Enable the rotate button
                 GameCanvas.Instance.EnableMachineButton(Buttons.rotateButton);
+
+                // Advance
+                progress++;
                 break;
 
                 //4: Complete
             case 4:
+                // When the correct ingredient reaches the end
+                if (_event != EventType.Level_Solved) return;
+
                 LevelController.Instance.ToggleRunning();
                 GameCanvas.Instance.TogglePlaySprite();
 
-                GameCanvas.Instance.DisplayMessage("Awesome!\nTutorial complete.");
+                GameCanvas.Instance.DisplayMessage("Congratulations!\nTutorial complete.");
                 break;
         }
     }
