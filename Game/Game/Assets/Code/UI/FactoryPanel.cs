@@ -16,11 +16,7 @@ public class FactoryPanel : MonoBehaviour {
     [SerializeField]
     Text factoryName;
     [SerializeField]
-    Text factoryMainText;
-    [SerializeField]
     Image[] factoryStars;
-    [SerializeField]
-    Slider factoryStockpile;
     [SerializeField]
     Slider factoryIncome;
     [SerializeField]
@@ -54,10 +50,7 @@ public class FactoryPanel : MonoBehaviour {
 
             if (factory.Solved)
             {
-                factoryMainText.text = "Score: " + factory.Score;
                 fillfactoryStars(factory.Stars);
-                factoryStockpile.maxValue = factory.StockpileLimit;
-                factoryStockpile.value = factory.stockpile.ItemCount;
 
                 //TODO: we need score thresholds stored in the factory data
                 factoryIncome.value = factory.Target.Cost / factory.TicksToSolve;
@@ -68,9 +61,7 @@ public class FactoryPanel : MonoBehaviour {
             }
             else
             {
-                factoryMainText.text = "Complete the level to recieve a score!";
                 fillfactoryStars(0);
-                factoryStockpile.value = 0;
             }
         }
     }
