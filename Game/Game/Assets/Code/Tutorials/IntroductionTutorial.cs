@@ -12,15 +12,18 @@ public class IntroductionTutorial : Tutorial
         Debug.Log(string.Format("Progress: {0}", progress));
 
         // What to do per section
-        switch (progress)
+        switch (progress)   
         {
                 //0: Highlight inputter
             case 0:
+                // Move camera
+                Camera.main.GetComponent<CameraController>().PanCamera(-1, 1.5f, 0.5f);
+
                 // Disable all UI buttons, we don't need any yet
                 GameCanvas.Instance.DisableMachineButtons();
 
                 // Send message
-                GameCanvas.Instance.DisplayMessage("Select basil from the list of ingredients and press the Play button. I've placed the conveyers for you.");
+                GameCanvas.Instance.DisplayMessage("First, let's select an ingredient!\nSelect Basil from the ingredient list - tap on the highlighted inputter to open the list.");
 
                 // Dim all tiles and machines
                 LevelController.Instance.DimTiles();
@@ -72,7 +75,7 @@ public class IntroductionTutorial : Tutorial
 
                 // Pan camera, display message
                 Camera.main.GetComponent<CameraController>().PanCamera(5, 1.2f, 5);
-                GameCanvas.Instance.DisplayMessage("Now, try placing the conveyors yourself!");
+                GameCanvas.Instance.DisplayMessage("Now, try placing the conveyors yourself using the button to the left.\nDon't forget to select the Basil ingredient again.");
 
                 // Enable the conveyor button
                 GameCanvas.Instance.EnableMachineButton(Buttons.conveyerButton);
