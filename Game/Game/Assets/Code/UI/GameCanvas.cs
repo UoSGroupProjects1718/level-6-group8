@@ -106,7 +106,7 @@ public class GameCanvas : MonoBehaviour
     private GameObject lastPanel;
     private Dictionary<Buttons, GameObject> machineButtons;
 
-    private void Start()
+    private void Awake()
     {
         // Initialiaze the Singleton
         if (instance == null) instance = this;
@@ -114,6 +114,11 @@ public class GameCanvas : MonoBehaviour
 
         // Pushback machine buttons
         InitButtonDictionary();
+    }
+
+    private void Start()
+    {
+
     }
 
     /// <summary>
@@ -259,10 +264,12 @@ public class GameCanvas : MonoBehaviour
     {
         cookbookParent.SetActive(!cookbookParent.activeSelf);
         onPanelUpdate(cookbookParent);
+        EventManager.Instance.AddEvent(EventType.Cookbook_PageTurn);
     }
     private void loadCookbook()
     {
         cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
+        EventManager.Instance.AddEvent(EventType.Cookbook_PageTurn);
     }
 
     /// <summary>
@@ -291,9 +298,12 @@ public class GameCanvas : MonoBehaviour
         onPanelUpdate(ingredientListParent);
     }
 
-    public void ShowScoreScreen(int score, int ticks)
+    public void EnableScoreScreen(int score, int ticks)
     {
-        // Set it active
+        // Dull background
+        ToggleDull(true);
+
+        // Set score screen as active active
         scoreScreen.gameObject.SetActive(true);
 
         // Update the values

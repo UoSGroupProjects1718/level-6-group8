@@ -64,9 +64,6 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private GameObject wallTile;
 
-    // UI Controller
-    private GameObject UI_Controller;
-
     /* This is used to remember which inputter the player clicked on, so we know which inputter
     to change the ingredient of when the player taps a new ingredient from the list */
     Inputter selectedInputter; 
@@ -217,8 +214,7 @@ public class LevelController : MonoBehaviour
         SpawnWalls(0, levelWidth, 0, levelHeight);
 
         // UI Functions
-        UI_Controller = GameObject.Find("Canvas");
-        UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
+        GameCanvas.Instance.BuildUI(factory);
 
         // Event
         EventManager.Instance.AddEvent(EventType.Enter_Factory);
@@ -233,12 +229,13 @@ public class LevelController : MonoBehaviour
             EventManager.Instance.AddEvent(EventType.Enter_Factory);
 
             // Toggle UI pannel
-            UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+            GameCanvas.Instance.ToggleEntryPanel();
         }
         // Else, show the entry pannel
         else
         {
-            UI_Controller.GetComponent<GameCanvas>().ToggleEntryPanel();
+
+            GameCanvas.Instance.ToggleEntryPanel();
         }
     }
 
@@ -297,6 +294,9 @@ public class LevelController : MonoBehaviour
     private void Run()
     {
         tickCounter++;
+
+        // Event
+        EventManager.Instance.AddEvent(EventType.Conveyor_Execute);
 
         // Tick
         foreach (Machine machine in factory.level.machines)
@@ -394,12 +394,13 @@ public class LevelController : MonoBehaviour
             // Set build mode to none
             buildingMode = BuildMode.none;
 
-            GameObject.Find("Canvas").GetComponent<GameCanvas>().Debug_SetBuildModeText(BuildMode.none);
+            GameCanvas.Instance.Debug_SetBuildModeText(BuildMode.none);
         }
         else
         {
             buildingMode = bm;
-            GameObject.Find("Canvas").GetComponent<GameCanvas>().Debug_SetBuildModeText(bm);
+            GameCanvas.Instance.Debug_SetBuildModeText(bm);
+            // GameObject.Find("Canvas").GetComponent<GameCanvas>().Debug_SetBuildModeText(bm);
         }
     }
 
@@ -874,7 +875,7 @@ public class LevelController : MonoBehaviour
             // If it' s not a tutorial, Display the  Final Score Screen
             if (!factory.IsTutorial)
             {
-                GameCanvas.Instance.ShowScoreScreen((int)factoryScore, TickCounter);
+                GameCanvas.Instance.EnableScoreScreen((int)factoryScore, TickCounter);
             }
 
             EventManager.Instance.AddEvent(EventType.Level_Solved);

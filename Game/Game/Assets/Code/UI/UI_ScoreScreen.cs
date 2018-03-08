@@ -9,6 +9,9 @@ public class UI_ScoreScreen : MonoBehaviour
     Image potionImage;
 
     [SerializeField]
+    Text factoryNameText;
+
+    [SerializeField]
     Text statsText; // This is where efficiency, reward, ticks, etc. is displayed
 
     [SerializeField]
@@ -17,6 +20,9 @@ public class UI_ScoreScreen : MonoBehaviour
 
     public void SetScore(int score, int ticks)
     {
+        // Set factory name
+        factoryNameText.text = LevelController.Instance.LevelFactory.FactoryName;
+
         // Set the Image to the sprite of the Item we made to solve the level
         potionImage.sprite = LevelController.Instance.LevelFactory.Target.ItemSprite;
 

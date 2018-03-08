@@ -6,7 +6,7 @@ public class DimmableObject : MonoBehaviour
 {
     static float percentToDim = .75f;
 
-    public void Highlight(bool highlight)
+    public void Outline(bool highlight)
     {
         if (highlight)
             GetComponent<Renderer>().material.shader = Shader.Find("Outlined/Uniform");

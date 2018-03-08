@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 23
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 22
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -1113,9 +1113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 0
+  factoryID: 1
   starsRequired: 0
-  factoryName: The Obtuse Orchid
+  factoryName: Fluffballs Fermenting Inc.
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 6
   height: 6
@@ -1415,6 +1415,9 @@ MonoBehaviour:
   factories:
   - {fileID: 1555749787}
   - {fileID: 1947026600}
+  - {fileID: 1862354264}
+  - {fileID: 1162525955}
+  - {fileID: 2142740399}
   lights:
   - {fileID: 1963278203}
 --- !u!1 &193345029
@@ -2173,7 +2176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 16
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -2217,9 +2220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: -1
+  factoryID: 0
   starsRequired: 0
-  factoryName: The Obtuse Orchid
+  factoryName: Mayors Minischool
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 19
   height: 7
@@ -2684,7 +2687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 15
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -3481,7 +3484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 4
+  factoryID: 7
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -4049,7 +4052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 18
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -5724,6 +5727,8 @@ MonoBehaviour:
     type: 9
   - sound: {fileID: 8300000, guid: f5b8c5c381297e04bb4fb399fe9a80d0, type: 3}
     type: 10
+  - sound: {fileID: 8300000, guid: c531e09630a99e24ba81b50a45d43c19, type: 3}
+    type: 12
   - sound: {fileID: 8300000, guid: 1a45e46a895c1784594a7f58726ce15f, type: 3}
     type: 11
 --- !u!1 &587811181
@@ -7075,7 +7080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60edc624c6bd1004794ce6e45306f34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: {fileID: 160433127}
+  self: {fileID: 772326553}
   Sprite_FilledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   Sprite_EmptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   Sprite_Lock: {fileID: 21300004, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
@@ -7284,9 +7289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 1
+  factoryID: 2
   starsRequired: 0
-  factoryName: Purple Apothecary
+  factoryName: Bubba's Brewer
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 7
   height: 7
@@ -7649,9 +7654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 2
+  factoryID: 3
   starsRequired: 0
-  factoryName: Purple Apothecary
+  factoryName: Milly's Muller
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
   width: 9
   height: 11
@@ -9989,6 +9994,9 @@ MonoBehaviour:
   factories:
   - {fileID: 1618502442}
   - {fileID: 280421273}
+  - {fileID: 244061953}
+  - {fileID: 2016576197}
+  - {fileID: 385368712}
   lights:
   - {fileID: 453405324}
 --- !u!1 &941279173
@@ -10622,8 +10630,11 @@ MonoBehaviour:
   id: 3
   unlocked: 0
   factories:
+  - {fileID: 1017640228}
   - {fileID: 1462186050}
   - {fileID: 218438493}
+  - {fileID: 157108295}
+  - {fileID: 88986849}
   lights:
   - {fileID: 174243677}
 --- !u!1 &999503819
@@ -12395,7 +12406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 12
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -13462,7 +13473,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Name
-      value: Factory_Tutorial
+      value: Factory_0_Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14947,7 +14958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 4
+  factoryID: 6
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -15974,7 +15985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 4
+  factoryID: 8
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -16608,7 +16619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 5
+  factoryID: 9
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -17326,7 +17337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 5
+  factoryID: 14
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -18125,7 +18136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 4
+  factoryID: 5
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -18257,7 +18268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 3
+  factoryID: 4
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -20248,7 +20259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 11
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -21744,7 +21755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 10
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -22289,7 +22300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 17
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
@@ -22527,6 +22538,9 @@ MonoBehaviour:
   factories:
   - {fileID: 1674618148}
   - {fileID: 1660723134}
+  - {fileID: 1414548440}
+  - {fileID: 323814859}
+  - {fileID: 1519504868}
   lights:
   - {fileID: 774754048}
 --- !u!1 &2035509038
@@ -23245,7 +23259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 6
+  factoryID: 13
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}

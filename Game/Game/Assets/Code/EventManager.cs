@@ -22,6 +22,7 @@ public enum EventType
     //
     Grinder_Execute,
     Brewer_Execute,
+    Conveyor_Execute,
 }
 
 public class EventManager : MonoBehaviour
@@ -93,6 +94,7 @@ public class EventManager : MonoBehaviour
 
             case EventType.Grinder_Execute:
             case EventType.Brewer_Execute:
+            case EventType.Conveyor_Execute:
                 AudioManager.Instance.PlaySound(_event);
                 break;
         }

@@ -34,7 +34,7 @@ public class IngredientPanel : MonoBehaviour
 
     public void CloseIngredientList()
     {
-        GameObject.Find("Canvas").GetComponent<GameCanvas>().CloseIngredientsList();
+        GameCanvas.Instance.CloseIngredientsList();
     }
 
     public void SendEvent()

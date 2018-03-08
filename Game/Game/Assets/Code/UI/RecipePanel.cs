@@ -44,5 +44,8 @@ public class RecipePanel : MonoBehaviour
         GameObject panelToLoad = GameObject.Find("Panel_Cookbook");
         CookbookManager cm = panelToLoad.GetComponent<CookbookManager>();
         cm.detailedView(potion);
+
+        // Event
+        EventManager.Instance.AddEvent(EventType.Cookbook_PageTurn);
     }
 }

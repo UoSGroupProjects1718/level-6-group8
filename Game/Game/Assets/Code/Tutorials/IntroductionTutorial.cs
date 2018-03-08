@@ -33,7 +33,7 @@ public class IntroductionTutorial : Tutorial
                 // Highlight the inputter
                 machineX = LevelController.Instance.LevelFactory.DefaultMachines[0].x;
                 machineY = LevelController.Instance.LevelFactory.DefaultMachines[0].y;
-                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Highlight(true);
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Outline(true);
 
                 // Advance
                 progress++;
@@ -53,7 +53,7 @@ public class IntroductionTutorial : Tutorial
                 // Unhighlight the inputter
                 machineX = LevelController.Instance.LevelFactory.DefaultMachines[0].x;
                 machineY = LevelController.Instance.LevelFactory.DefaultMachines[0].y;
-                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Highlight(false);
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.Outline(false);
 
                 // Send message
                 GameCanvas.Instance.DisplayMessage("Now try hitting the Play button!");
@@ -75,10 +75,19 @@ public class IntroductionTutorial : Tutorial
 
                 // Pan camera, display message
                 Camera.main.GetComponent<CameraController>().PanCamera(5, 1.2f, 5);
-                GameCanvas.Instance.DisplayMessage("Now, try placing the conveyors yourself using the button to the left.\nDon't forget to select the Basil ingredient again.");
+                GameCanvas.Instance.DisplayMessage("Now try it yourself! You can use the buttons on the left to place and delete machines.\n\nDon't forget to select the Basil ingredient again!");
+
+                // Darken the tiles
+                LevelController.Instance.DimTiles();
+
+                // Highlight the correct tiles
+                LevelController.Instance.LevelFactory.level.grid[8, 2].Brighten();
+                LevelController.Instance.LevelFactory.level.grid[8, 3].Brighten();
+                LevelController.Instance.LevelFactory.level.grid[8, 4].Brighten();
 
                 // Enable the conveyor button
                 GameCanvas.Instance.EnableMachineButton(Buttons.conveyerButton);
+                GameCanvas.Instance.EnableMachineButton(Buttons.deleteButton);
 
                 // Advance
                 progress++;
@@ -89,6 +98,9 @@ public class IntroductionTutorial : Tutorial
 
                 // When the correct ingredient reaches the end
                 if (_event != EventType.Level_Solved) return;
+
+                // Rebrighten the tiles
+                LevelController.Instance.BrightenTiles();
 
                 // Stop running the factories
                 LevelController.Instance.ToggleRunning();

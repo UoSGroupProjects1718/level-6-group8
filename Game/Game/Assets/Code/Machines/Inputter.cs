@@ -9,11 +9,12 @@ public class Inputter : Machine
     [SerializeField]
     public Ingredient ItemToOutput;
 
-    UI_InputterPanel panel;
+    [Header("Inputter canvas")]
+    [SerializeField]
+    private UI_InputterPanel panel;
 
 	void Start ()
     {
-        panel = transform.GetChild(0).GetComponent<UI_InputterPanel>();
         ResetTickCounter();
 	}
 
@@ -107,7 +108,7 @@ public class Inputter : Machine
         // Normal Behavior
         {
             LevelController.Instance.SelectedInputter = this;
-            GameObject.Find("Canvas").GetComponent<GameCanvas>().ToggleIngredientList();
+            GameCanvas.Instance.ToggleIngredientList();
         }
     }
 }

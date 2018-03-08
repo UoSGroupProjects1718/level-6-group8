@@ -35,5 +35,8 @@ public class CookbookManager : MonoBehaviour {
 
         default_left.SetActive(true);
         default_right.SetActive(true);
+
+        // Event
+        EventManager.Instance.AddEvent(EventType.Cookbook_PageTurn);
     }
 }

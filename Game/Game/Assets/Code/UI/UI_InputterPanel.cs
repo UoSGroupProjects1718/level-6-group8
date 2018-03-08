@@ -14,6 +14,8 @@ public class UI_InputterPanel : MonoBehaviour
     /// <param name="item"></param>
     public void SetIngredientImage(Item item)
     {
+        if (item == null) return;
+
         ingredientImage.sprite = item.ItemSprite;
     }
 }
