@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UI_ScoreScreen : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class UI_ScoreScreen : MonoBehaviour
 	public Image[] StarBoxes;
 	public Slider ScoreSlider;
 	public Sprite emptyStar, filledStar;
+	
+	[Range(0, 5000)]
+	public float SliderAnimationTimeMs;
 
 
     public void SetScore(int score, int ticks)
@@ -43,21 +47,10 @@ public class UI_ScoreScreen : MonoBehaviour
 	public void SetSliderToScore(uint score)
 	{
 		var sliderWidth = ScoreSlider.gameObject.GetComponent<RectTransform>().rect.width;
-		var threshholds = LevelController.Instance.LevelFactory.ScoreThresholds;
-
-		ScoreSlider.value = (float)score / threshholds[threshholds.Length - 1];
 		FillStarsBasedOnScore(score);
-	}
-
-	// Use this for initialization
-	void Start ()
-	{
+		AnimateSliderToScore(score, 1000);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void SetupStarBoxes()
 	{
@@ -80,5 +73,12 @@ public class UI_ScoreScreen : MonoBehaviour
 		{
 			StarBoxes[i].transform.Find("Star").GetComponent<Image>().sprite = filledStar;
 		}
+	}
+
+	private void AnimateSliderToScore(uint score, uint timeInMs)
+	{
+		var thresholds = LevelController.Instance.LevelFactory.ScoreThresholds;
+		var desiredSliderValue = (float) score / thresholds[thresholds.Length - 1];
+		DOTween.To(() => ScoreSlider.value, x => ScoreSlider.value = x, desiredSliderValue, (float)timeInMs / 1000);
 	}
 }

@@ -1999,6 +1999,7 @@ MonoBehaviour:
   ScoreSlider: {fileID: 1654879733}
   emptyStar: {fileID: 21300002, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
   filledStar: {fileID: 21300000, guid: 8cc12ddf6370a0a40a2690cec6a22d9f, type: 3}
+  SliderAnimationTimeMs: 1497
 --- !u!1 &552607818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7865,7 +7866,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.604
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
