@@ -220,6 +220,9 @@ public class GameCanvas : MonoBehaviour
         deSelectPreviousButton();
         pressed = button;
         pressed.GetComponent<Image>().color = buttonPressedColor;
+
+        // Event
+        EventManager.Instance.AddEvent(EventType.Machine_Selected);
     }
     public void TogglePlaySprite()
     {

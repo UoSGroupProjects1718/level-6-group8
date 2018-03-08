@@ -174,6 +174,8 @@ public abstract class Machine : DimmableObject
                 SetDir(Direction.down);
                 break;
         }
+
+        EventManager.Instance.AddEvent(EventType.Machine_Rotated);
     }
 
     public void Rotate()
@@ -193,6 +195,8 @@ public abstract class Machine : DimmableObject
                 SetDir(Direction.up);
                 break;
         }
+
+        EventManager.Instance.AddEvent(EventType.Machine_Rotated);
     }
 
     public void SetDir(Direction newDir)
@@ -214,6 +218,8 @@ public abstract class Machine : DimmableObject
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180 + RotationOffset, transform.eulerAngles.z);
                 break;
         }
+
+        EventManager.Instance.AddEvent(EventType.Machine_Rotated);
     }
 
     protected void ResetTickCounter() { tickCounter = 0; }
@@ -267,10 +273,13 @@ public abstract class Machine : DimmableObject
     protected void DeleteSelf()
     {
         // Our parent tiles child will be null.
-        parent.SetChild(null);
+        parent.SetChild(null, false);
 
         // Remove this machine from the list of machines.
         LevelController.Instance.RemoveMachine(this);
+
+        // Event
+        EventManager.Instance.AddEvent(EventType.Machine_Deleted);
 
         // Destroy self
         Destroy(gameObject);

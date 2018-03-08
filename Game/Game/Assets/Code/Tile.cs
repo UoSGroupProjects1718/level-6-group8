@@ -36,7 +36,7 @@ public class Tile : DimmableObject
         }
     }
 
-    public void SetChild(Machine newChild)
+    public void SetChild(Machine newChild, bool userPlaced)
     {
         machine = newChild;
 
@@ -46,6 +46,10 @@ public class Tile : DimmableObject
             machine.SetDir(Direction.down);
             machine.Parent = this;
         }
+
+        // Event
+        if (userPlaced)
+            EventManager.Instance.AddEvent(EventType.Machine_Placed);
     }
 
     #region PcControls

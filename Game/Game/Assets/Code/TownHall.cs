@@ -34,6 +34,9 @@ public class TownHall : MonoBehaviour
 
             // Set the UI for the next section
             setNextSection();
+
+            // Event
+            EventManager.Instance.AddEvent(EventType.Area_Unlocked);
         }
     }
 

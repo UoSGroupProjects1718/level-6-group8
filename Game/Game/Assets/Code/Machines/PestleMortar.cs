@@ -92,6 +92,9 @@ public class PestleMortar : Machine
         if (createdItem != null)
         {
             AddItem(ref createdItem);
+
+            // Event
+            EventManager.Instance.AddEvent(EventType.Grinder_Execute);
         }
     }
 

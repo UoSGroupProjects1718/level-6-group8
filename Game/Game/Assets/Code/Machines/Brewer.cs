@@ -92,6 +92,9 @@ public class Brewer : Machine
         if (createdItem != null)
         {
             AddItem(ref createdItem);
+
+            // Event
+            EventManager.Instance.AddEvent(EventType.Brewer_Execute);
         }
     }
 

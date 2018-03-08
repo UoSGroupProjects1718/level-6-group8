@@ -220,6 +220,9 @@ public class LevelController : MonoBehaviour
         UI_Controller = GameObject.Find("Canvas");
         UI_Controller.GetComponent<GameCanvas>().BuildUI(factory);
 
+        // Event
+        EventManager.Instance.AddEvent(EventType.Enter_Factory);
+
         // If tutorial, Progress()
         if (LevelFactory.IsTutorial)
         {
@@ -450,7 +453,7 @@ public class LevelController : MonoBehaviour
         factory.level.machines.Add(machine);
 
         // Add this machine as the child of the tile
-        factory.level.grid[x, y].SetChild(machine);
+        factory.level.grid[x, y].SetChild(machine, true);
     }
 
     /// <summary>
@@ -690,7 +693,7 @@ public class LevelController : MonoBehaviour
         }
 
         // Set it as a child to the tile
-        factory.level.grid[machineFromFile.x, machineFromFile.y].SetChild(mach);
+        factory.level.grid[machineFromFile.x, machineFromFile.y].SetChild(mach, false);
 
         // Add it to our list of machines
         factory.level.machines.Add(mach);
@@ -734,7 +737,7 @@ public class LevelController : MonoBehaviour
         }
 
         // Set it as a child to the tile
-        factory.level.grid[InputFromFile.x, InputFromFile.y].SetChild(inputter);
+        factory.level.grid[InputFromFile.x, InputFromFile.y].SetChild(inputter, false);
 
         // Add it to our list of machines
         factory.level.machines.Add(inputter);
@@ -873,6 +876,8 @@ public class LevelController : MonoBehaviour
             {
                 GameCanvas.Instance.ShowScoreScreen((int)factoryScore, TickCounter);
             }
+
+            EventManager.Instance.AddEvent(EventType.Level_Solved);
         }
     }
 
