@@ -308,6 +308,8 @@ public class GameCanvas : MonoBehaviour
 
         // Update the values
         scoreScreen.SetScore(score, ticks);
+        scoreScreen.SetupStarBoxes();
+        scoreScreen.SetSliderToScore((uint)Math.Max(0, score));
     }
 
     public void CloseScoreScreen()

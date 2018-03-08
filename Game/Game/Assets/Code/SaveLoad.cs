@@ -26,6 +26,11 @@ public static class SaveLoad
             // Get the current directory
             StringBuilder currentDir = new StringBuilder(Directory.GetCurrentDirectory());
             currentDir.Append("\\SaveData");
+
+            if (!Directory.Exists(currentDir.ToString()))
+            {
+                Directory.CreateDirectory(currentDir.ToString());
+            }
             return currentDir.ToString();
         }
         return "";

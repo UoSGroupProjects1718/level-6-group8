@@ -20,8 +20,21 @@ public class UI_FactoryOverworld : MonoBehaviour {
     private Color clearYellow = new Color32(255,255,0, 25);
     private Color defaultYellow = new Color32(255, 255, 0, 255);
 
+    void Start()
+    {
+        foreach(Transform child in gameObject.transform)
+        {
+            if (child.name.Contains("IDText"))
+            {
+                child.GetComponent<Text>().text = self.FactoryId.ToString();
+            }
+        }
+    }
+    
+
     public void setUI()
     {
+        
         if (self.Unlocked)
         {
             setStars();

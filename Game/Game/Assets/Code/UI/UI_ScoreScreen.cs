@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +20,10 @@ public class UI_ScoreScreen : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
+	public Image[] StarBoxes;
+	public Slider ScoreSlider;
+	public Sprite emptyStar, filledStar;
+
 
     public void SetScore(int score, int ticks)
     {
@@ -33,14 +40,45 @@ public class UI_ScoreScreen : MonoBehaviour
         scoreText.text = string.Format("Final score: {0}", score.ToString());
     }
 
+	public void SetSliderToScore(uint score)
+	{
+		var sliderWidth = ScoreSlider.gameObject.GetComponent<RectTransform>().rect.width;
+		var threshholds = LevelController.Instance.LevelFactory.ScoreThresholds;
+
+		ScoreSlider.value = (float)score / threshholds[threshholds.Length - 1];
+		FillStarsBasedOnScore(score);
+	}
+
 	// Use this for initialization
 	void Start ()
-    {
-		
+	{
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void SetupStarBoxes()
+	{
+		var sliderWidth = ScoreSlider.gameObject.GetComponent<RectTransform>().rect.width;
+		var threshholds = LevelController.Instance.LevelFactory.ScoreThresholds;
+		for (var i = 0; i < StarBoxes.Length; i++)
+		{
+			var starbox = StarBoxes[i];
+			var xPos = Mathf.Lerp(0, sliderWidth, (float)threshholds[i] / threshholds[threshholds.Length - 1]);
+			starbox.rectTransform.anchoredPosition = new Vector2(xPos, starbox.rectTransform.anchoredPosition.y);
+		}
+	}
+
+	private void FillStarsBasedOnScore(uint score)
+	{
+		var threshholds = LevelController.Instance.LevelFactory.ScoreThresholds;
+		var starsToFill = threshholds.Count(threshhold => score >= threshhold);
+
+		for (var i = 0; i < starsToFill; i++)
+		{
+			StarBoxes[i].transform.Find("Star").GetComponent<Image>().sprite = filledStar;
+		}
 	}
 }

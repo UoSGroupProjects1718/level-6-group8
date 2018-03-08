@@ -40,6 +40,23 @@ public class Overworld : MonoBehaviour
         }
 
         oc = GameObject.FindGameObjectWithTag("OverworldCanvas").GetComponent<OverworldCanvas>();
+        foreach (var townSection in townSections)
+        {
+            foreach (var factory in townSection.Factories)
+            {
+                var canvas = factory.gameObject.transform.Find("Canvas").gameObject;
+                var text = new GameObject("FactoryID");
+
+                RectTransform trans = text.AddComponent<RectTransform>();
+
+                Text textComponent = text.AddComponent<Text>();
+                textComponent.text = factory.FactoryId.ToString();
+                textComponent.fontSize = 24;
+                textComponent.color = Color.white;     
+                
+                Instantiate(text, canvas.transform);
+            }
+        }
     }
 
     /// <summary>
