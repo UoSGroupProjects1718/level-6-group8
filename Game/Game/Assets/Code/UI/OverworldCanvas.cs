@@ -22,14 +22,6 @@ public class OverworldCanvas : MonoBehaviour
     [Header("Factory stats display")]
     [SerializeField]
     GameObject factoryUI;
-    
-    [Header("Cookbook parent")]
-    [SerializeField]
-    GameObject cookbookParent;
-
-    [Header("Cookbook scrollable list")]
-    [SerializeField]
-    GameObject cookbookScrollablePannel;
 
     [Header("Town hall")]
     [SerializeField]
@@ -39,6 +31,8 @@ public class OverworldCanvas : MonoBehaviour
     [SerializeField]
     Text stars;
 
+    Boolean elementOpen;
+
     /// <summary>
     /// At the start of the scene, ensure that
     /// all menus are closed.
@@ -46,8 +40,17 @@ public class OverworldCanvas : MonoBehaviour
     void Start()
     {
         UpdatePlayerStats(GameManager.Instance.Player.Stars);
-        CloseAllMenus();
         StartCoroutine(WaitForPlayerLoad());
+    }
+
+    void toggleUI()
+    {
+        elementOpen = !elementOpen;
+
+        // Setup a background dull whilst ui elements are open
+        dullPanel.SetActive(elementOpen);
+        // Disable dragging whilst the menu is open
+        toggleCameraMoveScript(!elementOpen);
     }
 
     IEnumerator WaitForPlayerLoad()
@@ -70,10 +73,18 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void DisplayOptions()
     {
-        optionsPanel.SetActive(true);
+        if (!elementOpen)
+        {
+            toggleUI();
 
-        // Disable dragging whilst the menu is open
-        DisableCameraMoveScript();
+            optionsPanel.SetActive(true);
+        }
+    }
+    public void CloseOptions()
+    {
+        toggleUI();
+
+        optionsPanel.SetActive(false);
     }
 
     /// <summary>
@@ -84,35 +95,16 @@ public class OverworldCanvas : MonoBehaviour
     /// <param name="factory"></param>
     public void DisplayFactory(Factory factory)
     {
-        // Close all current open menus before opening a new menu/interface
-        CloseFactoryDisplays();
+        if (!elementOpen && factory.Unlocked)
+        {
+            toggleUI();
 
-        // Disable dragging whilst the menu is open
-        DisableCameraMoveScript();
+            // Enables the factory UI
+            factoryUI.SetActive(true);
 
-        // Enables the factory UI
-        factoryUI.SetActive(true);
-
-        // Updates the factory UI
-        factoryUI.GetComponent<FactoryPanel>().UpdateUI(factory);
-    }
-
-    /// <summary>
-    /// Opens the Cookbook pannel.
-    /// Calls the scrollable list to create all recipes.
-    /// Disables cameras drag script.
-    /// </summary>
-    public void DisplayCookbook()
-    {
-        // First, close any open menus
-        CloseAllMenus();
-
-        // Set the cookbook parent object active
-        cookbookParent.SetActive(true);
-        cookbookScrollablePannel.GetComponent<CookbookScrollableList>().Fill();
-
-        // Disable dragging whilst the menu is open
-        DisableCameraMoveScript();
+            // Updates the factory UI
+            factoryUI.GetComponent<FactoryPanel>().UpdateUI(factory);
+        }
     }
 
     /// <summary>
@@ -121,10 +113,10 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void CloseFactoryDisplays()
     {
-        factoryUI.SetActive(false);
+        toggleUI();
 
-        EnableCameraMoveScript();
-        EventSystem.current.SetSelectedGameObject(null);
+        factoryUI.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null); // TODO: why is this here?
     }
 
     /// <summary>
@@ -132,16 +124,13 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void DisplayTownHall()
     {
-        dullPanel.SetActive(true);
+        if (!elementOpen)
+        {
+            toggleUI();
 
-        // First, close any open menus
-        CloseAllMenus();
-
-        // Set the UI active
-        townhallPanel.SetActive(true);
-
-        // Disable dragging whilst the menu is open
-        DisableCameraMoveScript();
+            // Set the UI active
+            townhallPanel.SetActive(true);
+        }
     }
 
     /// <summary>
@@ -149,42 +138,17 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     public void CloseTownHall()
     {
-        dullPanel.SetActive(false);
+        toggleUI();
 
-        // Close menus
-        CloseAllMenus();
-
-        // Reenable camera drag
-        EnableCameraMoveScript();
-    }
-
-    /// <summary>
-    /// Closes all menus.
-    /// Re-Enables the camera drag script.
-    /// </summary>
-    public void CloseAllMenus()
-    {
-        CloseFactoryDisplays();
-        optionsPanel.SetActive(false);
-        cookbookParent.SetActive(false);
+        // Set the UI active
         townhallPanel.SetActive(false);
-
-        EnableCameraMoveScript();
-    }
-
-    /// <summary>
-    /// Enables the drag script on the camera
-    /// </summary>
-    private void EnableCameraMoveScript()
-    {
-        Camera.main.GetComponent<OrthoCameraDrag>().enabled = true;
     }
 
     /// <summary>
     /// Disables the drag script on the camera
     /// </summary>
-    private void DisableCameraMoveScript()
+    private void toggleCameraMoveScript(bool active)
     {
-        Camera.main.GetComponent<OrthoCameraDrag>().enabled = false;
+        Camera.main.GetComponent<OrthoCameraDrag>().enabled = active;
     }
 }

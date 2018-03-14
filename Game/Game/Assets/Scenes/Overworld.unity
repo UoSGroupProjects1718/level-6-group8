@@ -3583,7 +3583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 858695051}
-        m_MethodName: CloseAllMenus
+        m_MethodName: CloseOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8877,8 +8877,6 @@ MonoBehaviour:
   dullPanel: {fileID: 725139915}
   optionsPanel: {fileID: 2006791136}
   factoryUI: {fileID: 193345029}
-  cookbookParent: {fileID: 0}
-  cookbookScrollablePannel: {fileID: 0}
   townhallPanel: {fileID: 237713293}
   stars: {fileID: 263013568}
 --- !u!114 &858695052
