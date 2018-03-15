@@ -120,9 +120,17 @@ public abstract class Machine : DimmableObject
     }
 
     /// <summary>
+    /// Checks whether or not a machine can receieve an ingredient from a given machine
+    /// </summary>
+    /// <param name="from">The machine its receiving from</param>
+    /// <returns>True if can receive, false otherwise</returns>
+    public abstract bool CanReceiveFrom(Machine from);
+
+    /// <summary>
     /// Receive an item and add it to our machines buffer
     /// </summary>
     /// <param name="newItem">The item we are receiving</param>
+    /// <param name="from">The machine we're receiving the item from</param>
     public abstract void Receive(ref Item newItem);
 
     /// <summary>

@@ -60,21 +60,25 @@ public class Inputter : Machine
         // Neighbour null check
         if (neighbour == null) { Debug.Log("Null neighbour: returning."); return; }
 
-        // Pass item
+        // Check neighbour can receive
+        if (neighbour.CanReceiveFrom(this))
+        {   
+            // Pass item
 
-        // Instantiate the item
-        Item toPass = Instantiate(ItemToOutput.gameObject).GetComponent<Item>();
-        
-        // Position and rotate the item
-        toPass.transform.position = new Vector3(transform.position.x, toPass.ProductionLine_YHeight, transform.position.z);
-        toPass.transform.localRotation = Quaternion.Euler(toPass.ProductionLine_Rotation); // Rotate(Item.rotation);// = Quaternion.Euler(Item.rotation);
-        toPass.transform.localScale = toPass.ProductionLine_Scale;
+            // Instantiate the item
+            Item toPass = Instantiate(ItemToOutput.gameObject).GetComponent<Item>();
 
-        // Add it to our list of tiems
-        AddItem(ref toPass);
+            // Position and rotate the item
+            toPass.transform.position = new Vector3(transform.position.x, toPass.ProductionLine_YHeight, transform.position.z);
+            toPass.transform.localRotation = Quaternion.Euler(toPass.ProductionLine_Rotation); // Rotate(Item.rotation);// = Quaternion.Euler(Item.rotation);
+            toPass.transform.localScale = toPass.ProductionLine_Scale;
 
-        // Pass it to our neighbour
-        neighbour.Receive(ref toPass);  
+            // Add it to our list of tiems
+            AddItem(ref toPass);
+
+            // Pass it to our neighbour
+            neighbour.Receive(ref toPass);
+        }
     }
 
     public override void Flush()
@@ -85,6 +89,11 @@ public class Inputter : Machine
     public override void Execute()
     {
         return;
+    }
+
+    public override bool CanReceiveFrom(Machine from)
+    {
+        return false;
     }
 
     public override void Receive(ref Item newItem)

@@ -140,6 +140,11 @@ public class Mixer : Machine
         return null;
     }
 
+    public override bool CanReceiveFrom(Machine from)
+    {
+        return true;
+    }
+
     public override void Receive(ref Item newItem)
     {
         // Add this new item into our buffer

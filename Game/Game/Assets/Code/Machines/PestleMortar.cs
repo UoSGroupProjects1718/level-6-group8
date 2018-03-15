@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,10 +48,13 @@ public class PestleMortar : Machine
         // Neighbour null check
         if (neighbour == null) { return; }
 
-        neighbour.Receive(ref createdItem);
-        createdItem = null;
+        // Pass item
+        if (neighbour.CanReceiveFrom(this))
+        {
+            neighbour.Receive(ref createdItem);
+            createdItem = null;
+        }
     }
-
 
     public override void Flush()
     {
@@ -130,6 +134,26 @@ public class PestleMortar : Machine
 
         // return it
         return compound;
+    }
+
+    public override bool CanReceiveFrom(Machine from)
+    {
+        switch (dir)
+        {
+            case Direction.up:
+            case Direction.down:
+
+                if (from.Parent.X == parent.X - 1 || from.Parent.X == parent.X + 1) return true;
+                return false;
+
+            case Direction.left:
+            case Direction.right:
+                if (from.Parent.Y == parent.Y + 1 || from.Parent.Y == parent.Y - 1) return true;
+                return false;
+
+            default:
+                return true;
+        }
     }
 
     public override void Receive(ref Item newItem)

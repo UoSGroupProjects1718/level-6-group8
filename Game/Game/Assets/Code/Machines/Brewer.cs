@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -158,6 +159,35 @@ public class Brewer : Machine
 
         // If we loop through every potion and don't find 
         return null;
+    }
+
+    public override bool CanReceiveFrom(Machine from)
+    {
+        // Return false if 'from' is the machine infront of the brewer depending
+        // on how we're facing. 
+        // Otherwise, return true
+
+        switch (dir)
+        {
+            case Direction.right:
+                if (from.Parent.X == parent.X + 1) return false;
+                return true;
+
+            case Direction.left:
+                if (from.Parent.X == parent.X - 1) return false;
+                return true;
+
+            case Direction.up:
+                if (from.Parent.Y == parent.Y + 1) return false;
+                return true;
+
+            case Direction.down:
+                if (from.Parent.Y == parent.Y - 1) return false;
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     public override void Receive(ref Item newItem)

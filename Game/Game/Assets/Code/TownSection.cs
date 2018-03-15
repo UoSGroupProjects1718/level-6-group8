@@ -12,6 +12,8 @@ public class TownSection : MonoBehaviour
     uint id;
     [SerializeField]
     bool unlocked;
+    [SerializeField]
+    int ingredientsAvailable;
 
     [Header("Factories")]
     [SerializeField]
@@ -22,8 +24,17 @@ public class TownSection : MonoBehaviour
     public uint Cost { get { return cost; } }
     public uint ID { get { return id; } }
     public bool Unlocked { get { return unlocked; } }
+    public int IngredientsAvailable { get { return ingredientsAvailable; } }
 
     public Factory[] Factories { get { return factories; } }
+
+    void Start()
+    {
+        foreach (Factory fac in factories)
+        {
+            fac.TownSection = this;
+        }
+    }
 
     /// <summary>
     /// Unlocks this section of the map. Unlocks the factories 

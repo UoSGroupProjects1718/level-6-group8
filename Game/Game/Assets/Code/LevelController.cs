@@ -872,11 +872,8 @@ public class LevelController : MonoBehaviour
             Debug.Log(string.Format("Total machine cost: {0}", LevelFactory.TotalMachineCost));
             Debug.Log("Score: " + factoryScore);
 
-            // If it' s not a tutorial, Display the  Final Score Screen
-            if (!factory.IsTutorial)
-            {
-                GameCanvas.Instance.EnableScoreScreen((int)factoryScore, TickCounter);
-            }
+            // Display the  Final Score Screen
+            GameCanvas.Instance.EnableScoreScreen((int)factoryScore, TickCounter);
 
             EventManager.Instance.AddEvent(EventType.Level_Solved);
         }
@@ -902,11 +899,16 @@ public class LevelController : MonoBehaviour
     }
 
     /// <summary>
-    /// Calls the factory to save the level to the file
+    /// Calls the factory to save the level to the file 
+    /// unless its a tutorial
     /// </summary>
     public void SaveLevel()
     {
-        factory.SaveLevelToFile(factory.level.grid, levelWidth, levelHeight);
+        // Don't save if it's a tutorial level
+        if (!LevelFactory.IsTutorial)
+        {
+            factory.SaveLevelToFile(factory.level.grid, levelWidth, levelHeight);
+        }
     }
 
     /// <summary>

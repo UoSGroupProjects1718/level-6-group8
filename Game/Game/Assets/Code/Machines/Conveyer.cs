@@ -41,8 +41,11 @@ public class Conveyer : Machine
             if (neighbour == null) { return; }
 
             // Give children to neighbour
-            neighbour.Receive(ref activeChild);
-            activeChild = null;
+            if (neighbour.CanReceiveFrom(this))
+            {
+                neighbour.Receive(ref activeChild);
+                activeChild = null;
+            }
         }
     }
 
@@ -96,6 +99,11 @@ public class Conveyer : Machine
         }
 
         bufferChildren.Clear();
+    }
+
+    public override bool CanReceiveFrom(Machine from)
+    {
+        return true;
     }
 
     public override void Receive(ref Item newItem)

@@ -9,8 +9,6 @@ public class IntroductionTutorial : Tutorial
     {
         int machineX, machineY;
 
-        Debug.Log(string.Format("Progress: {0}", progress));
-
         // What to do per section
         switch (progress)   
         {
@@ -124,8 +122,7 @@ public class IntroductionTutorial : Tutorial
 
                 LevelController.Instance.ToggleRunning();
                 GameCanvas.Instance.TogglePlaySprite();
-
-                GameCanvas.Instance.DisplayMessage("Congratulations!\nTutorial complete.");
+                EventManager.Instance.AddEvent(EventType.Tutorial_Solved);
                 break;
         }
     }

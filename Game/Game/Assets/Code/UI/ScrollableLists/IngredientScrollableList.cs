@@ -8,6 +8,7 @@ public class IngredientScrollableList : ScrollableList
     {
         if (loaded == true) { return; }
         loaded = true;
+        objectList = new List<GameObject>();
 
         int itemCount = GameManager.Instance.Ingredients.Length;
 
@@ -38,6 +39,8 @@ public class IngredientScrollableList : ScrollableList
             // children.Add(newItem);
             newItem.name = string.Format("{0} Item at: {1},{2}", gameObject.name, i, j);
             newItem.transform.SetParent(gameObject.transform);
+
+            ObjectList.Add(newItem);
 
             // Move and size this new item
             RectTransform rectTransform = newItem.GetComponent<RectTransform>();

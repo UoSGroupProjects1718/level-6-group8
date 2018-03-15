@@ -13,7 +13,12 @@ public abstract class ScrollableList : MonoBehaviour
     [SerializeField]
     protected int columnCount;
 
+    // protected list of objects
+    protected List<GameObject> objectList;
     protected bool loaded = false;
+
+    // Public getter
+    public List<GameObject> ObjectList { get { return objectList; } }
 
     public abstract void Fill();
 }

@@ -1352,6 +1352,7 @@ MonoBehaviour:
   cost: 10
   id: 3
   unlocked: 0
+  ingredientsAvailable: 12
   factories:
   - {fileID: 1555749787}
   - {fileID: 1947026600}
@@ -4827,11 +4828,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4381240117526604, guid: 76a453b87c63fef499f66dc1734915d8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4864,60 +4860,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[9]
-      value: 
-      objectReference: {fileID: 114849525854985824, guid: 0fbd6b288e86ef1438ee7af54d28abf0,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[10]
-      value: 
-      objectReference: {fileID: 114468770350683204, guid: c5a5bf691be35b442ba287dd44804c8a,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[11]
-      value: 
-      objectReference: {fileID: 114444173738331884, guid: 849ca448d44c2a146ac639b7bc34fe5c,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[12]
-      value: 
-      objectReference: {fileID: 114215952565469808, guid: ebd146c4ab4f1f342bbf9a20dc24d938,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[13]
-      value: 
-      objectReference: {fileID: 114672638378656358, guid: cf6fb835fdc1f7a47995a8496cce2fc5,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[6]
-      value: 
-      objectReference: {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[7]
-      value: 
-      objectReference: {fileID: 114373784753054782, guid: 7f0ca3a2d50d133458b938b8c0821db6,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[8]
-      value: 
-      objectReference: {fileID: 114573527100314038, guid: 2d4e81cb3aa8d9d40947c98758e1f30e,
-        type: 2}
-    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
-        type: 2}
-      propertyPath: ingredients.Array.data[5]
-      value: 
-      objectReference: {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a453b87c63fef499f66dc1734915d8, type: 2}
   m_IsPrefabParent: 0
@@ -5130,125 +5072,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 579910559}
---- !u!1 &585617049 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1984545142673406, guid: 76a453b87c63fef499f66dc1734915d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 515916847}
---- !u!82 &585617052
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 585617049}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &585617053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 585617049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a47d432e435f81428d900236412598b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - sound: {fileID: 8300000, guid: cdde4f0b601772043ade83fe926d46b7, type: 3}
-    type: 7
-  - sound: {fileID: 8300000, guid: 41394633cb90ada4fa63422e53d44aaa, type: 3}
-    type: 0
-  - sound: {fileID: 8300000, guid: 6d4e85a3a444ce54bbc56bb32cea3969, type: 3}
-    type: 2
-  - sound: {fileID: 8300000, guid: ccf0e4d9de7f7274494b60a9b9855bf9, type: 3}
-    type: 4
-  - sound: {fileID: 8300000, guid: aeae92e787b9a53409773eb8718b8cc7, type: 3}
-    type: 1
-  - sound: {fileID: 8300000, guid: 7746e7203432c544caac52c63a47e833, type: 3}
-    type: 8
-  - sound: {fileID: 8300000, guid: 51582b3fa1d787744ad5a81a50e9bc56, type: 3}
-    type: 6
-  - sound: {fileID: 8300000, guid: ba31f3665892c7f41b57123a38c8785e, type: 3}
-    type: 9
-  - sound: {fileID: 8300000, guid: f5b8c5c381297e04bb4fb399fe9a80d0, type: 3}
-    type: 10
-  - sound: {fileID: 8300000, guid: c531e09630a99e24ba81b50a45d43c19, type: 3}
-    type: 12
-  - sound: {fileID: 8300000, guid: 1a45e46a895c1784594a7f58726ce15f, type: 3}
-    type: 11
 --- !u!1 &587811181
 GameObject:
   m_ObjectHideFlags: 0
@@ -9580,6 +9403,7 @@ MonoBehaviour:
   cost: 10
   id: 3
   unlocked: 0
+  ingredientsAvailable: 14
   factories:
   - {fileID: 1618502442}
   - {fileID: 280421273}
@@ -10217,6 +10041,7 @@ MonoBehaviour:
   cost: 10
   id: 3
   unlocked: 0
+  ingredientsAvailable: 14
   factories:
   - {fileID: 1017640228}
   - {fileID: 1462186050}
@@ -21549,6 +21374,7 @@ MonoBehaviour:
   cost: 5
   id: 2
   unlocked: 0
+  ingredientsAvailable: 9
   factories:
   - {fileID: 1674618148}
   - {fileID: 1660723134}
@@ -21775,6 +21601,7 @@ MonoBehaviour:
   cost: 0
   id: 1
   unlocked: 0
+  ingredientsAvailable: 6
   factories:
   - {fileID: 245257838}
   - {fileID: 160433127}

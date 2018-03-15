@@ -102,6 +102,9 @@ public class Factory : MonoBehaviour
     public Stockpile stockpile;
     public Level level;
 
+    // Private
+    private TownSection townSection;
+
     public bool IsTutorial { get { return isTutorial; } }
     public bool Unlocked { get { return unlocked; } }
     public int FactoryId { get { return factoryID; } }
@@ -114,6 +117,7 @@ public class Factory : MonoBehaviour
     public Tutorial Tutorial { get { return tutorial; } }
     public Texture FactorySprite { get { return factorySprite; } }
     public Item Target { get { return target; } }
+    public TownSection TownSection { get { return townSection; } set { townSection = value; } }
     public DefaultMachine[] DefaultMachines { get { return defaultMachines; } }
     public Vector2[] InactiveTiles { get { return inactiveTiles; } }
 

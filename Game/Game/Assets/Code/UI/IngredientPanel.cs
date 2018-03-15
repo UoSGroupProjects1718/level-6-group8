@@ -13,6 +13,10 @@ public class IngredientPanel : MonoBehaviour
     [SerializeField]
     Text displayName;
 
+    [Header("Button")]
+    [SerializeField]
+    Button button;
+
     private Ingredient ingredient;
 
     public void SetInfo(Ingredient ingredientArg)
@@ -40,5 +44,47 @@ public class IngredientPanel : MonoBehaviour
     public void SendEvent()
     {
         EventManager.Instance.AddEvent(EventType.Ingredient_Selected);
+    }
+
+    public void Highlight()
+    {
+        // Highlight ingredient image
+        image.color = Color.white;
+
+        // Highlight text
+        displayName.color = Color.white;
+
+        // Highlight button image
+        button.GetComponent<Image>().color = Color.white;
+
+        // Enable button shadow
+        button.GetComponent<Shadow>().enabled = true;
+
+        // Make interactable
+        button.interactable = true;
+    }
+
+    public void Dim()
+    {
+        // Create dimmed colour
+        Color dimmed = new Color(0.65f, 0.65f, 0.65f);
+
+        // Dim button image
+        button.GetComponent<Image>().color = dimmed;
+
+        // Disable button shadow
+        button.GetComponent<Shadow>().enabled = false;
+
+        // Not interactable
+        button.interactable = false;
+
+        // Lower alpha of the colour
+        dimmed.a = 0.65f;
+
+        // Dim ingredient image
+        image.color = dimmed;
+
+        // Dim text
+        displayName.color = dimmed;
     }
 }

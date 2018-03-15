@@ -279,9 +279,28 @@ public class GameCanvas : MonoBehaviour
     {
         if (!isPanelActive)
         {
+            // Set it as active
             ingredientListParent.SetActive(!ingredientListParent.activeSelf);
+
+            // Load the ingredient list
             if (ingredientListParent.activeSelf)
                 LoadIngredientList();
+
+            // Set buttons active/inactive
+            ScrollableList list = ingredientListPanel.GetComponent<ScrollableList>();
+            for (int i = 0; i < list.ObjectList.Count; i++)
+            {
+                // For up to the number of available ingredients we have
+                if (i < LevelController.Instance.LevelFactory.TownSection.IngredientsAvailable)
+                    // Highlight these buttons
+                    list.ObjectList[i].GetComponent<IngredientPanel>().Highlight();
+
+                // And dim the other buttons
+                else
+                    list.ObjectList[i].GetComponent<IngredientPanel>().Dim();
+            }
+
+            // Update
             onPanelUpdate(ingredientListParent);
         }
     }

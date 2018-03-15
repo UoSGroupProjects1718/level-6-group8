@@ -39,7 +39,6 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
-        UpdatePlayerStats(GameManager.Instance.Player.Stars);
         StartCoroutine(WaitForPlayerLoad());
     }
 
@@ -56,6 +55,7 @@ public class OverworldCanvas : MonoBehaviour
     IEnumerator WaitForPlayerLoad()
     {
         yield return new WaitForSeconds(GameManager.LoadTime + float.Epsilon);
+        UpdatePlayerStats(GameManager.Instance.Player.Stars);
     }
 
     /// <summary>

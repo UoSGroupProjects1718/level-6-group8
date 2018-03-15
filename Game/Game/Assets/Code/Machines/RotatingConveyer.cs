@@ -170,6 +170,13 @@ public class RotatingConveyer : Machine
         }
     }
 
+    public override bool CanReceiveFrom(Machine from)
+    {
+        // This machine has no special requirements for which 
+        // direction it can receive from
+        return true;
+    }
+
     public override void Receive(ref Item newItem)
     {
         // If we already have a child

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,10 +48,14 @@ public class Oven : Machine
         // Neighbour null check
         if (neighbour == null) { return; }
 
-        neighbour.Receive(ref createdItem);
-        createdItem = null;
+        // Check neighbour can receive
+        if (neighbour.CanReceiveFrom(this))
+        {
+            // Pass
+            neighbour.Receive(ref createdItem);
+            createdItem = null;
+        }
     }
-
 
     public override void Flush()
     {
@@ -83,8 +88,11 @@ public class Oven : Machine
         float waitTime = LevelController.Instance.TickWaitTime;
         yield return new WaitForSeconds(waitTime);
 
-        // Cook our ingredient
-        createdItem = CookIngredient();
+        if (activeChild != null)
+        {
+            // Cook our ingredient
+            createdItem = CookIngredient();
+        }
 
         // If it's not null
         if (createdItem != null)
@@ -111,7 +119,6 @@ public class Oven : Machine
                 cooked.transform.localScale = (cooked.ProductionLine_Scale);
 
                 return cooked;
-
             }
         }
 
@@ -124,6 +131,31 @@ public class Oven : Machine
         burnt.transform.localScale = (burnt.ProductionLine_Scale);
 
         return burnt;
+    }
+
+    public override bool CanReceiveFrom(Machine from)
+    {
+        switch (dir)
+        {
+            case Direction.left:
+                if (from.Parent.X == parent.X + 1) return true;
+                return false;
+
+            case Direction.right:
+                if (from.Parent.X == parent.X - 1) return true;
+                return false;
+
+            case Direction.down:
+                if (from.Parent.Y == parent.Y + 1) return true;
+                return false;
+
+            case Direction.up:
+                if (from.Parent.Y == parent.Y - 1) return true;
+                return false;
+
+            default:
+                return true;
+        }
     }
 
     public override void Receive(ref Item newItem)

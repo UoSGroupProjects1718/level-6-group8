@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 /* When adding new elements to this enum, please append them 
 onto the end, otherwise everything in the inspector gets shifted */
-
 public enum EventType
 {
     Enter_Factory,
@@ -23,6 +22,13 @@ public enum EventType
     Grinder_Execute,
     Brewer_Execute,
     Conveyor_Execute,
+    Oven_Execute,
+    Output_Execute,
+    Inputter_Execute,
+    Conveyor_Rotate,
+
+    //
+    Tutorial_Solved
 }
 
 public class EventManager : MonoBehaviour
@@ -81,6 +87,13 @@ public class EventManager : MonoBehaviour
                     // Play sound
                     AudioManager.Instance.PlaySound(EventType.Level_Solved);
                 }
+                break;
+
+            case EventType.Tutorial_Solved:
+                // Display the LevelComplete screen
+                LevelController.Instance.OnLevelComplete();
+                // Play sound
+                AudioManager.Instance.PlaySound(EventType.Level_Solved);
                 break;
 
             case EventType.Area_Unlocked:
