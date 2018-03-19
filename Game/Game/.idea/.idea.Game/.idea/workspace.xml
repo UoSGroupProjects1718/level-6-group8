@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CurveEditor.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CurveEditor.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/Utils/CurveEditor.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="449" column="40" lean-forward="true" selection-start-line="449" selection-start-column="40" selection-end-line="449" selection-end-column="40" />
+              <caret line="449" column="40" lean-forward="false" selection-start-line="449" selection-start-column="40" selection-end-line="449" selection-end-column="40" />
               <folding>
                 <marker date="1521469299166" expanded="false" signature="6:66" ph="..." />
                 <marker date="1521469299166" expanded="true" signature="104:31083" ph="{...}" />
@@ -128,6 +128,24 @@
                 <marker date="1521469299166" expanded="true" signature="30171:31055" ph="{...}" />
                 <marker date="1521469299166" expanded="true" signature="30274:30477" ph="{...}" />
                 <marker date="1521469299166" expanded="true" signature="30335:30435" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Outline.shader" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Code/Shaders/Outline.shader">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="82" column="35" lean-forward="false" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+              <folding>
+                <marker date="1521476870912" expanded="true" signature="26:1676" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="41:336" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="349:589" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="611:1651" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="697:1138" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="735:1123" ph="{...}" />
+                <marker date="1521476870912" expanded="true" signature="1183:1643" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -445,20 +463,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OverworldCanvas.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Code/UI/OverworldCanvas.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <marker date="1521468628927" expanded="false" signature="6:146" ph="..." />
-                <marker date="1521468628927" expanded="true" signature="148:262" ph="/// This class is responsible for controlling the Canvas  ... " />
-                <marker date="1521468628927" expanded="true" signature="3708:3716" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -466,6 +470,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/GameCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/UI_FactoryOverworld.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/OverworldCanvas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Shaders/Outline.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/EventManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Camera/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/Models/ColorGradingModelEditor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -511,6 +516,7 @@
         <option value="$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/TrackballGroupDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/PostProcessing/Editor/Utils/EditorGUIHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/PostProcessing/Editor/Utils/CurveEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Shaders/Outline.shader" />
       </list>
     </option>
   </component>
@@ -598,12 +604,12 @@
       <workItem from="1520443491566" duration="4405000" />
       <workItem from="1520538583454" duration="1874000" />
       <workItem from="1520540973871" duration="1267000" />
-      <workItem from="1521469114071" duration="188000" />
+      <workItem from="1521469114071" duration="1724000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18288000" />
+    <option name="totallyTimeSpent" value="19824000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -719,13 +725,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Code/GameManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="136" column="25" lean-forward="false" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Code/SaveLoad.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
@@ -1671,7 +1670,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/Utils/CurveEditor.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="449" column="40" lean-forward="true" selection-start-line="449" selection-start-column="40" selection-end-line="449" selection-end-column="40" />
+          <caret line="449" column="40" lean-forward="false" selection-start-line="449" selection-start-column="40" selection-end-line="449" selection-end-column="40" />
           <folding>
             <marker date="1521469299166" expanded="false" signature="6:66" ph="..." />
             <marker date="1521469299166" expanded="true" signature="104:31083" ph="{...}" />
@@ -1784,6 +1783,22 @@
             <marker date="1521469299166" expanded="true" signature="30171:31055" ph="{...}" />
             <marker date="1521469299166" expanded="true" signature="30274:30477" ph="{...}" />
             <marker date="1521469299166" expanded="true" signature="30335:30435" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Code/Shaders/Outline.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="82" column="35" lean-forward="false" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+          <folding>
+            <marker date="1521476870912" expanded="true" signature="26:1676" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="41:336" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="349:589" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="611:1651" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="697:1138" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="735:1123" ph="{...}" />
+            <marker date="1521476870912" expanded="true" signature="1183:1643" ph="{...}" />
           </folding>
         </state>
       </provider>

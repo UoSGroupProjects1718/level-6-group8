@@ -4,7 +4,9 @@
 	{
 		_Color("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex("Texture", 2D) = "white" {}
-	_OutlineColor("Outline color", Color) = (1,1,1,1)
+	    _OutlineColor("Outline color", Color) = (1,1,1,1)
+	    _Smoothness("Smoothness", Range(0,1)) = 0.5
+	    _Metallic("Metallic", Range(0,1)) = 0
 		_OutlineWidth("Outlines width", Range(0.0, 2.0)) = 1.1
 	}
 
@@ -28,12 +30,12 @@
 
 	ENDCG
 
-		SubShader
+    SubShader
 	{
 		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" }
 
 		Pass //Outline
-	{
+	    {
 		ZWrite Off
 		Cull Back
 		CGPROGRAM
@@ -42,39 +44,45 @@
 #pragma fragment frag
 
 		v2f vert(appdata v)
-	{
-		appdata original = v;
-		v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+	    {
+            appdata original = v;
+            v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+    
+            v2f o;
+            o.pos = UnityObjectToClipPos(v.vertex);
+            return o;
 
-		v2f o;
-		o.pos = UnityObjectToClipPos(v.vertex);
-		return o;
+        }
 
-	}
+        half4 frag(v2f i) : COLOR
+        {
+            return _OutlineColor;
+        }
 
-	half4 frag(v2f i) : COLOR
-	{
-		return _OutlineColor;
-	}
-
-		ENDCG
-	}
+            ENDCG
+        }
 
 		Tags{ "Queue" = "Geometry" }
 
 		CGPROGRAM
-#pragma surface surf Lambert
+#pragma surface surf Standard fullforwardshadows
+#pragma target 3.0
 
-	struct Input {
-		float2 uv_MainTex;
-	};
+        half _Smoothness;
+        half _Metallic;
 
-	void surf(Input IN, inout SurfaceOutput o) {
-		fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-		o.Albedo = c.rgb;
-		o.Alpha = c.a;
-	}
+        struct Input {
+            float2 uv_MainTex;
+        };
+    
+        void surf(Input IN, inout SurfaceOutputStandard o) {
+            fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+            o.Albedo = c.rgb;
+            o.Alpha = c.a;
+            o.Smoothness = _Smoothness;
+            o.Metallic = _Metallic;
+        }
 	ENDCG
 	}
-		Fallback "Diffuse"
+    Fallback "Diffuse"
 }
