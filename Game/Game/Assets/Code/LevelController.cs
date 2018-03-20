@@ -821,8 +821,13 @@ public class LevelController : MonoBehaviour
         // Only run this behaviour the first time the correct potion hits the output
         if (!hasCorrectPotionHitEnd)
         {
+            // We have completed the factory
             hasCorrectPotionHitEnd = true;
             Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Target.DisplayName));
+
+            // Return factory to its original speed
+            if (speedUp)
+                ToggleSpeedUp();
 
             // Calculate factory score
             uint factoryScore = CalculateFactoryScore(tickCounter);
