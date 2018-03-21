@@ -53,11 +53,11 @@ public class FactoryPanel : MonoBehaviour {
                 fillfactoryStars(factory.Stars);
 
                 //TODO: we need score thresholds stored in the factory data
-                factoryIncome.value = factory.Target.Cost / factory.TicksToSolve;
-                factoryIncome.maxValue = 30; // factory.maxTicksToSolve, predicted maximum ticks to solve
+                //factoryIncome.value = factory.Target.Cost / factory.TicksToSolve;
+                //factoryIncome.maxValue = 30; // factory.maxTicksToSolve, predicted maximum ticks to solve
 
-                factoryCost.value = factory.TotalMachineCost; //factory.totalmachineCost;
-                factoryCost.maxValue = 100; // factory.maxTotalmachineCost, predicted maximum ticks to solve
+                //factoryCost.value = factory.TotalMachineCost; //factory.totalmachineCost;
+                //factoryCost.maxValue = 100; // factory.maxTotalmachineCost, predicted maximum ticks to solve
             }
             else
             {
@@ -77,12 +77,10 @@ public class FactoryPanel : MonoBehaviour {
         {
             if (i < stars)
             {
-                factoryStars[i].color = Color.yellow;
                 factoryStars[i].sprite = StarFilled;
             }
             else
             {
-                factoryStars[i].color = Color.gray;
                 factoryStars[i].sprite = StarEmpty;
             }
         }

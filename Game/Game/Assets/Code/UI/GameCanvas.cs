@@ -222,12 +222,19 @@ public class GameCanvas : MonoBehaviour
     }
     public void buttonPressed(GameObject button)
     {
-        deSelectPreviousButton();
-        pressed = button;
-        pressed.GetComponent<Image>().color = buttonPressedColor;
+        if (!button.GetComponent<Toggle>().isOn)
+        {
+            deSelectPreviousButton();
+            // CALL FUNCTION TO RESET MACHINE, TODO: Ask Joey what the "empty" build mode is
+        }
+        else
+        {
+            deSelectPreviousButton();
+            pressed = button;
+            pressed.GetComponent<Image>().color = buttonPressedColor;
+            EventManager.Instance.AddEvent(EventType.Machine_Selected);
+        }
 
-        // Event
-        EventManager.Instance.AddEvent(EventType.Machine_Selected);
     }
     public void TogglePlaySprite()
     {
