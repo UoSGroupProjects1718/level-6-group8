@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     /* The player class object to hold all of the players currency, stats, achievements, etc */
     private Player player;
 
+    /* Used to detect a press versus a drag */
+    private Vector2 mouseStartPos;
+
     public static GameManager Instance { get { return instance; } }
     public Factory CurrentFactory { get { return currentFactory; } }
     public Waste Waste { get { return waste; } }
@@ -71,6 +74,27 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.gameObject);
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseStartPos = Input.mousePosition;
+        }
+    }
+
+    /// <summary>
+    /// Return whether or not this is a valid press (as opposed to the user clicking-dragging
+    /// </summary>
+    /// <returns></returns>
+    public bool ValidPress()
+    {
+        float maxTravelDistance = 5;
+
+        // If the mouse has only moved a tiny bit, it's a valid press. Otherwise, it's not
+        return (Vector2.Distance(mouseStartPos, Input.mousePosition) < maxTravelDistance);
+    }
+
 
     private IEnumerator WaitInit()
     {

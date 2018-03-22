@@ -20,7 +20,7 @@ public class Tile : DimmableObject
 
     void Update()
     {
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             // Raycast to see if we hit
             Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
@@ -59,7 +59,7 @@ public class Tile : DimmableObject
     {
 #if UNITY_EDITOR
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0) && GameManager.Instance.ValidPress())
         {
             OnTouch(Input.mousePosition.x, Input.mousePosition.y);
         }

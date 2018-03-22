@@ -72,6 +72,24 @@ public abstract class Machine : DimmableObject
         dir = Direction.up;
 	}
 
+    void Update()
+    {
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            // Raycast to see if we hit
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit raycastHit;
+            if (Physics.Raycast(raycast, out raycastHit))
+            {
+                if (raycastHit.collider.transform == this.gameObject.transform)
+                {
+                    OnTouch();
+                }
+            }
+
+        }
+    }
+
     /// <summary>
     /// This function is called on the machine when the production line starts running
     /// </summary>
@@ -232,24 +250,25 @@ public abstract class Machine : DimmableObject
 
     protected void ResetTickCounter() { tickCounter = 0; }
 
-    #region PcControls
-    private void OnMouseOver()
+    #region MobileControls
+
+    // This will detect when a user taps on the tile
+    void OnMouseOver()
     {
-        // Right click
+        if (Input.GetMouseButtonUp(0) && GameManager.Instance.ValidPress())
+        {
+            OnTouch();
+        }
+
+        // For easier testing
         if (Input.GetMouseButtonDown(1))
         {
-            // Return if the production line is running...
-            if (LevelController.Instance.Running) { return; }
-
             Rotate();
         }
     }
     #endregion
 
-    #region MobileControls
-
-    // This will detect when a user taps on the tile
-    void OnMouseDown()
+    private void OnTouch()
     {
         // Return if the production line is running...
         if (LevelController.Instance.Running) { return; }
@@ -276,7 +295,6 @@ public abstract class Machine : DimmableObject
                 break;
         }
     }
-    #endregion
 
     protected void DeleteSelf()
     {
