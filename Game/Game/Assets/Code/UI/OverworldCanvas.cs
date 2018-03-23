@@ -11,6 +11,9 @@ using UnityEngine.UI;
 /// </summary>
 public class OverworldCanvas : MonoBehaviour
 {
+    private static OverworldCanvas instance = null;
+    public static OverworldCanvas Instance { get { return instance; } }
+
     [Header("Dull Panel")]
     [SerializeField]
     GameObject dullPanel;

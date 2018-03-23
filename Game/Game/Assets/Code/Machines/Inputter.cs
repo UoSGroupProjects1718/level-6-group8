@@ -7,7 +7,7 @@ public class Inputter : Machine
 {
     [Header("Output item")]
     [SerializeField]
-    public Ingredient ItemToOutput;
+    public Item ItemToOutput;
 
     [Header("Inputter canvas")]
     [SerializeField]
@@ -18,7 +18,7 @@ public class Inputter : Machine
         ResetTickCounter();
 	}
 
-    public void SetOutputItem(Ingredient item)
+    public void SetOutputItem(Item item)
     {
         if (item == null)
         {

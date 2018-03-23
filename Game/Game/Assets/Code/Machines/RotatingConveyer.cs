@@ -130,6 +130,10 @@ public class RotatingConveyer : Machine
         // Give child to neighbour
         neighbour.Receive(ref activeChild);
         activeChild = null;
+
+        // Rotate next tick
+        rotate = true;
+        
     }
 
     public override void Flush()
@@ -146,9 +150,6 @@ public class RotatingConveyer : Machine
         // Move our active childs potition to this conveyer
         //activeChild.gameObject.transform.position = new Vector3(transform.position.x, activeChild.ProductionLine_YHeight, transform.position.z);
         StartCoroutine(MoveChildTowardsMe(activeChild));
-
-        // Rotate
-        rotate = true;
     }
 
     public override void Execute()
