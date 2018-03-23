@@ -42,6 +42,11 @@ public class OverworldCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         StartCoroutine(WaitForPlayerLoad());
     }
 
