@@ -20,6 +20,8 @@ public class TownSection : MonoBehaviour
     private Factory[] factories;
     [SerializeField]
     private GameObject[] lights;
+    [SerializeField]
+    private GameObject streetlightContainer;
 
     public uint Cost { get { return cost; } }
     public uint ID { get { return id; } }
@@ -55,6 +57,15 @@ public class TownSection : MonoBehaviour
         foreach (GameObject light in lights)
         {
             light.SetActive(status);
+
+        }
+
+        foreach (Transform light in streetlightContainer.transform)
+        {
+            if (light.CompareTag("street_light"))
+            {
+                light.transform.GetChild(0).gameObject.SetActive(status);
+            }
         }
     }
 }

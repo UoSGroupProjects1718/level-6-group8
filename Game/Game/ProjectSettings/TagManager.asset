@@ -7,6 +7,7 @@ TagManager:
   - Factory
   - Canvas
   - OverworldCanvas
+  - street_light
   layers:
   - Default
   - TransparentFX

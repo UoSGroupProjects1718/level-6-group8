@@ -72,6 +72,9 @@
           <e p="TownSection.cs" t="Include" />
           <e p="Tutorials" t="Include">
             <e p="IntroductionTutorial.cs" t="Include" />
+            <e p="MachinesTutorial.cs" t="Include" />
+            <e p="RotatorTutorial.cs" t="Include" />
+            <e p="SlowConveyorTutorial.cs" t="Include" />
             <e p="Tutorial.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
