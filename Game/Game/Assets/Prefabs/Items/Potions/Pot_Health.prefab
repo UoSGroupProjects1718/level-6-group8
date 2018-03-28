@@ -62,6 +62,8 @@ MonoBehaviour:
   ingredients:
   - {fileID: 114792452479405514, guid: 7743f41300f19764ba26eda514dea1c3, type: 2}
   - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}
+  - {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae, type: 2}
+  - {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8, type: 2}
   machinesRequired:
   - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
   - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
