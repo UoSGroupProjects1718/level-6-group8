@@ -203,8 +203,7 @@ public class LevelController : MonoBehaviour
         SetBuildMode(BuildMode.none);
 
         // Move the camera to the appropriate position
-        Camera.main.transform.position =
-            new Vector3(-.5f, Camera.main.transform.position.y, 0);
+        Camera.main.transform.position = new Vector3(-.5f, Camera.main.transform.position.y, 0);
 
         // Set the camera bounds
         Camera.main.GetComponent<OrthoCameraDrag>().UpdateCameraBounds(-2, -1, factory.Width -3, factory.Height -2);
@@ -228,13 +227,11 @@ public class LevelController : MonoBehaviour
             // Fire an EnterFactory event
             EventManager.Instance.AddEvent(EventType.Enter_Factory);
 
-            // Toggle UI pannel
-            GameCanvas.Instance.ToggleEntryPanel();
+            GameCanvas.Instance.ToggleLevelUI();
         }
         // Else, show the entry pannel
         else
         {
-
             GameCanvas.Instance.ToggleEntryPanel();
         }
     }

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e02cef7d3406e974d994fb343cb302cb
+timeCreated: 1522209431
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Another day in Paradise
+  fontNames:
+  - Another day in Paradise
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
