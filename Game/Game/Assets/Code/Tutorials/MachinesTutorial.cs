@@ -23,7 +23,8 @@ public class MachinesTutorial : Tutorial
                 GameCanvas.Instance.EnableMachineButton(Buttons.brewerButton);
 
                 // Send message
-                GameCanvas.Instance.DisplayMessage("Time to make a health potion!\nTake a look in the spell book to find out the ingredients and then select them on the inputters!");
+                GameCanvas.Instance.DisplayMessage(string.Format("Time to make a {0}!\nTake a look in the spell book to find out the ingredients and then select them on the inputters!", 
+                    LevelController.Instance.LevelFactory.Targets[0].DisplayName));
 
                 // Progress
                 progress++;

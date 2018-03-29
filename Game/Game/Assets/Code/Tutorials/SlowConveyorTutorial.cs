@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class SlowConveyorTutorial : Tutorial
 {
-    [Header("Ingredients for tutorial")]
-    [SerializeField]
-    Ingredient aloe;
-    [SerializeField]
-    Ingredient ansie;
-
     public override void Progress(EventType _event)
     {
         switch (progress)
@@ -36,8 +30,10 @@ public class SlowConveyorTutorial : Tutorial
                 GameCanvas.Instance.DisplayMessage("These inputs are not synced up, I have used a slow conveyor to fix the timing!\n\nPress play to see how it works.");
 
                 // Add the ingredients to inputters
-                LevelController.Instance.LevelFactory.level.grid[1, 7].Machine.GetComponent<Inputter>().SetOutputItem(aloe);
-                LevelController.Instance.LevelFactory.level.grid[3, 6].Machine.GetComponent<Inputter>().SetOutputItem(ansie);
+                LevelController.Instance.LevelFactory.level.grid[1, 7].Machine.GetComponent<Inputter>().SetOutputItem(
+                    LevelController.Instance.LevelFactory.Targets[0].GetComponent<Potion>().Ingredients[0]);
+                LevelController.Instance.LevelFactory.level.grid[3, 6].Machine.GetComponent<Inputter>().SetOutputItem(
+                    LevelController.Instance.LevelFactory.Targets[0].GetComponent<Potion>().Ingredients[1]);
 
 
                 // Advance

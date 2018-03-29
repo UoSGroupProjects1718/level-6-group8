@@ -35,7 +35,7 @@ public class UI_ScoreScreen : MonoBehaviour
         factoryNameText.text = LevelController.Instance.LevelFactory.FactoryName;
 
         // Set the Image to the sprite of the Item we made to solve the level
-        potionImage.sprite = LevelController.Instance.LevelFactory.Target.ItemSprite;
+        potionImage.sprite = LevelController.Instance.LevelFactory.Targets[0].ItemSprite;
 
         // Set the stats text
         statsText.text = string.Format("Efficiency: {0}", ticks);

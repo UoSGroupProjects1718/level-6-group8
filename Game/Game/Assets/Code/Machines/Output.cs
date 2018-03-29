@@ -72,25 +72,14 @@ public class Output : Machine
             // This may be changed to only accept the requried item?idk
             LevelController.Instance.LevelFactory.stockpile.AddOrIncrement(child, 1);
 
-            // If we have the required potion
-            if (child.DisplayName.Equals(LevelController.Instance.LevelFactory.Target.DisplayName))
+            // On the first time we recieve this potion, tell the LevelController
+            if (!itemRecieved)
             {
-                // Send an "Level_Solved" event the first time we recieve the potion"
-                if (!itemRecieved)
-                {
-                    itemRecieved = true;
+                itemRecieved = true;
 
-                    // Level complete
-                    EventManager.Instance.AddEvent(EventType.Level_Solved);
-                }
+                LevelController.Instance.ItemCreated(child);
             }
         }
-
-        // --V Old code for when we had currency
-        //foreach (var item in activeChildren)
-        //{
-        //    lc.Player.Money += item.Cost;
-        //}
     }
 
     public override bool CanReceiveFrom(Machine from)
@@ -106,6 +95,13 @@ public class Output : Machine
 
     public override void Reset()
     {
+        // Reset if it's not a tutorial
+        if (!LevelController.Instance.LevelFactory.IsTutorial)
+        {
+            itemRecieved = false;
+        }
+            
+
         RemoveAndDestroyListOfItems(ref bufferChildren);
         RemoveAndDestroyListOfItems(ref activeChildren);
     }

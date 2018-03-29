@@ -50,15 +50,15 @@ public class Factory : MonoBehaviour
     public int TotalMachineCost { get { return totalMachineCost; } set { totalMachineCost = value; } }
     public float PotionsPerMinute { get { return potionsPerMinute; } set { potionsPerMinute = value; } }
 
-    [Header("Factory ID")]
+    [Header("Level No.")]
     [SerializeField]
     private int factoryID;
 
-    [Header("Unlock Stars")]
+    [Header("Deprecated")]
     [SerializeField]
     private int starsRequired;
 
-    [Header("Factory name")]
+    [Header("Name of the factory")]
     [SerializeField]
     private string factoryName;
 
@@ -80,9 +80,9 @@ public class Factory : MonoBehaviour
     [SerializeField]
     private Vector2[] inactiveTiles;
 
-    [Header("Potion to make")]
+    [Header("Item(s) to make")]
     [SerializeField]
-    private Item target;
+    private Item[] targets;
 
     [Header("Tutorial")]
     [SerializeField]
@@ -116,7 +116,7 @@ public class Factory : MonoBehaviour
     public string FactoryName { get { return factoryName; } }
     public Tutorial Tutorial { get { return tutorial; } }
     public Texture FactorySprite { get { return factorySprite; } }
-    public Item Target { get { return target; } }
+    public Item[] Targets { get { return targets; } }
     public TownSection TownSection { get { return townSection; } set { townSection = value; } }
     public DefaultMachine[] DefaultMachines { get { return defaultMachines; } }
     public Vector2[] InactiveTiles { get { return inactiveTiles; } }

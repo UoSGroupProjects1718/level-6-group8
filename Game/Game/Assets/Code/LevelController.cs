@@ -66,10 +66,10 @@ public class LevelController : MonoBehaviour
 
     /* This is used to remember which inputter the player clicked on, so we know which inputter
     to change the ingredient of when the player taps a new ingredient from the list */
-    Inputter selectedInputter; 
+    private Inputter selectedInputter; 
 
     /* This is the factory that we are currently "inside" of. */
-    Factory factory;
+    private Factory factory;
 
     /* Singleton instance (This singleton gets destroyed when we leave the scene) */
     private static LevelController instance;
@@ -77,9 +77,13 @@ public class LevelController : MonoBehaviour
     /* The gameObjects that hold the Tiles and Machines respectively.
     This is kept so that we have a refference to the tiles/machines for dimming during tutorials 
     to bring certain machines to the front of the visual hierarchy. */
-    Transform tileHolder;
-    Transform machineHolder;
-    Transform decorationHolder;
+    private Transform tileHolder;
+    private Transform machineHolder;
+    private Transform decorationHolder;
+
+    /* A dictionary to remember which potions have and have not yet been 
+    created in the level */
+    private Dictionary<string /*item name*/, bool /*made*/> potionsCreated = new Dictionary<string, bool>();
 
     [Header("Tile")]
     [SerializeField]
@@ -349,13 +353,46 @@ public class LevelController : MonoBehaviour
         speedUp = !speedUp;
     }
 
+    public void ItemCreated(Item created)
+    {
+        // We have now created this item
+        potionsCreated[created.DisplayName] = true;
+
+        // Check if this is every potion
+        bool allItems = true;
+        foreach (var pair in potionsCreated)
+        {
+            if (pair.Value == false)
+            {
+                allItems = false;
+                break;
+            }
+        }
+
+        // If it is, fire off a Level Solved event
+        if (allItems)
+        {
+            EventManager.Instance.AddEvent(EventType.Level_Solved);
+        }
+    }
+
     /// <summary>
     /// Starts the production line, calls the Begin() function on all machines
     /// </summary>
     private void StartRunning()
     {
+        // The production line is now running
         running = true;
 
+        // Set up our dictionary to remember the potions that have been created.
+        potionsCreated.Clear();
+
+        foreach (Item item in factory.Targets)
+        {
+            potionsCreated.Add(item.DisplayName, false);
+        }
+
+        // Begin all of our machines
         foreach (Machine machine in factory.level.machines)
         {
             machine.Begin();
@@ -367,10 +404,13 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void StopRunning()
     {
+        // The production line is no longer running
         running = false;
 
+        // Remove all items on the conveyor belts
         RemoveAndDestroyListOfItems(ref factory.level.items);
 
+        // Reset every machine
         foreach (Machine machine in factory.level.machines)
         {
             machine.Reset();
@@ -820,7 +860,7 @@ public class LevelController : MonoBehaviour
         {
             // We have completed the factory
             hasCorrectPotionHitEnd = true;
-            Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks by creating: {2}", LevelFactory.FactoryName, tickCounter, LevelFactory.Target.DisplayName));
+            Debug.Log(string.Format("You have completed factory: \"{0}\" in {1} ticks.", LevelFactory.FactoryName, tickCounter));
 
             // Return factory to its original speed
             if (speedUp)

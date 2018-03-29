@@ -783,7 +783,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -1575,7 +1576,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -1647,7 +1649,8 @@ MonoBehaviour:
     y: 3
     dir: 3
   inactiveTiles: []
-  target: {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
+  targets:
+  - {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 2000
@@ -2275,7 +2278,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -2860,7 +2864,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -2959,7 +2964,8 @@ MonoBehaviour:
   - {x: 16, y: 4}
   - {x: 17, y: 4}
   - {x: 18, y: 4}
-  target: {fileID: 114450978081715366, guid: 7a3bfdc039240024ab413b77da537af0, type: 2}
+  targets:
+  - {fileID: 114450978081715366, guid: 7a3bfdc039240024ab413b77da537af0, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114439269418545134, guid: 0e1173df90e334a47977422dc5fb8ef3, type: 2}
   stockpileLimit: 2000
@@ -3460,7 +3466,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -4314,7 +4321,8 @@ MonoBehaviour:
     y: 0
     dir: 3
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -5207,7 +5215,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -8941,7 +8950,8 @@ MonoBehaviour:
     y: 1
     dir: 2
   inactiveTiles: []
-  target: {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
+  targets:
+  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114963503824662646, guid: 053a43da549d264448da5aa6ccd6ec09, type: 2}
   stockpileLimit: 0
@@ -9527,7 +9537,8 @@ MonoBehaviour:
   - {x: 6, y: 7}
   - {x: 7, y: 7}
   - {x: 8, y: 7}
-  target: {fileID: 114766385601742350, guid: 9b6ca0f78c741124c8b4c66a08786b95, type: 2}
+  targets:
+  - {fileID: 114970336893621952, guid: 97cf388e525e52b4299cb1585059c016, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -13397,7 +13408,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -14539,7 +14551,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -17364,7 +17377,8 @@ MonoBehaviour:
     y: 0
     dir: 3
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -17972,7 +17986,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -18636,7 +18651,8 @@ MonoBehaviour:
     y: 0
     dir: 3
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -19249,7 +19265,8 @@ MonoBehaviour:
     y: 0
     dir: 2
   inactiveTiles: []
-  target: {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  targets:
+  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114512352216901724, guid: 9eff95efa09d50c4cabd5580f7ddbbc5, type: 2}
   stockpileLimit: 0
@@ -19984,7 +20001,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -20940,7 +20958,8 @@ MonoBehaviour:
     y: 0
     dir: 3
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -21100,7 +21119,8 @@ MonoBehaviour:
     y: 0
     dir: 2
   inactiveTiles: []
-  target: {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
+  targets:
+  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114369450569347228, guid: 51088cb4f7f19534eb5bb0e5f52454a5, type: 2}
   stockpileLimit: 0
@@ -23318,7 +23338,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -24704,7 +24725,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -25264,7 +25286,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -26597,7 +26620,8 @@ MonoBehaviour:
   height: 10
   defaultMachines: []
   inactiveTiles: []
-  target: {fileID: 0}
+  targets:
+  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0

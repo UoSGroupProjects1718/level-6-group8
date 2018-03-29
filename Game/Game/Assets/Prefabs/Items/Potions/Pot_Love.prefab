@@ -61,9 +61,7 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 688bfd38266762b449ccbdba593bbf6f, type: 3}
   ingredients:
   - {fileID: 114517795095533288, guid: a1708e945f7d940478069daffcb5983e, type: 2}
-  - {fileID: 114468770350683204, guid: c5a5bf691be35b442ba287dd44804c8a, type: 2}
-  - {fileID: 114373784753054782, guid: 7f0ca3a2d50d133458b938b8c0821db6, type: 2}
-  - {fileID: 114215952565469808, guid: ebd146c4ab4f1f342bbf9a20dc24d938, type: 2}
+  - {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae, type: 2}
   machinesRequired:
   - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
   - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
