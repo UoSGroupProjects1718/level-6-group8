@@ -6512,6 +6512,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 114617937153085268, guid: 83d0d72b2df41a5479487fb7f010808b,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[1]
+      value: 
+      objectReference: {fileID: 114545506824854570, guid: b2e11010bc829e540a08fe6701eacc19,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 114338834266260876, guid: e53102c30167add4197e654ac52872a0,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[3]
+      value: 
+      objectReference: {fileID: 114007134061074066, guid: df0bc4dea09c99e46860d5c94a51325b,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[4]
+      value: 
+      objectReference: {fileID: 114764844789214442, guid: adf6f9b7791c64243a53fa0f3e21d91c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a453b87c63fef499f66dc1734915d8, type: 2}
   m_IsPrefabParent: 0

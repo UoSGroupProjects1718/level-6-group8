@@ -57,11 +57,13 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Death Potion
-  itemSprite: {fileID: 21300000, guid: a0696a2c1267d2d4385f3daefcbb3c5a, type: 3}
+  displayName: Booster Potion
+  itemSprite: {fileID: 21300000, guid: b0d84df04369a13418b791764ca35bcf, type: 3}
   ingredients:
-  - {fileID: 114792452479405514, guid: 7743f41300f19764ba26eda514dea1c3, type: 2}
-  - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}
+  - {fileID: 114444173738331884, guid: 849ca448d44c2a146ac639b7bc34fe5c, type: 2}
+  - {fileID: 114517795095533288, guid: a1708e945f7d940478069daffcb5983e, type: 2}
+  - {fileID: 114573527100314038, guid: 2d4e81cb3aa8d9d40947c98758e1f30e, type: 2}
+  - {fileID: 114215952565469808, guid: ebd146c4ab4f1f342bbf9a20dc24d938, type: 2}
   machinesRequired:
   - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
   - {fileID: 114165785714827616, guid: 83c17b248f0ae6d4a9c9fa278dc0b243, type: 2}
