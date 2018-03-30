@@ -1,24 +1,18 @@
 fileFormatVersion: 2
-guid: d43199a0ad24bee4dab7ef2772ca492e
-timeCreated: 1521638487
+guid: edc3a278dcc98a64e99207aa63268594
+timeCreated: 1522378498
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Camera
-    100002: Cube
-    100004: //RootNode
-    100006: Lamp
-    400000: Camera
-    400002: Cube
-    400004: //RootNode
-    400006: Lamp
-    2000000: Camera
-    2100000: No Name
-    2300000: Cube
-    3300000: Cube
-    4300000: Cube
-    10800000: Lamp
+    100000: Factory
+    100002: //RootNode
+    400000: Factory
+    400002: //RootNode
+    2100000: FactoryMat
+    2300000: Factory
+    3300000: Factory
+    4300000: Factory
   externalObjects: {}
   materials:
     importMaterials: 1
