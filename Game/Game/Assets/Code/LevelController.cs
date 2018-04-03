@@ -406,6 +406,7 @@ public class LevelController : MonoBehaviour
     {
         // The production line is no longer running
         running = false;
+        tickCounter = 0;
 
         // Remove all items on the conveyor belts
         RemoveAndDestroyListOfItems(ref factory.level.items);
