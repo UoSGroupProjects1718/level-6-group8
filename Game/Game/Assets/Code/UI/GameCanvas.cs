@@ -146,7 +146,7 @@ public class GameCanvas : MonoBehaviour
     {
         foreach (var pair in machineButtons)
         {
-            pair.Value.SetActive(false);
+            pair.Value.GetComponent<DimmablePanel>().Dim();
         }
     }
 
@@ -155,7 +155,7 @@ public class GameCanvas : MonoBehaviour
     /// </summary>
     public void EnableMachineButton(Buttons key)
     {
-        machineButtons[key].SetActive(true);
+        machineButtons[key].GetComponent<DimmablePanel>().Highlight();
     }
 
     /// <summary>

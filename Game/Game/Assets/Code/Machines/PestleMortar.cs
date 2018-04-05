@@ -16,6 +16,9 @@ public class PestleMortar : Machine
         ResetTickCounter();
     }
 
+    // PestleMortar does not implement custom MachinePress functionality
+    protected override void OnMachinePress() { }
+
     /// <summary>
     /// Called upon the production line beginning
     /// </summary>

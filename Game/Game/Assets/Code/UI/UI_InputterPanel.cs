@@ -14,8 +14,13 @@ public class UI_InputterPanel : MonoBehaviour
     /// <param name="item"></param>
     public void SetIngredientImage(Item item)
     {
-        if (item == null) return;
-
-        ingredientImage.sprite = item.ItemSprite;
+        if (item == null)
+        {
+            ingredientImage.sprite = GameManager.Instance.ResourceManager.TransparentImage;
+        }
+        else
+        {
+            ingredientImage.sprite = item.ItemSprite;
+        }
     }
 }

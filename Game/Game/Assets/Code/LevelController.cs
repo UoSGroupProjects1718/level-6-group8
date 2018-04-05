@@ -311,6 +311,7 @@ public class LevelController : MonoBehaviour
             machine.Flush();
         }
 
+        // Wait for tick time
         StartCoroutine(TickWait(TickWaitTime));
 
         // Execute
@@ -381,6 +382,9 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void StartRunning()
     {
+        // Reset the ticks
+        tickCounter = 0;
+
         // The production line is now running
         running = true;
 
@@ -406,7 +410,6 @@ public class LevelController : MonoBehaviour
     {
         // The production line is no longer running
         running = false;
-        tickCounter = 0;
 
         // Remove all items on the conveyor belts
         RemoveAndDestroyListOfItems(ref factory.level.items);
@@ -932,6 +935,7 @@ public class LevelController : MonoBehaviour
         Debug.Log("Ticks: " + ticksTaken);
         Debug.Log("Tiles taken: " + GetOccupiedTiles());
         const int scoreScale = 100000, tileCountSkew = 1, tickSkew = 1;
+
         return (uint) Mathf.Floor(scoreScale /
             (tileCountSkew * GetOccupiedTiles() * tickSkew * ticksTaken));
     }

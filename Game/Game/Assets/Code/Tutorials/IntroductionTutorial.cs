@@ -83,7 +83,7 @@ public class IntroductionTutorial : Tutorial
                 LevelController.Instance.LevelFactory.level.grid[8, 3].Brighten();
                 LevelController.Instance.LevelFactory.level.grid[8, 4].Brighten();
 
-                // Enable the conveyor button
+                // Enable the conveyor and delete buttons
                 GameCanvas.Instance.EnableMachineButton(Buttons.conveyerButton);
                 GameCanvas.Instance.EnableMachineButton(Buttons.deleteButton);
 

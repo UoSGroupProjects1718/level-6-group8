@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 107125818}
   - component: {fileID: 107125820}
   - component: {fileID: 107125817}
+  - component: {fileID: 107125821}
   m_Layer: 5
   m_Name: Button_Grinder
   m_TagString: Untagged
@@ -355,6 +356,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &107125821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107125815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 898151175}
+  buttonText: {fileID: 552607821}
 --- !u!1 &109258955
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +708,7 @@ GameObject:
   - component: {fileID: 248449277}
   - component: {fileID: 248449279}
   - component: {fileID: 248449276}
+  - component: {fileID: 248449280}
   m_Layer: 5
   m_Name: Button_Delete
   m_TagString: Untagged
@@ -835,6 +850,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &248449280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248449274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2067724844}
+  buttonText: {fileID: 852450956}
 --- !u!1 &252275385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2630,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1222758622}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.64285713
+  m_Size: 0.63006616
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3971,6 +3999,7 @@ GameObject:
   - component: {fileID: 900304250}
   - component: {fileID: 900304252}
   - component: {fileID: 900304249}
+  - component: {fileID: 900304253}
   m_Layer: 5
   m_Name: Button_Oven
   m_TagString: Untagged
@@ -4112,6 +4141,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &900304253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 900304247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1213619911}
+  buttonText: {fileID: 1701423136}
 --- !u!1 &907910953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,6 +4283,7 @@ GameObject:
   - component: {fileID: 927430451}
   - component: {fileID: 927430453}
   - component: {fileID: 927430450}
+  - component: {fileID: 927430454}
   m_Layer: 5
   m_Name: Button_Brewer
   m_TagString: Untagged
@@ -4382,6 +4425,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &927430454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927430448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2142066712}
+  buttonText: {fileID: 1024681218}
 --- !u!1 &947019831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,6 +4797,7 @@ GameObject:
   - component: {fileID: 985079637}
   - component: {fileID: 985079639}
   - component: {fileID: 985079636}
+  - component: {fileID: 985079640}
   m_Layer: 5
   m_Name: Button_Rotate
   m_TagString: Untagged
@@ -4882,6 +4939,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 0
+--- !u!114 &985079640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985079634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1346525141}
+  buttonText: {fileID: 1909420585}
 --- !u!1 &985206234
 GameObject:
   m_ObjectHideFlags: 0
@@ -6057,7 +6127,7 @@ RectTransform:
   m_Father: {fileID: 907910954}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.35714287}
+  m_AnchorMin: {x: 0, y: 0.36993384}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -7656,6 +7726,7 @@ GameObject:
   - component: {fileID: 1537442439}
   - component: {fileID: 1537442441}
   - component: {fileID: 1537442438}
+  - component: {fileID: 1537442442}
   m_Layer: 5
   m_Name: Button_Conveyer
   m_TagString: Untagged
@@ -7797,6 +7868,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1537442442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537442436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 177247550}
+  buttonText: {fileID: 2054168563}
 --- !u!1 &1566333926
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,6 +8934,7 @@ GameObject:
   - component: {fileID: 1736338923}
   - component: {fileID: 1736338921}
   - component: {fileID: 1736338922}
+  - component: {fileID: 1736338925}
   m_Layer: 5
   m_Name: Button_SlowConveyer
   m_TagString: Untagged
@@ -8991,6 +9076,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1736338919}
+--- !u!114 &1736338925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736338919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1223764300}
+  buttonText: {fileID: 1282764405}
 --- !u!1 &1745959585
 GameObject:
   m_ObjectHideFlags: 0
@@ -10536,6 +10634,7 @@ GameObject:
   - component: {fileID: 1968282944}
   - component: {fileID: 1968282942}
   - component: {fileID: 1968282943}
+  - component: {fileID: 1968282946}
   m_Layer: 5
   m_Name: Button_RotateConveyer
   m_TagString: Untagged
@@ -10677,6 +10776,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1968282940}
+--- !u!114 &1968282946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968282940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f41499eeb563c94f839045271ba95e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1882747232}
+  buttonText: {fileID: 726328158}
 --- !u!1 &1981862447
 GameObject:
   m_ObjectHideFlags: 0
@@ -10796,7 +10908,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1692367506}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999998
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

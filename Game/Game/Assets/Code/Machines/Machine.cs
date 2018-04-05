@@ -244,26 +244,43 @@ public abstract class Machine : DimmableObject
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180 + RotationOffset, transform.eulerAngles.z);
                 break;
         }
-
         EventManager.Instance.AddEvent(EventType.Machine_Rotated);
+    }
+
+    public float GetDirAngle(Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.right:
+                return 270 + RotationOffset;
+            case Direction.down:
+                return 0 + RotationOffset;
+            case Direction.left:
+                return 90 + RotationOffset;
+            case Direction.up:
+                return 180 + RotationOffset;
+        }
+        return 0;
     }
 
     protected void ResetTickCounter() { tickCounter = 0; }
 
-    #region MobileControls
+    #region PCControls
 
     // This will detect when a user taps on the tile
     void OnMouseOver()
     {
         if (Input.GetMouseButtonUp(0) && GameManager.Instance.ValidPress())
         {
-            OnTouch();
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+                OnTouch();
         }
 
         // For easier testing
         if (Input.GetMouseButtonDown(1))
         {
-            Rotate();
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+                Rotate();
         }
     }
     #endregion
@@ -285,6 +302,9 @@ public abstract class Machine : DimmableObject
                 break;
 
             case BuildMode.rotate:
+                // Inputters cannot be rotated
+                if (type == MachineType.input) return;
+
                 Rotate();
                 break;
             case BuildMode.delete:
@@ -293,8 +313,14 @@ public abstract class Machine : DimmableObject
                 if (type == MachineType.input || type == MachineType.output) { return; }
                 DeleteSelf();
                 break;
+
+            default:
+                OnMachinePress();
+                break;
         }
     }
+
+    protected abstract void OnMachinePress();
 
     protected void DeleteSelf()
     {

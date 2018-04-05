@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngredientPanel : MonoBehaviour
+public class IngredientPanel : DimmablePanel
 {
     [Header("Sprite")]
     [SerializeField]
@@ -46,7 +46,7 @@ public class IngredientPanel : MonoBehaviour
         EventManager.Instance.AddEvent(EventType.Ingredient_Selected);
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         // Highlight ingredient image
         image.color = Color.white;
@@ -64,7 +64,7 @@ public class IngredientPanel : MonoBehaviour
         button.interactable = true;
     }
 
-    public void Dim()
+    public override void Dim()
     {
         // Create dimmed colour
         Color dimmed = new Color(0.65f, 0.65f, 0.65f);

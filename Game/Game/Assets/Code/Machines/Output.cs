@@ -17,6 +17,9 @@ public class Output : Machine
         activeChildren = new List<Item>();
 	}
 
+    // Output does not implement custom MachinePress functionality
+    protected override void OnMachinePress() { }
+
     /// <summary>
     /// Called upon the production line beginning
     /// </summary>

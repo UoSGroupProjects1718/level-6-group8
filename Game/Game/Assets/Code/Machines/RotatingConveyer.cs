@@ -23,6 +23,9 @@ public class RotatingConveyer : Machine
         ResetTickCounter();	
 	}
 
+    // RotatingConveyor does not implement custom MachinePress functionality
+    protected override void OnMachinePress() { }
+
     private List<Direction> GetClockwiseSpinFrom(Direction dir)
     {
         List<Direction> dirs = new List<Direction>();
@@ -165,10 +168,50 @@ public class RotatingConveyer : Machine
                 rotateCounter = 0;
 
             // Face this direction
-            SetDir(directionsToFace[rotateCounter]);
-
-
+            Rotate(directionsToFace[rotateCounter]);
+            
         }
+    }
+
+    private void Rotate(Direction dir)
+    {
+        StartCoroutine(RotateOverTime(dir));
+    }
+
+    /// <summary>
+    /// Rotates the machine towards a given direction over a time period 
+    /// of 80% of the length of a cycle tick
+    /// </summary>
+    /// <param name="targetDir">The target direction</param>
+    /// <returns></returns>
+    private IEnumerator RotateOverTime(Direction targetDir)
+    {
+        // First, wait for 0.2f for the item to get pushed off the conveyor belt
+        yield return new WaitForSeconds(0.2f);
+
+        // Next, create a gameobject to hold the transform we'll be rotating towards
+        GameObject a = new GameObject();
+        a.transform.eulerAngles = new Vector3(transform.eulerAngles.x, GetDirAngle(targetDir), transform.eulerAngles.z);
+
+        // Set up our rotation and time variables
+        float rotateSpeed = 5f;
+        float timeToRotate = LevelController.Instance.TickWaitTime * 0.8f;
+        float elapsedTime = 0;
+        while (elapsedTime < timeToRotate)
+        {
+            yield return null;
+            elapsedTime += Time.deltaTime;
+
+            // Rotate
+            float step = rotateSpeed;// * Time.deltaTime;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, a.transform.rotation, step);
+        }
+
+        // Destroy the gameobject we no longer need
+        Destroy(a.gameObject);
+        
+        // Set our new direction    
+        SetDir(directionsToFace[rotateCounter]);
     }
 
     public override bool CanReceiveFrom(Machine from)

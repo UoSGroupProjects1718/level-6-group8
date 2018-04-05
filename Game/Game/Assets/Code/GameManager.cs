@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Singleton
     private static GameManager instance = null;
 
-    private Factory currentFactory;
+    
 
     [Header("Ingredients")]
     [SerializeField]
@@ -36,11 +36,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Ingredient burntIngredient;
 
+    // - Private vars
+
     /* The player class object to hold all of the players currency, stats, achievements, etc */
     private Player player;
 
     /* Used to detect a press versus a drag */
     private Vector2 mouseStartPos;
+
+    /* The current factory */
+    private Factory currentFactory;
+
+    /* ResourceManager */
+    private ResourceManager rm;
+
+    // - Getters
 
     public static GameManager Instance { get { return instance; } }
     public Factory CurrentFactory { get { return currentFactory; } }
@@ -48,6 +58,7 @@ public class GameManager : MonoBehaviour
     public Compound Compound { get { return compound; } }
     public Player Player { get { return player; } }
     public Ingredient BurntIngredient { get { return burntIngredient; } }
+    public ResourceManager ResourceManager { get { return rm; } }
     public Item[] Ingredients { get { return ingredients; } }
     public CraftableItem[] Potions { get { return potions; } }
     public const float LoadTime = 0.1f;
@@ -128,6 +139,9 @@ public class GameManager : MonoBehaviour
 
         // Calculate offline income...
         CalculateOfflineIncome();
+
+        // Grab the resourcemanager
+        rm = GetComponent<ResourceManager>();
 
         // By default, Mapsection 0 will be unlocked
 

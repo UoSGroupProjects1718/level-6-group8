@@ -106,16 +106,21 @@ public class Inputter : Machine
         return;
     }
 
-    private void OnMouseDown()
+    protected override void OnMachinePress()
     {
         // Inputters can only be deleted in debugDelete mode
         // debugDelete is not available to the player - only used in debugging
         if (LevelController.Instance.BuildStatus == BuildMode.debugdelete)
         {
             DeleteSelf();
-        } else
+        }
+        else
         // Normal Behavior
         {
+            // Close mayor dialogue
+            GameCanvas.Instance.CloseMessage();
+
+            // Open the ingredient list
             LevelController.Instance.SelectedInputter = this;
             GameCanvas.Instance.ToggleIngredientList();
         }
