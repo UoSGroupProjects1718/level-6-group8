@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class RotatingConveyer : Machine
 {
+    [Header("Rotating conveyor top")]
+    [SerializeField]
+    private GameObject conveyorTop;
+
     bool rotate;
     bool firstRun;
     int rotateCounter;
@@ -191,7 +195,7 @@ public class RotatingConveyer : Machine
 
         // Next, create a gameobject to hold the transform we'll be rotating towards
         GameObject a = new GameObject();
-        a.transform.eulerAngles = new Vector3(transform.eulerAngles.x, GetDirAngle(targetDir), transform.eulerAngles.z);
+        a.transform.eulerAngles = new Vector3(conveyorTop.transform.eulerAngles.x, GetDirAngle(targetDir), conveyorTop.transform.eulerAngles.z);
 
         // Set up our rotation and time variables
         float rotateSpeed = 5f;
@@ -202,16 +206,16 @@ public class RotatingConveyer : Machine
             yield return null;
             elapsedTime += Time.deltaTime;
 
-            // Rotate
+            // Rotate the conveyor top
             float step = rotateSpeed;// * Time.deltaTime;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, a.transform.rotation, step);
+            conveyorTop.transform.rotation = Quaternion.RotateTowards(conveyorTop.transform.rotation, a.transform.rotation, step);
         }
 
         // Destroy the gameobject we no longer need
         Destroy(a.gameObject);
-        
-        // Set our new direction    
-        SetDir(directionsToFace[rotateCounter]);
+
+        // Set our new direction 
+        dir = targetDir;   
     }
 
     public override bool CanReceiveFrom(Machine from)
