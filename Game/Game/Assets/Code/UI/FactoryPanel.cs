@@ -16,11 +16,12 @@ public class FactoryPanel : MonoBehaviour {
     [SerializeField]
     Text factoryName;
     [SerializeField]
+    Text score;
+    [SerializeField]
     Image[] factoryStars;
     [SerializeField]
-    Slider factoryIncome;
-    [SerializeField]
-    Slider factoryCost;
+    Text[] thresholds;
+
     public Image HighscorePanel; 
 
     [Header("Asset Reference")]
@@ -46,18 +47,17 @@ public class FactoryPanel : MonoBehaviour {
             toggleDim(true);
 
             factoryName.text = factory.FactoryName;
-            factorySprite.texture = factory.FactorySprite;
+            score.text = ""+factory.Score;
+            //factorySprite.texture = factory.FactorySprite;
+
+            for (int i = 0; i < 3; i++)
+            {
+                thresholds[i].text = "" + factory.ScoreThresholds[i];
+            }
 
             if (factory.Solved)
             {
                 fillfactoryStars(factory.Stars);
-
-                //TODO: we need score thresholds stored in the factory data
-                //factoryIncome.value = factory.Target.Cost / factory.TicksToSolve;
-                //factoryIncome.maxValue = 30; // factory.maxTicksToSolve, predicted maximum ticks to solve
-
-                //factoryCost.value = factory.TotalMachineCost; //factory.totalmachineCost;
-                //factoryCost.maxValue = 100; // factory.maxTotalmachineCost, predicted maximum ticks to solve
             }
             else
             {

@@ -4725,8 +4725,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1566333927}
-        m_MethodName: LoadOverworld
+      - m_Target: {fileID: 1708549499}
+        m_MethodName: ToggleEntryPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4757,7 +4757,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300034, guid: 1378b84ea4c693346b920508a63a2080, type: 3}
+  m_Sprite: {fileID: 21300014, guid: 098e276e80ff2a4479e5dd3254161a4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

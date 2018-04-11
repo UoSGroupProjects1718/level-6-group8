@@ -191,10 +191,10 @@ public class GameCanvas : MonoBehaviour
     /// </summary>
     public void ToggleLevelUI()
     {
-        selectionListParent.SetActive(!selectionListParent.activeSelf);
-        playButton.SetActive(!playButton.activeSelf);
-        speedButton.SetActive(!speedButton.activeSelf);
-        cookbookButton.SetActive(!cookbookButton.activeSelf);
+        selectionListParent.SetActive(true);
+        playButton.SetActive(true);
+        speedButton.SetActive(true);
+        cookbookButton.SetActive(true);
     }
 
     public void onPanelUpdate(GameObject panel)
