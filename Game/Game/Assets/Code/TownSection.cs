@@ -64,7 +64,8 @@ public class TownSection : MonoBehaviour
         {
             if (light.CompareTag("street_light"))
             {
-                light.transform.GetChild(0).gameObject.SetActive(status);
+                if (light.transform.childCount > 0)
+                    light.transform.GetChild(0).gameObject.SetActive(status);
             }
         }
     }

@@ -49,8 +49,15 @@ public class Tile : DimmableObject
 
         // Event
         if (userPlaced)
+        {
+            // Fire event
             EventManager.Instance.AddEvent(EventType.Machine_Placed);
+
+            // Close dialogue
+            GameCanvas.Instance.CloseMessage();
+        }
     }
+            
 
     #region PcControls
 

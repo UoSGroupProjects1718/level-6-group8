@@ -7915,7 +7915,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 1695972475213368, guid: 5111f67fea7e8664cbc2bfc5492a500b, type: 2}
   machines:
   - {fileID: 114960739535995074, guid: e8019ffdfab63e045a58519d787a0950, type: 2}
-  - {fileID: 114425912694419648, guid: f237f0a1e6f2eb448a9d2f652bed6c7d, type: 2}
+  - {fileID: 114993684093960588, guid: a685bf48c5d069b4fba9f8fb7f303a66, type: 2}
   - {fileID: 114359581979837952, guid: 0966f5f89912dce4dbda2c3944b32c85, type: 2}
   - {fileID: 114591545278246766, guid: 9e996eb190a35d44a91fe4c3594b6145, type: 2}
   - {fileID: 114651494283489238, guid: 7a2af5c247d92634fbead7c8a14dd7f5, type: 2}

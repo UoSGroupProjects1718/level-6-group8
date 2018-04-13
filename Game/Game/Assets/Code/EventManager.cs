@@ -28,7 +28,7 @@ public enum EventType
     Conveyor_Rotate,
 
     //
-    Tutorial_Solved
+    Tutorial_Solved,
 }
 
 public class EventManager : MonoBehaviour

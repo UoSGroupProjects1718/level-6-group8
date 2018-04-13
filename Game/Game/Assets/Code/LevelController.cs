@@ -337,6 +337,10 @@ public class LevelController : MonoBehaviour
     {
         if (!running)
         {
+            // Hide mayor dialogue
+            GameCanvas.Instance.CloseMessage();
+
+            // Start production line
             StartRunning();
         }
         else
