@@ -7,11 +7,13 @@ public class Inputter : Machine
 {
     [Header("Output item")]
     [SerializeField]
-    public Item ItemToOutput;
+    private Item ItemToOutput;
 
     [Header("Inputter canvas")]
     [SerializeField]
     private UI_InputterPanel panel;
+
+    public Item SelectedItem { get { return ItemToOutput; } }
 
 	void Start ()
     {
@@ -30,7 +32,7 @@ public class Inputter : Machine
         Debug.Log(string.Format("Inputter \"{0}\" item set as: {1}", gameObject.name, ItemToOutput.DisplayName));
 
         // Update canvas image
-        panel.SetIngredientImage(item);
+        panel.SetImage(item);
 
         while (ItemToOutput.DisplayName != item.DisplayName)
         {

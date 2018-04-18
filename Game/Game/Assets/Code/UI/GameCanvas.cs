@@ -41,6 +41,10 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     GameObject cookbookScrollablePannel;
 
+    [Header("Ingredient panel scrollable")]
+    [SerializeField]
+    GameObject IngredientPanelScrollable;
+
     [Header("Final score screen")]
     [SerializeField]
     UI_ScoreScreen scoreScreen;
@@ -309,6 +313,11 @@ public class GameCanvas : MonoBehaviour
 
             // Update
             onPanelUpdate(ingredientListParent);
+
+            // Scroll
+            RectTransform scrollRT = IngredientPanelScrollable.GetComponent<RectTransform>();
+            Vector3 newPos = new Vector3(scrollRT.position.x, -70.0f, scrollRT.position.y);
+            IngredientPanelScrollable.GetComponent<RectTransform>().position = newPos;
         }
     }
     private void LoadIngredientList()

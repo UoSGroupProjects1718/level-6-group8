@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class Output : Machine
 {
-    List<Item> bufferChildren;
-    List<Item> activeChildren;
+    [Header("Output canvas")]
+    [SerializeField]
+    private UI_OutputPanel outputCanvas;
 
-    bool itemRecieved;
+    private bool itemRecieved;
+    private List<Item> bufferChildren;
+    private List<Item> activeChildren;
 
 	void Start ()
     {
@@ -80,6 +83,9 @@ public class Output : Machine
             {
                 itemRecieved = true;
 
+                // Set image as complete
+                outputCanvas.SetComplete(true);
+
                 LevelController.Instance.ItemCreated(child);
             }
         }
@@ -102,9 +108,11 @@ public class Output : Machine
         if (!LevelController.Instance.LevelFactory.IsTutorial)
         {
             itemRecieved = false;
+
+            // Set image as not complete
+            outputCanvas.SetComplete(false);
         }
             
-
         RemoveAndDestroyListOfItems(ref bufferChildren);
         RemoveAndDestroyListOfItems(ref activeChildren);
     }

@@ -8,5 +8,10 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     Sprite transparent;
 
+    [Header("Output complete sprite")]
+    [SerializeField]
+    Sprite outputComplete;
+
     public Sprite TransparentImage { get { return transparent; } }
+    public Sprite OutputComplete { get { return outputComplete; } }
 }

@@ -164,9 +164,9 @@ public static class SaveLoad
                             itf.type = machine.Type.ToString();
 
                             // Save ingredient as string
-                            if (machine.GetComponent<Inputter>().ItemToOutput != null)
+                            if (machine.GetComponent<Inputter>().SelectedItem != null)
                             {
-                                itf.ingredient = machine.GetComponent<Inputter>().ItemToOutput.DisplayName;
+                                itf.ingredient = machine.GetComponent<Inputter>().SelectedItem.DisplayName;
                             }
                             else
                             {

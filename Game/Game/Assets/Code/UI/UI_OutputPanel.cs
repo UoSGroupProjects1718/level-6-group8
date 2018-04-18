@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_InputterPanel : MonoBehaviour
+public class UI_OutputPanel : MonoBehaviour
 {
     [SerializeField]
     private Image image;
@@ -12,15 +12,15 @@ public class UI_InputterPanel : MonoBehaviour
     /// Set the inputters ingredient image
     /// </summary>
     /// <param name="item"></param>
-    public void SetImage(Item item)
+    public void SetComplete(bool complete)
     {
-        if (item == null)
+        if (complete)
         {
-            image.sprite = GameManager.Instance.ResourceManager.TransparentImage;
+            image.sprite = GameManager.Instance.ResourceManager.OutputComplete;
         }
         else
         {
-            image.sprite = item.ItemSprite;
+            image.sprite = GameManager.Instance.ResourceManager.TransparentImage;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IntroductionTutorial : Tutorial
 {
+    public Item basil;
 
     public override void Progress(EventType _event)
     {
@@ -43,6 +44,20 @@ public class IntroductionTutorial : Tutorial
                 // When then ingredient has been selected
                 if (_event != EventType.Ingredient_Selected) return;
 
+                // Next we have to check it's the correct ingredient
+                machineX = LevelController.Instance.LevelFactory.DefaultMachines[0].x;
+                machineY = LevelController.Instance.LevelFactory.DefaultMachines[0].y;
+
+                Inputter machine = LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.GetComponent<Inputter>();
+
+                if (machine.SelectedItem != null && machine.SelectedItem.DisplayName != "Basil")
+                {
+                    GameCanvas.Instance.DisplayMessage("Wrong ingredient! Make sure you select *Basil*");
+
+                    // Return without advancing
+                    return;
+                }
+
                 // Brighten the factory again
                 LevelController.Instance.BrightenTiles();
                 LevelController.Instance.BrightenMachines();
@@ -73,7 +88,12 @@ public class IntroductionTutorial : Tutorial
 
                 // Pan camera, display message
                 Camera.main.GetComponent<CameraController>().PanCamera(5, 1.2f, 5);
-                GameCanvas.Instance.DisplayMessage("Now try it yourself! You can use the buttons on the left to place and delete machines.\n\nDon't forget to select the Basil ingredient again!");
+                GameCanvas.Instance.DisplayMessage("Now try it yourself! You can use the buttons on the left to place and delete machines.");
+
+                // Set basil
+                machineX = LevelController.Instance.LevelFactory.DefaultMachines[5].x;
+                machineY = LevelController.Instance.LevelFactory.DefaultMachines[5].y;
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.GetComponent<Inputter>().SetOutputItem(basil);
 
                 // Darken the tiles
                 LevelController.Instance.DimTiles();
@@ -107,6 +127,11 @@ public class IntroductionTutorial : Tutorial
                 // Pan camera, display message
                 Camera.main.GetComponent<CameraController>().PanCamera(12, 1.2f, 5);
                 GameCanvas.Instance.DisplayMessage("Next, try rotating the conveyers around this corner!");
+
+                // Set basil
+                machineX = LevelController.Instance.LevelFactory.DefaultMachines[7].x;
+                machineY = LevelController.Instance.LevelFactory.DefaultMachines[7].y;
+                LevelController.Instance.LevelFactory.level.grid[machineX, machineY].Machine.GetComponent<Inputter>().SetOutputItem(basil);
 
                 // Enable the rotate button
                 GameCanvas.Instance.EnableMachineButton(Buttons.rotateButton);

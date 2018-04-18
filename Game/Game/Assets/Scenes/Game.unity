@@ -8683,6 +8683,7 @@ MonoBehaviour:
   ingredientListPanel: {fileID: 1401732786}
   cookbookParent: {fileID: 1934853599}
   cookbookScrollablePannel: {fileID: 360823267}
+  IngredientPanelScrollable: {fileID: 1401732786}
   scoreScreen: {fileID: 525449663}
   playButton: {fileID: 1342655258}
   speedButton: {fileID: 845372494}
