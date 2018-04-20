@@ -963,7 +963,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -1913,32 +1913,48 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Fluffballs Fermenting Inc.
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 6
+  width: 5
+  height: 11
   defaultMachines:
-  - machineType: 1
-    x: 0
-    y: 0
-    dir: 0
   - machineType: 0
+    x: 4
+    y: 2
+    dir: 3
+  - machineType: 2
+    x: 3
+    y: 2
+    dir: 3
+  - machineType: 3
+    x: 2
+    y: 2
+    dir: 3
+  - machineType: 0
+    x: 2
+    y: 0
+    dir: 2
+  - machineType: 2
+    x: 2
+    y: 1
+    dir: 2
+  - machineType: 4
     x: 1
     y: 5
-    dir: 2
-  - machineType: 0
-    x: 3
-    y: 5
-    dir: 2
-  - machineType: 0
-    x: 5
-    y: 1
+    dir: 3
+  - machineType: 1
+    x: 0
+    y: 4
     dir: 3
   - machineType: 0
-    x: 5
-    y: 3
+    x: 4
+    y: 8
     dir: 3
+  - machineType: 0
+    x: 2
+    y: 10
+    dir: 0
   inactiveTiles: []
   targets:
-  - {fileID: 114187987927204708, guid: fc43921a551dc074cb9e911bd71992a6, type: 2}
+  - {fileID: 114335194783894586, guid: 1285ecacc0b635945bc4cdea8425f5e9, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 2000
@@ -2565,7 +2581,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -2898,6 +2914,10 @@ Prefab:
       propertyPath: m_Name
       value: TownHall
       objectReference: {fileID: 0}
+    - target: {fileID: 1822799559260198, guid: 4343d9f534e752647a2280b9a7cb2962, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4343d9f534e752647a2280b9a7cb2962, type: 2}
   m_IsPrefabParent: 0
@@ -3091,7 +3111,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -3625,7 +3645,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -3774,8 +3794,8 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 298409223}
-  m_LocalRotation: {x: -0.1675952, y: 0.2577509, z: 0.045448463, w: 0.95047927}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.17526382, y: 0.25366962, z: 0.04622714, w: 0.9501565}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000010710208}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000005}
   m_Children:
   - {fileID: 974653136}
@@ -3783,10 +3803,10 @@ RectTransform:
   - {fileID: 1115217523}
   m_Father: {fileID: 1519504866}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -20, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -20.886002, y: 29.908, z: -0.066}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7}
+  m_AnchoredPosition: {x: -0.0000011483686, y: 7}
   m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298409225
@@ -4354,7 +4374,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.12
+      value: 54.60001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4362,7 +4382,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.48
+      value: -41.600002
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4370,7 +4390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.73440784
+      value: -0.060718425
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4378,7 +4398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6787085
+      value: -0.99815494
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_RootOrder
@@ -4398,7 +4418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -94.51401
+      value: 6.9620004
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Name
@@ -4446,36 +4466,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 7
+  factoryID: 8
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 6
+  width: 11
+  height: 5
   defaultMachines:
-  - machineType: 1
-    x: 0
-    y: 0
-    dir: 0
   - machineType: 0
-    x: 1
-    y: 5
-    dir: 2
+    x: 0
+    y: 2
+    dir: 1
   - machineType: 0
     x: 3
-    y: 5
+    y: 4
     dir: 2
   - machineType: 0
-    x: 5
-    y: 3
-    dir: 3
+    x: 7
+    y: 4
+    dir: 2
   - machineType: 0
+    x: 10
+    y: 2
+    dir: 3
+  - machineType: 3
+    x: 3
+    y: 2
+    dir: 1
+  - machineType: 3
+    x: 7
+    y: 2
+    dir: 3
+  - machineType: 4
+    x: 5
+    y: 2
+    dir: 2
+  - machineType: 1
     x: 5
     y: 0
-    dir: 3
+    dir: 2
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114263171280058526, guid: 12bbc3974f51b334087b36d394d3824c, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -5389,7 +5421,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -6605,6 +6637,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.size
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4381240117526604, guid: 76a453b87c63fef499f66dc1734915d8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6641,31 +6678,175 @@ Prefab:
         type: 2}
       propertyPath: potions.Array.data[0]
       value: 
-      objectReference: {fileID: 114617937153085268, guid: 83d0d72b2df41a5479487fb7f010808b,
+      objectReference: {fileID: 114025861406094068, guid: 3ac4869869a4689459a1cc59e4febd47,
         type: 2}
     - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
         type: 2}
       propertyPath: potions.Array.data[1]
       value: 
-      objectReference: {fileID: 114545506824854570, guid: b2e11010bc829e540a08fe6701eacc19,
+      objectReference: {fileID: 114675018607607134, guid: e311a15d75827544aa30854e6c290878,
         type: 2}
     - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
         type: 2}
       propertyPath: potions.Array.data[2]
       value: 
-      objectReference: {fileID: 114338834266260876, guid: e53102c30167add4197e654ac52872a0,
+      objectReference: {fileID: 114694923221071552, guid: 51cfb6b23e953cb4c8b58c17b3213c70,
         type: 2}
     - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
         type: 2}
       propertyPath: potions.Array.data[3]
       value: 
-      objectReference: {fileID: 114007134061074066, guid: df0bc4dea09c99e46860d5c94a51325b,
+      objectReference: {fileID: 114291881717212408, guid: d42e6c58184eb0e4799cec8f139558d1,
         type: 2}
     - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
         type: 2}
       propertyPath: potions.Array.data[4]
       value: 
-      objectReference: {fileID: 114764844789214442, guid: adf6f9b7791c64243a53fa0f3e21d91c,
+      objectReference: {fileID: 114335194783894586, guid: 1285ecacc0b635945bc4cdea8425f5e9,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[0]
+      value: 
+      objectReference: {fileID: 114450978081715366, guid: 7a3bfdc039240024ab413b77da537af0,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[2]
+      value: 
+      objectReference: {fileID: 114517795095533288, guid: a1708e945f7d940478069daffcb5983e,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[3]
+      value: 
+      objectReference: {fileID: 114920413974332240, guid: ab644b92e41a08c47898acc974cb1eb8,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[4]
+      value: 
+      objectReference: {fileID: 114444173738331884, guid: 849ca448d44c2a146ac639b7bc34fe5c,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[5]
+      value: 
+      objectReference: {fileID: 114468770350683204, guid: c5a5bf691be35b442ba287dd44804c8a,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[6]
+      value: 
+      objectReference: {fileID: 114485982338976164, guid: 303890ff3890c3140a9f3d8ea18f5c77,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[9]
+      value: 
+      objectReference: {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[10]
+      value: 
+      objectReference: {fileID: 114792452479405514, guid: 7743f41300f19764ba26eda514dea1c3,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[11]
+      value: 
+      objectReference: {fileID: 114672638378656358, guid: cf6fb835fdc1f7a47995a8496cce2fc5,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[12]
+      value: 
+      objectReference: {fileID: 114849525854985824, guid: 0fbd6b288e86ef1438ee7af54d28abf0,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: ingredients.Array.data[13]
+      value: 
+      objectReference: {fileID: 114215952565469808, guid: ebd146c4ab4f1f342bbf9a20dc24d938,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[5]
+      value: 
+      objectReference: {fileID: 114263171280058526, guid: 12bbc3974f51b334087b36d394d3824c,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[6]
+      value: 
+      objectReference: {fileID: 114876261680958452, guid: 6fdaecef00f3c3548b69751ba085a6f2,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[7]
+      value: 
+      objectReference: {fileID: 114045042230296230, guid: 747153f0eb8c3bb4b9daccc2c5037bb4,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[8]
+      value: 
+      objectReference: {fileID: 114335845914073764, guid: 24e13a369a673a044ab2683d0b2100f0,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[9]
+      value: 
+      objectReference: {fileID: 114765424936388854, guid: 333bdc8da8b61884d91a78ba870548c0,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[10]
+      value: 
+      objectReference: {fileID: 114386374826325914, guid: 97f601c18ef43bb45a09f6768b9e0d64,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[11]
+      value: 
+      objectReference: {fileID: 114301242431933242, guid: 573feaef491d47f4e93141e6df33df0f,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[12]
+      value: 
+      objectReference: {fileID: 114755975906837070, guid: 50124a815e600fd43ac1b5c321c09a74,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[13]
+      value: 
+      objectReference: {fileID: 114262098637732214, guid: 33adeb2d790b2b44ea5d9668a28ed0eb,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[14]
+      value: 
+      objectReference: {fileID: 114795827248543888, guid: 53f23ede3bef6374796b130b9fef7a19,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[15]
+      value: 
+      objectReference: {fileID: 114506905445221594, guid: fcfa0a2a1aa66e84aaf250c10105414c,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[16]
+      value: 
+      objectReference: {fileID: 114902421021986240, guid: d0467dfe89635a64da524884e74c148a,
+        type: 2}
+    - target: {fileID: 114283947613895474, guid: 76a453b87c63fef499f66dc1734915d8,
+        type: 2}
+      propertyPath: potions.Array.data[17]
+      value: 
+      objectReference: {fileID: 114730942705252030, guid: 8d0396553373443498244e7d3c893f39,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a453b87c63fef499f66dc1734915d8, type: 2}
@@ -6972,8 +7153,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 643998940}
   m_HandleRect: {fileID: 643998939}
   m_Direction: 0
-  m_Value: 0.000000164073
-  m_Size: 0.69
+  m_Value: 0.00000016407294
+  m_Size: 0.68999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8912,15 +9093,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12.8
+      value: 39.7
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: -85.9
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -51.83
+      value: 12.3
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9168,7 +9349,7 @@ MonoBehaviour:
     dir: 2
   inactiveTiles: []
   targets:
-  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  - {fileID: 114675018607607134, guid: e311a15d75827544aa30854e6c290878, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114963503824662646, guid: 053a43da549d264448da5aa6ccd6ec09, type: 2}
   stockpileLimit: 0
@@ -9646,48 +9827,56 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Milly's Muller
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 9
-  height: 11
+  width: 11
+  height: 5
   defaultMachines:
-  - machineType: 1
+  - machineType: 0
     x: 0
-    y: 5
+    y: 4
+    dir: 2
+  - machineType: 2
+    x: 0
+    y: 3
+    dir: 2
+  - machineType: 3
+    x: 0
+    y: 2
     dir: 1
-  - machineType: 0
-    x: 2
-    y: 0
-    dir: 0
-  - machineType: 0
-    x: 6
-    y: 0
-    dir: 0
-  - machineType: 0
-    x: 2
-    y: 10
+  - machineType: 2
+    x: 4
+    y: 2
+    dir: 1
+  - machineType: 4
+    x: 5
+    y: 2
     dir: 2
-  - machineType: 0
-    x: 6
-    y: 10
+  - machineType: 2
+    x: 5
+    y: 1
     dir: 2
-  inactiveTiles:
-  - {x: 0, y: 3}
-  - {x: 1, y: 3}
-  - {x: 2, y: 3}
-  - {x: 3, y: 3}
-  - {x: 5, y: 3}
-  - {x: 6, y: 3}
-  - {x: 7, y: 3}
-  - {x: 8, y: 3}
-  - {x: 0, y: 7}
-  - {x: 1, y: 7}
-  - {x: 2, y: 7}
-  - {x: 3, y: 7}
-  - {x: 5, y: 7}
-  - {x: 6, y: 7}
-  - {x: 7, y: 7}
-  - {x: 8, y: 7}
+  - machineType: 1
+    x: 5
+    y: 0
+    dir: 2
+  - machineType: 2
+    x: 6
+    y: 2
+    dir: 3
+  - machineType: 0
+    x: 10
+    y: 4
+    dir: 2
+  - machineType: 2
+    x: 10
+    y: 3
+    dir: 2
+  - machineType: 3
+    x: 10
+    y: 2
+    dir: 2
+  inactiveTiles: []
   targets:
-  - {fileID: 114970336893621952, guid: 97cf388e525e52b4299cb1585059c016, type: 2}
+  - {fileID: 114291881717212408, guid: d42e6c58184eb0e4799cec8f139558d1, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -12567,7 +12756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 92.99997, y: 7.499997}
+  m_AnchoredPosition: {x: 92.99997, y: 0.000011444092}
   m_SizeDelta: {x: 600, y: -15.000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &941776641
@@ -13518,7 +13707,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -14021,7 +14210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1086348776
 Transform:
   m_ObjectHideFlags: 0
@@ -14656,12 +14845,28 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 10
-  height: 10
-  defaultMachines: []
+  width: 3
+  height: 5
+  defaultMachines:
+  - machineType: 0
+    x: 1
+    y: 4
+    dir: 2
+  - machineType: 7
+    x: 1
+    y: 2
+    dir: 2
+  - machineType: 1
+    x: 0
+    y: 0
+    dir: 0
+  - machineType: 1
+    x: 2
+    y: 0
+    dir: 0
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114672638378656358, guid: cf6fb835fdc1f7a47995a8496cce2fc5, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -17446,32 +17651,44 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 6
+  width: 7
+  height: 5
   defaultMachines:
-  - machineType: 1
+  - machineType: 0
+    x: 0
+    y: 4
+    dir: 2
+  - machineType: 3
+    x: 0
+    y: 2
+    dir: 1
+  - machineType: 0
     x: 0
     y: 0
     dir: 0
-  - machineType: 0
-    x: 1
-    y: 5
-    dir: 2
-  - machineType: 0
+  - machineType: 4
     x: 3
-    y: 5
+    y: 2
+    dir: 2
+  - machineType: 1
+    x: 3
+    y: 0
     dir: 2
   - machineType: 0
+    x: 6
+    y: 4
+    dir: 3
+  - machineType: 3
     x: 5
-    y: 3
+    y: 2
     dir: 3
   - machineType: 0
-    x: 5
+    x: 6
     y: 0
     dir: 3
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114045042230296230, guid: 747153f0eb8c3bb4b9daccc2c5037bb4, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -18080,7 +18297,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -18633,31 +18850,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.76
+      value: 35.61
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.87
+      value: 6.8899994
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.15
+      value: -32.51
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00045704163
+      value: -0.00031611728
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.102126725
+      value: 0.76261544
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000019595553
+      value: 0.0003306675
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9947713
+      value: -0.646852
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_RootOrder
@@ -18677,7 +18894,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -11.723001
+      value: -99.39101
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Name
@@ -18697,11 +18914,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.052
+      value: -0.0050000004
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.008
+      value: -0.052
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
@@ -18725,36 +18942,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8743830bf370d51419bb2b36ebc82454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryID: 8
+  factoryID: 7
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 6
+  width: 7
+  height: 8
   defaultMachines:
-  - machineType: 1
-    x: 0
-    y: 0
-    dir: 0
   - machineType: 0
     x: 1
-    y: 5
+    y: 1
     dir: 2
   - machineType: 0
+    x: 1
+    y: 6
+    dir: 0
+  - machineType: 3
+    x: 1
+    y: 4
+    dir: 1
+  - machineType: 4
     x: 3
-    y: 5
+    y: 4
+    dir: 1
+  - machineType: 1
+    x: 5
+    y: 4
     dir: 2
-  - machineType: 0
-    x: 5
-    y: 3
-    dir: 3
-  - machineType: 0
-    x: 5
-    y: 0
-    dir: 3
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114876261680958452, guid: 6fdaecef00f3c3548b69751ba085a6f2, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -18863,7 +19080,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.39
+      value: -6.26
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18871,7 +19088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.63
+      value: -32.43
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -18879,7 +19096,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.75847954
+      value: 0.74521965
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -18887,7 +19104,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6516969
+      value: -0.6668191
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_RootOrder
@@ -18907,7 +19124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -98.661
+      value: -96.356
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Name
@@ -19323,42 +19540,34 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Rotator tutorial
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 8
+  width: 3
+  height: 5
   defaultMachines:
   - machineType: 0
-    x: 5
-    y: 4
-    dir: 3
-  - machineType: 2
-    x: 4
-    y: 4
-    dir: 3
-  - machineType: 2
-    x: 3
-    y: 4
-    dir: 3
-  - machineType: 1
-    x: 2
-    y: 7
-    dir: 2
-  - machineType: 2
-    x: 2
-    y: 6
-    dir: 0
-  - machineType: 2
-    x: 2
-    y: 5
-    dir: 0
-  - machineType: 7
-    x: 2
+    x: 1
     y: 4
     dir: 2
   - machineType: 2
-    x: 2
+    x: 1
     y: 3
     dir: 2
-  - machineType: 6
+  - machineType: 7
+    x: 1
+    y: 2
+    dir: 3
+  - machineType: 2
+    x: 0
+    y: 2
+    dir: 2
+  - machineType: 2
+    x: 0
+    y: 1
+    dir: 2
+  - machineType: 1
+    x: 0
+    y: 0
+    dir: 0
+  - machineType: 2
     x: 2
     y: 2
     dir: 2
@@ -19372,7 +19581,8 @@ MonoBehaviour:
     dir: 2
   inactiveTiles: []
   targets:
-  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  - {fileID: 114765424936388854, guid: 333bdc8da8b61884d91a78ba870548c0, type: 2}
+  - {fileID: 114765424936388854, guid: 333bdc8da8b61884d91a78ba870548c0, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114512352216901724, guid: 9eff95efa09d50c4cabd5580f7ddbbc5, type: 2}
   stockpileLimit: 0
@@ -19660,7 +19870,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.11
+      value: 13.32
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19668,7 +19878,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.96
+      value: -54.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -19676,7 +19886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7125485
+      value: 0.4957067
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -19684,7 +19894,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7016229
+      value: -0.86849
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_RootOrder
@@ -19704,7 +19914,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 269.115
+      value: 300.567
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 691d75fc71f2b3b46adccb4881c859bc, type: 3}
       propertyPath: m_Name
@@ -20078,7 +20288,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -21113,32 +21323,32 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 6
-  height: 6
+  width: 9
+  height: 5
   defaultMachines:
-  - machineType: 1
+  - machineType: 0
     x: 0
+    y: 1
+    dir: 0
+  - machineType: 0
+    x: 3
+    y: 4
+    dir: 3
+  - machineType: 1
+    x: 4
     y: 0
     dir: 0
   - machineType: 0
-    x: 1
-    y: 5
-    dir: 2
-  - machineType: 0
-    x: 3
-    y: 5
-    dir: 2
-  - machineType: 0
-    x: 5
-    y: 3
+    x: 8
+    y: 2
     dir: 3
   - machineType: 0
-    x: 5
+    x: 6
     y: 0
-    dir: 3
+    dir: 0
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114335845914073764, guid: 24e13a369a673a044ab2683d0b2100f0, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -21301,7 +21511,7 @@ MonoBehaviour:
     dir: 2
   inactiveTiles: []
   targets:
-  - {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  - {fileID: 114694923221071552, guid: 51cfb6b23e953cb4c8b58c17b3213c70, type: 2}
   isTutorial: 1
   tutorial: {fileID: 114369450569347228, guid: 51088cb4f7f19534eb5bb0e5f52454a5, type: 2}
   stockpileLimit: 0
@@ -23093,7 +23303,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.77
+      value: 18.1
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.y
@@ -23101,23 +23311,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -43.37
+      value: -31.6
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.35574636
+      value: -0.5152448
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.61110157
+      value: -0.4842762
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.6111003
+      value: -0.4842748
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.3557468
+      value: 0.5152449
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_RootOrder
@@ -23129,7 +23339,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -119.589005
+      value: -86.451004
       objectReference: {fileID: 0}
     - target: {fileID: 4634793305454152, guid: 490ea8a634521cd4f8ca1886606cfc02, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23301,12 +23511,48 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 10
-  height: 10
-  defaultMachines: []
+  width: 9
+  height: 6
+  defaultMachines:
+  - machineType: 0
+    x: 4
+    y: 5
+    dir: 2
+  - machineType: 0
+    x: 0
+    y: 3
+    dir: 1
+  - machineType: 0
+    x: 8
+    y: 3
+    dir: 3
+  - machineType: 3
+    x: 2
+    y: 3
+    dir: 2
+  - machineType: 3
+    x: 6
+    y: 3
+    dir: 2
+  - machineType: 4
+    x: 2
+    y: 1
+    dir: 2
+  - machineType: 4
+    x: 6
+    y: 1
+    dir: 2
+  - machineType: 1
+    x: 2
+    y: 0
+    dir: 2
+  - machineType: 1
+    x: 6
+    y: 0
+    dir: 2
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114386374826325914, guid: 97f601c18ef43bb45a09f6768b9e0d64, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -24607,7 +24853,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -25079,7 +25325,7 @@ MonoBehaviour:
   defaultMachines: []
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 0}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0
@@ -26385,12 +26631,56 @@ MonoBehaviour:
   starsRequired: 0
   factoryName: Purple Apothecary
   factorySprite: {fileID: 8400000, guid: 8769b86a0e9ca5e49837be64776e3fff, type: 2}
-  width: 10
-  height: 10
-  defaultMachines: []
+  width: 11
+  height: 5
+  defaultMachines:
+  - machineType: 0
+    x: 0
+    y: 1
+    dir: 1
+  - machineType: 3
+    x: 1
+    y: 1
+    dir: 1
+  - machineType: 4
+    x: 3
+    y: 1
+    dir: 2
+  - machineType: 1
+    x: 3
+    y: 0
+    dir: 2
+  - machineType: 0
+    x: 4
+    y: 4
+    dir: 2
+  - machineType: 3
+    x: 5
+    y: 3
+    dir: 2
+  - machineType: 0
+    x: 6
+    y: 4
+    dir: 2
+  - machineType: 4
+    x: 7
+    y: 1
+    dir: 2
+  - machineType: 1
+    x: 7
+    y: 0
+    dir: 2
+  - machineType: 3
+    x: 9
+    y: 1
+    dir: 3
+  - machineType: 0
+    x: 10
+    y: 1
+    dir: 3
   inactiveTiles: []
   targets:
-  - {fileID: 114820604130132970, guid: 46ce5d544dfe4d941986172204153cd9, type: 2}
+  - {fileID: 114301242431933242, guid: 573feaef491d47f4e93141e6df33df0f, type: 2}
   isTutorial: 0
   tutorial: {fileID: 0}
   stockpileLimit: 0

@@ -137,8 +137,8 @@ public class GameManager : MonoBehaviour
         // Unlock town sections
         Overworld.Instance.UnlockTownSections();
 
-        // Calculate offline income...
-        CalculateOfflineIncome();
+        // Calculate offline income... [DEPRECATED]
+        // CalculateOfflineIncome();
 
         // Grab the resourcemanager
         rm = GetComponent<ResourceManager>();

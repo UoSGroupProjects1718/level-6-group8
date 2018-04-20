@@ -84,6 +84,10 @@ public class LevelController : MonoBehaviour
     /* A dictionary to remember which potions have and have not yet been 
     created in the level */
     private Dictionary<string /*item name*/, bool /*made*/> potionsCreated = new Dictionary<string, bool>();
+    /* An int to remember how many outputs have recieved their desired item */
+    private int outputsComplete;
+    /* An int to remember how many outputs there are in the level */
+    private int numberOfOutputs;
 
     [Header("Tile")]
     [SerializeField]
@@ -206,8 +210,8 @@ public class LevelController : MonoBehaviour
         // Set the build mode to none
         SetBuildMode(BuildMode.none);
 
-        // Move the camera to the appropriate position
-        Camera.main.transform.position = new Vector3(-.5f, Camera.main.transform.position.y, 0);
+        // Move the camera to the center of the level
+        Camera.main.transform.position = new Vector3((factory.Width / 2) - 3, Camera.main.transform.position.y, (factory.Height / 2)-2);
 
         // Set the camera bounds
         Camera.main.GetComponent<OrthoCameraDrag>().UpdateCameraBounds(-2, -1, factory.Width -3, factory.Height -2);
@@ -221,6 +225,15 @@ public class LevelController : MonoBehaviour
 
         // Event
         EventManager.Instance.AddEvent(EventType.Enter_Factory);
+
+        // Set up the dictionary to remember our potions
+        foreach (Item item in factory.Targets)
+        {
+            // Don't add the same item twice
+            if (potionsCreated.ContainsKey(item.DisplayName)) continue;
+
+            potionsCreated.Add(item.DisplayName, false);
+        }
 
         // If tutorial, Progress()
         if (LevelFactory.IsTutorial)
@@ -358,8 +371,11 @@ public class LevelController : MonoBehaviour
         speedUp = !speedUp;
     }
 
-    public void ItemCreated(Item created)
+    public void OutputReceived(Item created)
     {
+        // Another output is complete
+        outputsComplete++;
+
         // We have now created this item
         potionsCreated[created.DisplayName] = true;
 
@@ -375,7 +391,7 @@ public class LevelController : MonoBehaviour
         }
 
         // If it is, fire off a Level Solved event
-        if (allItems)
+        if (allItems && outputsComplete >= numberOfOutputs)
         {
             EventManager.Instance.AddEvent(EventType.Level_Solved);
         }
@@ -392,13 +408,15 @@ public class LevelController : MonoBehaviour
         // The production line is now running
         running = true;
 
-        // Set up our dictionary to remember the potions that have been created.
-        potionsCreated.Clear();
-
-        foreach (Item item in factory.Targets)
+        // None of our items have been created (reset)
+        var keys = new List<string>(potionsCreated.Keys);
+        foreach (var key in keys)
         {
-            potionsCreated.Add(item.DisplayName, false);
+            potionsCreated[key] = false;
         }
+
+        // No outputs have been complete
+        outputsComplete = 0;
 
         // Begin all of our machines
         foreach (Machine machine in factory.level.machines)
@@ -644,6 +662,9 @@ public class LevelController : MonoBehaviour
             {
                 if (machine.machineType == MachineType.output)
                 {
+                    // We have another output in the level
+                    numberOfOutputs++;
+
                     MachineToFile mach = new MachineToFile();
 
                     mach.dir = machine.dir;
@@ -682,6 +703,12 @@ public class LevelController : MonoBehaviour
                     mach.y = machine.y;
 
                     HandleMachine(mach);
+
+                    // We have another output in the level
+                    if (machine.machineType == MachineType.output)
+                    {
+                        numberOfOutputs++;
+                    }
                 }
             }
         }

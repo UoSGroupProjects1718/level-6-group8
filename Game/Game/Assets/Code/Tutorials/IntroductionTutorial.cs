@@ -80,7 +80,7 @@ public class IntroductionTutorial : Tutorial
             case 2:
 
                 // When the correct ingredient reaches the end
-                if (_event != EventType.Level_Solved) return;
+                if (_event != EventType.Output_Execute) return;
 
                 // Stop running the factories
                 LevelController.Instance.ToggleRunning();
@@ -115,7 +115,7 @@ public class IntroductionTutorial : Tutorial
             case 3:
 
                 // When the correct ingredient reaches the end
-                if (_event != EventType.Level_Solved) return;
+                if (_event != EventType.Output_Execute) return;
 
                 // Rebrighten the tiles
                 LevelController.Instance.BrightenTiles();
@@ -143,7 +143,7 @@ public class IntroductionTutorial : Tutorial
                 //4: Complete
             case 4:
                 // When the correct ingredient reaches the end
-                if (_event != EventType.Level_Solved) return;
+                if (_event != EventType.Output_Execute) return;
 
                 LevelController.Instance.ToggleRunning();
                 GameCanvas.Instance.TogglePlaySprite();

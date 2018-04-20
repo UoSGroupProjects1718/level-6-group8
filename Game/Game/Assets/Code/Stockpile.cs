@@ -67,7 +67,7 @@ public class Stockpile
         if(!IsFull())
         {
             uint itemsToAdd = (uint)Math.Min(val, itemLimit - ItemCount);
-            Value += item.Cost * itemsToAdd;
+            // Value += item.Cost * itemsToAdd;
             if (Contains(item))
             {
                 items[item.DisplayName] += itemsToAdd;

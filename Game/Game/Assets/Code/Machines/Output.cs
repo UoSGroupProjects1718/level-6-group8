@@ -86,7 +86,11 @@ public class Output : Machine
                 // Set image as complete
                 outputCanvas.SetComplete(true);
 
-                LevelController.Instance.ItemCreated(child);
+                // Output received
+                LevelController.Instance.OutputReceived(child);
+
+                // Event
+                EventManager.Instance.AddEvent(EventType.Output_Execute);
             }
         }
     }

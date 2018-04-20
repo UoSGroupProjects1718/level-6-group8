@@ -15,10 +15,10 @@ public class RotatorTutorial : Tutorial
         {
             case 0:
                 // Pan camera
-                Camera.main.GetComponent<CameraController>().PanCamera(-0.43f, 2.06f, 0.5f);
+                Camera.main.GetComponent<CameraController>().PanCamera(-1.68f, 0.2f, 0.5f);
 
                 // Add the ingredient to inputter
-                LevelController.Instance.LevelFactory.level.grid[5, 4].Machine.GetComponent<Inputter>().SetOutputItem(potion);
+                LevelController.Instance.LevelFactory.level.grid[1, 4].Machine.GetComponent<Inputter>().SetOutputItem(potion);
 
                 // Send message
                 GameCanvas.Instance.DisplayMessage("We need to deliver the potion to two outputs! To do this I've placed a rotator.\n\nPress play to see how it works.");

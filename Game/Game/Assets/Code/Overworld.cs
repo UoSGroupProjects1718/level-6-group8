@@ -90,7 +90,8 @@ public class Overworld : MonoBehaviour
             if (section.ID <= GameManager.Instance.Player.MapSectionsUnlocked)
             {
                 section.Unlock(true);
-            } else {
+            } else
+            {
                 section.Unlock(false);
             }
         }

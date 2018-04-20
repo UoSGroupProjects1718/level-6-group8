@@ -22,11 +22,16 @@ public class TownHall : MonoBehaviour
         if (GameManager.Instance.Player.Stars >=
             Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost)
         {
+            /*
+            **************************
+            This no longer costs stars
+            **************************
             // Remove money
             GameManager.Instance.Player.RemoveStars(Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Cost);
 
             // Update player stars UI
             OverworldCanvas.Instance.UpdatePlayerStats(GameManager.Instance.Player.Stars);
+            */
 
             // Unlock the factory
             Overworld.Instance.TownSections[GameManager.Instance.Player.MapSectionsUnlocked].Unlock(true);

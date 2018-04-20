@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d29a1158223814884f1569f73152ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potion: {fileID: 114924657422403610, guid: 9df20a0dbac1ea5439ee8f96b2871aaa, type: 2}
+  potion: {fileID: 114765424936388854, guid: 333bdc8da8b61884d91a78ba870548c0, type: 2}
