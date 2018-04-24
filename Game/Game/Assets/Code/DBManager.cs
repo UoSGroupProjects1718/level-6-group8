@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Firebase;
 using Firebase.Auth;
@@ -21,7 +22,7 @@ public class DBManager
     public void WriteNewUser(FirebaseUser newUser)
     {
         Debug.Log("Writing new user!");
-        _db.Child("users").Child(newUser.UserId).SetValueAsync(newUser.DisplayName).ContinueWith(task =>
+        _db.Child("users").Child(newUser.UserId.GetHashCode().ToString()).SetValueAsync(newUser.DisplayName).ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
@@ -46,7 +47,7 @@ public class DBManager
     {
         _db.Child("highscores")
             .Child(factoryID.ToString())
-            .Child(user.UserId).SetValueAsync(score)
+            .Child(user.UserId.GetHashCode().ToString()).SetValueAsync((long)score)
             .ContinueWith(task =>
             {
                 if (task.IsFaulted)
@@ -72,7 +73,7 @@ public class DBManager
         uint? output = null;
         _db.Child("highscores")
             .Child(factoryID.ToString())
-            .Child(user.UserId).GetValueAsync().ContinueWith(task =>
+            .Child(user.UserId.GetHashCode().ToString()).GetValueAsync().ContinueWith(task =>
             {
                 if (task.IsFaulted)
                 {
@@ -180,5 +181,27 @@ public class DBManager
                 }
             );
         return output;
+    }
+
+    public string GetDisplayNameFromHasedId(string hashedId)
+    {
+        var name = string.Empty;
+        _db.Child("users")
+            .Child(hashedId).GetValueAsync().ContinueWith(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("Getting user display name failed!");
+                }
+                else if (task.IsCanceled)
+                {
+                    Debug.Log("Getting user display name was cancelled.");
+                }
+                else if (task.IsCompleted)
+                {
+                    name = (string)task.Result.Value;
+                }
+            });
+        return name;
     }
 }

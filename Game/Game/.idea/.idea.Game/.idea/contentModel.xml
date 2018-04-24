@@ -59,6 +59,7 @@
             <e p="Player.cs" t="Include" />
             <e p="PlayerAchievements.cs" t="Include" />
           </e>
+          <e p="ResourceManager.cs" t="Include" />
           <e p="SaveLoad.cs" t="Include" />
           <e p="Shaders" t="Include">
             <e p="Outline.shader" t="Include" />
@@ -79,6 +80,7 @@
           </e>
           <e p="UI" t="Include">
             <e p="CookbookManager.cs" t="Include" />
+            <e p="DimmablePanel.cs" t="Include" />
             <e p="FactoryPanel.cs" t="Include" />
             <e p="FactoryStatsUI.cs" t="Include" />
             <e p="Frosted.shader" t="Include" />
@@ -96,7 +98,9 @@
             </e>
             <e p="UI_FactoryEntry.cs" t="Include" />
             <e p="UI_FactoryOverworld.cs" t="Include" />
+            <e p="UI_GameControlButton.cs" t="Include" />
             <e p="UI_InputterPanel.cs" t="Include" />
+            <e p="UI_OutputPanel.cs" t="Include" />
             <e p="UI_PotionPanel.cs" t="Include" />
             <e p="UI_ScoreScreen.cs" t="Include" />
             <e p="UI_SelectionScript.cs" t="Include" />
