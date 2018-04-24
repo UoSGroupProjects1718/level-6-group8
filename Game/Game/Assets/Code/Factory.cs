@@ -15,7 +15,7 @@ public class FactoryStats
     public int ticksToSolve;
     public uint score;
     public uint stars;
-    public float potionsPerMinute;
+    public float potionsPerMinute; 
 }
 
 /// <summary>
