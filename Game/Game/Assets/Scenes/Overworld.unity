@@ -13912,6 +13912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highscoreList: {fileID: 788592412}
+  userHighscoreText: {fileID: 1508292482}
 --- !u!1 &1086348775
 GameObject:
   m_ObjectHideFlags: 0
