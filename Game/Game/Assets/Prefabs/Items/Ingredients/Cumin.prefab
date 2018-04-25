@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1625999361400852}
   m_LocalRotation: {x: 0.11380905, y: 0.46642762, z: -0.15601029, w: 0.86322284}
   m_LocalPosition: {x: -9.015107, y: -8.232516, z: 4.973}
-  m_LocalScale: {x: 0.6787941, y: 0.6787938, z: 5.4303503}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 5.4303503}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
   cost: 10
   displayName: Cumin
   itemSprite: {fileID: 21300000, guid: 9038602bfed1b8c4c993150cef12707b, type: 3}
+  cookedVariant: {fileID: 0}
 --- !u!212 &212574679532081824
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -68,6 +69,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -83,6 +85,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
