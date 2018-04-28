@@ -638,8 +638,8 @@ RectTransform:
   m_Father: {fileID: 1766962964}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.325, y: 0.74}
-  m_AnchorMax: {x: 0.825, y: 0.825}
+  m_AnchorMin: {x: 0.315, y: 0.74}
+  m_AnchorMax: {x: 0.825, y: 0.84}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -682,7 +682,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 38
+    m_MaxSize: 42
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1182,7 +1182,7 @@ RectTransform:
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.525, y: 0.16}
-  m_AnchorMax: {x: 0.835, y: 0.31}
+  m_AnchorMax: {x: 0.83, y: 0.3}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1796,7 +1796,7 @@ RectTransform:
   m_Father: {fileID: 1766962964}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.35, y: 0.5}
+  m_AnchorMin: {x: 0.365, y: 0.5}
   m_AnchorMax: {x: 0.825, y: 0.74}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -1840,15 +1840,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 25
+    m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: We could fill this with a brief death potion lore? The quick brown fox jumped
-    over the lazy dog.The quick brown fox.
+  m_Text: A brief description of a potion
 --- !u!222 &497502649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7302,8 +7301,8 @@ RectTransform:
   m_Father: {fileID: 1766962964}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.075, y: 0.85}
-  m_AnchorMax: {x: 0.5, y: 0.95}
+  m_AnchorMin: {x: 0.075, y: 0.8375}
+  m_AnchorMax: {x: 0.65, y: 0.975}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

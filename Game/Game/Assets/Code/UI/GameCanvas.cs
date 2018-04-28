@@ -349,6 +349,8 @@ public class GameCanvas : MonoBehaviour
 
     public void CloseScoreScreen()
     {
+        // Dull background
+        ToggleDull(false);
         // Set it inactive
         scoreScreen.gameObject.SetActive(false);
     }
