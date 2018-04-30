@@ -37,6 +37,9 @@ public class SplashUI : MonoBehaviour
 
     public void ToggleNicknameField()
     {
+        var buttonText = SignInSignOutButton.transform.Find("Text").GetComponent<Text>();
         NicknameField.gameObject.SetActive(!NicknameField.gameObject.activeSelf);
+        buttonText.text = NicknameField.gameObject.activeSelf ? "Sign Up" : "Sign In";
     }
 }
+    
