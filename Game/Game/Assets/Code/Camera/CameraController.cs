@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
-{
+{    
     public void PanCamera(float x, float y, float panTime)
     {
         StartCoroutine(MoveTo(x, y, panTime));
@@ -28,4 +28,6 @@ public class CameraController : MonoBehaviour
         }
 
     }
+    
+    
 }

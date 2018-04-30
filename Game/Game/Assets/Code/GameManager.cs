@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -63,6 +64,9 @@ public class GameManager : MonoBehaviour
     public CraftableItem[] Potions { get { return potions; } }
     public const float LoadTime = 0.1f;
 
+    private Vector3 _lastOverworldCameraPosition;
+    private Quaternion _lastOverworldCameraRotation;
+
     void Awake()
     {
         // Check if instance already exists
@@ -86,12 +90,23 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (scene.name != "Overworld") return;
+            Camera.main.transform.position = _lastOverworldCameraPosition;
+            Camera.main.transform.rotation = _lastOverworldCameraRotation;
+           };
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             mouseStartPos = Input.mousePosition;
         }
+        Debug.Log(_lastOverworldCameraPosition);
     }
 
     /// <summary>
@@ -271,7 +286,7 @@ public class GameManager : MonoBehaviour
     /// Changes back to the Overworld scene
     /// </summary>
     public void ReturnToOverworld()
-    {
+    {    
         SceneManager.LoadScene("Overworld");
         StartCoroutine(WaitAndLoadAllFactoryStatsFromFile());
         
@@ -283,6 +298,8 @@ public class GameManager : MonoBehaviour
     /// <param name="factory">The factory to load</param>
     public void LoadLevel(Factory factory)
     {
+        _lastOverworldCameraPosition = Camera.main.transform.position;
+        _lastOverworldCameraRotation = Camera.main.transform.rotation;
         StartCoroutine(LoadLevelCoroutine(factory));
     }
 
