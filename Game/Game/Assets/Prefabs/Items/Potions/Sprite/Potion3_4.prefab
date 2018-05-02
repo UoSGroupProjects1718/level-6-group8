@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Time Stop Potion
   itemSprite: {fileID: 21300000, guid: f89c2479ca349d64eb1df1d4d77fba63, type: 3}
   ingredients:
   - {fileID: 114649237161647330, guid: 56dfe5997a022fe4e86147875273f7ae, type: 2}

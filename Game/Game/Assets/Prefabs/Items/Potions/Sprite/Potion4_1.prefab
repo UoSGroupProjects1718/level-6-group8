@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Truth Serum
   itemSprite: {fileID: 21300000, guid: 1ed2103837483674ca68d056599c0590, type: 3}
   ingredients:
   - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}

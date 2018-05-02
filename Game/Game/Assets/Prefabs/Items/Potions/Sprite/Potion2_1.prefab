@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Enhanced Reflex Potion
   itemSprite: {fileID: 21300000, guid: 0df0cffe121626f499660b2a2ab0abe1, type: 3}
   ingredients:
   - {fileID: 114485982338976164, guid: 303890ff3890c3140a9f3d8ea18f5c77, type: 2}

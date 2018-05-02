@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Potion of Enlargement
   itemSprite: {fileID: 21300000, guid: 322afcf3da984cb45be4c494012f574d, type: 3}
   ingredients:
   - {fileID: 114517795095533288, guid: a1708e945f7d940478069daffcb5983e, type: 2}

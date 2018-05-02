@@ -1,5 +1,0 @@
-- Inputters should display above them which ingredient they contain
-
-- Introduce delete button in the tutorial (playtesters were making mistakes)
-
-- Pin down cause and affect, players need to know what happens when they tap something

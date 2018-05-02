@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Concentration Potion
   itemSprite: {fileID: 21300000, guid: 454fabaf295a95044856a60fbd30278d, type: 3}
   ingredients:
   - {fileID: 114398149173845552, guid: 43e291f523d363845bfefd62ce6c5043, type: 2}

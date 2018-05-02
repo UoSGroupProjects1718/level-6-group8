@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Quickness Potion
   itemSprite: {fileID: 21300000, guid: 93aef20d733a93f49941dbf88fa20270, type: 3}
   ingredients:
   - {fileID: 114672638378656358, guid: cf6fb835fdc1f7a47995a8496cce2fc5, type: 2}

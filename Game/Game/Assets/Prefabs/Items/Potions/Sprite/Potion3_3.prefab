@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Potion of Purity
   itemSprite: {fileID: 21300000, guid: 36cfcc90c6a51f04b8592d6aea530e14, type: 3}
   ingredients:
   - {fileID: 114444173738331884, guid: 849ca448d44c2a146ac639b7bc34fe5c, type: 2}

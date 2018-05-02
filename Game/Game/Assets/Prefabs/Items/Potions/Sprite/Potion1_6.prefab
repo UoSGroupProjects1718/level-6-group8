@@ -57,7 +57,7 @@ MonoBehaviour:
   prodline_scale: {x: 0.186, y: 0.186, z: 1}
   itemType: 2
   cost: 50
-  displayName: Booster Potion
+  displayName: Potion of Wisdom
   itemSprite: {fileID: 21300000, guid: 03985efcff35c994480c3a17a98c423c, type: 3}
   ingredients:
   - {fileID: 114450978081715366, guid: 7a3bfdc039240024ab413b77da537af0, type: 2}
